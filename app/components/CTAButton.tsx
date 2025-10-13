@@ -2,7 +2,7 @@
 
 import { Mail } from "lucide-react";
 
-export function CtaButton() {
+export function CTAButton() {
   const sendEmail = () => {
     const email = "hirahmat.dev@gmail.com";
     const subject = encodeURIComponent("Hi Rahmat!");

@@ -1,4 +1,4 @@
-import { CtaButton } from "./CtaButton";
+import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
 
 export function Navbar() {
@@ -6,7 +6,7 @@ export function Navbar() {
     <nav>
       <div className="container py-4 flex justify-between align-center">
         <Logo />
-        <CtaButton />
+        <CTAButton />
       </div>
     </nav>
   );
