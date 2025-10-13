@@ -7,10 +7,10 @@ export function FooterContactCTA() {
       <div className="p-5 bg-accent text-white rounded-[20px] flex gap-3">
         <Mail className="shrink-0" />
         <div className="space-y-1">
-          <h2 className="text-xl/[24px] font-semibold tracking-[0.4px]">
+          <h2 className="text-xl/[24px] font-semibold tracking-[-0.35px]">
             Punya ide atau proyek menarik?
           </h2>
-          <p className="text-base/[24px] tracking-[0.4px]">
+          <p className="text-base/[24px] tracking-[-0.35px]">
             Saya siap berkolaborasi — kirim email ke{" "}
             <a href={EMAIL_HREF}>
               <strong className="font-mono font-semibold tracking-[-1px] underline">
