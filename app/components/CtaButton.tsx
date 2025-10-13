@@ -14,7 +14,7 @@ export function CtaButton() {
   };
 
   return (
-    <button type="button" className="cta-button" onClick={sendEmail}>
+    <button type="button" className="cta-button animate-hover" onClick={sendEmail}>
       <Mail />
       Kirim Email
     </button>
