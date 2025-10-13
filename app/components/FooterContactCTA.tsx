@@ -15,7 +15,7 @@ export function FooterContactCTA() {
           </h2>
           <p className="text-base/[24px] tracking-[-0.35px]">
             Saya siap berkolaborasi — kirim email ke{" "}
-            <a href={EMAIL_HREF}>
+            <a href={EMAIL_HREF} className="inline-block animate-hover">
               <strong className="font-mono font-semibold tracking-[-1px] underline">
                 hirahmat.dev@gmail.com
               </strong>
