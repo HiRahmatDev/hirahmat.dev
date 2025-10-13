@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Overpass_Mono } from "next/font/google";
 
 import { FooterContactCTA } from "./components/FooterContactCTA";
+import { FooterCopyrights } from "./components/FooterCopyrights";
 import { Navbar } from "./components/Navbar";
 
 import "./globals.css";
@@ -35,6 +36,7 @@ export default function RootLayout({
         <main>{children}</main>
         <footer>
           <FooterContactCTA />
+          <FooterCopyrights />
         </footer>
       </body>
     </html>
