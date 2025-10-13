@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Overpass_Mono } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "./components/Navbar";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${interSans.variable} ${overpassMono.variable} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
