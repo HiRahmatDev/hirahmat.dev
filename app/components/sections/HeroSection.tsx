@@ -3,11 +3,11 @@ import Image from "next/image";
 
 import { CTAButton } from "../CTAButton";
 import backAccent from "@/public/images/back-accent.png";
-import middleAccent from "@/public/images/middle-accent.png";
 import frontAccent from "@/public/images/front-accent.png";
+import middleAccent from "@/public/images/middle-accent.png";
 import rahmatHero from "@/public/images/rahmat-hidayatullah-hero.png";
-import vectorBackgroundHero from "@/public/svgs/vector-background-hero.svg";
 import threeLines from "@/public/svgs/three-lines.svg";
+import vectorBackgroundHero from "@/public/svgs/vector-background-hero.svg";
 
 export function HeroSection() {
   return (
