@@ -33,13 +33,13 @@ export function HeroSection() {
           <Image
             src={vectorBackgroundHero}
             alt=""
-            className="absolute left-[-32px] bottom-0 max-w-[120%]"
+            className="absolute left-[-32px] bottom-0 max-w-[120%] pointer-events-none"
           />
           <Image
             width={90}
             src={backAccent}
             alt=""
-            className="absolute bottom-0 right-[0px]"
+            className="absolute bottom-0 right-[0px] pointer-events-none"
           />
           <Image
             src={rahmatHero}
@@ -55,14 +55,14 @@ export function HeroSection() {
           <Image
             src={middleAccent}
             alt=""
-            className="absolute max-w-[105%] bottom-0 right-[-20px]"
+            className="absolute max-w-[105%] bottom-0 right-[-20px] pointer-events-none"
           />
           <Image
             src={frontAccent}
             alt=""
-            className="absolute max-w-[115%] bottom-0 right-[-17px]"
+            className="absolute max-w-[115%] bottom-0 right-[-17px] pointer-events-none"
           />
-          <Image src={threeLines} alt="" className="absolute top-[98px]" />
+          <Image src={threeLines} alt="" className="absolute top-[98px] pointer-events-none" />
         </div>
       </div>
     </section>
