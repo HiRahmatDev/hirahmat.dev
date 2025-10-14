@@ -6,6 +6,7 @@
   --accent: #14ae5c;
   --accent-hover: #1dbe68;
   --accent-active: #0ea354;
+  --text-accent: #02542d;
 }
 
 @theme inline {
@@ -14,6 +15,7 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-active: var(--accent-active);
+  --color-text-accent: var(--text-accent);
   --font-sans: var(--font-inter-sans);
   --font-mono: var(--font-overpass-mono);
 }
@@ -33,6 +35,17 @@
     @apply [&>svg]:size-5;
     @apply cursor-pointer;
     @apply bg-accent hover:bg-accent-hover active:bg-accent-active text-white;
+    @apply shadow-lg hover:shadow-xl transition-shadow active:shadow-md;
+    @apply transition;
+  }
+
+  .white-solid-button {
+    @apply min-h-[36px] px-4 rounded-[20px];
+    @apply font-semibold text-sm/[36px] tracking-[-0.4px] text-nowrap;
+    @apply flex gap-2 items-center;
+    @apply [&>svg]:size-5;
+    @apply cursor-pointer;
+    @apply bg-white text-text-accent;
     @apply shadow-lg hover:shadow-xl transition-shadow active:shadow-md;
     @apply transition;
   }

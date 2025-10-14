@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
 import Image from "next/image";
 
 import { CTAButton } from "../CTAButton";
+import { GreenText } from "../GreenText";
 import backAccent from "@/public/images/back-accent.png";
 import frontAccent from "@/public/images/front-accent.png";
 import middleAccent from "@/public/images/middle-accent.png";
@@ -16,15 +16,15 @@ export function HeroSection() {
         <div className="space-y-3">
           <h1 className="font-bold text-5xl/[58px] tracking-[-2.5px]">
             <span className="text-2xl tracking-[-1px]">
-              <Green>Hi</Green>, saya <Green>Rahmat</Green>
+              <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
             </span>
             <br />
-            Frontend <Green>Dev</Green>eloper
+            Frontend <GreenText>Dev</GreenText>eloper
           </h1>
-          <h2 className="text-base/[24px] tracking-[-0.4px] max-w-[40ch]">
+          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch]">
             Saya merancang dan mengembangkan aplikasi web yang fungsional,
             responsif, dan enak dipakai.
-          </h2>
+          </p>
         </div>
         <CTAButton />
       </div>
@@ -62,13 +62,13 @@ export function HeroSection() {
             alt=""
             className="absolute max-w-[115%] bottom-0 right-[-17px] pointer-events-none"
           />
-          <Image src={threeLines} alt="" className="absolute top-[98px] pointer-events-none" />
+          <Image
+            src={threeLines}
+            alt=""
+            className="absolute top-[98px] pointer-events-none"
+          />
         </div>
       </div>
     </section>
   );
-}
-
-function Green(props: { children?: ReactNode }) {
-  return <span className="text-accent" {...props}></span>;
 }
