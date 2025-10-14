@@ -20,7 +20,7 @@ export function SelectedProjectsSection() {
     {
       slug: "ai-recruiter-dashboard-app",
       title: "Aplikasi Dasbor Rekruter AI",
-      desc: "Bukan sekadar dasbor — cara baru menyeleksi kandidate.",
+      desc: "Bukan sekadar dasbor — cara baru menyeleksi kandidat.",
       img: "/images/mimo.jpg",
     },
   ];
