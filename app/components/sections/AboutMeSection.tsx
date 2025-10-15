@@ -42,8 +42,8 @@ export function AboutMeSection() {
           <p>
             Dari situ, rasa ingin tahu saya berubah arah: bagaimana kalau visual
             dan logika digabung? Pertanyaan itu membawa saya ke bootcamp
-            Fullstack Web Arkademy (sekarang menjadi{" "}
-            <strong>Pijar Camp dan Fazztrack</strong>
+            Fullstack Web Arkademy (sekarang menjadi <strong>Pijar Camp</strong>{" "}
+            dan <strong>Fazztrack</strong>
             ), dan sejak itu saya menekuni dunia frontend development. Sekarang
             saya bekerja sebagai Frontend Developer di Kulina, sambil terus
             bereksperimen dengan desain, animasi, dan hal-hal visual di waktu
