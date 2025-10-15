@@ -70,11 +70,12 @@ function SelectedProjectCard({ title, desc, img }: SelectedProjectCardProps) {
           <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md -rotate-2 overflow-hidden">
             {img && (
               <Image
-                fill
                 src={img}
                 alt=""
-                className="object-cover right-0"
+                fill
                 quality={0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover right-0"
               />
             )}
           </div>
@@ -82,7 +83,13 @@ function SelectedProjectCard({ title, desc, img }: SelectedProjectCardProps) {
         <div className="absolute left-[-120px] bottom-[-42px]">
           <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md rotate-2 overflow-hidden">
             {img && (
-              <Image fill src={img} alt="" className="object-cover right-0" />
+              <Image
+                src={img}
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover right-0"
+              />
             )}
           </div>
         </div>

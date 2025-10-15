@@ -28,7 +28,7 @@ export function FooterContactCTA() {
           alt="background footer contact cta accent"
           placeholder="blur"
           height={128}
-          className="absolute top-[50%] right-0 translate-y-[-50%]"
+          className="w-auto h-auto absolute top-[50%] right-0 translate-y-[-50%]"
         />
       </div>
     </div>
