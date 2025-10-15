@@ -37,7 +37,16 @@ export function AboutMeSection() {
             sesuatu yang, tanpa saya sadari, punya banyak kesamaan dengan dunia
             pemrograman. Di sela-sela kuliah, ketertarikan saya pada desain dan
             video grafis makin kuat, sampai akhirnya saya meraih juara pertama
-            lomba iklan video berbahasa Arab.
+            lomba iklan{" "}
+            <a
+              href="https://youtu.be/LhPnxK-lPE8?si=2w-MaGbgcO6sfg7L"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-accent"
+            >
+              video berbahasa Arab
+            </a>
+            .
           </p>
           <p>
             Dari situ, rasa ingin tahu saya berubah arah: bagaimana kalau visual
