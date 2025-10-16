@@ -48,7 +48,7 @@ function SelectedProjectCard({
           </h3>
           <p className="text-sm/[20px] max-w-[156px]">{desc}</p>
         </div>
-        <Link href={`/${slug}`} className="white-solid-button animate-hover">
+        <Link href={`/article/${slug}`} className="white-solid-button animate-hover">
           Lihat Jurnal
         </Link>
       </div>

@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "Hi, Saya Rahmat Hidayatullah, Frontend Developer.",
   description:
     "Saya merancang dan mengembangkan aplikasi web yang fungsional, responsif, dan enak dipakai.",
+  openGraph: {
+    title: "Hi, Saya Rahmat Hidayatullah, Frontend Developer.",
+    description:
+      "Saya merancang dan mengembangkan aplikasi web yang fungsional, responsif, dan enak dipakai.",
+  },
 };
 
 export default function RootLayout({

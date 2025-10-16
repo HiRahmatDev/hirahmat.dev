@@ -126,6 +126,10 @@
   padding-inline: 20px;
   @apply md:max-w-[960px];
 }
+@utility container-for-reading {
+  @apply container;
+  @apply md:max-w-[720];
+}
 
 @utility animate-hover {
   @apply translate-y-0 hover:-translate-y-0.5 active:translate-y-0.5;
