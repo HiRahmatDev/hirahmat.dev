@@ -55,7 +55,7 @@
   .navbar-fixed-active,
   .navbar-static-active {
     @apply fixed top-0 left-0 right-0 z-10;
-    @apply bg-white/75 backdrop-blur-md translate-0;
+    @apply bg-background/75 backdrop-blur-md translate-0;
     @apply shadow-xs;
   }
 
