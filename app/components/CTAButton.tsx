@@ -1,7 +1,7 @@
 "use client";
 
-import { EMAIL_HREF } from "./constants";
 import { Mail } from "lucide-react";
+import { EMAIL_HREF } from "./constants";
 
 export function CTAButton() {
   return (

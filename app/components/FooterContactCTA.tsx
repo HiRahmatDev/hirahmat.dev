@@ -2,7 +2,7 @@ import { Mail } from "lucide-react";
 import Image from "next/image";
 
 import { EMAIL_HREF } from "./constants";
-import backgroundFooterContactCtaPng from "../../public/images/background-footer-contact-cta.png";
+import backgroundFooterContactCtaPng from "@/public/images/background-footer-contact-cta.png";
 
 export function FooterContactCTA() {
   return (

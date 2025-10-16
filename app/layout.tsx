@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Overpass_Mono } from "next/font/google";
 
-import { FooterContactCTA } from "./components/FooterContactCTA";
-import { FooterCopyrights } from "./components/FooterCopyrights";
-import { Navbar } from "./components/Navbar";
+import { FooterContactCTA } from "@/app/components/FooterContactCTA";
+import { FooterCopyrights } from "@/app/components/FooterCopyrights";
+import { Navbar } from "@/app/components/Navbar";
 
 import "./globals.css";
 

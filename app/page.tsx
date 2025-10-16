@@ -1,6 +1,6 @@
-import { AboutMeSection } from "./components/sections/AboutMeSection";
-import { HeroSection } from "./components/sections/HeroSection";
-import { SelectedProjectsSection } from "./components/sections/SelectedProjectsSection";
+import { AboutMeSection } from "@/app/components/sections/AboutMeSection";
+import { HeroSection } from "@/app/components/sections/HeroSection";
+import { SelectedProjectsSection } from "@/app/components/sections/SelectedProjectsSection";
 
 export default function Home() {
   return (
