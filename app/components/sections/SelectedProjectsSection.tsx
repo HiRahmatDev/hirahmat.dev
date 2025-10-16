@@ -84,7 +84,7 @@ function SelectedProjectCard({
                 alt=""
                 fill
                 quality={0}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 30vw, 10vw"
                 className="object-cover right-0"
               />
             )}
@@ -97,7 +97,7 @@ function SelectedProjectCard({
                 src={img}
                 alt=""
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 30vw, 10vw"
                 className="object-cover right-0"
               />
             )}
