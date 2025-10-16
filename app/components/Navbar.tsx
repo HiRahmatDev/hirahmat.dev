@@ -107,7 +107,7 @@ export function Navbar() {
       </nav>
       {navState !== "navbar-static" && (
         <div className={navState}>
-          <div className="container py-3 flex justify-between align-center">
+          <div className="container py-3 flex gap-3 justify-between align-center">
             <Logo />
             <CTAButton />
           </div>
