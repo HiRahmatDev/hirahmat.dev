@@ -20,6 +20,13 @@ export const fetchSelectedProjects: () => Promise<
   try {
     const response = await notion.dataSources.query({
       data_source_id: process.env.DS_ARTICLE!,
+      filter: {
+        property: "status",
+        select: {
+          equals: "Published",
+        },
+      },
+      sorts: [{ property: "created_on", direction: "descending" }],
     });
 
     return (response.results as PageObjectResponse[]).map((result) => ({
