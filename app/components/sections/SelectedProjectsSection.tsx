@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { GreenText } from "../GreenText";
 import Image from "next/image";
+
+import { fetchSelectedProjects } from "@/app/services/notion";
+import { GreenText } from "../GreenText";
 
 type SelectedProject = {
   slug: string;
@@ -9,21 +11,24 @@ type SelectedProject = {
   img?: string;
 };
 
-export function SelectedProjectsSection() {
-  const selectedProjects: SelectedProject[] = [
-    {
-      slug: "kulina-ops-dashboard-app",
-      title: "Aplikasi Dasbor Operasional Kulina",
-      desc: "Dashboard lama Kulina, sentuhan baru.",
-      img: "/images/kulina-ops.jpg",
-    },
-    {
-      slug: "ai-recruiter-dashboard-app",
-      title: "Aplikasi Dasbor Rekruter AI",
-      desc: "Bukan sekadar dasbor — cara baru menyeleksi kandidat.",
-      img: "/images/mimo.jpg",
-    },
-  ];
+export async function SelectedProjectsSection() {
+  const results = await fetchSelectedProjects();
+
+  const selectedProjects: SelectedProject[] = (results || []).map((result) => ({
+    slug:
+      result.properties.slug.type === "title"
+        ? result.properties.slug.title[0].plain_text
+        : "",
+    title:
+      result.properties.name.type === "rich_text"
+        ? result.properties.name.rich_text[0].plain_text
+        : "",
+    desc:
+      result.properties.description.type === "rich_text"
+        ? result.properties.description.rich_text[0].plain_text
+        : "",
+    img: result.cover?.type === "file" ? result.cover.file.url : "",
+  }));
 
   return (
     <section className="container py-6">
@@ -51,7 +56,12 @@ export function SelectedProjectsSection() {
 
 type SelectedProjectCardProps = SelectedProject;
 
-function SelectedProjectCard({ title, desc, img }: SelectedProjectCardProps) {
+function SelectedProjectCard({
+  title,
+  slug,
+  desc,
+  img,
+}: SelectedProjectCardProps) {
   return (
     <div className="rounded-2xl bg-accent w-[439px] h-[217px] shadow-xl flex gap-3 text-white overflow-hidden">
       <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 [&>*]:max-w-fit">
@@ -61,7 +71,7 @@ function SelectedProjectCard({ title, desc, img }: SelectedProjectCardProps) {
           </h3>
           <p className="text-sm/[20px] max-w-[156px]">{desc}</p>
         </div>
-        <Link href="#" className="white-solid-button animate-hover">
+        <Link href={`/${slug}`} className="white-solid-button animate-hover">
           Lihat Jurnal
         </Link>
       </div>
