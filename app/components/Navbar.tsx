@@ -99,17 +99,20 @@ export function Navbar() {
   }, [navState]);
 
   return (
-    <div
-      style={{
-        height: `var(--navbar-height)`,
-      }}
-    >
-      <nav className={navState}>
-        <div className="container py-3 flex justify-between align-center">
+    <>
+      <nav>
+        <div className="container py-3">
           <Logo />
-          {navState !== "navbar-static" && <CTAButton />}
         </div>
       </nav>
-    </div>
+      {navState !== "navbar-static" && (
+        <div className={navState}>
+          <div className="container py-3 flex justify-between align-center">
+            <Logo />
+            <CTAButton />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
