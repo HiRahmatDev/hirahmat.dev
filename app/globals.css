@@ -7,6 +7,7 @@
   --accent-hover: #1dbe68;
   --accent-active: #0ea354;
   --text-accent: #02542d;
+  --navbar-height: 64px;
 }
 
 @theme inline {
@@ -48,6 +49,75 @@
     @apply bg-white text-text-accent;
     @apply shadow-lg hover:shadow-xl transition-shadow active:shadow-md;
     @apply transition;
+  }
+
+  .navbar-fixed,
+  .navbar-fixed-active,
+  .navbar-static-active {
+    @apply fixed top-0 left-0 right-0 z-10;
+    @apply bg-white/75 backdrop-blur-md translate-0;
+  }
+
+  .navbar-fixed-active {
+    animation: navbarSlideDown 300ms
+      linear(
+        0,
+        0.012 0.9%,
+        0.05 2%,
+        0.411 9.2%,
+        0.517 11.8%,
+        0.611 14.6%,
+        0.694 17.7%,
+        0.765 21.1%,
+        0.824 24.8%,
+        0.872 28.9%,
+        0.91 33.4%,
+        0.939 38.4%,
+        0.977 50.9%,
+        0.994 68.4%,
+        1
+      )
+      forwards;
+  }
+
+  .navbar-static-active {
+    animation: navbarSlideUp 300ms
+      linear(
+        0,
+        0.012 0.9%,
+        0.05 2%,
+        0.411 9.2%,
+        0.517 11.8%,
+        0.611 14.6%,
+        0.694 17.7%,
+        0.765 21.1%,
+        0.824 24.8%,
+        0.872 28.9%,
+        0.91 33.4%,
+        0.939 38.4%,
+        0.977 50.9%,
+        0.994 68.4%,
+        1
+      )
+      forwards;
+  }
+
+  @keyframes navbarSlideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes navbarSlideUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
   }
 }
 
