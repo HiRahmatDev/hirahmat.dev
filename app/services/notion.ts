@@ -13,8 +13,6 @@ export const fetchSelectedProjects = async () => {
       data_source_id: process.env.DS_ARTICLE!,
     });
 
-    console.log(response);
-
     return response.results as PageObjectResponse[];
   } catch (error) {
     console.error(error);
