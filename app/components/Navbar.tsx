@@ -100,8 +100,8 @@ export function Navbar() {
 
   return (
     <>
-      <nav>
-        <div className="container py-3">
+      <nav className="relative z-10">
+        <div className="container py-3 flex gap-3 justify-between align-center">
           <Logo />
         </div>
       </nav>
