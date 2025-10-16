@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <section className="container flex flex-row gap-4 h-[633px]">
       <div className="pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
-        <div className="space-y-3">
+        <div className="space-y-2">
           <h1 className="font-bold text-5xl/[58px] tracking-[-2.5px]">
             <span className="text-2xl tracking-[-1px]">
               <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
