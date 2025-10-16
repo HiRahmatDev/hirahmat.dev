@@ -11,7 +11,7 @@ type NavState =
   | "navbar-fixed"
   | "navbar-fixed-active";
 
-const NAVBAR_SCROLL_THRESHOLD = 460;
+const NAVBAR_SCROLL_THRESHOLD = 400;
 const ANIMATION_MS = 300;
 
 export function Navbar() {

@@ -11,7 +11,7 @@ import vectorBackgroundHero from "@/public/svgs/vector-background-hero.svg";
 
 export function HeroSection() {
   return (
-    <section className="container flex flex-row gap-4 h-[633px]">
+    <section className="container flex flex-row gap-4 h-[633px] -mt-10">
       <div className="pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
         <div className="space-y-2">
           <h1 className="font-bold text-5xl/[58px] tracking-[-2.5px]">
