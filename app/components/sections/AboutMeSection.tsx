@@ -14,8 +14,7 @@ export function AboutMeSection() {
           </p>
         </div>
         <a
-          href="https://drive.google.com/file/d/1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0/view"
-          target="_blank"
+          href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
           rel="noopener noreferrer"
           className="text-base/[24px] tracking-[-0.35px] font-bold text-accent hover:text-text-accent animate-hover inline-block"
         >
