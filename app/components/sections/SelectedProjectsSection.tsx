@@ -48,7 +48,10 @@ function SelectedProjectCard({
           </h3>
           <p className="text-sm/[20px] max-w-[156px]">{desc}</p>
         </div>
-        <Link href={`/article/${slug}`} className="white-solid-button animate-hover">
+        <Link
+          href={`/article/${slug}`}
+          className="white-solid-button animate-hover"
+        >
           Lihat Jurnal
         </Link>
       </div>
@@ -63,6 +66,7 @@ function SelectedProjectCard({
                 quality={0}
                 sizes="(max-width: 768px) 80vw, (max-width: 1200px) 30vw, 10vw"
                 className="object-cover right-0"
+                unoptimized
               />
             )}
           </div>
@@ -76,6 +80,7 @@ function SelectedProjectCard({
                 fill
                 sizes="(max-width: 768px) 80vw, (max-width: 1200px) 30vw, 10vw"
                 className="object-cover right-0"
+                unoptimized
               />
             )}
           </div>

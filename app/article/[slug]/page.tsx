@@ -82,6 +82,7 @@ export default async function ArticleDetailPage({
                 height={720}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
                 className="object-cover top-0 right-0 left-0"
+                unoptimized
               />
             </figure>
           ) : null}
