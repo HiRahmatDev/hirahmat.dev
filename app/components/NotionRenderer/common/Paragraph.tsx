@@ -69,7 +69,7 @@ export function Paragraph({ block }: { block: ParagraphBlockObjectResponse }) {
               href={richTextItem.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent underline transition"
+              className="text-accent underline transition animate-hover inline-block"
             >
               {element}
             </a>
