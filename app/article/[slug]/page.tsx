@@ -10,8 +10,6 @@ import {
 import { formatPublishedDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
 
-export const revalidate = 60;
-
 export async function generateStaticParams() {
   const selectedProjects = await fetchSelectedProjects();
   return (selectedProjects || []).map(({ slug }) => ({ slug }));
