@@ -7,7 +7,7 @@ export function CTAButton() {
   return (
     <a href={EMAIL_HREF} className="cta-button animate-hover">
       <Mail />
-      Bahas Proyek Bareng?
+      Hubungi Saya
     </a>
   );
 }
