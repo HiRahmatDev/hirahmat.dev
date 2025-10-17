@@ -12,7 +12,7 @@ Every detail — from motion timing to layout rhythm — is crafted to reflect m
 
 - ⚡ Next.js
 - 🎨 Tailwind CSS
-- 💫 Framer Motion
+- 💫 Motion (formerly Framer Motion)
 - 🔧 TypeScript
 - 🚀 Deployed via Vercel
 
