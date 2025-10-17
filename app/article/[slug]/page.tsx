@@ -8,6 +8,7 @@ import {
   fetchSelectedProjects,
 } from "@/app/services/notion";
 import { formatPublishedDate } from "@/app/lib/dayjs";
+import { NotionRenderer } from "@/app/components/NotionRenderer";
 
 export const revalidate = 60;
 
@@ -48,7 +49,7 @@ export default async function ArticleDetailPage({
     notFound();
   }
 
-  const blocks = await fetchPageByBlockId(blockMetadata.blockId);
+  const page = await fetchPageByBlockId(blockMetadata.blockId);
 
   return (
     <div className="container-for-reading">
@@ -68,21 +69,24 @@ export default async function ArticleDetailPage({
             </h1>
             <p className="text-base tracking-[-0.35px]">{blockMetadata.desc}</p>
           </header>
-          <figure>
-            <Image
-              src={blockMetadata.img}
-              alt="Screenshot Dasbor Operasional Kulina"
-              width={1280}
-              height={720}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
-              className="object-cover top-0 right-0 left-0"
-            />
-          </figure>
+          {blockMetadata.img ? (
+            <figure>
+              <Image
+                src={blockMetadata.img}
+                alt="Screenshot Dasbor Operasional Kulina"
+                width={1280}
+                height={720}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
+                className="object-cover top-0 right-0 left-0"
+              />
+            </figure>
+          ) : null}
         </section>
         <section className="py-24">
           <p className="text-base text-foreground/60 text-center tracking-[-0.35]">
             <em>— Segera Hadir —</em>
           </p>
+          <NotionRenderer page={page} />
         </section>
       </article>
     </div>
