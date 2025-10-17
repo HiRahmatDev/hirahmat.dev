@@ -67,7 +67,7 @@ export default async function ArticleDetailPage({
             <h1 className="text-4xl/[44px] tracking-[-1px] font-bold">
               {blockMetadata.title}
             </h1>
-            <p className="text-base tracking-[-0.35px]">{blockMetadata.desc}</p>
+            <p className="text-lg/[32px] tracking-[-0.35px]">{blockMetadata.desc}</p>
           </header>
           {blockMetadata.img ? (
             <figure>
@@ -82,10 +82,7 @@ export default async function ArticleDetailPage({
             </figure>
           ) : null}
         </section>
-        <section className="py-24">
-          <p className="text-base text-foreground/60 text-center tracking-[-0.35]">
-            <em>— Segera Hadir —</em>
-          </p>
+        <section className="pb-24">
           <NotionRenderer page={page} />
         </section>
       </article>

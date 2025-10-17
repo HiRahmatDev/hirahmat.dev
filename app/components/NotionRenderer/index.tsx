@@ -29,15 +29,7 @@ export function NotionRenderer({ page }: NotionRendererProps) {
               );
 
             case "paragraph":
-              console.log(block.paragraph);
-
-              return (
-                <Paragraph key={`${block.id}`}>
-                  {block.paragraph.rich_text.map(
-                    ({ plain_text }) => plain_text
-                  )}
-                </Paragraph>
-              );
+              return <Paragraph key={`${block.id}`} block={block} />;
 
             default:
               return null;
