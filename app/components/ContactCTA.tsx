@@ -4,7 +4,7 @@ import Image from "next/image";
 import { EMAIL_HREF } from "./constants";
 import backgroundFooterContactCtaPng from "@/public/images/background-footer-contact-cta.png";
 
-export function FooterContactCTA() {
+export function ContactCTA() {
   return (
     <div className="container py-6">
       <div className="p-5 bg-accent text-white rounded-[20px] flex gap-3 relative overflow-hidden">

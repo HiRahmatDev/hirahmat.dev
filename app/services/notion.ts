@@ -12,7 +12,7 @@ export type SelectedProject = {
   slug: string;
   title?: string;
   desc?: string;
-  img?: string;
+  cover?: string;
 };
 
 export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
@@ -21,10 +21,20 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
       const response = await notion.dataSources.query({
         data_source_id: process.env.DS_ARTICLE!,
         filter: {
-          property: "status",
-          select: {
-            equals: "Published",
-          },
+          and: [
+            {
+              property: "category",
+              select: {
+                equals: "Jurnal Proyek",
+              },
+            },
+            {
+              property: "status",
+              select: {
+                equals: "Published",
+              },
+            },
+          ],
         },
         sorts: [{ property: "created_on", direction: "descending" }],
       });
@@ -32,17 +42,20 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
       return (response.results as PageObjectResponse[]).map((result) => ({
         slug:
           result.properties.slug.type === "title"
-            ? result.properties.slug.title[0].plain_text
+            ? result.properties.slug.title[0]?.plain_text
             : "",
         title:
           result.properties.name.type === "rich_text"
-            ? result.properties.name.rich_text[0].plain_text
+            ? result.properties.name.rich_text[0]?.plain_text
             : "",
         desc:
           result.properties.description.type === "rich_text"
-            ? result.properties.description.rich_text[0].plain_text
+            ? result.properties.description.rich_text[0]?.plain_text
             : "",
-        img: result.cover?.type === "file" ? result.cover.file.url : "",
+        cover:
+          result.properties.cover.type === "rich_text"
+            ? result.properties.cover.rich_text[0]?.plain_text
+            : "",
       }));
     } catch (error) {
       console.error(error);
@@ -50,7 +63,7 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
     }
   });
 
-export const fetchBlockMetadataBySlug = cache(async (slug: string) => {
+export const fetchArticleMetadataBySlug = cache(async (slug: string) => {
   try {
     const response = await notion.dataSources.query({
       data_source_id: process.env.DS_ARTICLE!,
@@ -76,17 +89,20 @@ export const fetchBlockMetadataBySlug = cache(async (slug: string) => {
       blockId: result.id,
       slug:
         result.properties.slug.type === "title"
-          ? result.properties.slug.title[0].plain_text
+          ? result.properties.slug.title[0]?.plain_text
           : "",
       title:
         result.properties.name.type === "rich_text"
-          ? result.properties.name.rich_text[0].plain_text
+          ? result.properties.name.rich_text[0]?.plain_text
           : "",
       desc:
         result.properties.description.type === "rich_text"
-          ? result.properties.description.rich_text[0].plain_text
+          ? result.properties.description.rich_text[0]?.plain_text
           : "",
-      img: result.cover?.type === "file" ? result.cover.file.url : "",
+      cover:
+        result.properties.cover.type === "rich_text"
+          ? result.properties.cover.rich_text[0]?.plain_text
+          : "",
       category:
         result.properties.category.type === "select"
           ? result.properties.category.select?.name
@@ -102,7 +118,7 @@ export const fetchBlockMetadataBySlug = cache(async (slug: string) => {
   }
 });
 
-export const fetchPageByBlockId = cache(async (blockId: string) => {
+export const fetchArticleByBlockId = cache(async (blockId: string) => {
   try {
     const response = await notion.blocks.children.list({
       block_id: blockId,

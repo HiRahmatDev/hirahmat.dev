@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Overpass_Mono } from "next/font/google";
 
-import { FooterContactCTA } from "@/app/components/FooterContactCTA";
 import { FooterCopyrights } from "@/app/components/FooterCopyrights";
 import { Navbar } from "@/app/components/Navbar";
 
@@ -39,9 +38,8 @@ export default function RootLayout({
         className={`${interSans.variable} ${overpassMono.variable} antialiased`}
       >
         <Navbar />
-        <main>{children}</main>
-        <footer>
-          <FooterContactCTA />
+        <main tabIndex={-1}>{children}</main>
+        <footer tabIndex={-1}>
           <FooterCopyrights />
         </footer>
       </body>

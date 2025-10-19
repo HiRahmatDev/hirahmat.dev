@@ -58,37 +58,33 @@ export function SelectedProjectCards({
                 Lihat Jurnal
               </Link>
             </div>
-            <div className="shrink-0 min-w-[104px] py-5 pr-5 relative">
-              <div className="absolute left-[-130px] bottom-[-48px] blur-[1px] opacity-60">
-                <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md -rotate-2 overflow-hidden">
-                  {project.img && (
+            {project.cover && (
+              <div className="shrink-0 min-w-[104px] py-5 pr-5 relative">
+                <div className="absolute left-[-130px] bottom-[-48px] blur-[1px] opacity-60">
+                  <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md -rotate-2 overflow-hidden">
                     <Image
-                      src={project.img}
+                      src={project.cover}
                       alt=""
                       fill
                       quality={0}
-                      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 30vw, 10vw"
+                      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
                       className="object-cover right-0"
-                      unoptimized
                     />
-                  )}
+                  </div>
                 </div>
-              </div>
-              <div className="absolute left-[-120px] bottom-[-42px]">
-                <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md rotate-2 overflow-hidden">
-                  {project.img && (
+                <div className="absolute left-[-120px] bottom-[-42px]">
+                  <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md rotate-2 overflow-hidden">
                     <Image
-                      src={project.img}
+                      src={project.cover}
                       alt=""
                       fill
-                      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 30vw, 10vw"
+                      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
                       className="object-cover right-0"
-                      unoptimized
                     />
-                  )}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </motion.div>
       ))}
