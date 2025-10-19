@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import {
-  fetchBlockMetadataBySlug,
-  fetchPageByBlockId,
+  fetchArticleByBlockId,
+  fetchArticleMetadataBySlug,
   fetchSelectedProjects,
 } from "@/app/services/notion";
 import { formatPublishedDate } from "@/app/lib/dayjs";
@@ -21,13 +21,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const blockMetadata = await fetchBlockMetadataBySlug(slug);
+  const blockMetadata = await fetchArticleMetadataBySlug(slug);
 
   return {
-    title: `${blockMetadata?.title || "Jurnal Proyek"} - HiRahmat.Dev`,
+    title: `${blockMetadata?.title || "Artikel"} - HiRahmat.Dev`,
     description: `${blockMetadata?.desc || ""}`,
     openGraph: {
-      title: `${blockMetadata?.title || "Jurnal Proyek"} - HiRahmat.Dev`,
+      title: `${blockMetadata?.title || "Artikel"} - HiRahmat.Dev`,
       description: `${blockMetadata?.desc || ""}`,
       images: [`${blockMetadata?.cover}`],
       type: "article",
@@ -41,13 +41,13 @@ export default async function ArticleDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const blockMetadata = await fetchBlockMetadataBySlug(slug);
+  const blockMetadata = await fetchArticleMetadataBySlug(slug);
 
   if (!blockMetadata?.slug) {
     notFound();
   }
 
-  const page = await fetchPageByBlockId(blockMetadata.blockId);
+  const article = await fetchArticleByBlockId(blockMetadata.blockId);
 
   return (
     <article className="space-y-11">
@@ -89,7 +89,7 @@ export default async function ArticleDetailPage({
       </section>
       <section className="pb-12">
         <div className="container-for-reading">
-          <NotionRenderer page={page} />
+          <NotionRenderer listBlockChildren={article} />
         </div>
       </section>
     </article>

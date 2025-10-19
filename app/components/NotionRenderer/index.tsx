@@ -5,13 +5,15 @@ import { Heading2 } from "./common/Heading2";
 import { Paragraph } from "./common/Paragraph";
 import { isBlockObjectResponse } from "./utils";
 
-type NotionRendererProps = { page?: ListBlockChildrenResponse | null };
+type NotionRendererProps = {
+  listBlockChildren?: ListBlockChildrenResponse | null;
+};
 
-export function NotionRenderer({ page }: NotionRendererProps) {
-  if (!page) return null;
+export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
+  if (!listBlockChildren) return null;
   return (
     <div>
-      {page.results.map((block) => {
+      {listBlockChildren.results.map((block) => {
         if (isBlockObjectResponse(block)) {
           switch (block.type) {
             case "heading_1":

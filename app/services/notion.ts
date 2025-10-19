@@ -63,7 +63,7 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
     }
   });
 
-export const fetchBlockMetadataBySlug = cache(async (slug: string) => {
+export const fetchArticleMetadataBySlug = cache(async (slug: string) => {
   try {
     const response = await notion.dataSources.query({
       data_source_id: process.env.DS_ARTICLE!,
@@ -118,7 +118,7 @@ export const fetchBlockMetadataBySlug = cache(async (slug: string) => {
   }
 });
 
-export const fetchPageByBlockId = cache(async (blockId: string) => {
+export const fetchArticleByBlockId = cache(async (blockId: string) => {
   try {
     const response = await notion.blocks.children.list({
       block_id: blockId,
