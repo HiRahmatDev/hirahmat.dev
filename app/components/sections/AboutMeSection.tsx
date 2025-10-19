@@ -22,7 +22,7 @@ export function AboutMeSection() {
         </a>
       </div>
       <div className="w-full">
-        <div className="space-y-6 text-base/[24px] tracking-[-0.35px]">
+        <div className="space-y-7 text-base/[28px] tracking-[-0.35px]">
           <p>
             Saya tidak langsung datang dari dunia teknologi, tapi rasa ingin
             tahu saya ke arah sana sudah tumbuh sejak lama. Waktu SMA, saya
