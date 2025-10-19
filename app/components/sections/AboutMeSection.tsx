@@ -5,7 +5,7 @@ export function AboutMeSection() {
     <section className="container flex flex-col md:flex-row gap-10 md:gap-14 py-24">
       <div className="shrink-0 max-w-[400px] md:max-w-[295px] space-y-3 md:space-y-6">
         <div className="space-y-1 md:space-y-3">
-          <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1.5px] font-bold">
+          <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
             Siapa <GreenText>Saya</GreenText>?
           </h2>
           <p className="text-base/[24px] tracking-[-0.4px]">

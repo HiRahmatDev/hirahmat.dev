@@ -9,7 +9,7 @@ export async function SelectedProjectsSection() {
     <section className="container py-6">
       <div className="space-y-6">
         <div className="space-y-1">
-          <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1.5px] font-bold">
+          <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
             Proyek <GreenText>Pilihan</GreenText>
           </h2>
           <p className="text-base/[24px] tracking-[-0.4px]">
