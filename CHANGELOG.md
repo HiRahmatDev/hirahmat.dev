@@ -25,10 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - _(Note security improvements or vulnerability fixes here)_
 
-## [Unreleased] [v?.?.?] - 2025-10-??
+## [v0.1.3] - 2025-10-19
 
-### Added
-- New `common/Blockquote.tsx` for notion renderer
+### Changed
+- Add `common/Blockquote.tsx` for notion renderer
 
 ## [v0.1.2] - 2025-10-19
 
