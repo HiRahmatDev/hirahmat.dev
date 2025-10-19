@@ -7,7 +7,7 @@ import { isPlainText } from "../utils";
 
 export function Paragraph({ block }: { block: ParagraphBlockObjectResponse }) {
   return (
-    <p className="font-normal text-lg/[32px] tracking-[-0.35px] mb-9">
+    <p className="font-normal text-base/[28px] tracking-[-0.35px] mb-7">
       {block.paragraph.rich_text.map((richTextItem, index) => {
         if (isPlainText(richTextItem)) {
           return richTextItem.plain_text;

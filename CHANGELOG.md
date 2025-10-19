@@ -27,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] [v0.1.2] - 2025-10-??
 
+### Changed
+- Better line height and font size for article and landing page
+
 ### Fixed
 - CTA in contact cta near footer can't be clicked in mobile display
 

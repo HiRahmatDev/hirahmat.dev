@@ -69,7 +69,7 @@ export default async function ArticleDetailPage({
               <h1 className="text-4xl/[44px] tracking-[-1px] font-bold">
                 {blockMetadata.title}
               </h1>
-              <p className="text-lg/[32px] tracking-[-0.35px]">
+              <p className="text-base/[28px] tracking-[-0.35px]">
                 {blockMetadata.desc}
               </p>
             </header>
