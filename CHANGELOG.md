@@ -25,6 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - _(Note security improvements or vulnerability fixes here)_
 
+## [Unreleased] [v0.1.2] - 2025-10-??
+
+### Fixed
+- CTA in contact cta near footer can't be clicked in mobile display
+
 ## [v0.1.1] - 2025-10-19
 **UI improvements and code refactor**
 
