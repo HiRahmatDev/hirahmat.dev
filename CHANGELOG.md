@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - _(Note security improvements or vulnerability fixes here)_
 
-## [Unreleased] [v0.1.2] - 2025-10-??
+## [Unreleased] [v0.1.2] - 2025-10-19
 
 ### Changed
 - Better line height and font size for article and landing page
