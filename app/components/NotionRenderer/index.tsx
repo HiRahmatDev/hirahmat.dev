@@ -4,6 +4,7 @@ import { Heading1 } from "./common/Heading1";
 import { Heading2 } from "./common/Heading2";
 import { Paragraph } from "./common/Paragraph";
 import { isBlockObjectResponse } from "./utils";
+import { Blockquote } from "./common/Blockquote";
 
 type NotionRendererProps = {
   listBlockChildren?: ListBlockChildrenResponse | null;
@@ -32,6 +33,9 @@ export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
 
             case "paragraph":
               return <Paragraph key={`${block.id}`} block={block} />;
+
+            case "quote":
+              return <Blockquote key={block.id} block={block} />;
 
             default:
               return null;
