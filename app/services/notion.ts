@@ -12,7 +12,7 @@ export type SelectedProject = {
   slug: string;
   title?: string;
   desc?: string;
-  img?: string;
+  cover?: string;
 };
 
 export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
@@ -42,7 +42,10 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
           result.properties.description.type === "rich_text"
             ? result.properties.description.rich_text[0].plain_text
             : "",
-        img: result.cover?.type === "file" ? result.cover.file.url : "",
+        cover:
+          result.properties.cover.type === "rich_text"
+            ? result.properties.cover.rich_text[0].plain_text
+            : "",
       }));
     } catch (error) {
       console.error(error);
@@ -86,7 +89,10 @@ export const fetchBlockMetadataBySlug = cache(async (slug: string) => {
         result.properties.description.type === "rich_text"
           ? result.properties.description.rich_text[0].plain_text
           : "",
-      img: result.cover?.type === "file" ? result.cover.file.url : "",
+      cover:
+        result.properties.cover.type === "rich_text"
+          ? result.properties.cover.rich_text[0].plain_text
+          : "",
       category:
         result.properties.category.type === "select"
           ? result.properties.category.select?.name

@@ -29,7 +29,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${blockMetadata?.title || "Jurnal Proyek"} - HiRahmat.Dev`,
       description: `${blockMetadata?.desc || ""}`,
-      images: [`${blockMetadata?.img}`],
+      images: [`${blockMetadata?.cover}`],
       type: "article",
     },
   };
@@ -73,16 +73,15 @@ export default async function ArticleDetailPage({
           </header>
         </div>
         <div className="container">
-          {blockMetadata.img ? (
+          {blockMetadata.cover ? (
             <figure>
               <Image
-                src={blockMetadata.img}
+                src={blockMetadata.cover}
                 alt="Screenshot Dasbor Operasional Kulina"
                 width={1280}
                 height={720}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
                 className="object-cover top-0 right-0 left-0"
-                unoptimized
               />
             </figure>
           ) : null}
