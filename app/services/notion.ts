@@ -111,6 +111,10 @@ export const fetchArticleMetadataBySlug = cache(async (slug: string) => {
         result.properties.published_on.type === "date"
           ? result.properties.published_on.date?.start
           : "",
+      updatedOn:
+        result.properties.updated_on.type === "last_edited_time"
+          ? result.properties.updated_on.last_edited_time
+          : "",
     }))[0];
   } catch (error) {
     console.error(error);
