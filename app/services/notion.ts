@@ -32,19 +32,19 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
       return (response.results as PageObjectResponse[]).map((result) => ({
         slug:
           result.properties.slug.type === "title"
-            ? result.properties.slug.title[0].plain_text
+            ? result.properties.slug.title[0]?.plain_text
             : "",
         title:
           result.properties.name.type === "rich_text"
-            ? result.properties.name.rich_text[0].plain_text
+            ? result.properties.name.rich_text[0]?.plain_text
             : "",
         desc:
           result.properties.description.type === "rich_text"
-            ? result.properties.description.rich_text[0].plain_text
+            ? result.properties.description.rich_text[0]?.plain_text
             : "",
         cover:
           result.properties.cover.type === "rich_text"
-            ? result.properties.cover.rich_text[0].plain_text
+            ? result.properties.cover.rich_text[0]?.plain_text
             : "",
       }));
     } catch (error) {
@@ -79,19 +79,19 @@ export const fetchBlockMetadataBySlug = cache(async (slug: string) => {
       blockId: result.id,
       slug:
         result.properties.slug.type === "title"
-          ? result.properties.slug.title[0].plain_text
+          ? result.properties.slug.title[0]?.plain_text
           : "",
       title:
         result.properties.name.type === "rich_text"
-          ? result.properties.name.rich_text[0].plain_text
+          ? result.properties.name.rich_text[0]?.plain_text
           : "",
       desc:
         result.properties.description.type === "rich_text"
-          ? result.properties.description.rich_text[0].plain_text
+          ? result.properties.description.rich_text[0]?.plain_text
           : "",
       cover:
         result.properties.cover.type === "rich_text"
-          ? result.properties.cover.rich_text[0].plain_text
+          ? result.properties.cover.rich_text[0]?.plain_text
           : "",
       category:
         result.properties.category.type === "select"
