@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Overpass_Mono } from "next/font/google";
 
-import { BASE_URL } from "./constants";
+import { BASE_URL, SITE_NAME } from "./constants";
 import { FooterCopyrights } from "@/app/components/FooterCopyrights";
 import { Navbar } from "@/app/components/Navbar";
 
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Hi, Saya Rahmat Hidayatullah, Frontend Developer.",
     description:
       "Saya merancang dan mengembangkan aplikasi web yang fungsional, responsif, dan enak dipakai.",
-    siteName: "HiRahmat.Dev | Frontend Developer",
+    siteName: SITE_NAME,
     url: "/",
     images: "/opengraph-image.png",
     locale: "id",
