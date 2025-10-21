@@ -30,6 +30,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${blockMetadata?.title || "Artikel"} - HiRahmat.Dev`,
       description: `${blockMetadata?.desc || ""}`,
+      url: `/articles/${blockMetadata?.slug || ""}`,
       images: [`${blockMetadata?.cover}`],
       type: "article",
     },

@@ -26,8 +26,10 @@ export const metadata: Metadata = {
     title: "Hi, Saya Rahmat Hidayatullah, Frontend Developer.",
     description:
       "Saya merancang dan mengembangkan aplikasi web yang fungsional, responsif, dan enak dipakai.",
+    siteName: "HiRahmat.Dev | Frontend Developer",
+    url: "/",
     images: "/opengraph-image.png",
-    locale: "id_ID",
+    locale: "id",
     type: "website",
   },
 };
