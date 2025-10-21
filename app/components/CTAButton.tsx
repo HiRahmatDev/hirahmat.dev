@@ -2,10 +2,11 @@
 
 import { Mail } from "lucide-react";
 import { EMAIL_HREF } from "./constants";
+import { twMerge } from "tailwind-merge";
 
-export function CTAButton() {
+export function CTAButton({ className }: { className?: string }) {
   return (
-    <a href={EMAIL_HREF} className="cta-button animate-hover">
+    <a href={EMAIL_HREF} className={twMerge("cta-button animate-hover", className)}>
       <Mail />
       Hubungi Saya
     </a>

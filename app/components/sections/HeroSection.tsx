@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useGSAP } from "@gsap/react";
+import { useRef, useState } from "react";
+import gsap from "gsap";
 import Image from "next/image";
 
 import { CTAButton } from "../CTAButton";
@@ -16,23 +18,45 @@ import vectorBackgroundHero from "@/public/svgs/vector-background-hero.svg";
 export function HeroSection() {
   const [isHeroImageLoaded, setIsHeroImageLoaded] = useState(false);
 
+  const container = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(
+    () => {
+      gsap.set(["h1", "p", "a"], {
+        opacity: 0,
+        y: 10,
+      });
+
+      gsap.to(["h1", "p", "a"], {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        stagger: 0.1,
+      });
+    },
+    { scope: container }
+  );
+
   return (
     <section className="container flex flex-row gap-4 h-[400] sm:h-[633px] -mt-10">
-      <div className="sm:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
+      <div
+        ref={container}
+        className="sm:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit"
+      >
         <div className="space-y-2">
-          <h1 className="font-bold text-4xl/[46px] sm:text-5xl/[58px] tracking-[-2.5px]">
+          <h1 className="font-bold text-4xl/[46px] sm:text-5xl/[58px] tracking-[-2.5px] opacity-0">
             <span className="text-2xl tracking-[-1px]">
               <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
             </span>
             <br />
             Frontend <GreenText>Dev</GreenText>eloper
           </h1>
-          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch]">
+          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch] opacity-0">
             Saya merancang dan mengembangkan aplikasi web yang fungsional,
             responsif, dan enak dipakai.
           </p>
         </div>
-        <CTAButton />
+        <CTAButton className="opacity-0" />
       </div>
       <div className="shrink-0 min-w-[395px] pb-24 hidden sm:block">
         <motion.div
