@@ -52,7 +52,7 @@ export function SelectedProjectCards({
                 <p className="text-sm/[20px] max-w-[156px]">{project.desc}</p>
               </div>
               <Link
-                href={`/article/${project.slug}`}
+                href={`/articles/${project.slug}`}
                 className="white-solid-button animate-hover"
               >
                 Lihat Jurnal

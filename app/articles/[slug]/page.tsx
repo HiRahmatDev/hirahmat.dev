@@ -8,7 +8,7 @@ import {
   fetchArticleMetadataBySlug,
   fetchSelectedProjects,
 } from "@/app/services/notion";
-import { formatPublishedDate } from "@/app/lib/dayjs";
+import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
 
 export async function generateStaticParams() {
@@ -54,23 +54,30 @@ export default async function ArticleDetailPage({
     <>
       <article className="space-y-11">
         <section className="pt-6 space-y-6">
-          <div className="container-for-reading">
-            <section className="space-y-1 text-foreground/60">
-              <p className="text-lg/[24px] font-semibold tracking-[-0.35]">
-                {blockMetadata.category || "-"}
-              </p>
-              <p className="text-xs/[16px]">
-                <em>{formatPublishedDate(blockMetadata.publishedOn) || "-"}</em>
-              </p>
-            </section>
-          </div>
           <div className="container-for-reading space-y-6">
-            <header className="space-y-1">
-              <h1 className="text-4xl/[44px] tracking-[-1px] font-bold">
-                {blockMetadata.title}
-              </h1>
-              <p className="text-base/[28px] tracking-[-0.35px]">
-                {blockMetadata.desc}
+            <header className="space-y-6">
+              <div className="space-y-1">
+                <h1 className="text-4xl/[44px] tracking-[-1px] font-bold">
+                  {blockMetadata.title}
+                </h1>
+                <p className="text-lg/[28px] tracking-[-0.35px] text-zinc-500">
+                  {blockMetadata.desc}
+                </p>
+              </div>
+              <p className="text-sm/[24px] tracking-[-0.15px]">
+                <strong className="font-medium">
+                  {blockMetadata.category || "-"}
+                </strong>
+                &ensp;•&ensp;
+                <em className="text-zinc-500">Dipublikasikan pada</em>{" "}
+                <strong className="font-medium">
+                  {formatDate(blockMetadata.publishedOn) || "-"}
+                </strong>
+                , <em className="text-zinc-500">terakhir diperbarui pada</em>{" "}
+                <strong className="font-medium">
+                  {formatDate(blockMetadata.updatedOn) || "-"}
+                </strong>
+                .
               </p>
             </header>
           </div>
