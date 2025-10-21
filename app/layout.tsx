@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Overpass_Mono } from "next/font/google";
 
+import { BASE_URL } from "./constants";
 import { FooterCopyrights } from "@/app/components/FooterCopyrights";
 import { Navbar } from "@/app/components/Navbar";
 
@@ -17,6 +18,7 @@ const overpassMono = Overpass_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: "Hi, Saya Rahmat Hidayatullah, Frontend Developer.",
   description:
     "Saya merancang dan mengembangkan aplikasi web yang fungsional, responsif, dan enak dipakai.",
@@ -24,6 +26,9 @@ export const metadata: Metadata = {
     title: "Hi, Saya Rahmat Hidayatullah, Frontend Developer.",
     description:
       "Saya merancang dan mengembangkan aplikasi web yang fungsional, responsif, dan enak dipakai.",
+    images: "/opengraph-image.png",
+    locale: "id_ID",
+    type: "website",
   },
 };
 
@@ -33,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body
         className={`${interSans.variable} ${overpassMono.variable} antialiased`}
       >
