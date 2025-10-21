@@ -20,13 +20,6 @@
   --font-mono: var(--font-overpass-mono);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #1e1e1e;
-    --foreground: #ededed;
-  }
-}
-
 @layer components {
   .cta-button {
     @apply min-h-[40px] px-4 rounded-[20px];
