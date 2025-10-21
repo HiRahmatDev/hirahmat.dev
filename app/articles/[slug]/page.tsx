@@ -8,7 +8,7 @@ import {
   fetchArticleMetadataBySlug,
   fetchSelectedProjects,
 } from "@/app/services/notion";
-import { formatDate, formatPublishedDate } from "@/app/lib/dayjs";
+import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
 
 export async function generateStaticParams() {
