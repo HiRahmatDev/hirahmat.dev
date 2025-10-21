@@ -31,6 +31,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _(Note security improvements or vulnerability fixes here)_
 
+## [v0.1.5] - 2025-10-21
+
+### Added
+
+- Added animation with gsap in landing page
+
+### Fixed
+
+- Fixed OG Image for better SEO
+
 ## [v0.1.4] - 2025-10-21
 
 ### Added
