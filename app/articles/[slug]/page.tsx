@@ -10,6 +10,7 @@ import {
 } from "@/app/services/notion";
 import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
+import { SITE_NAME } from "@/app/constants";
 
 export async function generateStaticParams() {
   const selectedProjects = await fetchSelectedProjects();
@@ -30,6 +31,8 @@ export async function generateMetadata({
     openGraph: {
       title: `${blockMetadata?.title || "Artikel"} - HiRahmat.Dev`,
       description: `${blockMetadata?.desc || ""}`,
+      siteName: SITE_NAME,
+      url: `/articles/${blockMetadata?.slug || ""}`,
       images: [`${blockMetadata?.cover}`],
       type: "article",
     },
@@ -86,7 +89,7 @@ export default async function ArticleDetailPage({
               <figure>
                 <Image
                   src={blockMetadata.cover}
-                  alt="Screenshot Dasbor Operasional Kulina"
+                  alt={`Gambar ${blockMetadata.title}`}
                   width={1280}
                   height={720}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
