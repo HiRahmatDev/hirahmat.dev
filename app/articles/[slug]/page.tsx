@@ -89,7 +89,7 @@ export default async function ArticleDetailPage({
               <figure>
                 <Image
                   src={blockMetadata.cover}
-                  alt="Screenshot Dasbor Operasional Kulina"
+                  alt={`Gambar ${blockMetadata.title}`}
                   width={1280}
                   height={720}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
