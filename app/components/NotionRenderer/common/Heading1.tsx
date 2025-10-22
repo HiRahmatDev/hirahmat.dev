@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
 
-export function Heading1(props: { children: ReactNode }) {
+export function Heading1(props: { children?: ReactNode; id?: string }) {
   return (
-    <h1 {...props} className="font-bold text-4xl/[44px] tracking-[-1px] my-8 mb-4" />
+    <h2
+      {...props}
+      className="font-bold text-3xl/[38px] tracking-[-0.8px] my-8 mb-4"
+    />
   );
 }

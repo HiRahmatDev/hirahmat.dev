@@ -1,6 +1,11 @@
 import "server-only";
 
-import { Client, PageObjectResponse } from "@notionhq/client";
+import {
+  BlockObjectResponse,
+  Client,
+  ListBlockChildrenResponse,
+  PageObjectResponse,
+} from "@notionhq/client";
 import { cache } from "react";
 
 const notion = new Client({
@@ -134,3 +139,68 @@ export const fetchArticleByBlockId = cache(async (blockId: string) => {
     return null;
   }
 });
+
+type TOC = {
+  title: string;
+  children: TOC[];
+};
+
+export const fetchArticleTOCByBlockId = cache(
+  async (blockId: string): Promise<TOC[] | null> => {
+    try {
+      const response = await notion.blocks.children.list({
+        block_id: blockId,
+      });
+
+      const toc: TOC[] = [];
+      let currentH1: TOC | null = null;
+      let currentH2: TOC | null = null;
+
+      const results = (
+        (response.results as BlockObjectResponse[] | null) || []
+      ).filter((result) => result.type.startsWith("heading_"));
+
+      results.forEach((result) => {
+        if (result.type === "heading_1") {
+          const level1: TOC = {
+            title: result.heading_1?.rich_text?.[0]?.plain_text || "",
+            children: [],
+          };
+
+          currentH1 = level1;
+          toc.push(level1);
+        } else if (result.type === "heading_2") {
+          const level2: TOC = {
+            title: result.heading_2?.rich_text?.[0]?.plain_text || "",
+            children: [],
+          };
+
+          currentH2 = level2;
+          if (currentH1) {
+            currentH1.children = currentH1.children || [];
+            currentH1.children.push(level2);
+          } else {
+            toc.push(level2);
+          }
+        } else if (result.type === "heading_3") {
+          const level3: TOC = {
+            title: result.heading_3?.rich_text?.[0]?.plain_text || "",
+            children: [],
+          };
+
+          if (currentH2) {
+            currentH2.children = currentH2.children || [];
+            currentH2.children.push(level3);
+          } else {
+            toc.push(level3);
+          }
+        }
+      });
+
+      return toc;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+);
