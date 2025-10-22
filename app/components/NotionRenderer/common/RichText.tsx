@@ -10,7 +10,9 @@ export function RichText({ items }: { items: RichTextItemResponse[] }) {
     <>
       {items.map((item, index) => {
         if (isPlainText(item)) {
-          return <Fragment key={index}>{item.plain_text}</Fragment>;
+          return (
+            <Fragment key={index}>{withNewlines(item.plain_text)}</Fragment>
+          );
         }
 
         const annotations = item.annotations;
@@ -22,7 +24,7 @@ export function RichText({ items }: { items: RichTextItemResponse[] }) {
             ? COLOR_MAP[annotations.color as keyof typeof COLOR_MAP]
             : undefined;
 
-        let element: ReactNode = content;
+        let element: ReactNode = withNewlines(content);
 
         // Code first (always inner-most)
         if (annotations.code) {
@@ -77,4 +79,10 @@ export function RichText({ items }: { items: RichTextItemResponse[] }) {
       })}
     </>
   );
+}
+
+function withNewlines(text: string): (string | ReactNode)[] {
+  return text
+    .split("\n")
+    .flatMap((line, i) => (i === 0 ? [line] : [<br key={`br-${i}`} />, line]));
 }
