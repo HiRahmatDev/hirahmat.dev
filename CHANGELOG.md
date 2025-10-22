@@ -31,6 +31,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _(Note security improvements or vulnerability fixes here)_
 
+## [v0.2.0] - 2025-10-22
+
+### Added
+
+- Table of Contents in article detail page
+- `Heading3` component for notion renderer
+
 ## [v0.1.5] - 2025-10-21
 
 ### Added
