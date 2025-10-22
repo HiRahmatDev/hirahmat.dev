@@ -1,10 +1,11 @@
 import { ListBlockChildrenResponse } from "@notionhq/client";
 
+import { Blockquote } from "./common/Blockquote";
 import { Heading1 } from "./common/Heading1";
 import { Heading2 } from "./common/Heading2";
-import { Paragraph } from "./common/Paragraph";
+import { Heading3 } from "./common/Heading3";
 import { isBlockObjectResponse } from "./utils";
-import { Blockquote } from "./common/Blockquote";
+import { Paragraph } from "./common/Paragraph";
 
 type NotionRendererProps = {
   listBlockChildren?: ListBlockChildrenResponse | null;
@@ -13,22 +14,38 @@ type NotionRendererProps = {
 export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
   if (!listBlockChildren) return null;
   return (
-    <div>
+    <div className="[&>h1,&>h2,&>h3]:scroll-mt-20">
       {listBlockChildren.results.map((block) => {
         if (isBlockObjectResponse(block)) {
           switch (block.type) {
             case "heading_1":
               return (
-                <Heading1 key={block.id}>
+                <Heading1
+                  key={block.id}
+                  id={block.heading_1.rich_text[0].plain_text}
+                >
                   {block.heading_1.rich_text[0].plain_text}
                 </Heading1>
               );
 
             case "heading_2":
               return (
-                <Heading2 key={block.id}>
+                <Heading2
+                  key={block.id}
+                  id={block.heading_2.rich_text[0].plain_text}
+                >
                   {block.heading_2.rich_text[0].plain_text}
                 </Heading2>
+              );
+
+            case "heading_3":
+              return (
+                <Heading3
+                  key={block.id}
+                  id={block.heading_3.rich_text[0].plain_text}
+                >
+                  {block.heading_3.rich_text[0].plain_text}
+                </Heading3>
               );
 
             case "paragraph":
