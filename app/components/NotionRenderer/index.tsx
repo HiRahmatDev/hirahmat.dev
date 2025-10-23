@@ -19,34 +19,13 @@ export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
         if (isBlockObjectResponse(block)) {
           switch (block.type) {
             case "heading_1":
-              return (
-                <Heading1
-                  key={block.id}
-                  id={block.heading_1.rich_text[0].plain_text}
-                >
-                  {block.heading_1.rich_text[0].plain_text}
-                </Heading1>
-              );
+              return <Heading1 key={block.id} block={block} />;
 
             case "heading_2":
-              return (
-                <Heading2
-                  key={block.id}
-                  id={block.heading_2.rich_text[0].plain_text}
-                >
-                  {block.heading_2.rich_text[0].plain_text}
-                </Heading2>
-              );
+              return <Heading2 key={block.id} block={block} />;
 
             case "heading_3":
-              return (
-                <Heading3
-                  key={block.id}
-                  id={block.heading_3.rich_text[0].plain_text}
-                >
-                  {block.heading_3.rich_text[0].plain_text}
-                </Heading3>
-              );
+              return <Heading3 key={block.id} block={block} />;
 
             case "paragraph":
               return <Paragraph key={`${block.id}`} block={block} />;

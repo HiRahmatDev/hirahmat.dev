@@ -1,10 +1,13 @@
-import { ReactNode } from "react";
+import { Heading1BlockObjectResponse } from "@notionhq/client";
+import { RichText } from "./RichText";
 
-export function Heading1(props: { children?: ReactNode; id?: string }) {
+export function Heading1({ block }: { block: Heading1BlockObjectResponse }) {
   return (
     <h2
-      {...props}
+      id={block.heading_1.rich_text[0].plain_text}
       className="font-bold text-3xl/[38px] tracking-[-0.8px] my-8 mb-4"
-    />
+    >
+      <RichText items={block.heading_1.rich_text} />
+    </h2>
   );
 }
