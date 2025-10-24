@@ -7,7 +7,7 @@ export async function SelectedProjectsSection() {
 
   return (
     <section className="container py-6">
-      <div className="space-y-6">
+      <div className="space-y-8">
         <SectionHeader />
         <div className="pb-10 overflow-x-auto">
           <SelectedProjectCards selectedProjects={selectedProjects || []} />

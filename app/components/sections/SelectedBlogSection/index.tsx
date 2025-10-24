@@ -8,7 +8,7 @@ export async function SelectedBlogsSection() {
 
   return (
     <section className="container py-8">
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="space-y-1">
           <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
             Blog

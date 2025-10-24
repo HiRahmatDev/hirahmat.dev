@@ -33,8 +33,8 @@ export function SectionHeader() {
         Proyek <GreenText>Pilihan</GreenText>
       </h2>
       <p className="text-base/[24px] tracking-[-0.4px] max-w-prose">
-        Kumpulan proyek di mana saya berkontribusi dengan rasa ingin tahu yang
-        tinggi dan perhatian pada detail.
+        Beberapa proyek yang saya garap dengan rasa penasaran tinggi dan
+        perhatian ke hal-hal kecil yang bikin hasilnya terasa beda.
       </p>
     </div>
   );
