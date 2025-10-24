@@ -162,7 +162,6 @@ export const fetchArticleTOCByBlockId = cache(
 
       results.forEach((result) => {
         if (result.type === "heading_1") {
-          console.log(result);
           const level1: TOC = {
             title:
               result.heading_1?.rich_text?.map((p) => p.plain_text).join("") ||
@@ -203,8 +202,6 @@ export const fetchArticleTOCByBlockId = cache(
           }
         }
       });
-
-      console.log(toc);
 
       return toc;
     } catch (error) {
