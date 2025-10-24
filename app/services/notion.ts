@@ -12,7 +12,11 @@ const notion = new Client({
   notionVersion: "2025-09-03",
 });
 
-export type SelectedProject = {
+export type SelectedProject = CommonArticle;
+
+export type SelectedBlog = CommonArticle;
+
+type CommonArticle = {
   slug: string;
   title?: string;
   desc?: string;
@@ -30,6 +34,54 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
               property: "category",
               select: {
                 equals: "Jurnal Proyek",
+              },
+            },
+            {
+              property: "status",
+              select: {
+                equals: "Published",
+              },
+            },
+          ],
+        },
+        sorts: [{ property: "created_on", direction: "descending" }],
+      });
+
+      return (response.results as PageObjectResponse[]).map((result) => ({
+        slug:
+          result.properties.slug.type === "title"
+            ? result.properties.slug.title[0]?.plain_text
+            : "",
+        title:
+          result.properties.name.type === "rich_text"
+            ? result.properties.name.rich_text[0]?.plain_text
+            : "",
+        desc:
+          result.properties.description.type === "rich_text"
+            ? result.properties.description.rich_text[0]?.plain_text
+            : "",
+        cover:
+          result.properties.cover.type === "rich_text"
+            ? result.properties.cover.rich_text[0]?.plain_text
+            : "",
+      }));
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  });
+
+export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> =
+  cache(async () => {
+    try {
+      const response = await notion.dataSources.query({
+        data_source_id: process.env.DS_ARTICLE!,
+        filter: {
+          and: [
+            {
+              property: "category",
+              select: {
+                equals: "Blog",
               },
             },
             {
