@@ -9,7 +9,7 @@ import {
   fetchArticleMetadataBySlug,
   fetchArticleTOCByBlockId,
 } from "@/app/services/notion";
-import { formatDateTime } from "@/app/lib/dayjs";
+import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
 import { SITE_NAME } from "@/app/constants";
 
@@ -85,11 +85,11 @@ export default async function ArticleDetailPage({
                   <span className="text-zinc-500">&ensp;•&ensp;</span>
                   <em className="text-zinc-500">Dipublikasikan pada</em>{" "}
                   <strong className="font-medium">
-                    {formatDateTime(blockMetadata.publishedOn) || "-"}
+                    {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
                   <em className="text-zinc-500">, terakhir diperbarui pada</em>{" "}
                   <strong className="font-medium">
-                    {formatDateTime(blockMetadata.updatedOn) || "-"}
+                    {formatDate(blockMetadata.updatedOn) || "-"}
                   </strong>
                   <em className="text-zinc-500">.</em>
                 </p>
