@@ -25,9 +25,9 @@ export async function SelectedBlogsSection() {
               <Link
                 key={blog.slug}
                 href={`/articles/${blog.slug}`}
-                className="w-[301.33px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-blog-image-hover active:[&>.image-wrapper]:shadow-sm"
+                className="w-[340px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-blog-image-hover active:[&>.image-wrapper]:shadow-sm"
               >
-                <div className="shrink-0 relative w-full h-[165px] rounded-2xl overflow-hidden shadow-xl transition-shadow image-wrapper">
+                <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl transition-shadow image-wrapper">
                   {blog.cover && (
                     <Image
                       src={blog.cover}
