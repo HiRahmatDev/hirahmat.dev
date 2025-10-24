@@ -15,6 +15,13 @@ export const formatDate = (date?: string | Date | null) => {
   return dayjs(date).format("D MMMM YYYY");
 };
 
+export const formatDateTime = (date?: string | Date | null) => {
+  if (!date) return "";
+  return `${dayjs(date).format("D MMM YYYY")}\u2002${dayjs(date).format(
+    "HH:mm"
+  )}`;
+};
+
 export const formatPublishedDate = (date?: string | Date | null) => {
   if (!date) return "";
   return `Dipublikasikan pada ${formatDate(date)}`;

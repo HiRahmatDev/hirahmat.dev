@@ -9,8 +9,8 @@ export function isBlockObjectResponse(
 ): block is BlockObjectResponse {
   return (
     "type" in block &&
-    typeof block.type === "string" &&
-    block.object === "block"
+    typeof block?.type === "string" &&
+    block?.object === "block"
   );
 }
 

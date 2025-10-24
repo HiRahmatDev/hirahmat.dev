@@ -3,10 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #1e1e1e;
-  --accent: #14ae5c;
-  --accent-hover: #1dbe68;
-  --accent-active: #0ea354;
-  --text-accent: #02542d;
+  --accent: #069150;
+  --accent-hover: #0ca15c;
+  --accent-active: #0ca15c;
+  --text-accent: #006938;
 }
 
 @theme inline {
@@ -127,6 +127,10 @@
 @utility animate-hover {
   @apply translate-y-0 hover:-translate-y-0.5 active:translate-y-0.5;
   @apply transition;
+}
+
+@utility shadow-blog-image-hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px;
 }
 
 html {

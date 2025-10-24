@@ -1,6 +1,7 @@
 import { ListBlockChildrenResponse } from "@notionhq/client";
 
 import { Blockquote } from "./common/Blockquote";
+import { BulletedListItem } from "./common/BulletedListItem";
 import { Heading1 } from "./common/Heading1";
 import { Heading2 } from "./common/Heading2";
 import { Heading3 } from "./common/Heading3";
@@ -15,44 +16,32 @@ export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
   if (!listBlockChildren) return null;
   return (
     <div className="[&>h1,&>h2,&>h3]:scroll-mt-20">
-      {listBlockChildren.results.map((block) => {
+      {listBlockChildren.results.map((block, index) => {
         if (isBlockObjectResponse(block)) {
-          switch (block.type) {
+          switch (block?.type) {
             case "heading_1":
-              return (
-                <Heading1
-                  key={block.id}
-                  id={block.heading_1.rich_text[0].plain_text}
-                >
-                  {block.heading_1.rich_text[0].plain_text}
-                </Heading1>
-              );
+              return <Heading1 key={block.id} block={block} />;
 
             case "heading_2":
-              return (
-                <Heading2
-                  key={block.id}
-                  id={block.heading_2.rich_text[0].plain_text}
-                >
-                  {block.heading_2.rich_text[0].plain_text}
-                </Heading2>
-              );
+              return <Heading2 key={block.id} block={block} />;
 
             case "heading_3":
-              return (
-                <Heading3
-                  key={block.id}
-                  id={block.heading_3.rich_text[0].plain_text}
-                >
-                  {block.heading_3.rich_text[0].plain_text}
-                </Heading3>
-              );
+              return <Heading3 key={block.id} block={block} />;
 
             case "paragraph":
-              return <Paragraph key={`${block.id}`} block={block} />;
+              return <Paragraph key={block.id} block={block} />;
 
             case "quote":
               return <Blockquote key={block.id} block={block} />;
+
+            case "bulleted_list_item":
+              return (
+                <BulletedListItem
+                  key={block.id}
+                  allBlocks={listBlockChildren.results}
+                  index={index}
+                />
+              );
 
             default:
               return null;

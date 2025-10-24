@@ -2,7 +2,7 @@ import { GreenText } from "../GreenText";
 
 export function AboutMeSection() {
   return (
-    <section className="container flex flex-col md:flex-row gap-10 md:gap-14 py-24">
+    <section className="container flex flex-col md:flex-row gap-10 md:gap-14 py-16">
       <div className="shrink-0 max-w-[400px] md:max-w-[295px] space-y-3 md:space-y-6">
         <div className="space-y-1 md:space-y-3">
           <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
@@ -16,7 +16,7 @@ export function AboutMeSection() {
         <a
           href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
           rel="noopener noreferrer"
-          className="text-base/[24px] tracking-[-0.35px] font-bold text-accent hover:text-text-accent animate-hover inline-block"
+          className="text-base/[24px] tracking-[-0.35px] font-bold text-text-accent hover:text-accent animate-hover inline-block"
         >
           <u>Unduh CV</u> ↗
         </a>
@@ -41,7 +41,7 @@ export function AboutMeSection() {
               href="https://youtu.be/LhPnxK-lPE8?si=2w-MaGbgcO6sfg7L"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-accent animate-hover inline-block"
+              className="font-bold text-text-accent hover:text-accent animate-hover inline-block"
             >
               video iklan berbahasa Arab
             </a>

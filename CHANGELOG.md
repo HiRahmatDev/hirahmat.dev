@@ -31,6 +31,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _(Note security improvements or vulnerability fixes here)_
 
+## [v0.3.0] - 2025-10-24
+
+### Added
+
+- Featured blog section and blog fetch API
+- Internal image and GIF parsing support
+
+### Changed
+
+- Improved Notion content rendering and styles
+- Updated color palette and visual elements
+- Enhanced article and project metadata handling
+
 ## [v0.2.0] - 2025-10-22
 
 ### Added
