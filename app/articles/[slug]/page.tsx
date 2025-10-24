@@ -4,18 +4,18 @@ import Image from "next/image";
 
 import { ContactCTA } from "@/app/components/ContactCTA";
 import {
+  fetchAllArticles,
   fetchArticleByBlockId,
   fetchArticleMetadataBySlug,
   fetchArticleTOCByBlockId,
-  fetchSelectedProjects,
 } from "@/app/services/notion";
 import { formatDateTime } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
 import { SITE_NAME } from "@/app/constants";
 
 export async function generateStaticParams() {
-  const selectedProjects = await fetchSelectedProjects();
-  return (selectedProjects || []).map(({ slug }) => ({ slug }));
+  const allArticles = await fetchAllArticles();
+  return (allArticles || []).map(({ slug }) => ({ slug: slug || "" }));
 }
 
 export async function generateMetadata({

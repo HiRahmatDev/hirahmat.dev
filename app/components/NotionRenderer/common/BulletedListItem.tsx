@@ -15,7 +15,9 @@ export function BulletedListItem({
   // Tentukan apakah ini item pertama dalam run bulleted_list_item
   const prev = allBlocks[index - 1];
   const isFirstInRun =
-    !prev || !isBlockObjectResponse(prev) || prev.type !== "bulleted_list_item";
+    !prev ||
+    !isBlockObjectResponse(prev) ||
+    prev?.type !== "bulleted_list_item";
 
   if (!isFirstInRun) {
     // Bukan item pertama: di-skip agar tidak render dobel
@@ -26,7 +28,7 @@ export function BulletedListItem({
   const items: BulletedListItemBlockObjectResponse[] = [];
   for (let i = index; i < allBlocks.length; i++) {
     const b = allBlocks[i];
-    if (isBlockObjectResponse(b) && b.type === "bulleted_list_item") {
+    if (isBlockObjectResponse(b) && b?.type === "bulleted_list_item") {
       items.push(b as BulletedListItemBlockObjectResponse);
     } else {
       break;

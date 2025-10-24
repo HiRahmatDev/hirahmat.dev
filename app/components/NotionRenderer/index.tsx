@@ -18,7 +18,7 @@ export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
     <div className="[&>h1,&>h2,&>h3]:scroll-mt-20">
       {listBlockChildren.results.map((block, index) => {
         if (isBlockObjectResponse(block)) {
-          switch (block.type) {
+          switch (block?.type) {
             case "heading_1":
               return <Heading1 key={block.id} block={block} />;
 
