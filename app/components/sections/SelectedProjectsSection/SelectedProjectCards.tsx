@@ -43,7 +43,7 @@ export function SelectedProjectCards({
           transition={{ duration: 1 }}
           className="h-full"
         >
-          <div className="rounded-2xl bg-accent w-[439px] h-[217px] shadow-xl flex gap-3 text-white overflow-hidden">
+          <div className="rounded-3xl bg-accent w-[439px] h-[217px] shadow-xl flex gap-3 text-white overflow-hidden">
             <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 [&>*]:max-w-fit">
               <div className="space-y-3">
                 <h3 className="font-semibold text-xl/[24px] tracking-[-0.35px]">
