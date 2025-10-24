@@ -34,7 +34,7 @@ export async function generateMetadata({
       description: `${blockMetadata?.desc || ""}`,
       siteName: SITE_NAME,
       url: `/articles/${blockMetadata?.slug || ""}`,
-      images: [`${blockMetadata?.cover}`],
+      images: `${blockMetadata?.cover}`,
       type: "article",
     },
   };
@@ -99,7 +99,7 @@ export default async function ArticleDetailPage({
               {blockMetadata.cover ? (
                 <Image
                   src={blockMetadata.cover}
-                  alt={`Gambar ${blockMetadata.title}`}
+                  alt={blockMetadata.cover_alt}
                   width={1280}
                   height={720}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"

@@ -71,8 +71,8 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
     }
   });
 
-export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> =
-  cache(async () => {
+export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> = cache(
+  async () => {
     try {
       const response = await notion.dataSources.query({
         data_source_id: process.env.DS_ARTICLE!,
@@ -117,66 +117,85 @@ export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> =
       console.error(error);
       return null;
     }
-  });
-
-export const fetchArticleMetadataBySlug = cache(async (slug: string) => {
-  try {
-    const response = await notion.dataSources.query({
-      data_source_id: process.env.DS_ARTICLE!,
-      filter: {
-        and: [
-          {
-            property: "status",
-            select: {
-              equals: "Published",
-            },
-          },
-          {
-            property: "slug",
-            title: {
-              equals: slug,
-            },
-          },
-        ],
-      },
-    });
-
-    return (response.results as PageObjectResponse[]).map((result) => ({
-      blockId: result.id,
-      slug:
-        result.properties.slug.type === "title"
-          ? result.properties.slug.title[0]?.plain_text
-          : "",
-      title:
-        result.properties.name.type === "rich_text"
-          ? result.properties.name.rich_text[0]?.plain_text
-          : "",
-      desc:
-        result.properties.description.type === "rich_text"
-          ? result.properties.description.rich_text[0]?.plain_text
-          : "",
-      cover:
-        result.properties.cover.type === "rich_text"
-          ? result.properties.cover.rich_text[0]?.plain_text
-          : "",
-      category:
-        result.properties.category.type === "select"
-          ? result.properties.category.select?.name
-          : "",
-      publishedOn:
-        result.properties.published_on.type === "date"
-          ? result.properties.published_on.date?.start
-          : "",
-      updatedOn:
-        result.properties.updated_on.type === "last_edited_time"
-          ? result.properties.updated_on.last_edited_time
-          : "",
-    }))[0];
-  } catch (error) {
-    console.error(error);
-    return null;
   }
-});
+);
+
+type MetadataArticle = {
+  blockId: string;
+  slug: string;
+  title: string;
+  desc: string;
+  cover: string;
+  cover_alt: string;
+  category?: string;
+  publishedOn?: string;
+  updatedOn?: string;
+};
+
+export const fetchArticleMetadataBySlug = cache(
+  async (slug: string): Promise<MetadataArticle | null> => {
+    try {
+      const response = await notion.dataSources.query({
+        data_source_id: process.env.DS_ARTICLE!,
+        filter: {
+          and: [
+            {
+              property: "status",
+              select: {
+                equals: "Published",
+              },
+            },
+            {
+              property: "slug",
+              title: {
+                equals: slug,
+              },
+            },
+          ],
+        },
+      });
+
+      return (response.results as PageObjectResponse[]).map((result) => ({
+        blockId: result.id,
+        slug:
+          result.properties.slug.type === "title"
+            ? result.properties.slug.title[0]?.plain_text
+            : "",
+        title:
+          result.properties.name.type === "rich_text"
+            ? result.properties.name.rich_text[0]?.plain_text
+            : "",
+        desc:
+          result.properties.description.type === "rich_text"
+            ? result.properties.description.rich_text[0]?.plain_text
+            : "",
+        cover:
+          result.properties.cover.type === "rich_text"
+            ? result.properties.cover.rich_text[0]?.plain_text
+            : "",
+        cover_alt:
+          result.properties.cover_alt.type === "rich_text"
+            ? result.properties.cover_alt.rich_text[0]?.plain_text
+            : "",
+        category:
+          result.properties.category.type === "select"
+            ? result.properties.category.select?.name
+            : "",
+        publishedOn:
+          result.properties.published_on.type === "date"
+            ? result.properties.published_on.date?.start
+            : "",
+        updatedOn:
+          result.properties.updated_on.type === "last_edited_time"
+            ? result.properties.updated_on.last_edited_time
+            : "",
+      }))[0];
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+);
 
 export const fetchArticleByBlockId = cache(async (blockId: string) => {
   try {
