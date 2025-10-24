@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
         hostname: "prod-files-secure.s3.us-west-2.amazonaws.com",
       },
     ],
+    qualities: [25, 50, 75, 90],
   },
 };
 
