@@ -41,7 +41,7 @@ export function HeroSection() {
   );
 
   return (
-    <section className="container flex flex-row gap-4 h-[400] sm:h-[633px] -mt-10">
+    <section className="container flex flex-row gap-4 h-[400px] sm:h-[633px] -mt-10">
       <div
         ref={container}
         className="sm:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit"
@@ -91,6 +91,7 @@ export function HeroSection() {
                 maskImage: "url('/svgs/mask-image-hero.svg')",
                 maskPosition: "-32px 50%",
               }}
+              loading="eager"
               onLoad={() => setIsHeroImageLoaded(true)}
             />
             <Image
