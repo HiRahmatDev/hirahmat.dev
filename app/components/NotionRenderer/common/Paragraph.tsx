@@ -18,7 +18,7 @@ export function Paragraph({ block }: { block: ParagraphBlockObjectResponse }) {
           src={src}
           alt=""
           loading="lazy"
-          className="mb-7"
+          className="mb-7 rounded-xl overflow-hidden"
         />
       );
     }
@@ -31,7 +31,7 @@ export function Paragraph({ block }: { block: ParagraphBlockObjectResponse }) {
         priority={false}
         loading="lazy"
         quality={90}
-        className="mb-7"
+        className="mb-7 rounded-xl overflow-hidden"
       />
     );
   }

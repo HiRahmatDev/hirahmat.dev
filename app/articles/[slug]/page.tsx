@@ -59,7 +59,7 @@ export default async function ArticleDetailPage({
   return (
     <>
       <div className="flex container px-0">
-        <article className="space-y-11 flex-1">
+        <article className="space-y-8 flex-1">
           <section className="pt-6 space-y-6">
             <div
               className={
@@ -77,34 +77,34 @@ export default async function ArticleDetailPage({
                   </p>
                 </div>
                 <p className="text-sm/[24px] tracking-[-0.15px]">
-                  <strong className="font-medium">
-                    {blockMetadata.category || "-"}
-                  </strong>
-                  &ensp;•&ensp;
+                  <span className="px-2 border border-zinc-400 leading-[20px] rounded-[12px] inline-block">
+                    <strong className="font-medium">
+                      {blockMetadata.category || "-"}
+                    </strong>
+                  </span>
+                  <span className="text-zinc-500">&ensp;•&ensp;</span>
                   <em className="text-zinc-500">Dipublikasikan pada</em>{" "}
                   <strong className="font-medium">
                     {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
-                  , <em className="text-zinc-500">terakhir diperbarui pada</em>{" "}
+                  <em className="text-zinc-500">, terakhir diperbarui pada</em>{" "}
                   <strong className="font-medium">
                     {formatDate(blockMetadata.updatedOn) || "-"}
                   </strong>
-                  .
+                  <em className="text-zinc-500">.</em>
                 </p>
               </header>
             </div>
             <div className={"container" + (isTocEmpty ? "" : " mx-[unset]")}>
               {blockMetadata.cover ? (
-                <figure>
-                  <Image
-                    src={blockMetadata.cover}
-                    alt={`Gambar ${blockMetadata.title}`}
-                    width={1280}
-                    height={720}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
-                    className="object-cover top-0 right-0 left-0"
-                  />
-                </figure>
+                <Image
+                  src={blockMetadata.cover}
+                  alt={`Gambar ${blockMetadata.title}`}
+                  width={1280}
+                  height={720}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
+                  className="object-cover top-0 right-0 left-0 rounded-3xl overflow-hidden"
+                />
               ) : null}
             </div>
           </section>
