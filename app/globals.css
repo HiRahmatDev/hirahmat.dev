@@ -3,10 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #1e1e1e;
-  --accent: #14ae5c;
-  --accent-hover: #1dbe68;
-  --accent-active: #0ea354;
-  --text-accent: #02542d;
+  --accent: #069150;
+  --accent-hover: #0ca15c;
+  --accent-active: #0ca15c;
+  --text-accent: #006938;
 }
 
 @theme inline {
