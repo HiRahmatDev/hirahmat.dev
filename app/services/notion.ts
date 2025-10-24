@@ -3,7 +3,6 @@ import "server-only";
 import {
   BlockObjectResponse,
   Client,
-  ListBlockChildrenResponse,
   PageObjectResponse,
 } from "@notionhq/client";
 import { cache } from "react";
