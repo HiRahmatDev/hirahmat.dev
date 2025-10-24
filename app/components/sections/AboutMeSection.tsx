@@ -2,7 +2,7 @@ import { GreenText } from "../GreenText";
 
 export function AboutMeSection() {
   return (
-    <section className="container flex flex-col md:flex-row gap-10 md:gap-14 py-24">
+    <section className="container flex flex-col md:flex-row gap-10 md:gap-14 py-16">
       <div className="shrink-0 max-w-[400px] md:max-w-[295px] space-y-3 md:space-y-6">
         <div className="space-y-1 md:space-y-3">
           <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
