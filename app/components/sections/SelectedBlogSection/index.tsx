@@ -42,7 +42,7 @@ export async function SelectedBlogsSection() {
                   <h3 className="font-bold text-xl/[26px] tracking-[-0.4px]">
                     {blog.title}
                   </h3>
-                  <p className="text-sm/[20px] text-zinc-500">{blog.desc}</p>
+                  <p className="text-sm/[20px] text-zinc-600">{blog.desc}</p>
                 </div>
               </Link>
             ))}

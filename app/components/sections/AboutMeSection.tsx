@@ -16,7 +16,7 @@ export function AboutMeSection() {
         <a
           href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
           rel="noopener noreferrer"
-          className="text-base/[24px] tracking-[-0.35px] font-bold text-accent hover:text-text-accent animate-hover inline-block"
+          className="text-base/[24px] tracking-[-0.35px] font-bold text-text-accent hover:text-accent animate-hover inline-block"
         >
           <u>Unduh CV</u> ↗
         </a>
@@ -41,7 +41,7 @@ export function AboutMeSection() {
               href="https://youtu.be/LhPnxK-lPE8?si=2w-MaGbgcO6sfg7L"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-accent animate-hover inline-block"
+              className="font-bold text-text-accent hover:text-accent animate-hover inline-block"
             >
               video iklan berbahasa Arab
             </a>

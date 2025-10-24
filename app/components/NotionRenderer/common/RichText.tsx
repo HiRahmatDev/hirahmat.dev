@@ -68,7 +68,7 @@ export function RichText({ items }: { items: RichTextItemResponse[] }) {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent underline transition animate-hover inline-block"
+              className="text-text-accent hover:text-accent underline transition animate-hover inline-block"
             >
               {element}
             </a>
