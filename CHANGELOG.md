@@ -31,6 +31,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _(Note security improvements or vulnerability fixes here)_
 
+## [v0.4.0] - 2025-10-24
+
+### Changed
+
+- Upgrade to Next.js 16, React 19.2, and ESLint 9.38
+- Refine ESLint and TypeScript config compatibility
+- Remove Turbopack from build/dev scripts
+
+### Added
+
+- Improve accessibility for HeroSection images
+
+### Removed
+
+- Simplify date/time formatting utilities
+
 ## [v0.3.0] - 2025-10-24
 
 ### Added
