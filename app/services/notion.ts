@@ -162,8 +162,11 @@ export const fetchArticleTOCByBlockId = cache(
 
       results.forEach((result) => {
         if (result.type === "heading_1") {
+          console.log(result);
           const level1: TOC = {
-            title: result.heading_1?.rich_text?.[0]?.plain_text || "",
+            title:
+              result.heading_1?.rich_text?.map((p) => p.plain_text).join("") ||
+              "",
             children: [],
           };
 
@@ -171,7 +174,9 @@ export const fetchArticleTOCByBlockId = cache(
           toc.push(level1);
         } else if (result.type === "heading_2") {
           const level2: TOC = {
-            title: result.heading_2?.rich_text?.[0]?.plain_text || "",
+            title:
+              result.heading_2?.rich_text?.map((p) => p.plain_text).join("") ||
+              "",
             children: [],
           };
 
@@ -184,7 +189,9 @@ export const fetchArticleTOCByBlockId = cache(
           }
         } else if (result.type === "heading_3") {
           const level3: TOC = {
-            title: result.heading_3?.rich_text?.[0]?.plain_text || "",
+            title:
+              result.heading_3?.rich_text?.map((p) => p.plain_text).join("") ||
+              "",
             children: [],
           };
 
@@ -196,6 +203,8 @@ export const fetchArticleTOCByBlockId = cache(
           }
         }
       });
+
+      console.log(toc);
 
       return toc;
     } catch (error) {
