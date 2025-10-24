@@ -78,11 +78,12 @@ export function HeroSection() {
               width={90}
               src={backAccent}
               alt=""
+              role="presentation"
               className="absolute bottom-0 right-[0px] pointer-events-none"
             />
             <Image
               src={rahmatHero}
-              alt="hirahmat.dev"
+              alt="Foto Rahmat Hidayatullah dengan background transparan | hirahmat.dev"
               className="absolute mask-no-repeat mask-cover"
               style={{
                 left: 0,
@@ -95,16 +96,19 @@ export function HeroSection() {
             <Image
               src={middleAccent}
               alt=""
+              role="presentation"
               className="absolute max-w-[105%] bottom-0 right-[-20px] pointer-events-none"
             />
             <Image
               src={frontAccent}
               alt=""
+              role="presentation"
               className="absolute max-w-[115%] bottom-0 right-[-17px] pointer-events-none"
             />
             <Image
               src={threeLines}
               alt=""
+              role="presentation"
               className="absolute top-[98px] pointer-events-none"
             />
           </div>
