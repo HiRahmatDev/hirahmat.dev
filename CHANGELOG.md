@@ -31,6 +31,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - _(Note security improvements or vulnerability fixes here)_
 
+## [v0.5.0] - 2025-10-25
+
+### Added
+
+- Integrated Vercel Analytics and Speed Insights
+
 ## [v0.4.1] - 2025-10-24
 
 ### Fixed

@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter, Overpass_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
 
 import { BASE_URL, SITE_NAME } from "./constants";
 import { FooterCopyrights } from "@/app/components/FooterCopyrights";
@@ -45,7 +47,11 @@ export default function RootLayout({
         className={`${interSans.variable} ${overpassMono.variable} antialiased`}
       >
         <Navbar />
-        <main tabIndex={-1}>{children}</main>
+        <main tabIndex={-1}>
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </main>
         <footer tabIndex={-1}>
           <FooterCopyrights />
         </footer>
