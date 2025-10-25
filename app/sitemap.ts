@@ -1,19 +1,19 @@
 import { MetadataRoute } from "next";
 
 import { BASE_URL } from "./constants";
-import { fetchSelectedProjects } from "./services/notion";
+import { fetchAllArticles } from "./services/notion";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const selectedProjects = await fetchSelectedProjects();
+  const allArticles = await fetchAllArticles();
 
-  const selectedProjectUrls: MetadataRoute.Sitemap = (
-    selectedProjects || []
-  ).map((item) => ({
-    url: `${BASE_URL}/articles/${item.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
+  const allArticleUrls: MetadataRoute.Sitemap = (allArticles || []).map(
+    (item) => ({
+      url: `${BASE_URL}/articles/${item.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    })
+  );
 
   const staticUrls: MetadataRoute.Sitemap = [
     {
@@ -24,5 +24,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  return [...staticUrls, ...selectedProjectUrls];
+  return [...staticUrls, ...allArticleUrls];
 }
