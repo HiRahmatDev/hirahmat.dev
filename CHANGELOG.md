@@ -7,29 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+### ???
 
-- _(Describe new features here)_
+-
 
-### Changed
-
-- _(List any modifications or behavior changes here)_
-
-### Deprecated
-
-- _(List features that will be removed in the future but still work for now)_
-
-### Removed
-
-- _(List removed or replaced features here)_
+## [v0.5.2] - 2025-10-25
 
 ### Fixed
 
-- _(Describe bug fixes or patches here)_
-
-### Security
-
-- _(Note security improvements or vulnerability fixes here)_
+- Corrected the Notion API filter logic in `app/services/notion.ts` to properly filter by `status: "Published"` AND (`category: "Jurnal Proyek"` OR `category: "Blog"`), ensuring accurate post retrieval.
 
 ## [v0.5.1] - 2025-10-25
 
