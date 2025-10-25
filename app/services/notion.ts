@@ -133,19 +133,21 @@ export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
                 equals: "Published",
               },
             },
-          ],
-          or: [
             {
-              property: "category",
-              select: {
-                equals: "Jurnal Proyek",
-              },
-            },
-            {
-              property: "category",
-              select: {
-                equals: "Blog",
-              },
+              or: [
+                {
+                  property: "category",
+                  select: {
+                    equals: "Jurnal Proyek",
+                  },
+                },
+                {
+                  property: "category",
+                  select: {
+                    equals: "Blog",
+                  },
+                },
+              ],
             },
           ],
         },
