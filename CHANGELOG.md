@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added necessary image assets for the "Mengenal Git dan GitHub" blog.
 - Added support for Notion block renderer of type "code" with `NotionRenderer/common/CodeBlock.tsx` component.
 
+### Changed
+
+- Smaller text of footer.
+
 ### Fixed
 
 - Rendered titles and descriptions correctly in SelectedBlogSection.tsx and on the article detail page.
