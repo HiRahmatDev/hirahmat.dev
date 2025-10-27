@@ -21,6 +21,8 @@ type CommonArticle = {
 
 export type SelectedProject = CommonArticle;
 
+const isProd = process.env.NODE_ENV === "production";
+
 export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
   cache(async () => {
     try {
@@ -84,12 +86,29 @@ export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> = cache(
                 equals: "Blog",
               },
             },
-            {
-              property: "status",
-              select: {
-                equals: "Published",
-              },
-            },
+            isProd
+              ? {
+                  property: "status",
+                  select: {
+                    equals: "Published",
+                  },
+                }
+              : {
+                  or: [
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Published",
+                      },
+                    },
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Draft",
+                      },
+                    },
+                  ],
+                },
           ],
         },
         sorts: [{ property: "created_on", direction: "descending" }],
@@ -127,12 +146,29 @@ export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
         data_source_id: process.env.DS_ARTICLE!,
         filter: {
           and: [
-            {
-              property: "status",
-              select: {
-                equals: "Published",
-              },
-            },
+            isProd
+              ? {
+                  property: "status",
+                  select: {
+                    equals: "Published",
+                  },
+                }
+              : {
+                  or: [
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Published",
+                      },
+                    },
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Draft",
+                      },
+                    },
+                  ],
+                },
             {
               or: [
                 {
@@ -198,12 +234,29 @@ export const fetchArticleMetadataBySlug = cache(
         data_source_id: process.env.DS_ARTICLE!,
         filter: {
           and: [
-            {
-              property: "status",
-              select: {
-                equals: "Published",
-              },
-            },
+            isProd
+              ? {
+                  property: "status",
+                  select: {
+                    equals: "Published",
+                  },
+                }
+              : {
+                  or: [
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Published",
+                      },
+                    },
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Draft",
+                      },
+                    },
+                  ],
+                },
             {
               property: "slug",
               title: {
