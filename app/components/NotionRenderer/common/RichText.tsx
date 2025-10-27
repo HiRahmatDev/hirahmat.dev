@@ -5,7 +5,9 @@ import clsx from "clsx";
 import { COLOR_MAP } from "../constants";
 import { isPlainText } from "../utils";
 
-export function RichText({ items }: { items: RichTextItemResponse[] }) {
+export function RichText({ items }: { items?: RichTextItemResponse[] | null }) {
+  if (!items) return null;
+
   return (
     <>
       {items.map((item, index) => {

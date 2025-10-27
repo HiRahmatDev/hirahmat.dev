@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { fetchSelectedBlogs } from "@/app/services/notion";
+import { RichText } from "../../NotionRenderer/common/RichText";
 
 export async function SelectedBlogsSection() {
   const selectedBlogs = await fetchSelectedBlogs();
@@ -25,6 +26,7 @@ export async function SelectedBlogsSection() {
               <Link
                 key={blog.slug}
                 href={`/articles/${blog.slug}`}
+                aria-label={`Buka artikel: Mengenai ${blog.title}`}
                 className="w-[340px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-blog-image-hover active:[&>.image-wrapper]:shadow-sm"
               >
                 <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl transition-shadow image-wrapper">
@@ -39,10 +41,12 @@ export async function SelectedBlogsSection() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-bold text-xl/[26px] tracking-[-0.4px]">
-                    {blog.title}
+                  <h3 className="font-bold text-xl/[26px] tracking-[-0.4px] line-clamp-2">
+                    <RichText items={blog.rawTitle} />
                   </h3>
-                  <p className="text-sm/[20px] text-zinc-600">{blog.desc}</p>
+                  <p className="text-sm/[20px] text-zinc-600 line-clamp-3">
+                    <RichText items={blog.rawDesc} />
+                  </p>
                 </div>
               </Link>
             ))}

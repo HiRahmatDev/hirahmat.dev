@@ -12,6 +12,7 @@ import {
 import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/components/NotionRenderer";
 import { SITE_NAME } from "@/app/constants";
+import { RichText } from "@/app/components/NotionRenderer/common/RichText";
 
 export async function generateStaticParams() {
   const allArticles = await fetchAllArticles();
@@ -27,10 +28,10 @@ export async function generateMetadata({
   const blockMetadata = await fetchArticleMetadataBySlug(slug);
 
   return {
-    title: `${blockMetadata?.title || "Artikel"} - HiRahmat.Dev`,
+    title: `${blockMetadata?.title || "Artikel"} | HiRahmat.Dev`,
     description: `${blockMetadata?.desc || ""}`,
     openGraph: {
-      title: `${blockMetadata?.title || "Artikel"} - HiRahmat.Dev`,
+      title: `${blockMetadata?.title || "Artikel"} | HiRahmat.Dev`,
       description: `${blockMetadata?.desc || ""}`,
       siteName: SITE_NAME,
       url: `/articles/${blockMetadata?.slug || ""}`,
@@ -70,10 +71,10 @@ export default async function ArticleDetailPage({
               <header className="space-y-6">
                 <div className="space-y-1">
                   <h1 className="text-4xl/[44px] tracking-[-1px] font-bold">
-                    {blockMetadata.title}
+                    <RichText items={blockMetadata.rawTitle} />
                   </h1>
                   <p className="text-lg/[28px] tracking-[-0.35px] text-zinc-500">
-                    {blockMetadata.desc}
+                    <RichText items={blockMetadata.rawDesc} />
                   </p>
                 </div>
                 <p className="text-sm/[24px] tracking-[-0.15px]">

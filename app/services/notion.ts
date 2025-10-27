@@ -4,6 +4,7 @@ import {
   BlockObjectResponse,
   Client,
   PageObjectResponse,
+  RichTextItemResponse,
 } from "@notionhq/client";
 import { cache } from "react";
 
@@ -71,7 +72,10 @@ export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
     }
   });
 
-export type SelectedBlog = CommonArticle;
+export type SelectedBlog = CommonArticle & {
+  rawTitle?: RichTextItemResponse[] | null;
+  rawDesc?: RichTextItemResponse[] | null;
+};
 
 export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> = cache(
   async () => {
@@ -121,12 +125,22 @@ export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> = cache(
             : "",
         title:
           result.properties.name?.type === "rich_text"
-            ? result.properties.name.rich_text[0]?.plain_text
+            ? result.properties.name.rich_text.map((p) => p.plain_text).join("")
             : "",
+        rawTitle:
+          result.properties.name?.type === "rich_text"
+            ? result.properties.name.rich_text
+            : null,
         desc:
           result.properties.description?.type === "rich_text"
-            ? result.properties.description.rich_text[0]?.plain_text
+            ? result.properties.description.rich_text
+                .map((p) => p.plain_text)
+                .join("")
             : "",
+        rawDesc:
+          result.properties.description?.type === "rich_text"
+            ? result.properties.description.rich_text
+            : null,
         cover:
           result.properties.cover?.type === "rich_text"
             ? result.properties.cover.rich_text[0]?.plain_text
@@ -197,11 +211,13 @@ export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
             : "",
         title:
           result.properties.name?.type === "rich_text"
-            ? result.properties.name.rich_text[0]?.plain_text
+            ? result.properties.name.rich_text.map((p) => p.plain_text).join("")
             : "",
         desc:
           result.properties.description?.type === "rich_text"
-            ? result.properties.description.rich_text[0]?.plain_text
+            ? result.properties.description.rich_text
+                .map((p) => p.plain_text)
+                .join("")
             : "",
         cover:
           result.properties.cover?.type === "rich_text"
@@ -219,7 +235,9 @@ type MetadataArticle = {
   blockId: string;
   slug: string;
   title: string;
+  rawTitle: RichTextItemResponse[] | null;
   desc: string;
+  rawDesc: RichTextItemResponse[] | null;
   cover: string;
   cover_alt: string;
   category?: string;
@@ -275,12 +293,22 @@ export const fetchArticleMetadataBySlug = cache(
             : "",
         title:
           result.properties.name?.type === "rich_text"
-            ? result.properties.name.rich_text[0]?.plain_text
+            ? result.properties.name.rich_text.map((p) => p.plain_text).join("")
             : "",
+        rawTitle:
+          result.properties.name?.type === "rich_text"
+            ? result.properties.name.rich_text
+            : null,
         desc:
           result.properties.description?.type === "rich_text"
-            ? result.properties.description.rich_text[0]?.plain_text
+            ? result.properties.description.rich_text
+                .map((p) => p.plain_text)
+                .join("")
             : "",
+        rawDesc:
+          result.properties.description?.type === "rich_text"
+            ? result.properties.description.rich_text
+            : null,
         cover:
           result.properties.cover?.type === "rich_text"
             ? result.properties.cover.rich_text[0]?.plain_text
