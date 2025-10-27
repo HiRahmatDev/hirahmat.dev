@@ -22,7 +22,7 @@ type CommonArticle = {
 
 export type SelectedProject = CommonArticle;
 
-const isProd = process.env.NODE_ENV === "production";
+const isProd = process.env.NEXT_PUBLIC_APP_ENV === "production";
 
 export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
   cache(async () => {

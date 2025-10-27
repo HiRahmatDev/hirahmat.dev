@@ -2,6 +2,7 @@ import { ListBlockChildrenResponse } from "@notionhq/client";
 
 import { Blockquote } from "./common/Blockquote";
 import { BulletedListItem } from "./common/BulletedListItem";
+import { CodeBlock } from "./common/CodeBlock";
 import { Heading1 } from "./common/Heading1";
 import { Heading2 } from "./common/Heading2";
 import { Heading3 } from "./common/Heading3";
@@ -42,6 +43,9 @@ export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
                   index={index}
                 />
               );
+
+            case "code":
+              return <CodeBlock key={block.id} block={block} />;
 
             default:
               return null;
