@@ -11,6 +11,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [v0.6.0] - 2025-10-29
+
+### Added
+
+- Support articles filtering based on the running environment. New `NEXT_PUBLIC_APP_ENV` env needed.
+- Added necessary image assets for the "Mengenal Git dan GitHub" blog.
+- Added support for Notion block renderer of type "code" with `NotionRenderer/common/CodeBlock.tsx` component.
+- Support `maxWidth` attribute for <LocalImage> tag in notion.
+- Local images for blog with title: "Mengenal Git dan GitHub."
+- Handled rendering block type "callout" from Notion.
+
+### Changed
+
+- Smaller text of footer.
+
+### Fixed
+
+- Rendered titles and descriptions correctly in `SelectedBlogSection.tsx` and on the article detail page.
+
 ## [v0.5.2] - 2025-10-25
 
 ### Fixed
