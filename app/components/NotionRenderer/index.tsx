@@ -8,6 +8,7 @@ import { Heading2 } from "./common/Heading2";
 import { Heading3 } from "./common/Heading3";
 import { isBlockObjectResponse } from "./utils";
 import { Paragraph } from "./common/Paragraph";
+import { Callout } from "./common/Callout";
 
 type NotionRendererProps = {
   listBlockChildren?: ListBlockChildrenResponse | null;
@@ -46,6 +47,9 @@ export function NotionRenderer({ listBlockChildren }: NotionRendererProps) {
 
             case "code":
               return <CodeBlock key={block.id} block={block} />;
+
+            case "callout":
+              return <Callout key={block.id} block={block} />;
 
             default:
               return null;

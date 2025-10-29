@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added support for Notion block renderer of type "code" with `NotionRenderer/common/CodeBlock.tsx` component.
 - Support `maxWidth` attribute for <LocalImage> tag in notion.
 - Local images for blog with title: "Mengenal Git dan GitHub."
+- Handled rendering block type "callout" from Notion.
 
 ### Changed
 

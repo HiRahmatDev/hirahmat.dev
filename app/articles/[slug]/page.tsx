@@ -69,7 +69,7 @@ export default async function ArticleDetailPage({
               }
             >
               <header className="space-y-6">
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <h1 className="text-4xl/[44px] tracking-[-1px] font-bold">
                     <RichText items={blockMetadata.rawTitle} />
                   </h1>

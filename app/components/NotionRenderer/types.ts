@@ -1,3 +1,5 @@
+// TODO: Remove this if it's unnecessary stuff
+
 type Block = {
   id: string;
   type: blockEnum | string;
