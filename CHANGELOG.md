@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### ???
+
+-
+
+## [v0.6.0] - 2025-10-29
+
 ### Added
 
 - Support articles filtering based on the running environment. New `NEXT_PUBLIC_APP_ENV` env needed.
@@ -22,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Rendered titles and descriptions correctly in SelectedBlogSection.tsx and on the article detail page.
+- Rendered titles and descriptions correctly in `SelectedBlogSection.tsx` and on the article detail page.
 
 ## [v0.5.2] - 2025-10-25
 
