@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- JSON-LD schema script in landing page
+
 ### Changed
 
 - Add hover and animation styles in TOC links
