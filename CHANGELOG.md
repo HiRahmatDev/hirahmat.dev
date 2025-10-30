@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+-
+
+## [v0.7.0] - 2025-10-30
+
 ### Added
 
 - Images for "Mengenal Git dan GitHub" blog
