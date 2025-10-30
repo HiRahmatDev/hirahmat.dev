@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [v0.8.0] - 2025-10-31
+
+### Added
+
+- JSON-LD schema script in landing page
+
+### Changed
+
+- Add hover and animation styles in TOC links
+- Fix layout shrink issue in selected blog cards
+
 ## [v0.7.0] - 2025-10-30
 
 ### Added
@@ -31,11 +42,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Support articles filtering based on the running environment. New `NEXT_PUBLIC_APP_ENV` env needed.
-- Added necessary image assets for the "Mengenal Git dan GitHub" blog.
-- Added support for Notion block renderer of type "code" with `NotionRenderer/common/CodeBlock.tsx` component.
+- Image assets for the "Mengenal Git dan GitHub" blog.
+- Support for Notion block renderer of type "code" with `NotionRenderer/common/CodeBlock.tsx` component.
 - Support `maxWidth` attribute for <LocalImage> tag in notion.
 - Local images for blog with title: "Mengenal Git dan GitHub."
-- Handled rendering block type "callout" from Notion.
+- Handle rendering block type "callout" from Notion.
 
 ### Changed
 
@@ -43,25 +54,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Rendered titles and descriptions correctly in `SelectedBlogSection.tsx` and on the article detail page.
+- Render titles and descriptions correctly in `SelectedBlogSection.tsx` and on the article detail page.
 
 ## [v0.5.2] - 2025-10-25
 
 ### Fixed
 
-- Corrected the Notion API filter logic in `app/services/notion.ts` to properly filter by `status: "Published"` AND (`category: "Jurnal Proyek"` OR `category: "Blog"`), ensuring accurate post retrieval.
+- Correct the Notion API filter logic in `app/services/notion.ts` to properly filter by `status: "Published"` AND (`category: "Jurnal Proyek"` OR `category: "Blog"`), ensuring accurate post retrieval.
 
 ## [v0.5.1] - 2025-10-25
 
 ### Fixed
 
-- Fixed an issue where the sitemap included only selected projects. The sitemap now correctly lists all articles by using `fetchAllArticles` instead of `fetchSelectedProjects` in `app/sitemap.ts`.
+- An issue where the sitemap included only selected projects. The sitemap now correctly lists all articles by using `fetchAllArticles` instead of `fetchSelectedProjects` in `app/sitemap.ts`.
 
 ## [v0.5.0] - 2025-10-25
 
 ### Added
 
-- Integrated Vercel Analytics and Speed Insights
+- Vercel Analytics and Speed Insights
 
 ## [v0.4.1] - 2025-10-24
 
@@ -95,9 +106,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Improved Notion content rendering and styles
-- Updated color palette and visual elements
-- Enhanced article and project metadata handling
+- Improve Notion content rendering and styles
+- Update color palette and visual elements
+- Enhance article and project metadata handling
 
 ## [v0.2.0] - 2025-10-22
 
@@ -110,11 +121,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added animation with gsap in landing page
+- Animation with gsap in landing page
 
 ### Fixed
 
-- Fixed OG Image for better SEO
+- OG Image for better SEO
 
 ## [v0.1.4] - 2025-10-21
 
@@ -144,12 +155,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v0.1.1] - 2025-10-19
 
-**UI improvements and code refactor**
-
 ### Changed
 
-- Updated page layout and visual styles for better consistency.
-- Refactored components and cleaned up code structure.
+- Update page layout and visual styles for better consistency.
+- Refactore components and cleaned up code structure.
 
 ## [v0.1.0] - 2025-10-17
 

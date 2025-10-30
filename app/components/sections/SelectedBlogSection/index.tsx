@@ -21,15 +21,15 @@ export async function SelectedBlogsSection() {
           </p>
         </div>
         <div className="pb-10 pt-2 -mt-2 overflow-x-auto">
-          <div className="flex gap-4 [&>div]:shrink-0">
+          <div className="flex gap-4 [&>a]:shrink-0">
             {(selectedBlogs || []).map((blog) => (
               <Link
                 key={blog.slug}
                 href={`/articles/${blog.slug}`}
                 aria-label={`Buka artikel: Mengenai ${blog.title}`}
-                className="w-[340px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-blog-image-hover active:[&>.image-wrapper]:shadow-sm"
+                className="w-[340px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-lg active:[&>.image-wrapper]:shadow-sm"
               >
-                <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl transition-shadow image-wrapper">
+                <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden shadow-md transition-shadow image-wrapper">
                   {blog.cover && (
                     <Image
                       src={blog.cover}
