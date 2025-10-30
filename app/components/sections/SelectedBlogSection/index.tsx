@@ -21,7 +21,7 @@ export async function SelectedBlogsSection() {
           </p>
         </div>
         <div className="pb-10 pt-2 -mt-2 overflow-x-auto">
-          <div className="flex gap-4 [&>div]:shrink-0">
+          <div className="flex gap-4 [&>a]:shrink-0">
             {(selectedBlogs || []).map((blog) => (
               <Link
                 key={blog.slug}
