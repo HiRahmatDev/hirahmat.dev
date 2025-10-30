@@ -31,7 +31,7 @@ export function RichText({ items }: { items?: RichTextItemResponse[] | null }) {
         // Code first (always inner-most)
         if (annotations.code) {
           element = (
-            <code className="tracking-[-1.5px] font-semibold leading-[1] inline-block bg-gray-200 text-amber-600 rounded-[4px] px-1 pt-1">
+            <code className="text-base tracking-[-0.7px] font-semibold leading-[1] inline-block bg-gray-200 text-amber-600 rounded-[4px] px-1 pt-1">
               {element}
             </code>
           );
