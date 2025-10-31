@@ -103,6 +103,7 @@ export default async function ArticleDetailPage({
                   alt={blockMetadata.cover_alt}
                   width={1280}
                   height={720}
+                  loading="lazy"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
                   className="object-cover top-0 right-0 left-0 rounded-3xl overflow-hidden"
                 />
@@ -124,7 +125,7 @@ export default async function ArticleDetailPage({
             <h2 className="text-base font-semibold tracking-[-0.35px]">
               Telusuri Isi:
             </h2>
-            <nav className="[&_a]:text-sm [&_a]:text-gray-600 [&_a]:hover:text-accent [&_a]:animate-hover [&_ul,&_ul_li]:space-y-2.5 [&_a]:inline-block">
+            <nav className="[&_a]:text-sm/[18px] [&_a]:text-gray-600 [&_a]:hover:text-accent [&_a]:animate-hover [&_ul,&_ul_li]:space-y-2.5 [&_a]:inline-block">
               <ul className="[&_ul]:pl-4">
                 {toc.map(({ title, children }, index) => (
                   <li key={index}>

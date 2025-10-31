@@ -18,7 +18,7 @@ export function Callout({ block }: { block: CalloutBlockObjectResponse }) {
       {block.callout.icon && block.callout.icon.type === "emoji" && (
         <span className="text-2xl -mt-1">{block.callout.icon.emoji}</span>
       )}
-      <p className="[&>strong:first-of-type]:text-xl text-base/[26px]">
+      <p className="[&>strong:first-of-type]:text-xl text-base/[26px] tracking-[-0.35px]">
         <RichText items={block.callout.rich_text} />
       </p>
     </div>

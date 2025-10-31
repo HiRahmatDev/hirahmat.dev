@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [v0.8.2] - 2025-10-31
+
+### Changed
+
+- Improve layout, typography, and styles for article, hero section, and notion renderer components
+
 ## [v0.8.1] - 2025-10-31
 
 ### Added
