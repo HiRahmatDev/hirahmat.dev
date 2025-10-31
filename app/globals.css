@@ -121,7 +121,7 @@
 }
 @utility container-for-reading {
   @apply container;
-  @apply md:max-w-[720];
+  @apply md:max-w-[720px];
 }
 
 @utility animate-hover {

@@ -41,13 +41,13 @@ export function HeroSection() {
   );
 
   return (
-    <section className="container flex flex-row gap-4 h-[400px] sm:h-[633px] -mt-10">
+    <section className="container flex flex-row gap-4 h-[400px] md:h-[633px] -mt-10">
       <div
         ref={container}
-        className="sm:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit"
+        className="md:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit"
       >
         <div className="space-y-2">
-          <h1 className="font-bold text-4xl/[46px] sm:text-5xl/[58px] tracking-[-2.5px] opacity-0">
+          <h1 className="font-bold text-4xl/[46px] md:text-5xl/[58px] tracking-[-2.5px] opacity-0">
             <span className="text-2xl tracking-[-1px]">
               <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
             </span>
@@ -61,7 +61,7 @@ export function HeroSection() {
         </div>
         <CTAButton className="opacity-0" />
       </div>
-      <div className="shrink-0 min-w-[395px] pb-24 hidden sm:block">
+      <div className="shrink-0 min-w-[395px] pb-24 hidden md:block">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isHeroImageLoaded ? { opacity: 1, y: 0 } : {}}
