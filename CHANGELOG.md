@@ -14,10 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Refactored accent image refs and animation logic in `HeroSection` for improved interactivity and code clarity.
-- Refactored GSAP animation logic in HeroSection and SectionHeader for improved readability and maintainability.
-- Extracted project card into its own component and added GSAP animation for image load in SelectedProjectCards.
-- Updated cta-button default shadow style in `globals.css` to use `shadow-md` for consistency with hover/active states.
+- Refactor accent image refs and animation logic in `HeroSection` for improved interactivity and code clarity.
+- Refactor GSAP animation logic in HeroSection and SectionHeader for improved readability and maintainability.
+- Extract project card into its own component and added GSAP animation for image load in SelectedProjectCards.
+- Updat cta-button default shadow style in `globals.css` to use `shadow-md` for consistency with hover/active states.
+- Adjust heading font sizes in Notion renderer components (`Heading1`, `Heading2`, `Heading3`) for improved visual hierarchy and consistency
 
 ## [v0.8.2] - 2025-10-31
 
