@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import gsap from "gsap";
@@ -62,12 +61,7 @@ export function HeroSection() {
         <CTAButton className="opacity-0" />
       </div>
       <div className="shrink-0 min-w-[395px] pb-24 hidden md:block">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isHeroImageLoaded ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="h-full"
-        >
+        <div className="h-full">
           <div className="relative h-full">
             <Image
               src={vectorBackgroundHero}
@@ -113,7 +107,7 @@ export function HeroSection() {
               className="absolute top-[98px] pointer-events-none"
             />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

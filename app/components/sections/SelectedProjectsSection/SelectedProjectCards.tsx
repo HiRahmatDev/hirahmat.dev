@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, stagger } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,36 +12,10 @@ type SelectedProjectCardsProps = {
 export function SelectedProjectCards({
   selectedProjects,
 }: SelectedProjectCardsProps) {
-  const container = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delayChildren: stagger(0.3, { startDelay: 0.3 }),
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
-
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className="flex gap-5 [&>div]:shrink-0"
-    >
+    <div className="flex gap-5 [&>div]:shrink-0">
       {(selectedProjects || []).map((project) => (
-        <motion.div
-          key={project.slug}
-          variants={item}
-          transition={{ duration: 1 }}
-          className="h-full"
-        >
+        <div key={project.slug} className="h-full">
           <div className="rounded-3xl bg-accent w-[439px] h-[217px] shadow-xl flex gap-3 text-white overflow-hidden">
             <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 [&>*]:max-w-fit">
               <div className="space-y-3">
@@ -86,8 +59,8 @@ export function SelectedProjectCards({
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
       ))}
-    </motion.div>
+    </div>
   );
 }
