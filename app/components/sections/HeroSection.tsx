@@ -17,52 +17,74 @@ import vectorBackgroundHero from "@/public/svgs/vector-background-hero.svg";
 export function HeroSection() {
   const [isHeroImageLoaded, setIsHeroImageLoaded] = useState(false);
 
-  const container = useRef<HTMLDivElement | null>(null);
+  const container = useRef<HTMLElement | null>(null);
 
   useGSAP(
     () => {
-      gsap.set(["h1", "p", "a"], {
-        opacity: 0,
-        y: 10,
-      });
-
-      gsap.to(["h1", "p", "a"], {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        stagger: 0.1,
-        onComplete: () => {
-          gsap.set("a", { clearProps: "y" });
+      gsap.fromTo(
+        ["h1", "p", "a"],
+        {
+          opacity: 0,
+          y: 4,
         },
-      });
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          stagger: 0.1,
+          onComplete: () => {
+            gsap.set("a", { clearProps: "y" });
+          },
+        }
+      );
     },
     { scope: container }
   );
 
+  useGSAP(
+    () => {
+      if (!isHeroImageLoaded) return;
+
+      gsap.fromTo(
+        ".hero-image",
+        {
+          opacity: 0,
+          y: 4,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        }
+      );
+    },
+    { scope: container, dependencies: [isHeroImageLoaded] }
+  );
+
   return (
-    <section className="container flex flex-row gap-4 h-[400px] md:h-[633px] -mt-10">
-      <div
-        ref={container}
-        className="md:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit"
-      >
+    <section
+      ref={container}
+      className="container flex flex-row gap-4 h-[400px] md:h-[633px] -mt-10 [&_h1,&_p,&_a,&_.hero-image]:opacity-0"
+    >
+      <div className="md:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
         <div className="space-y-2">
-          <h1 className="font-bold text-4xl/[46px] md:text-5xl/[58px] tracking-[-2.5px] opacity-0">
+          <h1 className="font-bold text-4xl/[46px] md:text-5xl/[58px] tracking-[-2.5px]">
             <span className="text-2xl tracking-[-1px]">
               <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
             </span>
             <br />
             Frontend <GreenText>Dev</GreenText>eloper
           </h1>
-          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch] opacity-0">
+          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch]">
             Saya merancang dan mengembangkan aplikasi web yang fungsional,
             responsif, dan enak dipakai.
           </p>
         </div>
-        <CTAButton className="opacity-0" />
+        <CTAButton />
       </div>
       <div className="shrink-0 min-w-[395px] pb-24 hidden md:block">
         <div className="h-full">
-          <div className="relative h-full">
+          <div className="relative h-full hero-image">
             <Image
               src={vectorBackgroundHero}
               alt=""
