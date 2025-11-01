@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+-
+
+## [v0.9.0] - 2025-11-1
+
 ### Added
 
 - Floating and parallax animation for hero section accent images using GSAP.
