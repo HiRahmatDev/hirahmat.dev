@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [v0.9.0] - 2025-11-1
+
+### Added
+
+- Floating and parallax animation for hero section accent images using GSAP.
+- Mousemove-based parallax effect for hero section accent images.
+
+### Changed
+
+- Refactor accent image refs and animation logic in `HeroSection` for improved interactivity and code clarity.
+- Refactor GSAP animation logic in HeroSection and SectionHeader for improved readability and maintainability.
+- Extract project card into its own component and added GSAP animation for image load in SelectedProjectCards.
+- Updat cta-button default shadow style in `globals.css` to use `shadow-md` for consistency with hover/active states.
+- Adjust heading font sizes in Notion renderer components (`Heading1`, `Heading2`, `Heading3`) for improved visual hierarchy and consistency
+
 ## [v0.8.2] - 2025-10-31
 
 ### Changed

@@ -28,7 +28,7 @@
     @apply [&>svg]:size-5;
     @apply cursor-pointer;
     @apply bg-accent hover:bg-accent-hover active:bg-accent-active text-white;
-    @apply shadow-lg hover:shadow-xl transition-shadow active:shadow-md;
+    @apply shadow-md hover:shadow-lg transition-shadow active:shadow-md;
     @apply transition;
   }
 

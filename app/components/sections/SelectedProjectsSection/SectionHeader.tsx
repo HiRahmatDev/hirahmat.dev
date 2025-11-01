@@ -11,18 +11,20 @@ export function SectionHeader() {
 
   useGSAP(
     () => {
-      gsap.set(["h2", "p"], {
-        opacity: 0,
-        y: 10,
-      });
-
-      gsap.to(["h2", "p"], {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.3,
-        stagger: 0.1,
-      });
+      gsap.fromTo(
+        ["h2", "p"],
+        {
+          opacity: 0,
+          y: 10,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.3,
+          stagger: 0.1,
+        }
+      );
     },
     { scope: container }
   );
