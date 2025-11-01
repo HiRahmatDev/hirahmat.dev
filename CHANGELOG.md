@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
--
+### Changed
+
+- Refactored GSAP animation logic in HeroSection and SectionHeader for improved readability and maintainability.
+- Extracted project card into its own component and added GSAP animation for image load in SelectedProjectCards.
+- Updated cta-button default shadow style in `globals.css` to use `shadow-md` for consistency with hover/active states.
 
 ## [v0.8.2] - 2025-10-31
 
