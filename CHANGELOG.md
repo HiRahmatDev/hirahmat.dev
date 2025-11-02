@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
--
+### Added
+
+- Quran page viewer in `lab/murajaah-at-taisir` with RTL support and Amiri Quran font.
+- `PageWrapper` component for RTL Arabic content.
+
+### Changed
+
+- Global styles: support Amiri Quran font for RTL in `globals.css`.
+- Layout: import and apply Amiri Quran font for RTL in `layout.tsx`.
+- Clean up `next.config.ts` by removing unused image remotePatterns.
 
 ## [v0.9.1] - 2025-11-2
 

@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
-import { Inter, Overpass_Mono } from "next/font/google";
+import { Amiri_Quran, Inter, Overpass_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
@@ -17,6 +17,12 @@ const interSans = Inter({
 const overpassMono = Overpass_Mono({
   variable: "--font-overpass-mono",
   subsets: ["latin"],
+});
+
+const amiriQuran = Amiri_Quran({
+  variable: "--font-amiri-quran",
+  subsets: ["arabic"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -44,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="id" data-scroll-behavior="smooth">
       <body
-        className={`${interSans.variable} ${overpassMono.variable} antialiased`}
+        className={`${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`}
       >
         <Navbar />
         <main tabIndex={-1}>
