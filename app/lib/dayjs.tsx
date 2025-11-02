@@ -12,7 +12,7 @@ dayjs.locale("id");
 
 export const formatDate = (date?: string | Date | null) => {
   if (!date) return "";
-  return dayjs(date).format("D MMMM YYYY");
+  return dayjs(date).format("DD MMM YYYY");
 };
 
 export default dayjs;

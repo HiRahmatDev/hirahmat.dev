@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [v0.9.1] - 2025-11-2
+
+### Changed
+
+- Update date format in `formatDate` (in `app/lib/dayjs.tsx`) to use "DD MMM YYYY" for consistency.
+- Refine article detail page date display (in `app/articles/[slug]/page.tsx`): improved wording and formatting for published/updated dates.
+
 ## [v0.9.0] - 2025-11-1
 
 ### Added

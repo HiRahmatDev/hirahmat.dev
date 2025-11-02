@@ -84,15 +84,13 @@ export default async function ArticleDetailPage({
                     </strong>
                   </span>
                   <span className="text-zinc-500">&ensp;•&ensp;</span>
-                  <em className="text-zinc-500">Dipublikasikan pada</em>{" "}
                   <strong className="font-medium">
                     {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
-                  <em className="text-zinc-500">, terakhir diperbarui pada</em>{" "}
+                  <span className="text-zinc-500">&ensp;•&ensp;Diperbarui</span>{" "}
                   <strong className="font-medium">
                     {formatDate(blockMetadata.updatedOn) || "-"}
                   </strong>
-                  <em className="text-zinc-500">.</em>
                 </p>
               </header>
             </div>
