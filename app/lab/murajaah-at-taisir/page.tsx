@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 
 import { PageWrapper } from "./components/PageWrapper";
 import { notFound } from "next/navigation";
@@ -84,13 +85,15 @@ export default async function MurajaahAtTaisirPage({
         <PageWrapper>
           <div className="min-h-6"></div>
           {Object.entries(pageN.data.surahs).map(([_, surah], index) => {
+            const isSurahAlfatiha = surah.number === 1;
+
             function shouldRenderTitle() {
               if (index === 0) {
                 // Only render if the first ayah in this page is the first ayah in its surah
                 return pageN.data.ayahs[0].numberInSurah === 1;
               }
               // For other surahs, always render
-              return pageN.data.ayahs.some((ayah) => ayah.numberInSurah === 1);
+              return true;
             }
 
             return (
@@ -111,13 +114,19 @@ export default async function MurajaahAtTaisirPage({
                     />
                   </div>
                 )}
-                <div className="text-justify">
-                  {pageN.data.ayahs.map(
-                    (ayah) =>
-                      surah.number === ayah.surah.number && (
+                <div className="text-justify text-2xl/[64px]">
+                  {pageN.data.ayahs.map((ayah) => {
+                    if (ayah.surah.number !== surah.number) return null;
+
+                    if (isSurahAlfatiha) {
+                      return (
                         <p
                           key={ayah.number}
-                          className="text-2xl/[64px] inline not-last:ml-2"
+                          className={
+                            ayah.numberInSurah === 1
+                              ? " block text-center"
+                              : " inline not-last:ml-2"
+                          }
                         >
                           <span>{ayah.text}</span>
                           <span className="relative inline-block w-7.5 text-center text-sm">
@@ -134,8 +143,38 @@ export default async function MurajaahAtTaisirPage({
                             )}
                           </span>
                         </p>
-                      )
-                  )}
+                      );
+                    }
+
+                    return (
+                      <React.Fragment key={ayah.number}>
+                        {ayah.numberInSurah === 1 && (
+                          <p className="text-center">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ</p>
+                        )}
+                        <p className="inline not-last:ml-2">
+                          <span>
+                            {ayah.text.replace(
+                              "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
+                              ""
+                            )}
+                          </span>
+                          <span className="relative inline-block w-7.5 text-center text-sm">
+                            <Image
+                              width={22}
+                              height={25}
+                              src="https://web.mushafmakkah.com/_nuxt/img/aya_num_ico.dedce8b.svg"
+                              alt=""
+                              role="presentation"
+                              className="absolute -top-0.5 pointer-events-none select-none w-full"
+                            />
+                            {new Intl.NumberFormat("ar-Sa").format(
+                              ayah.numberInSurah
+                            )}
+                          </span>
+                        </p>
+                      </React.Fragment>
+                    );
+                  })}
                 </div>
               </div>
             );
