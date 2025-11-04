@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Quran page viewer in `lab/murajaah-at-taisir` with RTL support and Amiri Quran font.
+- Initial release of `murajaah-at-taisir` in `lab/murajaah-at-taisir`.  
+  See details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
 
 ### Changed
 
