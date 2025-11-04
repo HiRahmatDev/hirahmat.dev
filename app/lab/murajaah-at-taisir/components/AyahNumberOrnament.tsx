@@ -1,8 +1,20 @@
+import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 
-export function AyahNumberOrnament({ number }: { number: number }) {
+export function AyahNumberOrnament({
+  number,
+  className,
+}: {
+  number: number;
+  className?: string;
+}) {
   return (
-    <span className="relative inline-block w-9 text-center text-sm">
+    <span
+      className={twMerge(
+        "relative inline-block w-9 text-center text-sm",
+        className
+      )}
+    >
       <Image
         width={22}
         height={25}

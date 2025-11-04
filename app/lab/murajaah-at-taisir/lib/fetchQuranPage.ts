@@ -1,4 +1,4 @@
-type QuranPageResponse = {
+export type QuranPageResponse = {
   code: number;
   status: string;
   data: Data;
