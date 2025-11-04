@@ -97,7 +97,7 @@ export function QuranPageRenderer({
                               : " inline not-last:ml-2"
                           }
                         >
-                          <span className={clsx("text-[#f6f5ee]")}>
+                          <span className="text-[#eeecde]">
                             {isSelectedAyah ? (
                               <>
                                 <span className="text-foreground">
@@ -126,7 +126,7 @@ export function QuranPageRenderer({
                         </p>
                       )}
                       <p className="inline not-last:ml-3">
-                        <span className={clsx("text-[#f6f5ee]")}>
+                        <span className="text-[#eeecde]">
                           {isSelectedAyah ? (
                             <>
                               <span className="text-foreground">

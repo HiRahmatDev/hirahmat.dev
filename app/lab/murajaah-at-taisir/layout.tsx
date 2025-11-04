@@ -8,6 +8,7 @@ import { fetchAllSurah } from "./lib/fetchAllSurah";
 import { fetchSurahByNumber } from "./lib/fetchSurahByNumber";
 import { fetchAyahBySurahNAyah } from "./lib/fetchAyahBySurahNAyah";
 import { AyahDataProvider } from "./context/AyahDataContext";
+import { ContactCTA } from "@/app/components/ContactCTA";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -61,11 +62,11 @@ export default function MurajaahAtTaisirLayout({
     <AyahDataProvider value={ayahData}>
       <div className="min-h-[calc(100vh-calc(64px+88px))]">
         <div className="container">
-          <div className="text-center mb-4">
-            <h1 className="text-4xl tracking-[-1px] font-semibold mb-2">
-              Murajaah at Taisir
+          <div className="mb-8">
+            <h1 className="text-4xl tracking-[-1px] font-semibold mb-1">
+              Aplikasi Murajaah at Taisir
             </h1>
-            <p className="text-zinc-500 italic text-sm max-w-[32ch] mx-auto">
+            <p className="text-zinc-500 italic text-sm max-w-prose">
               Terinspirasi dari buku{" "}
               <b className="font-medium text-foreground">
                 Muraja&lsquo;ah At-Taisir (30 Hari Hafal Al-Qur&lsquo;an)
@@ -135,10 +136,11 @@ export default function MurajaahAtTaisirLayout({
                 <p className="text-7xl font-bold">{randomAyah}</p>
               </div>
             </div>
-            <div>{children}</div>
+            <div className="pb-10">{children}</div>
           </div>
         </div>
       </div>
+      <ContactCTA />
     </AyahDataProvider>
   );
 }
