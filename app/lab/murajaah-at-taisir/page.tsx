@@ -1,5 +1,7 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { SITE_NAME } from "@/app/constants";
 import { fetchQuranPage } from "./lib/fetchQuranPage";
 import { QuranPageRenderer } from "./components/QuranPageRenderer";
 
@@ -9,6 +11,22 @@ type PageProps = {
 
 const MIN_PAGE = 1;
 const MAX_PAGE = 604;
+
+export const metadata: Metadata = {
+  title: "Aplikasi Murajaah at Taisir | HiRahmat.Dev",
+  description:
+    "Terinspirasi dari buku Muraja'ah At-Taisir (30 Hari Hafal Al-Qur'an) - Adi Hidayat",
+  openGraph: {
+    title: "Aplikasi Murajaah at Taisir | HiRahmat.Dev",
+    description:
+      "Terinspirasi dari buku Muraja'ah At-Taisir (30 Hari Hafal Al-Qur'an) - Adi Hidayat",
+    siteName: SITE_NAME,
+    url: "/lab/murajaah-at-taisir",
+    images: "/lab/murajaah-at-taisir/opengraph-image.png",
+    locale: "id",
+    type: "website",
+  },
+};
 
 export default async function MurajaahAtTaisirPage({
   searchParams,
