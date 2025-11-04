@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [v0.10.0] - 2025-11-4
+
+### Added
+
+- Initial release of `murajaah-at-taisir` in `lab/murajaah-at-taisir`.  
+  See details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
+
+### Changed
+
+- Global styles: support Amiri Quran font for RTL in `globals.css`.
+- Layout: import and apply Amiri Quran font for RTL in `layout.tsx`.
+- Clean up `next.config.ts` by removing unused image remotePatterns.
+
 ## [v0.9.1] - 2025-11-2
 
 ### Changed
