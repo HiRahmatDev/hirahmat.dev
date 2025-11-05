@@ -55,7 +55,9 @@ export default function MurajaahAtTaisirLayout({
   useEffect(() => {
     if (!ayahData) return;
 
-    router.replace(`/lab/murajaah-at-taisir?page=${ayahData.page}`);
+    router.replace(`/lab/murajaah-at-taisir?page=${ayahData.page}`, {
+      scroll: false,
+    });
   }, [ayahData]);
 
   return (
