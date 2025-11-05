@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
--
+### Fixed
+
+- Fix ayah highlighting and ornament opacity in QuranPageRenderer for improved clarity and selection feedback.
 
 ## [v0.1.0] - 2025-11-4
 

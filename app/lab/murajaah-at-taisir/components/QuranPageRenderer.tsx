@@ -97,21 +97,27 @@ export function QuranPageRenderer({
                               : " inline not-last:ml-2"
                           }
                         >
-                          <span className="text-[#eeecde]">
+                          <span>
                             {isSelectedAyah ? (
-                              <>
-                                <span className="text-foreground">
+                              <span className="bg-[#f1efdf] hover:[&>span]:opacity-100 [&>span]:transition-opacity">
+                                <span>
                                   {getFirstArabicWord(ayah.text).trim()}
                                 </span>{" "}
-                                {removeFirstArabicWord(ayah.text).trim()}
-                              </>
+                                <span className="opacity-[0.025]">
+                                  {removeFirstArabicWord(ayah.text).trim()}
+                                </span>
+                              </span>
                             ) : (
-                              ayah.text.trim()
+                              <span className="opacity-[0.025]">
+                                {ayah.text}
+                              </span>
                             )}
                           </span>
                           <AyahNumberOrnament
                             number={ayah.numberInSurah}
-                            className={!isSelectedAyah ? "opacity-0" : ""}
+                            className={
+                              "mr-2" + (!isSelectedAyah ? " opacity-10" : "")
+                            }
                           />
                         </p>
                       </React.Fragment>
@@ -126,36 +132,40 @@ export function QuranPageRenderer({
                         </p>
                       )}
                       <p className="inline not-last:ml-3">
-                        <span className="text-[#eeecde]">
+                        <span>
                           {isSelectedAyah ? (
-                            <>
-                              <span className="text-foreground">
+                            <span className="bg-[#f1efdf] hover:[&>span]:opacity-100 [&>span]:transition-opacity">
+                              <span>
                                 {getFirstArabicWord(
                                   ayah.text.replace(
                                     "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
                                     ""
                                   )
-                                ).trim()}
+                                )}
                               </span>{" "}
-                              {removeFirstArabicWord(
-                                ayah.text.replace(
-                                  "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
-                                  ""
-                                )
-                              ).trim()}
-                            </>
+                              <span className="opacity-[0.025]">
+                                {removeFirstArabicWord(
+                                  ayah.text.replace(
+                                    "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
+                                    ""
+                                  )
+                                )}
+                              </span>
+                            </span>
                           ) : (
-                            ayah.text
-                              .replace(
+                            <span className="opacity-[0.025]">
+                              {ayah.text.replace(
                                 "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
                                 ""
-                              )
-                              .trim()
+                              )}
+                            </span>
                           )}
                         </span>
                         <AyahNumberOrnament
                           number={ayah.numberInSurah}
-                          className={!isSelectedAyah ? "opacity-0" : ""}
+                          className={
+                            "mr-2" + (!isSelectedAyah ? " opacity-10" : "")
+                          }
                         />
                       </p>
                     </React.Fragment>
