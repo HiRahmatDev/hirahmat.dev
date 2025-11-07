@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { AyahRenderer } from "./AyahRenderer";
 import { QuranPageResponse } from "../lib/fetchQuranPage";
+import surahTitleLight from "../assets/surah-title-light.svg";
 
 type QuranPageRendererProps = {
   pageN: QuranPageResponse;
@@ -63,7 +64,8 @@ export function QuranPageRenderer({
                   <Image
                     width={434}
                     height={43}
-                    src="https://web.mushafmakkah.com/_nuxt/img/SurahTitle-Light.b01697e.svg"
+                    loading="eager"
+                    src={surahTitleLight}
                     alt=""
                     role="presentation"
                     className="absolute top-0 w-full pointer-events-none select-none"

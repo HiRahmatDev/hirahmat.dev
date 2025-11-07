@@ -1,6 +1,8 @@
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 
+import ayaNumIco from "../assets/aya-num-ico.svg";
+
 export function AyahNumberOrnament({
   number,
   className,
@@ -18,7 +20,8 @@ export function AyahNumberOrnament({
       <Image
         width={22}
         height={25}
-        src="https://web.mushafmakkah.com/_nuxt/img/aya_num_ico.dedce8b.svg"
+        loading="eager"
+        src={ayaNumIco}
         alt=""
         role="presentation"
         className="absolute -top-1.5 pointer-events-none select-none w-full"
