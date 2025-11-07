@@ -19,7 +19,7 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
 
   if (isSurahAlfatiha) {
     return (
-      <React.Fragment key={ayah.number}>
+      <>
         <p
           className={
             ayah.numberInSurah === 1
@@ -39,12 +39,12 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
             className={"mr-2" + (!isSelectedAyah ? " opacity-10" : "")}
           />
         </p>
-      </React.Fragment>
+      </>
     );
   }
 
   return (
-    <React.Fragment key={ayah.number}>
+    <>
       {ayah.numberInSurah === 1 && (
         <p className="text-center">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ</p>
       )}
@@ -57,7 +57,7 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
           className={"mr-2" + (!isSelectedAyah ? " opacity-10" : "")}
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }
 

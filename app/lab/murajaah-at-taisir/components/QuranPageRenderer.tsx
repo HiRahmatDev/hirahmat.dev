@@ -4,16 +4,18 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import { AyahRenderer } from "./AyahRenderer";
-import { QuranPageResponse } from "../lib/fetchQuranPage";
+import { Ayah, Surahs } from "../lib/fetchQuranPage";
 import surahTitleLight from "../assets/surah-title-light.svg";
 
 type QuranPageRendererProps = {
-  pageN: QuranPageResponse;
+  surahs: Surahs;
+  ayahs: Ayah[];
   isRightPage: boolean;
 };
 
 export function QuranPageRenderer({
-  pageN,
+  surahs,
+  ayahs,
   isRightPage,
 }: QuranPageRendererProps) {
   return (
@@ -47,17 +49,17 @@ export function QuranPageRenderer({
         >
           {isRightPage ? <p>KANAN</p> : <p>KIRI</p>}
         </div>
-        {Object.entries(pageN.data.surahs).map(([_, surah], index) => {
+        {Object.entries(surahs).map(([_, surah], index) => {
           const isSurahAlfatiha = surah.number === 1;
           const isSurahAlBaqarah = surah.number === 2;
 
           const isNarrowerContainer =
             isSurahAlfatiha ||
-            (isSurahAlBaqarah && pageN.data.ayahs[0].numberInSurah === 1);
+            (isSurahAlBaqarah && ayahs[0].numberInSurah === 1);
 
           function shouldRenderTitle() {
             if (index === 0) {
-              return pageN.data.ayahs[0].numberInSurah === 1;
+              return ayahs[0].numberInSurah === 1;
             }
             return true;
           }
@@ -88,12 +90,12 @@ export function QuranPageRenderer({
                   (isNarrowerContainer ? " px-24" : "")
                 }
               >
-                {pageN.data.ayahs.map((ayah) => {
+                {ayahs.map((ayah) => {
                   if (ayah.surah.number !== surah.number) return null;
 
                   return (
                     <AyahRenderer
-                      key={ayah.number}
+                      key={`ayah-${ayah.number}`}
                       ayah={ayah}
                       isSurahAlfatiha={isSurahAlfatiha}
                     />

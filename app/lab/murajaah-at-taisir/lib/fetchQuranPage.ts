@@ -33,8 +33,8 @@ type Surah = {
   numberOfAyahs: number;
 };
 
-type Surahs = {
-  [key: string]: SurahN;
+export type Surahs = {
+  [key: number]: SurahN;
 };
 
 type SurahN = {
