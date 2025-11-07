@@ -188,11 +188,13 @@ function normalizeArabic(text: string) {
 }
 
 function getFirstArabicWord(text: string) {
-  const words = text.trim().split(" ");
-  return words.slice(0, 2).join(" ");
+  const words = text.split(" ");
+  const isTooLong = words[0].split("").length > 6 || words.length < 6;
+  return words.slice(0, isTooLong ? 1 : 2).join(" ");
 }
 
 function removeFirstArabicWord(text: string) {
-  const words = text.trim().split(" ");
-  return words.slice(2).join(" ");
+  const words = text.split(" ");
+  const isTooLong = words[0].split("").length > 6 || words.length < 6;
+  return words.slice(isTooLong ? 1 : 2).join(" ");
 }
