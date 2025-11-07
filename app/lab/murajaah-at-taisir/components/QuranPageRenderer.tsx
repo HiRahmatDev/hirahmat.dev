@@ -21,6 +21,7 @@ export function QuranPageRenderer({
       lang="ar"
       dir="rtl"
       className={clsx(
+        "relative",
         "w-[600px] min-h-[900px] shrink-0 bg-[#f6f5ee] pt-7.5 px-12.5 pb-12",
         "md:scale-100",
         "sm:scale-[0.8] origin-top-left",
@@ -28,6 +29,15 @@ export function QuranPageRenderer({
         "transition-transform"
       )}
     >
+      <div
+        className={clsx(
+          "pointer-events-none absolute top-0 bottom-0 w-40",
+          isRightPage
+            ? "left-0 bg-gradient-to-r from-[#7a7761]/25 to-transparent"
+            : "right-0 bg-gradient-to-l from-[#7a7761]/25 to-transparent"
+        )}
+        aria-hidden="true"
+      />
       <div className="flex flex-col gap-8">
         <div
           className={
