@@ -11,7 +11,7 @@ type Data = {
   edition: Edition;
 };
 
-type Ayah = {
+export type Ayah = {
   number: number;
   text: string;
   surah: Surah;

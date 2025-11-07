@@ -2,11 +2,9 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import React from "react";
 
-import { AyahNumberOrnament } from "../components/AyahNumberOrnament";
+import { AyahRenderer } from "./AyahRenderer";
 import { QuranPageResponse } from "../lib/fetchQuranPage";
-import { useAyahData } from "../context/AyahDataContext";
 
 type QuranPageRendererProps = {
   pageN: QuranPageResponse;
@@ -17,9 +15,6 @@ export function QuranPageRenderer({
   pageN,
   isRightPage,
 }: QuranPageRendererProps) {
-  const ayahData = useAyahData();
-  const randomText = ayahData?.text || "";
-
   return (
     <article
       lang="ar"
@@ -82,93 +77,14 @@ export function QuranPageRenderer({
                 }
               >
                 {pageN.data.ayahs.map((ayah) => {
-                  const isSelectedAyah =
-                    normalizeArabic(randomText) === normalizeArabic(ayah.text);
-
                   if (ayah.surah.number !== surah.number) return null;
 
-                  if (isSurahAlfatiha) {
-                    return (
-                      <React.Fragment key={ayah.number}>
-                        <p
-                          className={
-                            ayah.numberInSurah === 1
-                              ? " block text-center"
-                              : " inline not-last:ml-2"
-                          }
-                        >
-                          <span>
-                            {isSelectedAyah ? (
-                              <span className="bg-[#f1efdf] hover:[&>span]:opacity-100 [&>span]:transition-opacity">
-                                <span>
-                                  {getFirstArabicWord(ayah.text).trim()}
-                                </span>{" "}
-                                <span className="opacity-[0.025]">
-                                  {removeFirstArabicWord(ayah.text).trim()}
-                                </span>
-                              </span>
-                            ) : (
-                              <span className="opacity-[0.025]">
-                                {ayah.text}
-                              </span>
-                            )}
-                          </span>
-                          <AyahNumberOrnament
-                            number={ayah.numberInSurah}
-                            className={
-                              "mr-2" + (!isSelectedAyah ? " opacity-10" : "")
-                            }
-                          />
-                        </p>
-                      </React.Fragment>
-                    );
-                  }
-
                   return (
-                    <React.Fragment key={ayah.number}>
-                      {ayah.numberInSurah === 1 && (
-                        <p className="text-center">
-                          بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ
-                        </p>
-                      )}
-                      <p className="inline not-last:ml-3">
-                        <span>
-                          {isSelectedAyah ? (
-                            <span className="bg-[#f1efdf] hover:[&>span]:opacity-100 [&>span]:transition-opacity">
-                              <span>
-                                {getFirstArabicWord(
-                                  ayah.text.replace(
-                                    "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
-                                    ""
-                                  )
-                                )}
-                              </span>{" "}
-                              <span className="opacity-[0.025]">
-                                {removeFirstArabicWord(
-                                  ayah.text.replace(
-                                    "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
-                                    ""
-                                  )
-                                )}
-                              </span>
-                            </span>
-                          ) : (
-                            <span className="opacity-[0.025]">
-                              {ayah.text.replace(
-                                "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
-                                ""
-                              )}
-                            </span>
-                          )}
-                        </span>
-                        <AyahNumberOrnament
-                          number={ayah.numberInSurah}
-                          className={
-                            "mr-2" + (!isSelectedAyah ? " opacity-10" : "")
-                          }
-                        />
-                      </p>
-                    </React.Fragment>
+                    <AyahRenderer
+                      key={ayah.number}
+                      ayah={ayah}
+                      isSurahAlfatiha={isSurahAlfatiha}
+                    />
                   );
                 })}
               </div>
@@ -178,23 +94,4 @@ export function QuranPageRenderer({
       </div>
     </article>
   );
-}
-
-function normalizeArabic(text: string) {
-  return text
-    .replace(/[\u064B-\u0652]/g, "") // Hilangkan harakat
-    .replace(/\s+/g, " ") // Normalisasi spasi
-    .trim();
-}
-
-function getFirstArabicWord(text: string) {
-  const words = text.split(" ");
-  const isTooLong = words[0].split("").length > 6 || words.length < 6;
-  return words.slice(0, isTooLong ? 1 : 2).join(" ");
-}
-
-function removeFirstArabicWord(text: string) {
-  const words = text.split(" ");
-  const isTooLong = words[0].split("").length > 6 || words.length < 6;
-  return words.slice(isTooLong ? 1 : 2).join(" ");
 }
