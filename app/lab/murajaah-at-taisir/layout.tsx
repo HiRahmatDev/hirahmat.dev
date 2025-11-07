@@ -1,63 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import useSWR from "swr";
 
-import { fetchAllSurah } from "./lib/fetchAllSurah";
-import { fetchSurahByNumber } from "./lib/fetchSurahByNumber";
-import { fetchAyahBySurahNAyah } from "./lib/fetchAyahBySurahNAyah";
 import { AyahDataProvider } from "./context/AyahDataContext";
 import { ContactCTA } from "@/app/components/ContactCTA";
+import { useMurajaah } from "./hooks/useMurajaah";
 
 export default function MurajaahAtTaisirLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: ReactNode }>) {
   const router = useRouter();
 
-  const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
-  const [startAyah, setStartAyah] = useState<number | null>(null);
-  const [endAyah, setEndAyah] = useState<number | null>(null);
-  const [randomAyah, setRandomAyah] = useState<number | null>(null);
+  const {
+    allSurah,
+    isLoadingSurah,
+    selectedSurah,
+    setSelectedSurah,
+    startAyah,
+    setStartAyah,
+    endAyah,
+    setEndAyah,
+    randomAyah,
+    setRandomAyah,
+    ayahData,
+    minAyah,
+    maxAyah,
+  } = useMurajaah();
 
-  const { data, isLoading } = useSWR("all-surah", fetchAllSurah);
-
-  const { data: selectedSurahData } = useSWR(
-    selectedSurah ? `surah-by-number-${selectedSurah}` : null,
-    () => fetchSurahByNumber(selectedSurah!)
-  );
-
-  const { data: ayahData } = useSWR(
-    selectedSurah && randomAyah
-      ? `ayah-by-surah-${selectedSurah}-n-ayah-${randomAyah}`
-      : null,
-    () => {
-      if (!selectedSurah || !randomAyah) return null;
-      return fetchAyahBySurahNAyah({
-        surah: selectedSurah,
-        ayah: randomAyah,
+  useEffect(() => {
+    if (ayahData) {
+      router.replace(`/lab/murajaah-at-taisir?page=${ayahData.page}`, {
+        scroll: false,
       });
     }
-  );
-
-  const minAyah = 1;
-  const maxAyah = selectedSurahData ? selectedSurahData.data.numberOfAyahs : 1;
-
-  useEffect(() => {
-    if (!selectedSurahData) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setStartAyah(minAyah);
-    setEndAyah(maxAyah);
-  }, [selectedSurahData]);
-
-  useEffect(() => {
-    if (!ayahData) return;
-
-    router.replace(`/lab/murajaah-at-taisir?page=${ayahData.page}`, {
-      scroll: false,
-    });
   }, [ayahData]);
 
   return (
@@ -80,18 +56,19 @@ export default function MurajaahAtTaisirLayout({
             <div className="flex flex-col gap-3 grow-1">
               <select
                 className="border border-gray-300 rounded-md p-2"
+                value={selectedSurah ?? undefined}
                 onChange={(e) => {
                   setSelectedSurah(Number(e.target.value));
                   setRandomAyah(null);
                 }}
               >
-                {isLoading ? (
+                {isLoadingSurah ? (
                   <option>Memuat...</option>
                 ) : (
                   <option disabled>-- Pilih Surat Alquran --</option>
                 )}
 
-                {data?.data.map(({ englishName: name, number }) => (
+                {allSurah?.data.map(({ englishName: name, number }) => (
                   <option key={`${number}-${name}`} value={number}>
                     {number}. {name}
                   </option>
@@ -121,8 +98,8 @@ export default function MurajaahAtTaisirLayout({
                 <button
                   className="bg-accent hover:bg-accent-hover animate-hover text-white px-4 py-3 font-medium rounded-md w-full cursor-pointer"
                   onClick={() => {
-                    if (startAyah === null || endAyah === null) return;
-                    if (startAyah < 1 || endAyah < 1) return;
+                    if (!startAyah || !endAyah) return;
+                    if (startAyah < 1 || endAyah > maxAyah) return;
                     if (startAyah > endAyah) return;
 
                     setRandomAyah(

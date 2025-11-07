@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Improved logic for splitting the first word of ayah in murojaah-at-taisir QuranPageRenderer, resulting in more accurate ayah display. See details in `app/lab/murajaah-at-taisir/components/QuranPageRenderer.tsx`.
 - Shifting layout of ayah every time random ayah is triggered.
+- Fix 404 when generate random ayah.
 - [CHORE] refactor code to more readable by splitting code.
 
 ## [v0.1.2] - 2025-11-5
