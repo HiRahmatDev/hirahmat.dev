@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, FocusEventHandler } from "react";
 
 type AyahInputNumberProps = {
   placeholder: string;
@@ -20,6 +20,11 @@ export function AyahInputNumber({
   onChange,
 }: AyahInputNumberProps) {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const normalizedValue = Number(e.target.value);
+    onChange(normalizedValue);
+  };
+
+  const handleBlur: FocusEventHandler<HTMLInputElement> = (e) => {
     const normalizedValue = Math.min(
       Math.max(Number(e.target.value), min),
       max
@@ -38,6 +43,7 @@ export function AyahInputNumber({
       value={value ?? ""}
       onChange={handleChange}
       onFocus={(e) => e.target.select()}
+      onBlur={handleBlur}
     />
   );
 }
