@@ -1,9 +1,9 @@
-import React from "react";
+"use client";
 
 import { Ayah } from "../lib/fetchQuranPage";
 import { AyahNumberOrnament } from "./AyahNumberOrnament";
 import { AyahTextHighlight } from "./AyahTextHighlight";
-import { useAyahData } from "../context/AyahDataContext";
+import { useMurajaahContext } from "../context/MurajaahContext";
 
 type AyahRendererProps = {
   ayah: Ayah;
@@ -11,7 +11,7 @@ type AyahRendererProps = {
 };
 
 export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
-  const ayahData = useAyahData();
+  const { ayahData } = useMurajaahContext();
   const randomText = ayahData?.text || "";
 
   const isSelectedAyah =

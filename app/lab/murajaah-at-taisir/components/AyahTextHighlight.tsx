@@ -1,15 +1,24 @@
+"use client";
+
+import clsx from "clsx";
+
+import { useMurajaahContext } from "../context/MurajaahContext";
+
 type AyahTextHighlightProps = {
   ayahText: string;
   isSelected: boolean;
   isSurahAlfatiha?: boolean;
 };
 
+const BISMILLAH = "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ";
+
 export function AyahTextHighlight({
   ayahText,
   isSelected,
   isSurahAlfatiha = false,
 }: AyahTextHighlightProps) {
-  const BISMILLAH = "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ";
+  const { mode } = useMurajaahContext();
+
   let displayText = ayahText;
 
   if (!isSurahAlfatiha) {
@@ -33,9 +42,13 @@ export function AyahTextHighlight({
   }
 
   return (
-    <span className="bg-[#f1efdf] hover:[&>span]:opacity-100 [&>span]:transition-opacity">
-      <span>{getFirstArabicWord(displayText).trim()}</span>{" "}
-      <span className="opacity-[0.025]">
+    <span className="bg-[#ebe8d4] [&>span]:transition-opacity">
+      <span
+        className={mode === "TADZKIRAH" || mode === "TADRIB" ? "opacity-100" : "opacity-[0.025]"}
+      >
+        {getFirstArabicWord(displayText).trim()}
+      </span>{" "}
+      <span className={clsx(mode === "TADRIB" ? "opacity-100" : "opacity-[0.025]")}>
         {removeFirstArabicWord(displayText).trim()}
       </span>
     </span>

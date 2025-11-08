@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Gradient background to `QuranPageRenderer` component for improved visual appearance.
+- Mode "Tadzkirah", "Dzikr", and "Tadrib"
 
 ### Changed
 

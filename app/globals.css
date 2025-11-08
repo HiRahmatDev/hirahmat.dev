@@ -7,6 +7,27 @@
   --accent-hover: #0ca15c;
   --accent-active: #0ca15c;
   --text-accent: #006938;
+  --calm: #0e4da0;
+  --calm-hover: #1156af;
+  --calm-active: #1156af;
+  --text-calm: #05408d;
+  --transition-navbar: linear(
+    0,
+    0.012 0.9%,
+    0.05 2%,
+    0.411 9.2%,
+    0.517 11.8%,
+    0.611 14.6%,
+    0.694 17.7%,
+    0.765 21.1%,
+    0.824 24.8%,
+    0.872 28.9%,
+    0.91 33.4%,
+    0.939 38.4%,
+    0.977 50.9%,
+    0.994 68.4%,
+    1
+  );
 }
 
 @theme inline {
@@ -16,6 +37,10 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-active: var(--accent-active);
   --color-text-accent: var(--text-accent);
+  --color-calm: var(--calm);
+  --color-calm-hover: var(--calm-hover);
+  --color-calm-active: var(--calm-active);
+  --color-text-calm: var(--text-calm);
   --font-sans: var(--font-inter-sans);
   --font-mono: var(--font-overpass-mono);
   --font-amiri-quran: var(--font-amiri-quran);
@@ -33,6 +58,11 @@
     @apply transition;
   }
 
+  #murajaah-sidebar {
+    @apply top-4;
+    transition: top 300ms;
+    transition-timing-function: var(--transition-navbar);
+  }
   .white-solid-button {
     @apply min-h-[36px] px-4 rounded-[20px];
     @apply font-semibold text-sm/[36px] tracking-[-0.4px] text-nowrap;
@@ -44,6 +74,12 @@
     @apply transition;
   }
 
+  .navbar-fixed-active,
+  .navbar-fixed {
+    + main #murajaah-sidebar {
+      @apply top-20;
+    }
+  }
   .navbar-fixed,
   .navbar-fixed-active,
   .navbar-static-active {
@@ -53,47 +89,11 @@
   }
 
   .navbar-fixed-active {
-    animation: navbarSlideDown 300ms
-      linear(
-        0,
-        0.012 0.9%,
-        0.05 2%,
-        0.411 9.2%,
-        0.517 11.8%,
-        0.611 14.6%,
-        0.694 17.7%,
-        0.765 21.1%,
-        0.824 24.8%,
-        0.872 28.9%,
-        0.91 33.4%,
-        0.939 38.4%,
-        0.977 50.9%,
-        0.994 68.4%,
-        1
-      )
-      forwards;
+    animation: navbarSlideDown 300ms var(--transition-navbar) forwards;
   }
 
   .navbar-static-active {
-    animation: navbarSlideUp 300ms
-      linear(
-        0,
-        0.012 0.9%,
-        0.05 2%,
-        0.411 9.2%,
-        0.517 11.8%,
-        0.611 14.6%,
-        0.694 17.7%,
-        0.765 21.1%,
-        0.824 24.8%,
-        0.872 28.9%,
-        0.91 33.4%,
-        0.939 38.4%,
-        0.977 50.9%,
-        0.994 68.4%,
-        1
-      )
-      forwards;
+    animation: navbarSlideUp 300ms var(--transition-navbar) forwards;
   }
 
   @keyframes navbarSlideDown {
