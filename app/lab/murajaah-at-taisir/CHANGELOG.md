@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Gradient background to `QuranPageRenderer` component for improved visual appearance.
 
+### Changed
+
+- Normalize ayah input value to match with min & max of ayah of selected surah.
+
 ### Fixed
 
 - Improved logic for splitting the first word of ayah in murojaah-at-taisir QuranPageRenderer, resulting in more accurate ayah display. See details in `app/lab/murajaah-at-taisir/components/QuranPageRenderer.tsx`.

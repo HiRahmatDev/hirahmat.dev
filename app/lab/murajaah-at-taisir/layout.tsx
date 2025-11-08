@@ -4,6 +4,7 @@ import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { AyahDataProvider } from "./context/AyahDataContext";
+import { AyahInputNumber } from "./components/AyahInputNumber";
 import { ContactCTA } from "@/app/components/ContactCTA";
 import { useMurajaah } from "./hooks/useMurajaah";
 
@@ -52,47 +53,47 @@ export default function MurajaahAtTaisirLayout({
               - Adi Hidayat
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row justify-between gap-3">
-            <div className="flex flex-col gap-3 grow-1">
-              <select
-                className="border border-gray-300 rounded-md p-2"
-                value={selectedSurah ?? undefined}
-                onChange={(e) => {
-                  setSelectedSurah(Number(e.target.value));
-                  setRandomAyah(null);
-                }}
-              >
-                {isLoadingSurah ? (
-                  <option>Memuat...</option>
-                ) : (
-                  <option disabled>-- Pilih Surat Alquran --</option>
-                )}
+          <div className="flex flex-col sm:flex-row justify-between gap-5">
+            <div className="flex flex-col gap-5 grow-1">
+              <div className="flex flex-col gap-3">
+                <select
+                  className="border border-gray-300 rounded-md p-2"
+                  value={selectedSurah ?? undefined}
+                  onChange={(e) => {
+                    setSelectedSurah(Number(e.target.value));
+                    setRandomAyah(null);
+                  }}
+                >
+                  {isLoadingSurah ? (
+                    <option>Memuat...</option>
+                  ) : (
+                    <option disabled>-- Pilih Surat Alquran --</option>
+                  )}
 
-                {allSurah?.data.map(({ englishName: name, number }) => (
-                  <option key={`${number}-${name}`} value={number}>
-                    {number}. {name}
-                  </option>
-                ))}
-              </select>
-              <div className="flex gap-3">
-                <input
-                  type="number"
-                  placeholder="Dari ayat ke-"
-                  min={minAyah}
-                  max={maxAyah}
-                  className="border border-gray-300 rounded-md p-2 w-full"
-                  value={startAyah ?? ""}
-                  onChange={(e) => setStartAyah(Number(e.target.value))}
-                />
-                <input
-                  type="number"
-                  placeholder="Sampai ayat ke-"
-                  min={startAyah ?? minAyah}
-                  max={maxAyah}
-                  className="border border-gray-300 rounded-md p-2 w-full"
-                  value={endAyah ?? ""}
-                  onChange={(e) => setEndAyah(Number(e.target.value))}
-                />
+                  {allSurah?.data.map(({ englishName: name, number }) => (
+                    <option key={`${number}-${name}`} value={number}>
+                      {number}. {name}
+                    </option>
+                  ))}
+                </select>
+                <div className="flex gap-3">
+                  <AyahInputNumber
+                    placeholder="Dari ayat ke-"
+                    min={minAyah}
+                    max={maxAyah}
+                    value={startAyah}
+                    disabled={!selectedSurah}
+                    onChange={(ayah) => setStartAyah(ayah)}
+                  />
+                  <AyahInputNumber
+                    placeholder="Sampai ayat ke-"
+                    min={startAyah || minAyah}
+                    max={maxAyah}
+                    value={endAyah}
+                    disabled={!selectedSurah}
+                    onChange={(ayah) => setEndAyah(ayah)}
+                  />
+                </div>
               </div>
               <div>
                 <button
@@ -110,9 +111,9 @@ export default function MurajaahAtTaisirLayout({
                 >
                   Mulai Murajaah
                 </button>
-              </div>
-              <div className="text-center py-6">
-                <p className="text-7xl font-bold">{randomAyah}</p>
+                <p className="text-center py-6 text-7xl font-bold tracking-tight">
+                  {randomAyah}
+                </p>
               </div>
             </div>
             <div className="pb-10">{children}</div>
