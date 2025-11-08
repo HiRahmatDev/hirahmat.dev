@@ -42,6 +42,8 @@ export default function MurajaahAtTaisirLayout({
     }
   }, [ayahData]);
 
+  const disabledButton = !selectedSurah;
+
   return (
     <MurajaahProvider value={{ ayahData, mode, setMode }}>
       <div className="min-h-[calc(100vh-calc(64px+88px))]">
@@ -111,9 +113,12 @@ export default function MurajaahAtTaisirLayout({
               </div>
               <div>
                 <button
-                  disabled={!selectedSurah}
+                  disabled={disabledButton}
                   className={clsx(
-                    "text-white px-4 py-3 font-medium rounded-lg w-full not:disabled:animate-hover not:disabled:cursor-pointer disabled:bg-zinc-300",
+                    "text-white px-4 py-3 font-medium rounded-lg w-full",
+                    disabledButton
+                      ? "bg-zinc-300 hover:bg-zinc-300 cursor-not-allowed"
+                      : "animate-hover cursor-pointer",
                     mode === "TADRIB"
                       ? "bg-calm hover:bg-calm-hover"
                       : "bg-accent hover:bg-accent-hover"
