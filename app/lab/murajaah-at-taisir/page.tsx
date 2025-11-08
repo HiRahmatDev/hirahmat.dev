@@ -1,16 +1,13 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { SITE_NAME } from "@/app/constants";
 import { fetchQuranPage } from "./lib/fetchQuranPage";
 import { QuranPageRenderer } from "./components/QuranPageRenderer";
+import { SITE_NAME } from "@/app/constants";
 
 type PageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
-
-const MIN_PAGE = 1;
-const MAX_PAGE = 604;
 
 export const metadata: Metadata = {
   title: "Aplikasi Murajaah at Taisir | HiRahmat.Dev",
@@ -28,6 +25,9 @@ export const metadata: Metadata = {
   },
 };
 
+const MIN_PAGE = 1;
+const MAX_PAGE = 604;
+
 export default async function MurajaahAtTaisirPage({
   searchParams,
 }: PageProps) {
@@ -39,6 +39,14 @@ export default async function MurajaahAtTaisirPage({
 
   const isRightPage = page % 2 === 1;
   const pageN = await fetchQuranPage(page);
+  const surahs = pageN.data.surahs;
+  const ayahs = pageN.data.ayahs || [];
 
-  return <QuranPageRenderer pageN={pageN} isRightPage={isRightPage} />;
+  return (
+    <QuranPageRenderer
+      surahs={surahs}
+      ayahs={ayahs}
+      isRightPage={isRightPage}
+    />
+  );
 }

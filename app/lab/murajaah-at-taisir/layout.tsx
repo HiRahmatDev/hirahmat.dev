@@ -1,69 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import useSWR from "swr";
+import clsx from "clsx";
 
-import { fetchAllSurah } from "./lib/fetchAllSurah";
-import { fetchSurahByNumber } from "./lib/fetchSurahByNumber";
-import { fetchAyahBySurahNAyah } from "./lib/fetchAyahBySurahNAyah";
-import { AyahDataProvider } from "./context/AyahDataContext";
+import { AyahInputNumber } from "./components/AyahInputNumber";
 import { ContactCTA } from "@/app/components/ContactCTA";
+import { MurajaahProvider } from "./context/MurajaahContext";
+import { useMurajaah } from "./hooks/useMurajaah";
+import { ModeRadio } from "./components/ModeRadio";
+import { Label } from "./components/Label";
 
 export default function MurajaahAtTaisirLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: ReactNode }>) {
   const router = useRouter();
 
-  const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
-  const [startAyah, setStartAyah] = useState<number | null>(null);
-  const [endAyah, setEndAyah] = useState<number | null>(null);
-  const [randomAyah, setRandomAyah] = useState<number | null>(null);
+  const {
+    allSurah,
+    isLoadingSurah,
+    selectedSurah,
+    setSelectedSurah,
+    startAyah,
+    setStartAyah,
+    endAyah,
+    setEndAyah,
+    randomAyah,
+    setRandomAyah,
+    mode,
+    setMode,
+    ayahData,
+    minAyah,
+    maxAyah,
+  } = useMurajaah();
 
-  const { data, isLoading } = useSWR("all-surah", fetchAllSurah);
-
-  const { data: selectedSurahData } = useSWR(
-    selectedSurah ? `surah-by-number-${selectedSurah}` : null,
-    () => fetchSurahByNumber(selectedSurah!)
-  );
-
-  const { data: ayahData } = useSWR(
-    selectedSurah && randomAyah
-      ? `ayah-by-surah-${selectedSurah}-n-ayah-${randomAyah}`
-      : null,
-    () => {
-      if (!selectedSurah || !randomAyah) return null;
-      return fetchAyahBySurahNAyah({
-        surah: selectedSurah,
-        ayah: randomAyah,
+  useEffect(() => {
+    if (ayahData) {
+      router.replace(`/lab/murajaah-at-taisir?page=${ayahData.page}`, {
+        scroll: false,
       });
     }
-  );
-
-  const minAyah = 1;
-  const maxAyah = selectedSurahData ? selectedSurahData.data.numberOfAyahs : 1;
-
-  useEffect(() => {
-    if (!selectedSurahData) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setStartAyah(minAyah);
-    setEndAyah(maxAyah);
-  }, [selectedSurahData]);
-
-  useEffect(() => {
-    if (!ayahData) return;
-
-    router.replace(`/lab/murajaah-at-taisir?page=${ayahData.page}`, {
-      scroll: false,
-    });
   }, [ayahData]);
 
+  const disabledButton = !selectedSurah;
+
   return (
-    <AyahDataProvider value={ayahData}>
+    <MurajaahProvider value={{ ayahData, mode, setMode }}>
       <div className="min-h-[calc(100vh-calc(64px+88px))]">
-        <div className="container">
+        <div className="container pb-10">
           <div className="mb-8">
             <h1 className="text-4xl tracking-[-1px] font-semibold mb-1">
               Aplikasi Murajaah at Taisir
@@ -76,53 +60,72 @@ export default function MurajaahAtTaisirLayout({
               - Adi Hidayat
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row justify-between gap-3">
-            <div className="flex flex-col gap-3 grow-1">
-              <select
-                className="border border-gray-300 rounded-md p-2"
-                onChange={(e) => {
-                  setSelectedSurah(Number(e.target.value));
-                  setRandomAyah(null);
-                }}
-              >
-                {isLoading ? (
-                  <option>Memuat...</option>
-                ) : (
-                  <option disabled>-- Pilih Surat Alquran --</option>
-                )}
+          <div className="flex flex-col sm:flex-row justify-between gap-5">
+            <div
+              id="murajaah-sidebar"
+              className="flex flex-col gap-8 grow-1 sm:sticky z-10 bg-white h-fit"
+            >
+              <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-1">
+                  <Label>Surat dan Ayat</Label>
+                  <div className="flex flex-col gap-2">
+                    <select
+                      className="border border-gray-300 rounded-lg p-2"
+                      value={selectedSurah ?? undefined}
+                      onChange={(e) => {
+                        setSelectedSurah(Number(e.target.value));
+                        setRandomAyah(null);
+                      }}
+                    >
+                      {isLoadingSurah ? (
+                        <option>Memuat...</option>
+                      ) : (
+                        <option disabled>-- Pilih Surat Alquran --</option>
+                      )}
 
-                {data?.data.map(({ englishName: name, number }) => (
-                  <option key={`${number}-${name}`} value={number}>
-                    {number}. {name}
-                  </option>
-                ))}
-              </select>
-              <div className="flex gap-3">
-                <input
-                  type="number"
-                  placeholder="Dari ayat ke-"
-                  min={minAyah}
-                  max={maxAyah}
-                  className="border border-gray-300 rounded-md p-2 w-full"
-                  value={startAyah ?? ""}
-                  onChange={(e) => setStartAyah(Number(e.target.value))}
-                />
-                <input
-                  type="number"
-                  placeholder="Sampai ayat ke-"
-                  min={startAyah ?? minAyah}
-                  max={maxAyah}
-                  className="border border-gray-300 rounded-md p-2 w-full"
-                  value={endAyah ?? ""}
-                  onChange={(e) => setEndAyah(Number(e.target.value))}
-                />
+                      {allSurah?.data.map(({ englishName: name, number }) => (
+                        <option key={`${number}-${name}`} value={number}>
+                          {number}. {name}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="flex gap-2">
+                      <AyahInputNumber
+                        placeholder="Dari ayat ke-"
+                        min={minAyah}
+                        max={maxAyah}
+                        value={startAyah}
+                        disabled={!selectedSurah}
+                        onChange={(ayah) => setStartAyah(ayah)}
+                      />
+                      <AyahInputNumber
+                        placeholder="Sampai ayat ke-"
+                        min={startAyah || minAyah}
+                        max={maxAyah}
+                        value={endAyah}
+                        disabled={!selectedSurah}
+                        onChange={(ayah) => setEndAyah(ayah)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <ModeRadio value={mode} onChange={setMode} />
               </div>
               <div>
                 <button
-                  className="bg-accent hover:bg-accent-hover animate-hover text-white px-4 py-3 font-medium rounded-md w-full cursor-pointer"
+                  disabled={disabledButton}
+                  className={clsx(
+                    "text-white px-4 py-3 font-medium rounded-lg w-full",
+                    disabledButton
+                      ? "bg-zinc-300 hover:bg-zinc-300 cursor-not-allowed"
+                      : "animate-hover cursor-pointer",
+                    mode === "TADRIB"
+                      ? "bg-calm hover:bg-calm-hover"
+                      : "bg-accent hover:bg-accent-hover"
+                  )}
                   onClick={() => {
-                    if (startAyah === null || endAyah === null) return;
-                    if (startAyah < 1 || endAyah < 1) return;
+                    if (!startAyah || !endAyah) return;
+                    if (startAyah < 1 || endAyah > maxAyah) return;
                     if (startAyah > endAyah) return;
 
                     setRandomAyah(
@@ -131,18 +134,18 @@ export default function MurajaahAtTaisirLayout({
                     );
                   }}
                 >
-                  Mulai Murajaah
+                  Mulai {mode === "TADRIB" ? "Latihan" : "Murajaah"}
                 </button>
-              </div>
-              <div className="text-center py-6">
-                <p className="text-7xl font-bold">{randomAyah}</p>
+                <p className="text-center py-6 text-7xl font-bold tracking-tight">
+                  {randomAyah}
+                </p>
               </div>
             </div>
-            <div className="pb-10">{children}</div>
+            <div>{children}</div>
           </div>
         </div>
       </div>
       <ContactCTA />
-    </AyahDataProvider>
+    </MurajaahProvider>
   );
 }

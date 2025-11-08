@@ -100,13 +100,13 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="relative z-10" tabIndex={-1}>
+      <nav className="relative" tabIndex={-1}>
         <div className="container py-3 flex gap-3 justify-between align-center">
           <Logo />
         </div>
       </nav>
       {navState !== "navbar-static" && (
-        <div className={navState}>
+        <div className={navState + " z-20"}>
           <div className="container py-3 flex gap-3 justify-between align-center">
             <Logo />
             <CTAButton />

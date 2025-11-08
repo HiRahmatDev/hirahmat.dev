@@ -2,29 +2,28 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import React from "react";
 
-import { AyahNumberOrnament } from "../components/AyahNumberOrnament";
-import { QuranPageResponse } from "../lib/fetchQuranPage";
-import { useAyahData } from "../context/AyahDataContext";
+import { AyahRenderer } from "./AyahRenderer";
+import { Ayah, Surahs } from "../lib/fetchQuranPage";
+import surahTitleLight from "../assets/surah-title-light.svg";
 
 type QuranPageRendererProps = {
-  pageN: QuranPageResponse;
+  surahs: Surahs;
+  ayahs: Ayah[];
   isRightPage: boolean;
 };
 
 export function QuranPageRenderer({
-  pageN,
+  surahs,
+  ayahs,
   isRightPage,
 }: QuranPageRendererProps) {
-  const ayahData = useAyahData();
-  const randomText = ayahData?.text || "";
-
   return (
     <article
       lang="ar"
       dir="rtl"
       className={clsx(
+        "relative",
         "w-[600px] min-h-[900px] shrink-0 bg-[#f6f5ee] pt-7.5 px-12.5 pb-12",
         "md:scale-100",
         "sm:scale-[0.8] origin-top-left",
@@ -32,6 +31,15 @@ export function QuranPageRenderer({
         "transition-transform"
       )}
     >
+      <div
+        className={clsx(
+          "pointer-events-none absolute top-0 bottom-0 w-40",
+          isRightPage
+            ? "left-0 bg-gradient-to-r from-[#7a7761]/25 to-transparent"
+            : "right-0 bg-gradient-to-l from-[#7a7761]/25 to-transparent"
+        )}
+        aria-hidden="true"
+      />
       <div className="flex flex-col gap-8">
         <div
           className={
@@ -41,17 +49,17 @@ export function QuranPageRenderer({
         >
           {isRightPage ? <p>KANAN</p> : <p>KIRI</p>}
         </div>
-        {Object.entries(pageN.data.surahs).map(([_, surah], index) => {
+        {Object.entries(surahs).map(([_, surah], index) => {
           const isSurahAlfatiha = surah.number === 1;
           const isSurahAlBaqarah = surah.number === 2;
 
           const isNarrowerContainer =
             isSurahAlfatiha ||
-            (isSurahAlBaqarah && pageN.data.ayahs[0].numberInSurah === 1);
+            (isSurahAlBaqarah && ayahs[0].numberInSurah === 1);
 
           function shouldRenderTitle() {
             if (index === 0) {
-              return pageN.data.ayahs[0].numberInSurah === 1;
+              return ayahs[0].numberInSurah === 1;
             }
             return true;
           }
@@ -68,7 +76,8 @@ export function QuranPageRenderer({
                   <Image
                     width={434}
                     height={43}
-                    src="https://web.mushafmakkah.com/_nuxt/img/SurahTitle-Light.b01697e.svg"
+                    loading="eager"
+                    src={surahTitleLight}
                     alt=""
                     role="presentation"
                     className="absolute top-0 w-full pointer-events-none select-none"
@@ -81,94 +90,15 @@ export function QuranPageRenderer({
                   (isNarrowerContainer ? " px-24" : "")
                 }
               >
-                {pageN.data.ayahs.map((ayah) => {
-                  const isSelectedAyah =
-                    normalizeArabic(randomText) === normalizeArabic(ayah.text);
-
+                {ayahs.map((ayah) => {
                   if (ayah.surah.number !== surah.number) return null;
 
-                  if (isSurahAlfatiha) {
-                    return (
-                      <React.Fragment key={ayah.number}>
-                        <p
-                          className={
-                            ayah.numberInSurah === 1
-                              ? " block text-center"
-                              : " inline not-last:ml-2"
-                          }
-                        >
-                          <span>
-                            {isSelectedAyah ? (
-                              <span className="bg-[#f1efdf] hover:[&>span]:opacity-100 [&>span]:transition-opacity">
-                                <span>
-                                  {getFirstArabicWord(ayah.text).trim()}
-                                </span>{" "}
-                                <span className="opacity-[0.025]">
-                                  {removeFirstArabicWord(ayah.text).trim()}
-                                </span>
-                              </span>
-                            ) : (
-                              <span className="opacity-[0.025]">
-                                {ayah.text}
-                              </span>
-                            )}
-                          </span>
-                          <AyahNumberOrnament
-                            number={ayah.numberInSurah}
-                            className={
-                              "mr-2" + (!isSelectedAyah ? " opacity-10" : "")
-                            }
-                          />
-                        </p>
-                      </React.Fragment>
-                    );
-                  }
-
                   return (
-                    <React.Fragment key={ayah.number}>
-                      {ayah.numberInSurah === 1 && (
-                        <p className="text-center">
-                          بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ
-                        </p>
-                      )}
-                      <p className="inline not-last:ml-3">
-                        <span>
-                          {isSelectedAyah ? (
-                            <span className="bg-[#f1efdf] hover:[&>span]:opacity-100 [&>span]:transition-opacity">
-                              <span>
-                                {getFirstArabicWord(
-                                  ayah.text.replace(
-                                    "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
-                                    ""
-                                  )
-                                )}
-                              </span>{" "}
-                              <span className="opacity-[0.025]">
-                                {removeFirstArabicWord(
-                                  ayah.text.replace(
-                                    "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
-                                    ""
-                                  )
-                                )}
-                              </span>
-                            </span>
-                          ) : (
-                            <span className="opacity-[0.025]">
-                              {ayah.text.replace(
-                                "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ ",
-                                ""
-                              )}
-                            </span>
-                          )}
-                        </span>
-                        <AyahNumberOrnament
-                          number={ayah.numberInSurah}
-                          className={
-                            "mr-2" + (!isSelectedAyah ? " opacity-10" : "")
-                          }
-                        />
-                      </p>
-                    </React.Fragment>
+                    <AyahRenderer
+                      key={`ayah-${ayah.number}`}
+                      ayah={ayah}
+                      isSurahAlfatiha={isSurahAlfatiha}
+                    />
                   );
                 })}
               </div>
@@ -178,21 +108,4 @@ export function QuranPageRenderer({
       </div>
     </article>
   );
-}
-
-function normalizeArabic(text: string) {
-  return text
-    .replace(/[\u064B-\u0652]/g, "") // Hilangkan harakat
-    .replace(/\s+/g, " ") // Normalisasi spasi
-    .trim();
-}
-
-function getFirstArabicWord(text: string) {
-  const words = text.trim().split(" ");
-  return words.slice(0, 2).join(" ");
-}
-
-function removeFirstArabicWord(text: string) {
-  const words = text.trim().split(" ");
-  return words.slice(2).join(" ");
 }
