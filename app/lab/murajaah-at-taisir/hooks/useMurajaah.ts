@@ -10,6 +10,7 @@ export function useMurajaah() {
   const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
   const [startAyah, setStartAyah] = useState<number | null>(null);
   const [endAyah, setEndAyah] = useState<number | null>(null);
+  const [randoming, setRandoming] = useState(false);
   const [randomAyah, setRandomAyah] = useState<number | null>(null);
   const [mode, setMode] = useState(DEFAULT_MODE);
 
@@ -41,6 +42,20 @@ export function useMurajaah() {
     }
   }, [selectedSurahData]);
 
+  const generateRandomAyah = () => {
+    if (!startAyah || !endAyah) return;
+    if (startAyah < 1 || endAyah > maxAyah) return;
+    if (startAyah > endAyah) return;
+
+    setRandoming(true);
+    setTimeout(() => {
+      setRandomAyah(
+        Math.floor(Math.random() * (endAyah - startAyah + 1)) + startAyah
+      );
+      setRandoming(false);
+    }, 1000);
+  };
+
   return {
     allSurah,
     isLoadingSurah,
@@ -52,6 +67,8 @@ export function useMurajaah() {
     setEndAyah,
     randomAyah,
     setRandomAyah,
+    randoming,
+    generateRandomAyah,
     mode,
     setMode,
     ayahData,

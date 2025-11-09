@@ -10,6 +10,7 @@ import { MurajaahProvider } from "./context/MurajaahContext";
 import { useMurajaah } from "./hooks/useMurajaah";
 import { ModeRadio } from "./components/ModeRadio";
 import { Label } from "./components/Label";
+import { AnimatedNumber } from "./components/AnimatedNumber";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -27,6 +28,8 @@ export default function MurajaahAtTaisirLayout({
     setEndAyah,
     randomAyah,
     setRandomAyah,
+    randoming,
+    generateRandomAyah,
     mode,
     setMode,
     ayahData,
@@ -42,7 +45,7 @@ export default function MurajaahAtTaisirLayout({
     }
   }, [ayahData]);
 
-  const disabledButton = !selectedSurah;
+  const disabledButton = !selectedSurah || randoming;
 
   return (
     <MurajaahProvider value={{ ayahData, mode, setMode }}>
@@ -70,7 +73,7 @@ export default function MurajaahAtTaisirLayout({
                   <Label>Surat dan Ayat</Label>
                   <div className="flex flex-col gap-2">
                     <select
-                      className="border border-gray-300 rounded-lg p-2"
+                      className="border border-gray-300 rounded-lg p-2 cursor-pointer"
                       value={selectedSurah ?? undefined}
                       onChange={(e) => {
                         setSelectedSurah(Number(e.target.value));
@@ -123,22 +126,16 @@ export default function MurajaahAtTaisirLayout({
                       ? "bg-calm hover:bg-calm-hover"
                       : "bg-accent hover:bg-accent-hover"
                   )}
-                  onClick={() => {
-                    if (!startAyah || !endAyah) return;
-                    if (startAyah < 1 || endAyah > maxAyah) return;
-                    if (startAyah > endAyah) return;
-
-                    setRandomAyah(
-                      Math.floor(Math.random() * (endAyah - startAyah + 1)) +
-                        startAyah
-                    );
-                  }}
+                  onClick={generateRandomAyah}
                 >
                   Mulai {mode === "TADRIB" ? "Latihan" : "Murajaah"}
                 </button>
-                <p className="text-center py-6 text-7xl font-bold tracking-tight">
-                  {randomAyah}
-                </p>
+                <AnimatedNumber
+                  min={minAyah}
+                  max={maxAyah}
+                  animating={randoming}
+                  number={randomAyah}
+                />
               </div>
             </div>
             <div>{children}</div>
