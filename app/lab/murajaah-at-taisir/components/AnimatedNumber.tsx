@@ -23,7 +23,7 @@ export function AnimatedNumber({
     if (animating) {
       interval = setInterval(() => {
         setAnimatedNumber(Math.floor(Math.random() * (max - min + 1)) + min);
-      }, 50);
+      }, 25);
     } else {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setAnimatedNumber(null);

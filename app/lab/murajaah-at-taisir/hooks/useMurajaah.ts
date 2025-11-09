@@ -59,7 +59,7 @@ export function useMurajaah() {
     setTimeout(() => {
       setRandomAyah(randomedAyah);
       setRandoming(false);
-    }, 1000);
+    }, 500);
   };
 
   return {
