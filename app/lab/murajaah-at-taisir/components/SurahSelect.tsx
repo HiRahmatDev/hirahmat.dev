@@ -54,15 +54,20 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
     >
       {({ isOpen }) => (
         <>
-          <div className="flex border border-gray-300 rounded-lg relative">
-            <Input placeholder="Masukkan surat Alquran" className="grow-1 py-2 px-3 rounded-lg pr-6" />
-            <Button className="px-2 cursor-pointer absolute right-0 top-0 bottom-0">
-              <ChevronDown
-                size={16}
-                className={
-                  "transition-transform" + (isOpen ? " rotate-180" : "")
-                }
+          <div>
+            <Button className="flex border border-gray-300 rounded-lg relative cursor-pointer w-full">
+              <Input
+                placeholder="Masukkan surah Alquran"
+                className="grow-1 py-2 px-3 rounded-lg pr-8"
               />
+              <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
+                <ChevronDown
+                  size={16}
+                  className={
+                    "transition-transform" + (isOpen ? " rotate-180" : "")
+                  }
+                />
+              </div>
             </Button>
           </div>
           <Popover
@@ -75,7 +80,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             <ListBox
               renderEmptyState={() => (
                 <div className="py-1.5 px-2 italic text-zinc-400">
-                  Tidak ada hasil
+                  Tidak ada surah dengan nama tersebut.
                 </div>
               )}
             >

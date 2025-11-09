@@ -69,7 +69,7 @@ export default function MurajaahAtTaisirLayout({
             >
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
-                  <Label>Surat dan Ayat</Label>
+                  <Label>Surah dan Ayat</Label>
                   <div className="flex flex-col gap-2">
                     <SurahSelect
                       value={selectedSurah ?? undefined}
