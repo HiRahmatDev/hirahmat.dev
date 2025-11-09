@@ -5,11 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [v0.10.5] - 2025-11-9
 
 ### Changed
 
-- Enhance Murajaah At-Taisir app. See details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
+- Release Murajaah At-Taisir app v0.3.0, see details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
 
 ## [v0.10.4] - 2025-11-8
 
