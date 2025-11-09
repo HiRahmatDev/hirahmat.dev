@@ -9,11 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Animated number when generating random ayah
+- Animated number when generating random ayah.
 
 ### Fixed
 
-- Handle empty (0) input cases in `AyahInputNumber.tsx`
+- Handle empty (0) input cases in `AyahInputNumber.tsx`.
+- Rename app and book name for consistency.
 
 ## [v0.2.0] - 2025-11-8
 
