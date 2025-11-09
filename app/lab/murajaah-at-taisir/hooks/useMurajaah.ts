@@ -47,11 +47,17 @@ export function useMurajaah() {
     if (startAyah < 1 || endAyah > maxAyah) return;
     if (startAyah > endAyah) return;
 
+    const randomedAyah =
+      Math.floor(Math.random() * (endAyah - startAyah + 1)) + startAyah;
+
+    if (startAyah === endAyah) {
+      setRandomAyah(randomedAyah);
+      return;
+    }
+
     setRandoming(true);
     setTimeout(() => {
-      setRandomAyah(
-        Math.floor(Math.random() * (endAyah - startAyah + 1)) + startAyah
-      );
+      setRandomAyah(randomedAyah);
       setRandoming(false);
     }, 1000);
   };

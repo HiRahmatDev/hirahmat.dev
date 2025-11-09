@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Animated number when generating random ayah
 
+### Fixed
+
+- Handle empty (0) input cases in `AyahInputNumber.tsx`
+
 ## [v0.2.0] - 2025-11-8
 
 ### Added
