@@ -10,7 +10,7 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Aplikasi Murajaah at Taisir | HiRahmat.Dev",
+  title: "Aplikasi Muraja'ah at Taisir | HiRahmat.Dev",
   description:
     "Terinspirasi dari buku Muraja'ah At-Taisir (30 Hari Hafal Al-Qur'an) - Adi Hidayat",
   openGraph: {

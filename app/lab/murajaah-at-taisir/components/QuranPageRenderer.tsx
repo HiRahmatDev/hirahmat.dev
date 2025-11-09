@@ -27,7 +27,7 @@ export function QuranPageRenderer({
         "w-[600px] min-h-[900px] shrink-0 bg-[#f6f5ee] pt-7.5 px-12.5 pb-12",
         "md:scale-100",
         "sm:scale-[0.8] origin-top-left",
-        "scale-[0.7] origin-top-left",
+        "scale-[0.6] origin-top-left",
         "transition-transform"
       )}
     >

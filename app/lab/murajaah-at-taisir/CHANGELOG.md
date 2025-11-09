@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.3.0] - 2025-11-9
+
+### Added
+
+- Animated number when generating random ayah.
+- A Surah selector to the murajaah-at-taisir lab app.
+  - You can now easily search and pick a Surah from a dropdown list.
+
+### Changed
+
+- Ayah input number now handles empty (0) values more gracefully.
+- App and book names updated for a more consistent experience.
+
 ## [v0.2.0] - 2025-11-8
 
 ### Added

@@ -1,7 +1,7 @@
 {
   "name": "hirahmat.dev",
-  "version": "0.10.4",
-  "private": true,
+  "version": "0.10.5",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,6 +20,7 @@
     "next": "16.0.0",
     "prismjs": "^1.30.0",
     "react": "19.2.0",
+    "react-aria-components": "^1.13.0",
     "react-dom": "19.2.0",
     "serialize-javascript": "^7.0.0",
     "swr": "^2.3.6",

@@ -10,6 +10,8 @@ import { MurajaahProvider } from "./context/MurajaahContext";
 import { useMurajaah } from "./hooks/useMurajaah";
 import { ModeRadio } from "./components/ModeRadio";
 import { Label } from "./components/Label";
+import { AnimatedNumber } from "./components/AnimatedNumber";
+import { SurahSelect } from "./components/SurahSelect";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -17,8 +19,6 @@ export default function MurajaahAtTaisirLayout({
   const router = useRouter();
 
   const {
-    allSurah,
-    isLoadingSurah,
     selectedSurah,
     setSelectedSurah,
     startAyah,
@@ -27,6 +27,8 @@ export default function MurajaahAtTaisirLayout({
     setEndAyah,
     randomAyah,
     setRandomAyah,
+    randoming,
+    generateRandomAyah,
     mode,
     setMode,
     ayahData,
@@ -42,7 +44,7 @@ export default function MurajaahAtTaisirLayout({
     }
   }, [ayahData]);
 
-  const disabledButton = !selectedSurah;
+  const disabledButton = !selectedSurah || randoming;
 
   return (
     <MurajaahProvider value={{ ayahData, mode, setMode }}>
@@ -50,12 +52,12 @@ export default function MurajaahAtTaisirLayout({
         <div className="container pb-10">
           <div className="mb-8">
             <h1 className="text-4xl tracking-[-1px] font-semibold mb-1">
-              Aplikasi Murajaah at Taisir
+              Muraja{"'"}ah at-Taisir
             </h1>
             <p className="text-zinc-500 italic text-sm max-w-prose">
               Terinspirasi dari buku{" "}
               <b className="font-medium text-foreground">
-                Muraja&lsquo;ah At-Taisir (30 Hari Hafal Al-Qur&lsquo;an)
+                Muraja{"'"}ah at-Taisir (30 Hari Hafal Al-Qur{"'"}an)
               </b>{" "}
               - Adi Hidayat
             </p>
@@ -67,28 +69,15 @@ export default function MurajaahAtTaisirLayout({
             >
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
-                  <Label>Surat dan Ayat</Label>
+                  <Label>Surah dan Ayat</Label>
                   <div className="flex flex-col gap-2">
-                    <select
-                      className="border border-gray-300 rounded-lg p-2"
+                    <SurahSelect
                       value={selectedSurah ?? undefined}
-                      onChange={(e) => {
-                        setSelectedSurah(Number(e.target.value));
+                      onChange={(surahNumber) => {
+                        setSelectedSurah(surahNumber);
                         setRandomAyah(null);
                       }}
-                    >
-                      {isLoadingSurah ? (
-                        <option>Memuat...</option>
-                      ) : (
-                        <option disabled>-- Pilih Surat Alquran --</option>
-                      )}
-
-                      {allSurah?.data.map(({ englishName: name, number }) => (
-                        <option key={`${number}-${name}`} value={number}>
-                          {number}. {name}
-                        </option>
-                      ))}
-                    </select>
+                    />
                     <div className="flex gap-2">
                       <AyahInputNumber
                         placeholder="Dari ayat ke-"
@@ -123,22 +112,16 @@ export default function MurajaahAtTaisirLayout({
                       ? "bg-calm hover:bg-calm-hover"
                       : "bg-accent hover:bg-accent-hover"
                   )}
-                  onClick={() => {
-                    if (!startAyah || !endAyah) return;
-                    if (startAyah < 1 || endAyah > maxAyah) return;
-                    if (startAyah > endAyah) return;
-
-                    setRandomAyah(
-                      Math.floor(Math.random() * (endAyah - startAyah + 1)) +
-                        startAyah
-                    );
-                  }}
+                  onClick={generateRandomAyah}
                 >
                   Mulai {mode === "TADRIB" ? "Latihan" : "Murajaah"}
                 </button>
-                <p className="text-center py-6 text-7xl font-bold tracking-tight">
-                  {randomAyah}
-                </p>
+                <AnimatedNumber
+                  min={minAyah}
+                  max={maxAyah}
+                  animating={randoming}
+                  number={randomAyah}
+                />
               </div>
             </div>
             <div>{children}</div>
