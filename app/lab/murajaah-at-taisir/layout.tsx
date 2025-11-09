@@ -12,6 +12,8 @@ import { ModeRadio } from "./components/ModeRadio";
 import { Label } from "./components/Label";
 import { AnimatedNumber } from "./components/AnimatedNumber";
 import { SurahSelect } from "./components/SurahSelect";
+import { MurajaahButton } from "./components/MurajaahButton";
+import { twMerge } from "tailwind-merge";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -101,26 +103,35 @@ export default function MurajaahAtTaisirLayout({
                 <ModeRadio value={mode} onChange={setMode} />
               </div>
               <div>
-                <button
+                <MurajaahButton
+                  mode={mode}
                   disabled={disabledButton}
-                  className={clsx(
-                    "text-white px-4 py-3 font-medium rounded-lg w-full",
-                    disabledButton
-                      ? "bg-zinc-300 hover:bg-zinc-300 cursor-not-allowed"
-                      : "animate-hover cursor-pointer",
-                    mode === "TADRIB"
-                      ? "bg-calm hover:bg-calm-hover"
-                      : "bg-accent hover:bg-accent-hover"
-                  )}
                   onClick={generateRandomAyah}
-                >
-                  Mulai {mode === "TADRIB" ? "Latihan" : "Murajaah"}
-                </button>
+                  className="hidden sm:block"
+                />
+                <div className="flex gap-3 sm:hidden fixed bottom-0 left-1/2 w-full max-w-[420px] -translate-x-1/2 px-5 pt-4 pb-8 bg-white">
+                  <MurajaahButton
+                    mode={mode}
+                    disabled={disabledButton}
+                    onClick={generateRandomAyah}
+                  />
+                  <div className="relative min-w-[80px] border border-zinc-200 rounded-lg flex justify-center items-center">
+                    <div className="absolute -top-2 left-1 text-xs italic semibold text-zinc-400 px-1 bg-white tracking-[-0.5px]">ayat ke-</div>
+                    <AnimatedNumber
+                      min={minAyah}
+                      max={maxAyah}
+                      animating={randoming}
+                      number={randomAyah}
+                      className="text-3xl py-0"
+                    />
+                  </div>
+                </div>
                 <AnimatedNumber
                   min={minAyah}
                   max={maxAyah}
                   animating={randoming}
                   number={randomAyah}
+                  className="hidden sm:block"
                 />
               </div>
             </div>

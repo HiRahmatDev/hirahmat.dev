@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
+import { usePathname } from "next/navigation";
 
 type NavState =
   | "navbar-static"
@@ -16,12 +17,15 @@ const ANIMATION_MS = 300;
 
 export function Navbar() {
   const [navState, setNavState] = useState<NavState>("navbar-static");
+  const pathname = usePathname();
 
   // refs to manage RAF (Request Animation Frame) and timeout so we can cancel on cleanup
   const rafRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (pathname === "/lab/murajaah-at-taisir") return;
+
     // update function scheduled by rAF
     const update = () => {
       const shouldBeFixed = window.scrollY > NAVBAR_SCROLL_THRESHOLD;

@@ -1,13 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 export function AnimatedNumber({
+  className,
   animating,
   number,
   min,
   max,
 }: Readonly<{
+  className?: string;
   animating?: boolean;
   number: number | null;
   min?: number;
@@ -36,7 +39,12 @@ export function AnimatedNumber({
   }, [animating, min, max]);
 
   return (
-    <p className="text-center py-6 text-7xl font-bold tracking-tight">
+    <p
+      className={twMerge(
+        "text-center py-6 text-7xl font-bold tracking-tight",
+        className
+      )}
+    >
       {animatedNumber ? (
         <span className="text-zinc-400">{animatedNumber}</span>
       ) : (

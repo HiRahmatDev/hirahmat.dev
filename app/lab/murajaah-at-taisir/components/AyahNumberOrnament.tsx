@@ -13,7 +13,7 @@ export function AyahNumberOrnament({
   return (
     <span
       className={twMerge(
-        "relative inline-block w-9 text-center text-sm",
+        "relative inline-block w-7 sm:w-9 text-center text-xs sm:text-sm",
         className
       )}
     >
@@ -24,7 +24,7 @@ export function AyahNumberOrnament({
         src={ayaNumIco}
         alt=""
         role="presentation"
-        className="absolute -top-1.5 pointer-events-none select-none w-full"
+        className="absolute -top-1 sm:-top-1.5 pointer-events-none select-none w-[30px] sm:w-[38px]"
       />
       {new Intl.NumberFormat("ar-Sa").format(number)}
     </span>
