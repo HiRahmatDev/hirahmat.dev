@@ -53,12 +53,12 @@ export default function MurajaahAtTaisirLayout({
         <div className="container pb-10">
           <div className="mb-8">
             <h1 className="text-4xl tracking-[-1px] font-semibold mb-1">
-              Aplikasi Murajaah at Taisir
+              Muraja{"'"}ah at-Taisir
             </h1>
             <p className="text-zinc-500 italic text-sm max-w-prose">
               Terinspirasi dari buku{" "}
               <b className="font-medium text-foreground">
-                Muraja&lsquo;ah At-Taisir (30 Hari Hafal Al-Qur&lsquo;an)
+                Muraja{"'"}ah at-Taisir (30 Hari Hafal Al-Qur{"'"}an)
               </b>{" "}
               - Adi Hidayat
             </p>
