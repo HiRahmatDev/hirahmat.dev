@@ -11,6 +11,7 @@ import { useMurajaah } from "./hooks/useMurajaah";
 import { ModeRadio } from "./components/ModeRadio";
 import { Label } from "./components/Label";
 import { AnimatedNumber } from "./components/AnimatedNumber";
+import { SurahSelect } from "./components/SurahSelect";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -18,8 +19,6 @@ export default function MurajaahAtTaisirLayout({
   const router = useRouter();
 
   const {
-    allSurah,
-    isLoadingSurah,
     selectedSurah,
     setSelectedSurah,
     startAyah,
@@ -72,26 +71,13 @@ export default function MurajaahAtTaisirLayout({
                 <div className="flex flex-col gap-1">
                   <Label>Surat dan Ayat</Label>
                   <div className="flex flex-col gap-2">
-                    <select
-                      className="border border-gray-300 rounded-lg p-2 cursor-pointer"
+                    <SurahSelect
                       value={selectedSurah ?? undefined}
-                      onChange={(e) => {
-                        setSelectedSurah(Number(e.target.value));
+                      onChange={(surahNumber) => {
+                        setSelectedSurah(surahNumber);
                         setRandomAyah(null);
                       }}
-                    >
-                      {isLoadingSurah ? (
-                        <option>Memuat...</option>
-                      ) : (
-                        <option disabled>-- Pilih Surat Alquran --</option>
-                      )}
-
-                      {allSurah?.data.map(({ englishName: name, number }) => (
-                        <option key={`${number}-${name}`} value={number}>
-                          {number}. {name}
-                        </option>
-                      ))}
-                    </select>
+                    />
                     <div className="flex gap-2">
                       <AyahInputNumber
                         placeholder="Dari ayat ke-"

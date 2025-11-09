@@ -10,11 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Animated number when generating random ayah.
+- A Surah selector to the murajaah-at-taisir lab app.
+  - You can now easily search and pick a Surah from a dropdown list.
 
-### Fixed
+### Changed
 
-- Handle empty (0) input cases in `AyahInputNumber.tsx`.
-- Rename app and book name for consistency.
+- Ayah input number now handles empty (0) values more gracefully.
+- App and book names updated for a more consistent experience.
 
 ## [v0.2.0] - 2025-11-8
 

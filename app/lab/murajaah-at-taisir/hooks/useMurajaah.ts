@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 
 import { DEFAULT_MODE } from "../context/MurajaahContext";
-import { fetchAllSurah } from "../lib/fetchAllSurah";
 import { fetchAyahBySurahNAyah } from "../lib/fetchAyahBySurahNAyah";
 import { fetchSurahByNumber } from "../lib/fetchSurahByNumber";
 
@@ -13,11 +12,6 @@ export function useMurajaah() {
   const [randoming, setRandoming] = useState(false);
   const [randomAyah, setRandomAyah] = useState<number | null>(null);
   const [mode, setMode] = useState(DEFAULT_MODE);
-
-  const { data: allSurah, isLoading: isLoadingSurah } = useSWR(
-    "all-surah",
-    fetchAllSurah
-  );
 
   const { data: selectedSurahData } = useSWR(
     selectedSurah ? `surah-by-number-${selectedSurah}` : null,
@@ -63,8 +57,6 @@ export function useMurajaah() {
   };
 
   return {
-    allSurah,
-    isLoadingSurah,
     selectedSurah,
     setSelectedSurah,
     startAyah,

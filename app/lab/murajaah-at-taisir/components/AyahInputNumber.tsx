@@ -39,7 +39,7 @@ export function AyahInputNumber({
       min={min}
       max={max}
       disabled={disabled}
-      className="border border-gray-300 rounded-lg p-2 w-full disabled:bg-zinc-100"
+      className="border border-gray-300 rounded-lg py-2 px-3 w-full disabled:bg-zinc-100"
       value={value ?? ""}
       onChange={handleChange}
       onFocus={(e) => e.target.select()}
