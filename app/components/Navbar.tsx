@@ -72,7 +72,7 @@ export function Navbar() {
         timeoutRef.current = null;
       }
     };
-  }, []);
+  }, [pathname]);
 
   // handle automatic transition to stable states after animation duration
   useEffect(() => {
