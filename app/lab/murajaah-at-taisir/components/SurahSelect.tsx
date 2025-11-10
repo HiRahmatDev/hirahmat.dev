@@ -26,16 +26,15 @@ type Option = {
 };
 
 export function SurahSelect({ value, onChange }: SurahSelectProps) {
-  const { data: allSurah, isLoading: isLoadingSurah } = useSWR(
-    "all-surah",
-    fetchAllSurah
-  );
+  const { data: allSurah } = useSWR("all-surah", fetchAllSurah);
 
-  const options: Option[] = (allSurah?.data || []).map((item) => ({
-    key: String(item.number),
-    label: item.englishName,
-    id: item.number,
-  }));
+  const options: Option[] = (allSurah?.data || []).map((item) => {
+    return {
+      key: String(item.number),
+      label: item.englishName,
+      id: item.number,
+    };
+  });
 
   return (
     <ComboBox

@@ -117,8 +117,8 @@ export default function MurajaahAtTaisirLayout({
                         ayat ke-
                       </div>
                       <AnimatedNumber
-                        min={minAyah}
-                        max={maxAyah}
+                        min={startAyah || minAyah}
+                        max={endAyah || maxAyah}
                         animating={randoming}
                         number={randomAyah}
                         className="text-3xl py-0"
@@ -127,8 +127,8 @@ export default function MurajaahAtTaisirLayout({
                   </div>
                 </div>
                 <AnimatedNumber
-                  min={minAyah}
-                  max={maxAyah}
+                  min={startAyah || minAyah}
+                  max={endAyah || maxAyah}
                   animating={randoming}
                   number={randomAyah}
                   className="hidden sm:block"

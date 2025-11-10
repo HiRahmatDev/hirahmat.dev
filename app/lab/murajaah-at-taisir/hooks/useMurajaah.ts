@@ -13,45 +13,14 @@ export function useMurajaah() {
   const [randomAyah, setRandomAyah] = useState<number | null>(null);
   const [mode, setMode] = useState(DEFAULT_MODE);
 
-  const { data: selectedSurahData } = useSWR(
-    selectedSurah ? `surah-by-number-${selectedSurah}` : null,
-    () => fetchSurahByNumber(selectedSurah!)
-  );
-
-  const { data: ayahData } = useSWR(
-    selectedSurah && randomAyah
-      ? `ayah-by-surah-${selectedSurah}-n-ayah-${randomAyah}`
-      : null,
-    () => fetchAyahBySurahNAyah({ surah: selectedSurah!, ayah: randomAyah! })
-  );
-
-  const minAyah = 1;
-  const maxAyah = selectedSurahData?.data.numberOfAyahs || 1;
-
-  const generateRandomAyah = () => {
-    if (!startAyah || !endAyah) return;
-    if (startAyah < 1 || endAyah > maxAyah) return;
-    if (startAyah > endAyah) return;
-
-    const randomedAyah =
-      Math.floor(Math.random() * (endAyah - startAyah + 1)) + startAyah;
-
-    if (startAyah === endAyah) {
-      setRandomAyah(randomedAyah);
-      return;
-    }
-
-    setRandoming(true);
-    setTimeout(() => {
-      setRandomAyah(randomedAyah);
-      setRandoming(false);
-    }, 500);
-  };
-
   const changeSurah = (surahNumber: number) => {
     setSelectedSurah(surahNumber);
     setRandomAyah(null);
     localStorage.setItem("murajaah-selected-surah", surahNumber.toString());
+    localStorage.setItem(
+      "previous-murajaah-selected-surah",
+      (selectedSurah || surahNumber).toString()
+    );
   };
 
   const changeMode = (newMode: MurajaahMode) => {
@@ -82,14 +51,58 @@ export function useMurajaah() {
     }
   }, []);
 
+  const { data: ayahData } = useSWR(
+    selectedSurah && randomAyah
+      ? `ayah-by-surah-${selectedSurah}-n-ayah-${randomAyah}`
+      : null,
+    () => fetchAyahBySurahNAyah({ surah: selectedSurah!, ayah: randomAyah! })
+  );
+
+  const { data: selectedSurahData } = useSWR(
+    selectedSurah ? `surah-by-number-${selectedSurah}` : null,
+    () => fetchSurahByNumber(selectedSurah!)
+  );
+
+  const minAyah = 1;
+  const maxAyah = selectedSurahData?.data.numberOfAyahs || 1;
+
+  const generateRandomAyah = () => {
+    if (!startAyah || !endAyah) return;
+    if (startAyah < 1 || endAyah > maxAyah) return;
+    if (startAyah > endAyah) return;
+
+    const randomedAyah =
+      Math.floor(Math.random() * (endAyah - startAyah + 1)) + startAyah;
+
+    if (startAyah === endAyah) {
+      setRandomAyah(randomedAyah);
+      return;
+    }
+
+    setRandoming(true);
+    setTimeout(() => {
+      setRandomAyah(randomedAyah);
+      setRandoming(false);
+    }, 500);
+  };
+
   useEffect(() => {
     if (selectedSurahData) {
       const storedStartAyah = localStorage.getItem("murajaah-start-ayah");
       const storedEndAyah = localStorage.getItem("murajaah-end-ayah");
+      const storedSurah = localStorage.getItem("murajaah-selected-surah");
+      const storedPrevSurah = localStorage.getItem(
+        "previous-murajaah-selected-surah"
+      );
+      const isNewSurah = storedSurah !== storedPrevSurah;
 
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      changeStartAyah(storedStartAyah ? Number(storedStartAyah) : minAyah);
-      changeEndAyah(storedEndAyah ? Number(storedEndAyah) : maxAyah);
+      changeStartAyah(
+        storedStartAyah && !isNewSurah ? Number(storedStartAyah) : minAyah
+      );
+      changeEndAyah(
+        storedEndAyah && !isNewSurah ? Number(storedEndAyah) : maxAyah
+      );
     }
   }, [selectedSurahData]);
 
