@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 
-import { DEFAULT_MODE } from "../context/MurajaahContext";
+import { DEFAULT_MODE, type MurajaahMode } from "../context/MurajaahContext";
 import { fetchAyahBySurahNAyah } from "../lib/fetchAyahBySurahNAyah";
 import { fetchSurahByNumber } from "../lib/fetchSurahByNumber";
 
@@ -62,11 +62,21 @@ export function useMurajaah() {
     localStorage.setItem("murajaah-selected-surah", surahNumber.toString());
   };
 
+  const changeMode = (newMode: MurajaahMode) => {
+    setMode(newMode);
+    localStorage.setItem("murajaah-selected-mode", newMode);
+  };
+
   useEffect(() => {
     const storedSurah = localStorage.getItem("murajaah-selected-surah");
+    const storedMode =
+      localStorage.getItem("murajaah-selected-mode") || DEFAULT_MODE;
     if (storedSurah) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       changeSurah(Number(storedSurah));
+    }
+    if (storedMode) {
+      changeMode(storedMode as MurajaahMode);
     }
   }, []);
 
@@ -84,6 +94,7 @@ export function useMurajaah() {
     generateRandomAyah,
     mode,
     setMode,
+    changeMode,
     ayahData,
     minAyah,
     maxAyah,

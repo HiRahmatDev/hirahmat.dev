@@ -84,7 +84,7 @@ export function QuranPageRenderer({
                 )}
                 <div
                   className={
-                    "text-justify text-xl/[64px] sm:text-2xl/[64px] select-none" +
+                    "text-justify text-xl/[54px] sm:text-2xl/[64px] select-none" +
                     (isNarrowerContainer ? " px-5 sm:px-24" : "")
                   }
                 >

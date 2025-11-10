@@ -6,7 +6,7 @@ import { AyahData } from "../lib/fetchAyahBySurahNAyah";
 type MurajaahContextState = {
   ayahData: AyahData | null | undefined;
   mode: MurajaahMode;
-  setMode?: (mode: MurajaahMode) => void;
+  changeMode?: (mode: MurajaahMode) => void;
 };
 
 export type MurajaahMode = "TADZKIRAH" | "DZIKR" | "TADRIB";

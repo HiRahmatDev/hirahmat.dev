@@ -29,7 +29,7 @@ export default function MurajaahAtTaisirLayout({
     randoming,
     generateRandomAyah,
     mode,
-    setMode,
+    changeMode,
     ayahData,
     minAyah,
     maxAyah,
@@ -46,7 +46,7 @@ export default function MurajaahAtTaisirLayout({
   const disabledButton = !selectedSurah || randoming;
 
   return (
-    <MurajaahProvider value={{ ayahData, mode, setMode }}>
+    <MurajaahProvider value={{ ayahData, mode, changeMode }}>
       <div className="min-h-[calc(100vh-calc(64px+88px))]">
         <div className="container pb-10">
           <div className="mb-8">
@@ -96,7 +96,7 @@ export default function MurajaahAtTaisirLayout({
                     </div>
                   </div>
                 </div>
-                <ModeRadio value={mode} onChange={setMode} />
+                <ModeRadio value={mode} onChange={changeMode} />
               </div>
               <div>
                 <MurajaahButton
