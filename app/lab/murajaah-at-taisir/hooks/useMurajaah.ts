@@ -28,14 +28,6 @@ export function useMurajaah() {
   const minAyah = 1;
   const maxAyah = selectedSurahData?.data.numberOfAyahs || 1;
 
-  useEffect(() => {
-    if (selectedSurahData) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setStartAyah(minAyah);
-      setEndAyah(maxAyah);
-    }
-  }, [selectedSurahData]);
-
   const generateRandomAyah = () => {
     if (!startAyah || !endAyah) return;
     if (startAyah < 1 || endAyah > maxAyah) return;
@@ -67,6 +59,16 @@ export function useMurajaah() {
     localStorage.setItem("murajaah-selected-mode", newMode);
   };
 
+  const changeStartAyah = (ayahNumber: number) => {
+    setStartAyah(ayahNumber);
+    localStorage.setItem("murajaah-start-ayah", ayahNumber.toString());
+  };
+
+  const changeEndAyah = (ayahNumber: number) => {
+    setEndAyah(ayahNumber);
+    localStorage.setItem("murajaah-end-ayah", ayahNumber.toString());
+  };
+
   useEffect(() => {
     const storedSurah = localStorage.getItem("murajaah-selected-surah");
     const storedMode =
@@ -80,14 +82,25 @@ export function useMurajaah() {
     }
   }, []);
 
+  useEffect(() => {
+    if (selectedSurahData) {
+      const storedStartAyah = localStorage.getItem("murajaah-start-ayah");
+      const storedEndAyah = localStorage.getItem("murajaah-end-ayah");
+
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      changeStartAyah(storedStartAyah ? Number(storedStartAyah) : minAyah);
+      changeEndAyah(storedEndAyah ? Number(storedEndAyah) : maxAyah);
+    }
+  }, [selectedSurahData]);
+
   return {
     selectedSurah,
     setSelectedSurah,
     changeSurah,
     startAyah,
-    setStartAyah,
+    changeStartAyah,
     endAyah,
-    setEndAyah,
+    changeEndAyah,
     randomAyah,
     setRandomAyah,
     randoming,

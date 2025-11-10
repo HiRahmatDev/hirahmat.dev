@@ -22,9 +22,9 @@ export default function MurajaahAtTaisirLayout({
     selectedSurah,
     changeSurah,
     startAyah,
-    setStartAyah,
+    changeStartAyah,
     endAyah,
-    setEndAyah,
+    changeEndAyah,
     randomAyah,
     randoming,
     generateRandomAyah,
@@ -83,7 +83,7 @@ export default function MurajaahAtTaisirLayout({
                         max={maxAyah}
                         value={startAyah}
                         disabled={!selectedSurah}
-                        onChange={(ayah) => setStartAyah(ayah)}
+                        onChange={(ayah) => changeStartAyah(ayah)}
                       />
                       <AyahInputNumber
                         placeholder="Sampai ayat ke-"
@@ -91,7 +91,7 @@ export default function MurajaahAtTaisirLayout({
                         max={maxAyah}
                         value={endAyah}
                         disabled={!selectedSurah}
-                        onChange={(ayah) => setEndAyah(ayah)}
+                        onChange={(ayah) => changeEndAyah(ayah)}
                       />
                     </div>
                   </div>

@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Animated number when generating random ayah.
 - A Surah selector to the murajaah-at-taisir lab app.
   - You can now easily search and pick a Surah from a dropdown list.
+- Cached murajaah form input.
 
 ### Changed
 
