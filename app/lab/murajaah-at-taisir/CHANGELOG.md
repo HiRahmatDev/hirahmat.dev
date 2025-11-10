@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Refactored `QuranPageRenderer` for mobile-friendly layout and scaling.
 - Cached murajaah form input.
+- Map surah name to Bahasa.
 
 ## [v0.3.0] - 2025-11-9
 

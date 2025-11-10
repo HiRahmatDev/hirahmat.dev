@@ -1,10 +1,5 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
-import clsx from "clsx";
-import useSWR from "swr";
-
-import { fetchAllSurah } from "../lib/fetchAllSurah";
 import {
   Button,
   ComboBox,
@@ -13,6 +8,12 @@ import {
   ListBoxItem,
   Popover,
 } from "react-aria-components";
+import { ChevronDown } from "lucide-react";
+import clsx from "clsx";
+import useSWR from "swr";
+
+import { fetchAllSurah } from "../lib/fetchAllSurah";
+import { SURAH_MAP } from "../lib/constants";
 
 type SurahSelectProps = Readonly<{
   value?: number;
@@ -29,9 +30,11 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
   const { data: allSurah } = useSWR("all-surah", fetchAllSurah);
 
   const options: Option[] = (allSurah?.data || []).map((item) => {
+    const surahNameId = SURAH_MAP[item.number];
+
     return {
       key: String(item.number),
-      label: item.englishName,
+      label: surahNameId,
       id: item.number,
     };
   });
