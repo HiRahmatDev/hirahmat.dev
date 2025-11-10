@@ -2,18 +2,16 @@
 
 import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import clsx from "clsx";
 
+import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AyahInputNumber } from "./components/AyahInputNumber";
 import { ContactCTA } from "@/app/components/ContactCTA";
-import { MurajaahProvider } from "./context/MurajaahContext";
-import { useMurajaah } from "./hooks/useMurajaah";
-import { ModeRadio } from "./components/ModeRadio";
 import { Label } from "./components/Label";
-import { AnimatedNumber } from "./components/AnimatedNumber";
-import { SurahSelect } from "./components/SurahSelect";
+import { ModeRadio } from "./components/ModeRadio";
 import { MurajaahButton } from "./components/MurajaahButton";
-import { twMerge } from "tailwind-merge";
+import { MurajaahProvider } from "./context/MurajaahContext";
+import { SurahSelect } from "./components/SurahSelect";
+import { useMurajaah } from "./hooks/useMurajaah";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -22,13 +20,12 @@ export default function MurajaahAtTaisirLayout({
 
   const {
     selectedSurah,
-    setSelectedSurah,
+    changeSurah,
     startAyah,
     setStartAyah,
     endAyah,
     setEndAyah,
     randomAyah,
-    setRandomAyah,
     randoming,
     generateRandomAyah,
     mode,
@@ -76,8 +73,7 @@ export default function MurajaahAtTaisirLayout({
                     <SurahSelect
                       value={selectedSurah ?? undefined}
                       onChange={(surahNumber) => {
-                        setSelectedSurah(surahNumber);
-                        setRandomAyah(null);
+                        changeSurah(surahNumber);
                       }}
                     />
                     <div className="flex gap-2">

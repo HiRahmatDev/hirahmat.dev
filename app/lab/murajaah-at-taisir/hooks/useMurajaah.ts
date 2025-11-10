@@ -56,9 +56,24 @@ export function useMurajaah() {
     }, 500);
   };
 
+  const changeSurah = (surahNumber: number) => {
+    setSelectedSurah(surahNumber);
+    setRandomAyah(null);
+    localStorage.setItem("murajaah-selected-surah", surahNumber.toString());
+  };
+
+  useEffect(() => {
+    const storedSurah = localStorage.getItem("murajaah-selected-surah");
+    if (storedSurah) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      changeSurah(Number(storedSurah));
+    }
+  }, []);
+
   return {
     selectedSurah,
     setSelectedSurah,
+    changeSurah,
     startAyah,
     setStartAyah,
     endAyah,
