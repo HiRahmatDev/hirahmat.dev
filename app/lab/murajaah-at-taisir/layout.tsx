@@ -2,16 +2,16 @@
 
 import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import clsx from "clsx";
 
+import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AyahInputNumber } from "./components/AyahInputNumber";
 import { ContactCTA } from "@/app/components/ContactCTA";
-import { MurajaahProvider } from "./context/MurajaahContext";
-import { useMurajaah } from "./hooks/useMurajaah";
-import { ModeRadio } from "./components/ModeRadio";
 import { Label } from "./components/Label";
-import { AnimatedNumber } from "./components/AnimatedNumber";
+import { ModeRadio } from "./components/ModeRadio";
+import { MurajaahButton } from "./components/MurajaahButton";
+import { MurajaahProvider } from "./context/MurajaahContext";
 import { SurahSelect } from "./components/SurahSelect";
+import { useMurajaah } from "./hooks/useMurajaah";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -20,17 +20,16 @@ export default function MurajaahAtTaisirLayout({
 
   const {
     selectedSurah,
-    setSelectedSurah,
+    changeSurah,
     startAyah,
-    setStartAyah,
+    changeStartAyah,
     endAyah,
-    setEndAyah,
+    changeEndAyah,
     randomAyah,
-    setRandomAyah,
     randoming,
     generateRandomAyah,
     mode,
-    setMode,
+    changeMode,
     ayahData,
     minAyah,
     maxAyah,
@@ -47,7 +46,7 @@ export default function MurajaahAtTaisirLayout({
   const disabledButton = !selectedSurah || randoming;
 
   return (
-    <MurajaahProvider value={{ ayahData, mode, setMode }}>
+    <MurajaahProvider value={{ ayahData, mode, changeMode }}>
       <div className="min-h-[calc(100vh-calc(64px+88px))]">
         <div className="container pb-10">
           <div className="mb-8">
@@ -74,8 +73,7 @@ export default function MurajaahAtTaisirLayout({
                     <SurahSelect
                       value={selectedSurah ?? undefined}
                       onChange={(surahNumber) => {
-                        setSelectedSurah(surahNumber);
-                        setRandomAyah(null);
+                        changeSurah(surahNumber);
                       }}
                     />
                     <div className="flex gap-2">
@@ -85,7 +83,7 @@ export default function MurajaahAtTaisirLayout({
                         max={maxAyah}
                         value={startAyah}
                         disabled={!selectedSurah}
-                        onChange={(ayah) => setStartAyah(ayah)}
+                        onChange={(ayah) => changeStartAyah(ayah)}
                       />
                       <AyahInputNumber
                         placeholder="Sampai ayat ke-"
@@ -93,34 +91,47 @@ export default function MurajaahAtTaisirLayout({
                         max={maxAyah}
                         value={endAyah}
                         disabled={!selectedSurah}
-                        onChange={(ayah) => setEndAyah(ayah)}
+                        onChange={(ayah) => changeEndAyah(ayah)}
                       />
                     </div>
                   </div>
                 </div>
-                <ModeRadio value={mode} onChange={setMode} />
+                <ModeRadio value={mode} onChange={changeMode} />
               </div>
               <div>
-                <button
+                <MurajaahButton
+                  mode={mode}
                   disabled={disabledButton}
-                  className={clsx(
-                    "text-white px-4 py-3 font-medium rounded-lg w-full",
-                    disabledButton
-                      ? "bg-zinc-300 hover:bg-zinc-300 cursor-not-allowed"
-                      : "animate-hover cursor-pointer",
-                    mode === "TADRIB"
-                      ? "bg-calm hover:bg-calm-hover"
-                      : "bg-accent hover:bg-accent-hover"
-                  )}
                   onClick={generateRandomAyah}
-                >
-                  Mulai {mode === "TADRIB" ? "Latihan" : "Murajaah"}
-                </button>
+                  className="hidden sm:block"
+                />
+                <div className="-translate-x-1/2 sm:hidden fixed bottom-0 left-1/2 w-full bg-white">
+                  <div className="flex gap-3 max-w-[420px] w-full px-5 pt-4 pb-8 mx-auto">
+                    <MurajaahButton
+                      mode={mode}
+                      disabled={disabledButton}
+                      onClick={generateRandomAyah}
+                    />
+                    <div className="relative min-w-[80px] border border-zinc-200 rounded-lg flex justify-center items-center">
+                      <div className="absolute -top-2 left-1 text-xs italic semibold text-zinc-400 px-1 bg-white tracking-[-0.5px]">
+                        ayat ke-
+                      </div>
+                      <AnimatedNumber
+                        min={startAyah || minAyah}
+                        max={endAyah || maxAyah}
+                        animating={randoming}
+                        number={randomAyah}
+                        className="text-3xl py-0"
+                      />
+                    </div>
+                  </div>
+                </div>
                 <AnimatedNumber
-                  min={minAyah}
-                  max={maxAyah}
+                  min={startAyah || minAyah}
+                  max={endAyah || maxAyah}
                   animating={randoming}
                   number={randomAyah}
+                  className="hidden sm:block"
                 />
               </div>
             </div>
