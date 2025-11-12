@@ -14,6 +14,7 @@ export function useMurajaah() {
   const [mode, setMode] = useState(DEFAULT_MODE);
 
   const changeSurah = (surahNumber: number) => {
+    if (!surahNumber || surahNumber < 1 || surahNumber > 114) return;
     setSelectedSurah(surahNumber);
     setRandomAyah(null);
     localStorage.setItem("murajaah-selected-surah", surahNumber.toString());
