@@ -14,6 +14,7 @@ import useSWR from "swr";
 
 import { fetchAllSurah } from "../lib/fetchAllSurah";
 import { SURAH_MAP } from "../lib/constants";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 type SurahSelectProps = Readonly<{
   value?: number;
@@ -27,6 +28,7 @@ type Option = {
 };
 
 export function SurahSelect({ value, onChange }: SurahSelectProps) {
+  const isMobile = useIsMobile();
   const { data: allSurah } = useSWR("all-surah", fetchAllSurah);
 
   const options: Option[] = (allSurah?.data || []).map((item) => {
@@ -34,7 +36,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
 
     return {
       key: String(item.number),
-      label: surahNameId,
+      label: `${item.number}. ${surahNameId}`,
       id: item.number,
     };
   });
@@ -60,7 +62,8 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             <Button className="flex border border-gray-300 rounded-lg relative cursor-pointer w-full">
               <Input
                 placeholder="Masukkan surah Alquran"
-                className="grow-1 py-2 px-3 rounded-lg pr-8"
+                className="grow-1 py-2 px-3 rounded-lg pr-8 cursor-pointer sm:cursor-text"
+                disabled={isMobile}
               />
               <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
                 <ChevronDown
@@ -86,7 +89,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                 </div>
               )}
             >
-              {({ label, id }: Option) => (
+              {({ label }: Option) => (
                 <ListBoxItem
                   textValue={label}
                   className={({ isFocused }) =>
@@ -96,7 +99,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                     )
                   }
                 >
-                  {id}. {label}
+                  {label}
                 </ListBoxItem>
               )}
             </ListBox>
