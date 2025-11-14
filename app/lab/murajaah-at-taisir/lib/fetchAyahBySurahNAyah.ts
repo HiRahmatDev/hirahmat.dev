@@ -1,6 +1,7 @@
 export type AyahData = {
   text: string;
   page: number;
+  numberInSurah: number;
 };
 
 export async function fetchAyahBySurahNAyah({
@@ -17,5 +18,6 @@ export async function fetchAyahBySurahNAyah({
   return {
     text: res.data.text,
     page: res.data.page,
+    numberInSurah: res.data.numberInSurah,
   };
 }
