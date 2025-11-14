@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     if (!file) {
       return NextResponse.json(
-        { error: "No audio file provided" },
+        { error: "No audio file provided", status: 400 },
         { status: 400 }
       );
     }
@@ -24,18 +24,21 @@ export async function POST(req: Request) {
       ...(language ? { language } : {}),
     });
 
-    if (!transcription.text || transcription.text.trim() === "") {
+    if (!transcription.text || transcription.text.trim() === "null") {
       return NextResponse.json(
-        { error: "No speech detected or audio is unclear." },
+        { error: "No speech detected or audio is unclear.", status: 400 },
         { status: 400 }
       );
     }
 
-    return NextResponse.json({ transcription: transcription.text });
+    return NextResponse.json({
+      transcription: transcription.text,
+      status: 200,
+    });
   } catch (error) {
     console.error("Error transcribing audio:", error);
     return NextResponse.json(
-      { error: "Failed to transcribe audio", message: error },
+      { error: "Failed to transcribe audio", message: error, status: 500 },
       { status: 500 }
     );
   }
