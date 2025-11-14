@@ -1,10 +1,19 @@
 "use client";
 
+import { Mic } from "lucide-react";
+import { twMerge } from "tailwind-merge";
 import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 
-type AudioRecorderProps = { onStopRecording?: (audioURL: string) => void };
+type AudioRecorderProps = {
+  className?: string;
+  onStopRecording?: (audioURL: string) => void;
+};
 
-export function AudioRecorder({ onStopRecording }: AudioRecorderProps) {
+export function AudioRecorder({
+  className,
+  onStopRecording,
+}: AudioRecorderProps) {
   const [isRecording, setIsRecording] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
@@ -54,12 +63,17 @@ export function AudioRecorder({ onStopRecording }: AudioRecorderProps) {
   };
 
   return (
-    <div className="py-6 space-y-3">
+    <div
+      className={twMerge("fixed bottom-8 left-1/2 -translate-x-1/2", className)}
+    >
       <button
-        className="cta-button"
+        className={clsx(
+          "rounded-full size-16 bg-red-600 flex justify-center items-center",
+          "[&>svg]:stroke-white active:scale-80 transition-transform"
+        )}
         onClick={isRecording ? stopRecording : startRecording}
       >
-        {isRecording ? "Stop Recording" : "Start Recording"}
+        {isRecording ? <div className="size-5 bg-white rounded-sm" /> : <Mic />}
       </button>
     </div>
   );
