@@ -15,6 +15,7 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
   const randomText = ayahData?.text || "";
 
   const isSelectedAyah =
+    ayah.numberInSurah === ayahData?.numberInSurah &&
     normalizeArabic(randomText) === normalizeArabic(ayah.text);
 
   if (isSurahAlfatiha) {

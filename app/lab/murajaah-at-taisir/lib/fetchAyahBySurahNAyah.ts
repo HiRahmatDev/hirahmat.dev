@@ -1,6 +1,7 @@
 export type AyahData = {
   text: string;
   page: number;
+  numberInSurah: number;
 };
 
 export async function fetchAyahBySurahNAyah({
@@ -14,8 +15,11 @@ export async function fetchAyahBySurahNAyah({
     `https://api.alquran.cloud/v1/ayah/${surah}:${ayah}`
   ).then((res) => res.json());
 
+  console.log(res);
+
   return {
     text: res.data.text,
     page: res.data.page,
+    numberInSurah: res.data.numberInSurah,
   };
 }
