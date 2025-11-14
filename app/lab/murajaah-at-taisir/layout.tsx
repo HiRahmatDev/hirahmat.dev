@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AyahInputNumber } from "./components/AyahInputNumber";
-import { ContactCTA } from "@/app/(main)/components/ContactCTA";
 import { Label } from "./components/Label";
+import { MenuButton } from "./components/MenuButton";
 import { ModeRadio } from "./components/ModeRadio";
 import { MurajaahButton } from "./components/MurajaahButton";
 import { MurajaahProvider } from "./context/MurajaahContext";
@@ -46,7 +46,21 @@ export default function MurajaahAtTaisirLayout({
   const disabledButton = !selectedSurah || randoming;
 
   return (
-    <MurajaahProvider value={{ ayahData, mode, changeMode }}>
+    <MurajaahProvider
+      value={{
+        ayahData,
+        selectedSurah,
+        changeSurah,
+        startAyah,
+        changeStartAyah,
+        endAyah,
+        changeEndAyah,
+        mode,
+        changeMode,
+        minAyah,
+        maxAyah,
+      }}
+    >
       <div className="min-h-screen pb-[96px]">
         <div className="container pt-4">
           <div className="mb-8">
@@ -61,10 +75,10 @@ export default function MurajaahAtTaisirLayout({
               - Adi Hidayat
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row justify-between gap-5">
+          <div className="flex flex-col sm:flex-row justify-between gap-10">
             <div
               id="murajaah-sidebar"
-              className="flex flex-col gap-8 grow-1 sm:sticky z-10 bg-white h-fit"
+              className="hidden sm:flex flex-col gap-8 grow-1 sm:sticky z-10 bg-white h-fit"
             >
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
@@ -103,35 +117,34 @@ export default function MurajaahAtTaisirLayout({
                   mode={mode}
                   disabled={disabledButton}
                   onClick={generateRandomAyah}
-                  className="hidden sm:block"
                 />
-                <div className="-translate-x-1/2 sm:hidden fixed bottom-0 left-1/2 w-full bg-white">
-                  <div className="flex gap-3 max-w-[420px] w-full px-5 pt-4 pb-8 mx-auto">
-                    <MurajaahButton
-                      mode={mode}
-                      disabled={disabledButton}
-                      onClick={generateRandomAyah}
-                    />
-                    <div className="relative min-w-[80px] border border-zinc-200 rounded-lg flex justify-center items-center">
-                      <div className="absolute -top-2 left-1 text-xs italic semibold text-zinc-400 px-1 bg-white tracking-[-0.5px]">
-                        ayat ke-
-                      </div>
-                      <AnimatedNumber
-                        min={startAyah || minAyah}
-                        max={endAyah || maxAyah}
-                        animating={randoming}
-                        number={randomAyah}
-                        className="text-3xl py-0"
-                      />
-                    </div>
-                  </div>
-                </div>
                 <AnimatedNumber
                   min={startAyah || minAyah}
                   max={endAyah || maxAyah}
                   animating={randoming}
                   number={randomAyah}
-                  className="hidden sm:block"
+                />
+              </div>
+            </div>
+            <div className="-translate-x-1/2 sm:hidden z-20 fixed bottom-0 left-1/2 w-full bg-white">
+              <div className="flex gap-3 max-w-[420px] w-full px-5 pt-4 pb-8 mx-auto">
+                <MenuButton className="-ml-2" />
+                <div className="relative min-w-[80px] border border-zinc-200 rounded-lg flex justify-center items-center">
+                  <div className="absolute -top-2 left-1 text-xs italic semibold text-zinc-400 px-1 bg-white tracking-[-0.5px]">
+                    ayat ke-
+                  </div>
+                  <AnimatedNumber
+                    min={startAyah || minAyah}
+                    max={endAyah || maxAyah}
+                    animating={randoming}
+                    number={randomAyah}
+                    className="text-3xl py-0"
+                  />
+                </div>
+                <MurajaahButton
+                  mode={mode}
+                  disabled={disabledButton}
+                  onClick={generateRandomAyah}
                 />
               </div>
             </div>

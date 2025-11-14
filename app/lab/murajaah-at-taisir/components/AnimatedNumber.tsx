@@ -41,7 +41,7 @@ export function AnimatedNumber({
   return (
     <p
       className={twMerge(
-        "text-center py-6 text-7xl font-bold tracking-tight",
+        "text-center py-6 text-7xl font-bold tracking-tight pointer-events-none",
         className
       )}
     >
