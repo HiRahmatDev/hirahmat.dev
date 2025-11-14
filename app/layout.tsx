@@ -4,8 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
 import { BASE_URL, SITE_NAME } from "./constants";
-import { FooterCopyrights } from "@/app/components/FooterCopyrights";
-import { Navbar } from "@/app/components/Navbar";
 
 import "./globals.css";
 
@@ -52,15 +50,9 @@ export default function RootLayout({
       <body
         className={`${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`}
       >
-        <Navbar />
-        <main tabIndex={-1}>
-          {children}
-          <Analytics />
-          <SpeedInsights />
-        </main>
-        <footer tabIndex={-1}>
-          <FooterCopyrights />
-        </footer>
+        {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

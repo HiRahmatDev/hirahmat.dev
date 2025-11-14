@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-import { ContactCTA } from "@/app/components/ContactCTA";
+import { ContactCTA } from "@/app/(main)/components/ContactCTA";
 import {
   fetchAllArticles,
   fetchArticleByBlockId,
@@ -10,9 +10,9 @@ import {
   fetchArticleTOCByBlockId,
 } from "@/app/services/notion";
 import { formatDate } from "@/app/lib/dayjs";
-import { NotionRenderer } from "@/app/components/NotionRenderer";
+import { NotionRenderer } from "@/app/(main)/components/NotionRenderer";
 import { SITE_NAME } from "@/app/constants";
-import { RichText } from "@/app/components/NotionRenderer/common/RichText";
+import { RichText } from "@/app/(main)/components/NotionRenderer/common/RichText";
 
 export async function generateStaticParams() {
   const allArticles = await fetchAllArticles();
