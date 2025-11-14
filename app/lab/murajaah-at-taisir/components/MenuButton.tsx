@@ -35,7 +35,7 @@ export function MenuButton({ className }: { className?: string }) {
       <Pressable>
         <button
           className={twMerge(
-            "size-12 rounded-lg cursor-pointer shrink-0 flex justify-center items-center",
+            "size-12 rounded-lg cursor-pointer shrink-0 flex justify-center items-center bg-zinc-100",
             "active:scale-80 transition-transform",
             className
           )}
@@ -43,7 +43,7 @@ export function MenuButton({ className }: { className?: string }) {
           <Menu />
         </button>
       </Pressable>
-      <ModalOverlay isDismissable className="fixed inset-0 z-20 bg-black/60">
+      <ModalOverlay isDismissable className="fixed inset-0 z-20 bg-black/30">
         <Modal>
           <Dialog className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6">
             <div className="container">

@@ -64,7 +64,7 @@ export default function MurajaahAtTaisirLayout({
       <div className="min-h-screen pb-[96px]">
         <div className="container pt-4">
           <div className="mb-8">
-            <h1 className="text-4xl tracking-[-1px] font-semibold mb-1">
+            <h1 className="text-2xl tracking-[-0.5px] font-bold sm:text-4xl sm:tracking-[-1px] sm:font-semibold mb-1">
               Muraja{"'"}ah at-Taisir
             </h1>
             <p className="text-zinc-500 italic text-sm max-w-prose">
@@ -128,7 +128,6 @@ export default function MurajaahAtTaisirLayout({
             </div>
             <div className="-translate-x-1/2 sm:hidden z-20 fixed bottom-0 left-1/2 w-full bg-white">
               <div className="flex gap-3 max-w-[420px] w-full px-5 pt-4 pb-8 mx-auto">
-                <MenuButton className="-ml-2" />
                 <div className="relative min-w-[80px] border border-zinc-200 rounded-lg flex justify-center items-center">
                   <div className="absolute -top-2 left-1 text-xs italic semibold text-zinc-400 px-1 bg-white tracking-[-0.5px]">
                     ayat ke-
@@ -146,6 +145,7 @@ export default function MurajaahAtTaisirLayout({
                   disabled={disabledButton}
                   onClick={generateRandomAyah}
                 />
+                <MenuButton />
               </div>
             </div>
             <div>{children}</div>
