@@ -58,6 +58,9 @@ export function AudioRecorder({
   const stopRecording = () => {
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
+      mediaRecorderRef.current.stream
+        .getTracks()
+        .forEach((track) => track.stop());
       setIsRecording(false);
     }
   };

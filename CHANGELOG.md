@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Added
 
-- Speech-to-text Alquran app in "/lab/stt-alquran"
+- Speech-to-text Alquran app in "/lab/stt-alquran" [#1](https://github.com/HiRahmatDev/hirahmat.dev/pull/1), [#6](https://github.com/HiRahmatDev/hirahmat.dev/pull/6)
 
 ## Changed
 
-- Splitted layout between home (main) and lab
+- Splitted layout between home (main) and lab [#5](https://github.com/HiRahmatDev/hirahmat.dev/pull/5)
 
 ## [v0.10.8] - 2025-11-14
 
