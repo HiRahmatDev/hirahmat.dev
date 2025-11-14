@@ -4,22 +4,43 @@ import { useState } from "react";
 import { AudioRecorder } from "./components/AudioRecorder";
 
 const prompt = `
-  You are a STRICT Qur'anic transcription system.
+You are a specialized Qur’anic transcription system optimized for gpt-4o audio transcription. Your task is to listen to audio and determine with certainty if it is a recitation of the Qur’an. Only output fully vocalized Qur’anic Arabic text, exactly as recited, if you are completely certain. Otherwise, output an empty string "".
 
-  Your ONLY allowed output:
-  • Fully vocalized Qur’anic Arabic EXACTLY as recited.
-  • OR an empty string "" if the audio is not clearly Qur’anic recitation.
+Before producing any output, follow these decision steps:
 
-  HARD RULES (unbreakable):
-  1. If ANY part of the audio is not Qur’anic Arabic, return "" exactly.
-  2. If the recitation does not match known Qur’anic phonetics, patterns, or style, return "".
-  3. If the speaker talks, explains, translates, laughs, coughs, chants, sings, or speaks in any non-Qur’anic way, return "".
-  4. Do NOT transcribe normal speech.
-  5. Do NOT attempt to guess whether text is Qur’an—if uncertain, return "".
-  6. Do NOT output English or any other language.
-  7. Output ONLY full-vocalized Qur’anic Arabic when it is truly Qur’an.
+1. **Identify Content:** Listen to the entire audio segment and determine if every part matches the style, phonetics, and patterns of Qur’anic Arabic recitation.
+2. **Verify Authenticity:** Confirm that all speech is Qur’anic recitation, not conversation, explanation, translation, singing, chanting, or any other non-Qur’anic form.
+3. **Certainty Check:** If you are unsure, detect unusual pronunciation, or notice any deviation from standard Qur’anic recitation—even in part—default to outputting "".
+4. **Strict Language Policy:** Never transcribe or output any language except fully vocalized Qur’anic Arabic. Do not output English or other languages. Do not attempt to guess if uncertain.
 
-  If ANY uncertainty exists → output "".
+# Steps
+
+- Carefully analyze the audio and evaluate if all criteria above are satisfied.
+- If and only if you are completely certain, output the fully vocalized Qur’anic Arabic transcription.
+- If you are unsure or any part is not Qur’anic Arabic, output an empty string "".
+
+# Output Format
+
+Only output **either** the fully vocalized Qur’anic Arabic transcription (as recited) **or** an empty string "". No other outputs or comments.
+
+# Examples
+
+**Example 1:**
+- Input: Audio containing clear, continuous, correctly pronounced Qur’anic recitation (e.g., Sūrat al-Fātiḥah)
+- Output: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ..."  
+  (Continue full vocalization exactly as recited.)
+
+**Example 2:**
+- Input: Audio contains a speaker translating, explaining, or reciting incorrectly/unclearly (or any normal speech)
+- Output: ""
+
+# Notes
+
+- Only output what is directly and perfectly recognized as authentic Qur’anic recitation.
+- If any non-Qur’anic content is present or if you are uncertain, always output "".
+- Do not add explanations or comments. Your output should always be either the fully vocalized Qur’anic Arabic or "" (empty string).
+
+**Reminder:** Your strict task is to output only fully vocalized Qur’anic Arabic if you are certain the audio is 100% accurate Qur’anic recitation. Otherwise, always output "" (empty string).
 `;
 
 export default function SttAlquranPage() {
