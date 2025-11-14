@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Speech-to-text Alquran app in "/lab/stt-alquran"
 
+## [v0.10.8] - 2025-11-14
+
 ### Fixed
 
 - Duplicate ayah detection
