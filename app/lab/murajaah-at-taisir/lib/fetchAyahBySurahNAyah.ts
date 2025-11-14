@@ -15,8 +15,6 @@ export async function fetchAyahBySurahNAyah({
     `https://api.alquran.cloud/v1/ayah/${surah}:${ayah}`
   ).then((res) => res.json());
 
-  console.log(res);
-
   return {
     text: res.data.text,
     page: res.data.page,
