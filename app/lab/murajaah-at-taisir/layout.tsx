@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AyahInputNumber } from "./components/AyahInputNumber";
-import { ContactCTA } from "@/app/components/ContactCTA";
+import { ContactCTA } from "@/app/(main)/components/ContactCTA";
 import { Label } from "./components/Label";
 import { ModeRadio } from "./components/ModeRadio";
 import { MurajaahButton } from "./components/MurajaahButton";
@@ -47,8 +47,8 @@ export default function MurajaahAtTaisirLayout({
 
   return (
     <MurajaahProvider value={{ ayahData, mode, changeMode }}>
-      <div className="min-h-[calc(100vh-calc(64px+88px))]">
-        <div className="container pb-10">
+      <div className="min-h-screen pb-[96px]">
+        <div className="container pt-4">
           <div className="mb-8">
             <h1 className="text-4xl tracking-[-1px] font-semibold mb-1">
               Muraja{"'"}ah at-Taisir
@@ -139,7 +139,6 @@ export default function MurajaahAtTaisirLayout({
           </div>
         </div>
       </div>
-      <ContactCTA />
     </MurajaahProvider>
   );
 }

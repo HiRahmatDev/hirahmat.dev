@@ -42,8 +42,8 @@ export default function SttAlquranPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-calc(64px+88px))]">
-      <div className="container">
+    <div className="min-h-screen">
+      <div className="container pt-4">
         <h1 className="text-3xl tracking-[-1px] font-bold text-center mb-6">
           Speech-to-text Alquran
         </h1>
