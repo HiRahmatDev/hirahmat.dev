@@ -101,11 +101,11 @@
   }
 
   .overlay-enter-active {
-    animation: overlayFadeIn 300ms var(--transition-navbar) forwards;
+    animation: overlayFadeIn 300ms ease forwards;
   }
 
-  .overlay-exit-active {
-    animation: overlayFadeOut 300ms var(--transition-navbar) forwards;
+  .overlay-leave-active {
+    animation: overlayFadeOut 300ms ease forwards;
   }
 
   .slide-up {
@@ -113,11 +113,11 @@
   }
 
   .slide-up-active {
-    animation: slideUp 300ms var(--transition-navbar) forwards;
+    animation: slideUp 300ms ease forwards;
   }
 
   .slide-down-active {
-    animation: slideDown 300ms var(--transition-navbar) forwards;
+    animation: slideDown 300ms ease forwards;
   }
 
   @keyframes slideUp {

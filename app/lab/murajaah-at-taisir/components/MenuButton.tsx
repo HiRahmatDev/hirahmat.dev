@@ -44,7 +44,7 @@ export function MenuButton({ className }: { className?: string }) {
         modalOverlay.classList.replace("overlay-enter-active", "overlay-enter");
       }, 300);
     } else {
-      modalOverlay.classList.replace("overlay-enter", "overlay-exit-active");
+      modalOverlay.classList.replace("overlay-enter", "overlay-leave-active");
     }
     return () => clearTimeout(timeoutId);
   }, [isOpen]);
