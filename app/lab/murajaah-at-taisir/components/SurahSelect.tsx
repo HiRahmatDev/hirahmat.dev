@@ -3,12 +3,18 @@
 import {
   Button,
   ComboBox,
+  Dialog,
+  DialogTrigger,
   Input,
   ListBox,
   ListBoxItem,
+  Modal,
+  ModalOverlay,
   Popover,
+  Pressable,
 } from "react-aria-components";
 import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 import clsx from "clsx";
 import useSWR from "swr";
 
@@ -29,6 +35,7 @@ type Option = {
 
 export function SurahSelect({ value, onChange }: SurahSelectProps) {
   const isMobile = useIsMobile();
+  const [openBottomSheet, setOpenBottomSheet] = useState(false);
   const { data: allSurah } = useSWR("all-surah", fetchAllSurah);
 
   const options: Option[] = (allSurah?.data || []).map((item) => {
@@ -40,6 +47,72 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
       id: item.number,
     };
   });
+
+  if (isMobile) {
+    const renderLabel = (surahNumber: number) => {
+      const surah = allSurah?.data.find(
+        (surah) => surah.number === surahNumber
+      );
+      if (!surah) {
+        return <span className="text-zinc-400">Pilih Surah</span>;
+      }
+      const surahNameId = SURAH_MAP[surah.number];
+      return `${surah.number}. ${surahNameId}`;
+    };
+
+    return (
+      <DialogTrigger isOpen={openBottomSheet} onOpenChange={setOpenBottomSheet}>
+        <Pressable>
+          <button
+            className={clsx(
+              "relative rounded-lg text-left cursor-pointer py-2 pl-3 pr-8 border border-gray-300 "
+            )}
+          >
+            {renderLabel(value ?? -1)}
+            <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
+              <ChevronDown size={16} />
+            </div>
+          </button>
+        </Pressable>
+        <ModalOverlay isDismissable className="fixed inset-0 z-20 bg-black/30">
+          <Modal>
+            <Dialog className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6">
+              {({ close }) => (
+                <ListBox
+                  aria-label="Surah List"
+                  items={options}
+                  renderEmptyState={() => (
+                    <div className="py-2.5 px-5 italic text-zinc-400">
+                      Tidak ada surah dengan nama tersebut.
+                    </div>
+                  )}
+                  onAction={(key) => {
+                    onChange?.(Number(key));
+                    close();
+                  }}
+                  className="mx-auto max-w-[420px] overflow-auto max-h-[80vh] -mb-7 pb-8"
+                >
+                  {({ label }: Option) => (
+                    <ListBoxItem
+                      textValue={label}
+                      className={({ isFocused }) =>
+                        clsx(
+                          "py-2.5 px-5 select-none cursor-pointer transition-colors duration-150",
+                          isFocused && "bg-zinc-200"
+                        )
+                      }
+                    >
+                      {label}
+                    </ListBoxItem>
+                  )}
+                </ListBox>
+              )}
+            </Dialog>
+          </Modal>
+        </ModalOverlay>
+      </DialogTrigger>
+    );
+  }
 
   return (
     <ComboBox
@@ -63,7 +136,6 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
               <Input
                 placeholder="Masukkan surah Alquran"
                 className="grow-1 py-2 px-3 rounded-lg pr-8 cursor-pointer sm:cursor-text"
-                disabled={isMobile}
               />
               <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
                 <ChevronDown
