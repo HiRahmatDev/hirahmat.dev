@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AyahInputNumber } from "./components/AyahInputNumber";
 import { Label } from "./components/Label";
-import { MenuButton } from "./components/MenuButton";
 import { ModeRadio } from "./components/ModeRadio";
 import { MurajaahButton } from "./components/MurajaahButton";
 import { MurajaahProvider } from "./context/MurajaahContext";
