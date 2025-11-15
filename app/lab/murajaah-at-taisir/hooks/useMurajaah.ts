@@ -71,6 +71,7 @@ export function useMurajaah() {
 
   const minAyah = DEFAULT_MIN_AYAH;
   const maxAyah = selectedSurahData?.data.numberOfAyahs || DEFAULT_MAX_AYAH;
+  const isMurajaahButtonDisabled = !selectedSurah || randoming;
 
   const generateRandomAyah = () => {
     if (!startAyah || !endAyah) return;
@@ -130,5 +131,6 @@ export function useMurajaah() {
     ayahData,
     minAyah,
     maxAyah,
+    isMurajaahButtonDisabled,
   };
 }
