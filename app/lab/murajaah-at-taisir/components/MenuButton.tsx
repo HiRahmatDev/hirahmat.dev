@@ -46,7 +46,7 @@ export function MenuButton({ className }: { className?: string }) {
       <ModalOverlay isDismissable className="fixed inset-0 z-20 bg-black/30">
         <Modal>
           <Dialog className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6">
-            <div className="container">
+            <div className="mx-auto max-w-[420px] px-5">
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
                   <Label>Surah dan Ayat</Label>
