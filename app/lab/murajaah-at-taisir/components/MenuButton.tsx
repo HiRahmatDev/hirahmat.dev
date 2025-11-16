@@ -9,12 +9,12 @@ import {
 } from "react-aria-components";
 import { Menu } from "lucide-react";
 import { twMerge } from "tailwind-merge";
-import { useEffect, useRef, useState } from "react";
 
 import { AyahInputNumber } from "./AyahInputNumber";
 import { Label } from "./Label";
 import { ModeRadio } from "./ModeRadio";
 import { SurahSelect } from "./SurahSelect";
+import { useBottomSheet } from "../hooks/useBottomSheet";
 import { useMurajaahContext } from "../context/MurajaahContext";
 
 export function MenuButton({ className }: { className?: string }) {
@@ -31,54 +31,11 @@ export function MenuButton({ className }: { className?: string }) {
     maxAyah,
   } = useMurajaahContext();
 
-  const modalOverlayRef = useRef<HTMLDivElement | null>(null);
-  const bottomSheetRef = useRef<HTMLDivElement | null>(null);
-
-  const [isOpen, setOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const modalOverlay = modalOverlayRef.current;
-    if (!modalOverlay) return;
-    let timeoutId: ReturnType<typeof setTimeout>;
-    if (isOpen) {
-      timeoutId = setTimeout(() => {
-        modalOverlay.classList.replace("overlay-enter-active", "overlay-enter");
-      }, 300);
-    } else {
-      modalOverlay.classList.replace("overlay-enter", "overlay-leave-active");
-    }
-    return () => clearTimeout(timeoutId);
-  }, [isOpen]);
-
-  useEffect(() => {
-    const bottomSheet = bottomSheetRef.current;
-    if (!bottomSheet) return;
-    let timeoutId: ReturnType<typeof setTimeout>;
-    if (isOpen) {
-      timeoutId = setTimeout(() => {
-        bottomSheet.classList.replace("slide-up-active", "slide-up");
-      }, 300);
-    } else {
-      bottomSheet.classList.replace("slide-up", "slide-down-active");
-    }
-    return () => clearTimeout(timeoutId);
-  }, [isOpen]);
-
-  const handleOpenChange = (open: boolean) => {
-    if (open) {
-      setOpen(true);
-      setIsVisible(true);
-    } else {
-      setOpen(false);
-      setTimeout(() => {
-        setIsVisible(false);
-      }, 300);
-    }
-  };
+  const { isVisible, onVisibleChange, modalOverlayRef, bottomSheetRef } =
+    useBottomSheet();
 
   return (
-    <DialogTrigger isOpen={isVisible} onOpenChange={handleOpenChange}>
+    <DialogTrigger isOpen={isVisible} onOpenChange={onVisibleChange}>
       <Pressable>
         <button
           className={twMerge(
