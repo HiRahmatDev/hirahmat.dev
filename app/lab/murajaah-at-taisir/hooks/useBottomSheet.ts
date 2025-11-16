@@ -9,6 +9,7 @@ export function useBottomSheet() {
 
   useEffect(() => {
     const modalOverlay = modalOverlayRef.current;
+    console.log(modalOverlay);
     if (!modalOverlay) return;
     let timeoutId: ReturnType<typeof setTimeout>;
     if (isOpen) {

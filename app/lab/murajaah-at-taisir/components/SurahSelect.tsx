@@ -21,6 +21,7 @@ import useSWR from "swr";
 import { fetchAllSurah } from "../lib/fetchAllSurah";
 import { SURAH_MAP } from "../lib/constants";
 import { useIsMobile } from "../hooks/useIsMobile";
+import { useBottomSheet } from "../hooks/useBottomSheet";
 
 type SurahSelectProps = Readonly<{
   value?: number;
@@ -35,8 +36,10 @@ type Option = {
 
 export function SurahSelect({ value, onChange }: SurahSelectProps) {
   const isMobile = useIsMobile();
-  const [openBottomSheet, setOpenBottomSheet] = useState(false);
   const { data: allSurah } = useSWR("all-surah", fetchAllSurah);
+
+  const { isVisible, onVisibleChange, modalOverlayRef, bottomSheetRef } =
+    useBottomSheet();
 
   const options: Option[] = (allSurah?.data || []).map((item) => {
     const surahNameId = SURAH_MAP[item.number];
@@ -61,7 +64,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
     };
 
     return (
-      <DialogTrigger isOpen={openBottomSheet} onOpenChange={setOpenBottomSheet}>
+      <DialogTrigger isOpen={isVisible} onOpenChange={onVisibleChange}>
         <Pressable>
           <button
             className={clsx(
@@ -74,9 +77,16 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             </div>
           </button>
         </Pressable>
-        <ModalOverlay isDismissable className="fixed inset-0 z-20 bg-black/30">
+        <ModalOverlay
+          ref={modalOverlayRef}
+          isDismissable
+          className="fixed inset-0 z-20 overlay-enter-active"
+        >
           <Modal>
-            <Dialog className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6">
+            <Dialog
+              ref={bottomSheetRef}
+              className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 slide-up-active"
+            >
               {({ close }) => (
                 <ListBox
                   aria-label="Surah List"
