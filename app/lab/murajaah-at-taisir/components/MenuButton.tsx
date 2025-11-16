@@ -58,9 +58,7 @@ export function MenuButton({ className }: { className?: string }) {
             className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 slide-up-active"
           >
             <div className="mx-auto max-w-[420px] px-5">
-              <div className="mb-6">
-                <h2 className="text-lg tracking-tight font-bold">Pengaturan</h2>
-              </div>
+              <h2 className="text-lg tracking-tight font-bold mb-3">Pengaturan</h2>
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
                   <Label>Surat dan Ayat (Al-Qur{"'"}an)</Label>
