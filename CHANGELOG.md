@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Changed
 
 - Splitted layout between home (main) and lab [#5](https://github.com/HiRahmatDev/hirahmat.dev/pull/5)
+- Murajaah At-Taisir Mobile UI Optimization [#7](https://github.com/HiRahmatDev/hirahmat.dev/pull/7)
 
 ## [v0.10.8] - 2025-11-14
 
