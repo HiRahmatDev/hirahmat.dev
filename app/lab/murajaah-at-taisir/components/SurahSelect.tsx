@@ -8,13 +8,14 @@ import {
   Input,
   ListBox,
   ListBoxItem,
+  ListLayout,
   Modal,
   ModalOverlay,
   Popover,
   Pressable,
+  Virtualizer,
 } from "react-aria-components";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
 import clsx from "clsx";
 import useSWR from "swr";
 
@@ -88,34 +89,41 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
               className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 slide-up-active"
             >
               {({ close }) => (
-                <ListBox
-                  aria-label="Surah List"
-                  items={options}
-                  renderEmptyState={() => (
-                    <div className="py-2.5 px-5 italic text-zinc-400">
-                      Tidak ada surah dengan nama tersebut.
-                    </div>
-                  )}
-                  onAction={(key) => {
-                    onChange?.(Number(key));
-                    close();
+                <Virtualizer
+                  layout={ListLayout}
+                  layoutOptions={{
+                    rowHeight: 44,
                   }}
-                  className="mx-auto max-w-[420px] overflow-auto max-h-[80vh] -mb-7 pb-8"
                 >
-                  {({ label }: Option) => (
-                    <ListBoxItem
-                      textValue={label}
-                      className={({ isFocused }) =>
-                        clsx(
-                          "py-2.5 px-5 select-none cursor-pointer transition-colors duration-150",
-                          isFocused && "bg-zinc-200"
-                        )
-                      }
-                    >
-                      {label}
-                    </ListBoxItem>
-                  )}
-                </ListBox>
+                  <ListBox
+                    aria-label="Surah List"
+                    items={options}
+                    renderEmptyState={() => (
+                      <div className="py-2.5 px-5 italic text-zinc-400">
+                        Tidak ada surah dengan nama tersebut.
+                      </div>
+                    )}
+                    onAction={(key) => {
+                      onChange?.(Number(key));
+                      close();
+                    }}
+                    className="mx-auto max-w-[420px] overflow-auto max-h-[80vh] -mb-7 pb-7"
+                  >
+                    {({ label }: Option) => (
+                      <ListBoxItem
+                        textValue={label}
+                        className={({ isFocused }) =>
+                          clsx(
+                            "py-2.5 px-5 select-none cursor-pointer transition-colors duration-150",
+                            isFocused && "bg-zinc-200"
+                          )
+                        }
+                      >
+                        {label}
+                      </ListBoxItem>
+                    )}
+                  </ListBox>
+                </Virtualizer>
               )}
             </Dialog>
           </Modal>
