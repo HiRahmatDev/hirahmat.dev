@@ -9,7 +9,7 @@ import {
 } from "react-aria-components";
 import { Menu } from "lucide-react";
 import { twMerge } from "tailwind-merge";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { AyahInputNumber } from "./AyahInputNumber";
 import { Label } from "./Label";
@@ -31,14 +31,16 @@ export function MenuButton({ className }: { className?: string }) {
     maxAyah,
   } = useMurajaahContext();
 
+  const modalOverlayRef = useRef<HTMLDivElement | null>(null);
+  const bottomSheetRef = useRef<HTMLDivElement | null>(null);
+
   const [isOpen, setOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    const modalOverlay = document.querySelector(".modal-overlay");
+    const modalOverlay = modalOverlayRef.current;
     if (!modalOverlay) return;
-
+    let timeoutId: ReturnType<typeof setTimeout>;
     if (isOpen) {
       timeoutId = setTimeout(() => {
         modalOverlay.classList.replace("overlay-enter-active", "overlay-enter");
@@ -50,10 +52,9 @@ export function MenuButton({ className }: { className?: string }) {
   }, [isOpen]);
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    const bottomSheet = document.querySelector(".bottom-sheet");
+    const bottomSheet = bottomSheetRef.current;
     if (!bottomSheet) return;
-
+    let timeoutId: ReturnType<typeof setTimeout>;
     if (isOpen) {
       timeoutId = setTimeout(() => {
         bottomSheet.classList.replace("slide-up-active", "slide-up");
@@ -90,11 +91,15 @@ export function MenuButton({ className }: { className?: string }) {
         </button>
       </Pressable>
       <ModalOverlay
+        ref={modalOverlayRef}
         isDismissable
-        className="fixed inset-0 z-20 modal-overlay overlay-enter-active"
+        className="fixed inset-0 z-20 overlay-enter-active"
       >
         <Modal>
-          <Dialog className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 bottom-sheet slide-up-active">
+          <Dialog
+            ref={bottomSheetRef}
+            className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 slide-up-active"
+          >
             <div className="mx-auto max-w-[420px] px-5">
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
