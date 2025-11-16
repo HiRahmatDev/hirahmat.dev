@@ -22,7 +22,7 @@ export function BottomActionBar() {
     <div className="-translate-x-1/2 sm:hidden z-20 fixed bottom-0 left-1/2 w-full rounded-t-2xl bg-white overflow-hidden shadow-2xl">
       <div className="flex gap-3 max-w-[420px] w-full px-5 pt-4 pb-8 mx-auto">
         <div className="relative min-w-[80px] border border-zinc-200 rounded-lg flex justify-center items-center">
-          <div className="absolute -top-2 left-1 text-xs italic semibold text-zinc-400 px-1 bg-white tracking-[-0.5px]">
+          <div className="absolute -top-2 left-1 text-xs italic text-zinc-400 px-1 bg-white tracking-[-0.5px]">
             ayat ke-
           </div>
           <AnimatedNumber
