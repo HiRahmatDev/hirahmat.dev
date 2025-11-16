@@ -16,6 +16,7 @@ import {
   Virtualizer,
 } from "react-aria-components";
 import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 import clsx from "clsx";
 import useSWR from "swr";
 
@@ -42,6 +43,8 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
   const { isVisible, onVisibleChange, modalOverlayRef, bottomSheetRef } =
     useBottomSheet();
 
+  const [search, setSearch] = useState("");
+
   const options: Option[] = (allSurah?.data || []).map((item) => {
     const surahNameId = SURAH_MAP[item.number];
 
@@ -53,6 +56,12 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
   });
 
   if (isMobile) {
+    const filteredOptions = options.filter((option) => {
+      const normalize = (str: string) =>
+        str.toLowerCase().replace(/[^a-z0-9]/g, "");
+      return normalize(option.label).includes(normalize(search.trim()));
+    });
+
     const renderLabel = (surahNumber: number) => {
       const surah = allSurah?.data.find(
         (surah) => surah.number === surahNumber
@@ -90,10 +99,20 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             >
               {({ close }) => (
                 <>
-                  <div className="mx-auto max-w-[420px] mb-3 px-5">
-                    <h2 className="text-lg tracking-tight font-bold">
-                      Pilih Surat Al-Qur{"'"}an
-                    </h2>
+                  <div className="mx-auto max-w-[420px] pb-2 px-5">
+                    <div className="space-y-2">
+                      <h2 className="text-lg tracking-tight font-bold">
+                        Pilih Surat Al-Qur{"'"}an
+                      </h2>
+                      <div>
+                        <input
+                          placeholder="Cari"
+                          className="grow-1 py-2 px-3 rounded-lg pr-8 border border-gray-300 w-full"
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                        />
+                      </div>
+                    </div>
                   </div>
                   <Virtualizer
                     layout={ListLayout}
@@ -101,7 +120,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                   >
                     <ListBox
                       aria-label="Surah List"
-                      items={options}
+                      items={filteredOptions}
                       renderEmptyState={() => (
                         <div className="py-2.5 px-5 italic text-zinc-400">
                           Tidak ada surah dengan nama tersebut.
@@ -111,14 +130,14 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                         onChange?.(Number(key));
                         close();
                       }}
-                      className="mx-auto max-w-[420px] overflow-auto max-h-[70vh] -mb-7 pb-7"
+                      className="mx-auto max-w-[420px] overflow-auto h-[60vh] -mb-7 pb-7"
                     >
                       {({ label }: Option) => (
                         <ListBoxItem
                           textValue={label}
                           className={({ isFocused }) =>
                             clsx(
-                              "py-2.5 px-5 select-none cursor-pointer transition-colors duration-150",
+                              "py-2.5 px-6 select-none cursor-pointer transition-colors duration-150",
                               isFocused && "bg-zinc-200"
                             )
                           }
