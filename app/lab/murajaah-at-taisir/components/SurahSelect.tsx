@@ -89,39 +89,46 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
               className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 slide-up-active"
             >
               {({ close }) => (
-                <Virtualizer
-                  layout={ListLayout}
-                  layoutOptions={{ rowHeight: 44 }}
-                >
-                  <ListBox
-                    aria-label="Surah List"
-                    items={options}
-                    renderEmptyState={() => (
-                      <div className="py-2.5 px-5 italic text-zinc-400">
-                        Tidak ada surah dengan nama tersebut.
-                      </div>
-                    )}
-                    onAction={(key) => {
-                      onChange?.(Number(key));
-                      close();
-                    }}
-                    className="mx-auto max-w-[420px] overflow-auto max-h-[70vh] -mb-7 pb-7"
+                <>
+                  <div className="mx-auto max-w-[420px] mb-3 px-5">
+                    <h2 className="text-lg tracking-tight font-bold">
+                      Pilih Surat Al-Qur{"'"}an
+                    </h2>
+                  </div>
+                  <Virtualizer
+                    layout={ListLayout}
+                    layoutOptions={{ rowHeight: 44 }}
                   >
-                    {({ label }: Option) => (
-                      <ListBoxItem
-                        textValue={label}
-                        className={({ isFocused }) =>
-                          clsx(
-                            "py-2.5 px-5 select-none cursor-pointer transition-colors duration-150",
-                            isFocused && "bg-zinc-200"
-                          )
-                        }
-                      >
-                        {label}
-                      </ListBoxItem>
-                    )}
-                  </ListBox>
-                </Virtualizer>
+                    <ListBox
+                      aria-label="Surah List"
+                      items={options}
+                      renderEmptyState={() => (
+                        <div className="py-2.5 px-5 italic text-zinc-400">
+                          Tidak ada surah dengan nama tersebut.
+                        </div>
+                      )}
+                      onAction={(key) => {
+                        onChange?.(Number(key));
+                        close();
+                      }}
+                      className="mx-auto max-w-[420px] overflow-auto max-h-[70vh] -mb-7 pb-7"
+                    >
+                      {({ label }: Option) => (
+                        <ListBoxItem
+                          textValue={label}
+                          className={({ isFocused }) =>
+                            clsx(
+                              "py-2.5 px-5 select-none cursor-pointer transition-colors duration-150",
+                              isFocused && "bg-zinc-200"
+                            )
+                          }
+                        >
+                          {label}
+                        </ListBoxItem>
+                      )}
+                    </ListBox>
+                  </Virtualizer>
+                </>
               )}
             </Dialog>
           </Modal>
