@@ -5,16 +5,43 @@ import { AyahData } from "../lib/fetchAyahBySurahNAyah";
 
 type MurajaahContextState = {
   ayahData: AyahData | null | undefined;
+  selectedSurah: number | null;
+  changeSurah: (surahNumber: number) => void;
   mode: MurajaahMode;
-  changeMode?: (mode: MurajaahMode) => void;
+  changeMode: (mode: MurajaahMode) => void;
+  startAyah: number | null;
+  changeStartAyah: (ayahNumber: number) => void;
+  endAyah: number | null;
+  changeEndAyah: (ayahNumber: number) => void;
+  minAyah: number;
+  maxAyah: number;
+  randoming: boolean;
+  randomAyah: number | null;
+  generateRandomAyah: () => void;
+  isMurajaahButtonDisabled: boolean;
 };
 
 export type MurajaahMode = "TADZKIRAH" | "DZIKR" | "TADRIB";
 export const DEFAULT_MODE: MurajaahMode = "TADZKIRAH";
+export const DEFAULT_MIN_AYAH = 1;
+export const DEFAULT_MAX_AYAH = 1;
 
 const defaultMurajaahContextState: MurajaahContextState = {
   ayahData: undefined,
+  selectedSurah: null,
+  changeSurah: function () {},
+  startAyah: null,
+  changeStartAyah: function () {},
+  endAyah: null,
+  changeEndAyah: function () {},
   mode: DEFAULT_MODE,
+  changeMode: function () {},
+  minAyah: DEFAULT_MIN_AYAH,
+  maxAyah: DEFAULT_MAX_AYAH,
+  randoming: false,
+  randomAyah: null,
+  generateRandomAyah: function () {},
+  isMurajaahButtonDisabled: true,
 };
 
 export const MurajaahContext = createContext(defaultMurajaahContextState);
