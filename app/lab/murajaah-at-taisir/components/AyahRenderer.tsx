@@ -37,7 +37,7 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
           </span>
           <AyahNumberOrnament
             number={ayah.numberInSurah}
-            className={"mr-1 sm:mr-2" + (!isSelectedAyah ? " opacity-10" : "")}
+            className={"mr-1 sm:mr-2" + (!isSelectedAyah ? " opacity-5" : "")}
           />
         </p>
       </>
@@ -55,7 +55,7 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
         </span>
         <AyahNumberOrnament
           number={ayah.numberInSurah}
-          className={"mr-1 sm:mr-2" + (!isSelectedAyah ? " opacity-10" : "")}
+          className={"mr-1 sm:mr-2" + (!isSelectedAyah ? " opacity-5" : "")}
         />
       </p>
     </>

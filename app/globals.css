@@ -96,6 +96,66 @@
     animation: navbarSlideUp 300ms var(--transition-navbar) forwards;
   }
 
+  .overlay-enter {
+    @apply bg-black/60;
+  }
+
+  .overlay-enter-active {
+    animation: overlayFadeIn 300ms ease forwards;
+  }
+
+  .overlay-leave-active {
+    animation: overlayFadeOut 300ms ease forwards;
+  }
+
+  .slide-up {
+    @apply translate-y-0;
+  }
+
+  .slide-up-active {
+    animation: slideUp 300ms ease forwards;
+  }
+
+  .slide-down-active {
+    animation: slideDown 300ms ease forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes overlayFadeIn {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  @keyframes overlayFadeOut {
+    from {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+
   @keyframes navbarSlideDown {
     from {
       transform: translateY(-100%);

@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.4.0] - 2025-11-16
+
+### Added
+
+- Mobile bottom bar and settings bottom sheet
+
+### Changed
+
+- Expanded MurajaahContext for state management
+- Quran page layout and ayah readibility
+- ModeRadio icons and UI consistency
+- Global styles for modals and animations
+
 ## [v0.3.2] - 2025-11-12
 
 ### Fixed

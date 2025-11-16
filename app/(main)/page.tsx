@@ -1,10 +1,10 @@
 import serializeJavascript from "serialize-javascript";
 
-import { AboutMeSection } from "@/app/components/sections/AboutMeSection";
-import { ContactCTA } from "@/app/components/ContactCTA";
-import { HeroSection } from "@/app/components/sections/HeroSection";
-import { SelectedBlogsSection } from "./components/sections/SelectedBlogSection";
-import { SelectedProjectsSection } from "@/app/components/sections/SelectedProjectsSection";
+import { AboutMeSection } from "@/app/(main)/components/sections/AboutMeSection";
+import { ContactCTA } from "@/app/(main)/components/ContactCTA";
+import { HeroSection } from "@/app/(main)/components/sections/HeroSection";
+import { SelectedBlogsSection } from "@/app/(main)/components/sections/SelectedBlogSection";
+import { SelectedProjectsSection } from "@/app/(main)/components/sections/SelectedProjectsSection";
 
 export default function Home() {
   const jsonLd = {

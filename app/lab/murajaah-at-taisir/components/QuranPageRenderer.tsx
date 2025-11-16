@@ -25,23 +25,23 @@ export function QuranPageRenderer({
         dir="rtl"
         className={clsx(
           "md:scale-100",
-          "sm:min-h-[900px] sm:w-[600px] sm:max-w-[600px] sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
-          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-5 pb-12 max-w-[420px] w-full"
+          "min-h-[80vh] sm:min-h-[900px] sm:w-[600px] sm:max-w-[600px] sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
+          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-5 pb-[calc(48px+96px)] max-w-[420px] w-full"
         )}
       >
         <div
           className={clsx(
-            "pointer-events-none absolute top-0 bottom-0 w-40",
+            "pointer-events-none absolute top-0 bottom-0 w-32",
             isRightPage
-              ? "left-0 bg-gradient-to-r from-[#7a7761]/25 to-transparent"
-              : "right-0 bg-gradient-to-l from-[#7a7761]/25 to-transparent"
+              ? "left-0 bg-gradient-to-r from-[#7a7761]/40 to-transparent"
+              : "right-0 bg-gradient-to-l from-[#7a7761]/40 to-transparent"
           )}
           aria-hidden="true"
         />
         <div className="flex flex-col gap-8">
           <div
             className={
-              "min-h-6 text-zinc-400 italic tracking-[-0.35px] font-medium font-sans text-sm" +
+              "min-h-6 text-zinc-400 tracking-[0.35px] font-semibold font-sans text-[10px] sm:text-sm" +
               (isRightPage ? " text-right" : " text-left")
             }
           >
@@ -84,7 +84,7 @@ export function QuranPageRenderer({
                 )}
                 <div
                   className={
-                    "text-justify text-xl/[54px] sm:text-2xl/[64px] select-none" +
+                    "text-justify text-lg/[46px] sm:text-2xl/[64px] select-none" +
                     (isNarrowerContainer ? " px-5 sm:px-24" : "")
                   }
                 >

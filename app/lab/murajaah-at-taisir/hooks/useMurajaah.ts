@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 
-import { DEFAULT_MODE, type MurajaahMode } from "../context/MurajaahContext";
+import {
+  DEFAULT_MAX_AYAH,
+  DEFAULT_MIN_AYAH,
+  DEFAULT_MODE,
+  type MurajaahMode,
+} from "../context/MurajaahContext";
 import { fetchAyahBySurahNAyah } from "../lib/fetchAyahBySurahNAyah";
 import { fetchSurahByNumber } from "../lib/fetchSurahByNumber";
 
@@ -64,8 +69,9 @@ export function useMurajaah() {
     () => fetchSurahByNumber(selectedSurah!)
   );
 
-  const minAyah = 1;
-  const maxAyah = selectedSurahData?.data.numberOfAyahs || 1;
+  const minAyah = DEFAULT_MIN_AYAH;
+  const maxAyah = selectedSurahData?.data.numberOfAyahs || DEFAULT_MAX_AYAH;
+  const isMurajaahButtonDisabled = !selectedSurah || randoming;
 
   const generateRandomAyah = () => {
     if (!startAyah || !endAyah) return;
@@ -125,5 +131,6 @@ export function useMurajaah() {
     ayahData,
     minAyah,
     maxAyah,
+    isMurajaahButtonDisabled,
   };
 }
