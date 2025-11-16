@@ -91,9 +91,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
               {({ close }) => (
                 <Virtualizer
                   layout={ListLayout}
-                  layoutOptions={{
-                    rowHeight: 44,
-                  }}
+                  layoutOptions={{ rowHeight: 44 }}
                 >
                   <ListBox
                     aria-label="Surah List"
@@ -107,7 +105,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                       onChange?.(Number(key));
                       close();
                     }}
-                    className="mx-auto max-w-[420px] overflow-auto max-h-[80vh] -mb-7 pb-7"
+                    className="mx-auto max-w-[420px] overflow-auto max-h-[70vh] -mb-7 pb-7"
                   >
                     {({ label }: Option) => (
                       <ListBoxItem
