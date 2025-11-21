@@ -1,14 +1,69 @@
+"use client";
+
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+
 import { GreenText } from "../GreenText";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function AboutMeSection() {
+  const container = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+      });
+
+      tl.fromTo(
+        [".about-header", ".about-desc", ".about-cv"],
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+        }
+      ).fromTo(
+        ".about-content > p",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+        },
+        "-=0.3"
+      );
+    },
+    { scope: container }
+  );
+
   return (
-    <section className="container flex flex-col md:flex-row gap-10 md:gap-14 py-16">
+    <section
+      ref={container}
+      className="container flex flex-col md:flex-row gap-10 md:gap-14 py-16"
+    >
       <div className="shrink-0 max-w-[400px] md:max-w-[295px] space-y-3 md:space-y-6">
         <div className="space-y-1 md:space-y-3">
-          <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
+          <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold about-header">
             Siapa <GreenText>Saya</GreenText>?
           </h2>
-          <p className="text-base/[24px] tracking-[-0.4px]">
+          <p className="text-base/[24px] tracking-[-0.4px] about-desc">
             Sedikit tentang saya di dunia web dan hal-hal yang bikin saya betah
             ngulik.
           </p>
@@ -16,13 +71,13 @@ export function AboutMeSection() {
         <a
           href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
           rel="noopener noreferrer"
-          className="text-base/[24px] tracking-[-0.35px] font-bold text-text-accent hover:text-accent animate-hover inline-block"
+          className="text-base/[24px] tracking-[-0.35px] font-bold text-text-accent hover:text-accent animate-hover inline-block about-cv"
         >
           <u>Unduh CV</u> ↗
         </a>
       </div>
       <div className="w-full">
-        <div className="space-y-7 text-base/[28px] tracking-[-0.35px]">
+        <div className="space-y-7 text-base/[28px] tracking-[-0.35px] about-content">
           <p>
             Saya tidak langsung datang dari dunia teknologi, tapi rasa ingin
             tahu saya ke arah sana sudah tumbuh sejak lama. Waktu SMA, saya
