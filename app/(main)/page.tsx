@@ -5,6 +5,7 @@ import { ContactCTA } from "@/app/(main)/components/ContactCTA";
 import { HeroSection } from "@/app/(main)/components/sections/HeroSection";
 import { SelectedBlogsSection } from "@/app/(main)/components/sections/SelectedBlogSection";
 import { SelectedProjectsSection } from "@/app/(main)/components/sections/SelectedProjectsSection";
+import { TechStackSection } from "@/app/(main)/components/sections/TechStackSection";
 
 export default function Home() {
   const jsonLd = {
@@ -38,6 +39,7 @@ export default function Home() {
       </section>
 
       <HeroSection />
+      <TechStackSection />
       <SelectedProjectsSection />
       <AboutMeSection />
       <SelectedBlogsSection />
