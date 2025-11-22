@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Animated gradient orb background effect to hero section
+- Scroll animations to `AboutMeSection`, `SelectedBlogSection`, and `ContactCTA`
+
 ## [v0.11.1] - 2025-11-22
 
 ### Added
@@ -13,11 +20,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v0.11.0] - 2025-11-16
 
-## Added
+### Added
 
 - Speech-to-text Alquran app in "/lab/stt-alquran" [#1](https://github.com/HiRahmatDev/hirahmat.dev/pull/1), [#6](https://github.com/HiRahmatDev/hirahmat.dev/pull/6)
 
-## Changed
+### Changed
 
 - Splitted layout between home (main) and lab [#5](https://github.com/HiRahmatDev/hirahmat.dev/pull/5)
 - Murajaah At-Taisir Mobile UI Optimization [#7](https://github.com/HiRahmatDev/hirahmat.dev/pull/7)
