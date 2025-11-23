@@ -1,0 +1,81 @@
+@layer components {
+  .mobile-container {
+    @apply bg-[#f6f6f6] h-screen;
+    > main {
+      @apply max-w-[var(--max-width-mobile)] mx-auto h-[inherit] bg-white;
+    }
+  }
+
+  .cta-button {
+    @apply min-h-[40px] px-4 rounded-[20px];
+    @apply font-semibold text-sm/[40px] tracking-[-0.25px] text-nowrap;
+    @apply flex gap-2 items-center;
+    @apply [&>svg]:size-5;
+    @apply cursor-pointer;
+    @apply bg-accent hover:bg-accent-hover active:bg-accent-active text-white;
+    @apply shadow-md hover:shadow-lg transition-shadow active:shadow-md;
+    @apply transition;
+  }
+
+  #murajaah-sidebar {
+    @apply top-4;
+    transition: top 300ms;
+    transition-timing-function: var(--transition-navbar);
+  }
+  .white-solid-button {
+    @apply min-h-[36px] px-4 rounded-[20px];
+    @apply font-semibold text-sm/[36px] tracking-[-0.4px] text-nowrap;
+    @apply flex gap-2 items-center;
+    @apply [&>svg]:size-5;
+    @apply cursor-pointer;
+    @apply bg-white text-text-accent;
+    @apply shadow-lg hover:shadow-xl transition-shadow active:shadow-md;
+    @apply transition;
+  }
+
+  .navbar-fixed-active,
+  .navbar-fixed {
+    + main #murajaah-sidebar {
+      @apply top-20;
+    }
+  }
+  .navbar-fixed,
+  .navbar-fixed-active,
+  .navbar-static-active {
+    @apply fixed top-0 left-0 right-0 z-10;
+    @apply bg-background/75 backdrop-blur-md translate-0;
+    @apply shadow-xs;
+  }
+
+  .navbar-fixed-active {
+    animation: navbarSlideDown 300ms var(--transition-navbar) forwards;
+  }
+
+  .navbar-static-active {
+    animation: navbarSlideUp 300ms var(--transition-navbar) forwards;
+  }
+
+  .overlay-enter {
+    @apply bg-black/60;
+  }
+
+  .overlay-enter-active {
+    animation: overlayFadeIn 300ms ease forwards;
+  }
+
+  .overlay-leave-active {
+    animation: overlayFadeOut 300ms ease forwards;
+  }
+
+  .slide-up {
+    @apply translate-y-0;
+  }
+
+  .slide-up-active {
+    animation: slideUp 300ms ease forwards;
+  }
+
+  .slide-down-active {
+    animation: slideDown 300ms ease forwards;
+  }
+}

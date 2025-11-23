@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { fetchQuranPage } from "./lib/fetchQuranPage";
 import { QuranPageRenderer } from "./components/QuranPageRenderer";
-import { SITE_NAME } from "@/app/constants";
+import { SITE_NAME } from "@/app/config/constants";
 
 type PageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

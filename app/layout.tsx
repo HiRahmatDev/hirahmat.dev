@@ -3,7 +3,7 @@ import { Amiri_Quran, Inter, Overpass_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
-import { BASE_URL, SITE_NAME } from "./constants";
+import { BASE_URL, SITE_NAME } from "@/app/config/constants";
 
 import "./globals.css";
 

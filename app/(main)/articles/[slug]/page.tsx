@@ -11,7 +11,7 @@ import {
 } from "@/app/services/notion";
 import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/(main)/components/NotionRenderer";
-import { SITE_NAME } from "@/app/constants";
+import { SITE_NAME } from "@/app/config/constants";
 import { RichText } from "@/app/(main)/components/NotionRenderer/common/RichText";
 
 export async function generateStaticParams() {

@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-import { BASE_URL } from "./constants";
+import { BASE_URL } from "@/app/config/constants";
 import { fetchAllArticles } from "./services/notion";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
