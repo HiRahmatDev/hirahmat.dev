@@ -10,6 +10,7 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "Person",
+    "@id": "https://hirahmat.dev/#person",
     name: "Rahmat Hidayatullah",
     url: "https://hirahmat.dev",
     image: "https://hirahmat.dev/icon.ico",
@@ -22,6 +23,7 @@ export default function Home() {
     jobTitle: "Frontend Developer",
     worksFor: {
       "@type": "Organization",
+      "@id": "https://kulina.id/#organization",
       name: "Kulina",
     },
   };
