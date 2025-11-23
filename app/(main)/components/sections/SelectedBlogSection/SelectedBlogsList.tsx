@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
@@ -16,9 +17,13 @@ if (typeof window !== "undefined") {
 
 type SelectedBlogsListProps = {
   selectedBlogs: SelectedBlog[];
+  hasMore: boolean;
 };
 
-export function SelectedBlogsList({ selectedBlogs }: SelectedBlogsListProps) {
+export function SelectedBlogsList({
+  selectedBlogs,
+  hasMore,
+}: SelectedBlogsListProps) {
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -81,6 +86,19 @@ export function SelectedBlogsList({ selectedBlogs }: SelectedBlogsListProps) {
             </div>
           </Link>
         ))}
+        {hasMore && (
+          <Link
+            href="/articles?category=Blog"
+            className="group flex flex-col items-center justify-center gap-4 w-[200px] shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
+          >
+            <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
+              <ArrowRight className="w-6 h-6" />
+            </div>
+            <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
+              Lihat Lainnya
+            </span>
+          </Link>
+        )}
       </div>
     </div>
   );

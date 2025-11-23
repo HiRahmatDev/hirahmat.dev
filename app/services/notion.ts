@@ -13,145 +13,157 @@ const notion = new Client({
   notionVersion: "2025-09-03",
 });
 
-type CommonArticle = {
+export type CommonArticle = {
   slug: string;
   title?: string;
   desc?: string;
   cover?: string;
+  category?: string;
 };
 
 export type SelectedProject = CommonArticle;
 
 const isProd = process.env.NEXT_PUBLIC_APP_ENV === "production";
 
-export const fetchSelectedProjects: () => Promise<SelectedProject[] | null> =
-  cache(async () => {
-    try {
-      const response = await notion.dataSources.query({
-        data_source_id: process.env.DS_ARTICLE!,
-        filter: {
-          and: [
-            {
-              property: "category",
-              select: {
-                equals: "Jurnal Proyek",
-              },
+export const fetchSelectedProjects: (
+  limit?: number
+) => Promise<SelectedProject[] | null> = cache(async (limit) => {
+  try {
+    const response = await notion.dataSources.query({
+      data_source_id: process.env.DS_ARTICLE!,
+      filter: {
+        and: [
+          {
+            property: "category",
+            select: {
+              equals: "Jurnal Proyek",
             },
-            {
-              property: "status",
-              select: {
-                equals: "Published",
-              },
+          },
+          {
+            property: "status",
+            select: {
+              equals: "Published",
             },
-          ],
-        },
-        sorts: [{ property: "created_on", direction: "descending" }],
-      });
+          },
+        ],
+      },
+      sorts: [{ property: "created_on", direction: "descending" }],
+      page_size: limit,
+    });
 
-      return (response.results as PageObjectResponse[]).map((result) => ({
-        slug:
-          result.properties.slug?.type === "title"
-            ? result.properties.slug.title[0]?.plain_text
-            : "",
-        title:
-          result.properties.name?.type === "rich_text"
-            ? result.properties.name.rich_text[0]?.plain_text
-            : "",
-        desc:
-          result.properties.description?.type === "rich_text"
-            ? result.properties.description.rich_text[0]?.plain_text
-            : "",
-        cover:
-          result.properties.cover?.type === "rich_text"
-            ? result.properties.cover.rich_text[0]?.plain_text
-            : "",
-      }));
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
-  });
+    return (response.results as PageObjectResponse[]).map((result) => ({
+      slug:
+        result.properties.slug?.type === "title"
+          ? result.properties.slug.title[0]?.plain_text
+          : "",
+      title:
+        result.properties.name?.type === "rich_text"
+          ? result.properties.name.rich_text[0]?.plain_text
+          : "",
+      desc:
+        result.properties.description?.type === "rich_text"
+          ? result.properties.description.rich_text[0]?.plain_text
+          : "",
+      cover:
+        result.properties.cover?.type === "rich_text"
+          ? result.properties.cover.rich_text[0]?.plain_text
+          : "",
+      category:
+        result.properties.category?.type === "select"
+          ? result.properties.category.select?.name
+          : "",
+    }));
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+});
 
 export type SelectedBlog = CommonArticle & {
   rawTitle?: RichTextItemResponse[] | null;
   rawDesc?: RichTextItemResponse[] | null;
 };
 
-export const fetchSelectedBlogs: () => Promise<SelectedBlog[] | null> = cache(
-  async () => {
-    try {
-      const response = await notion.dataSources.query({
-        data_source_id: process.env.DS_ARTICLE!,
-        filter: {
-          and: [
-            {
-              property: "category",
-              select: {
-                equals: "Blog",
-              },
+export const fetchSelectedBlogs: (
+  limit?: number
+) => Promise<SelectedBlog[] | null> = cache(async (limit) => {
+  try {
+    const response = await notion.dataSources.query({
+      data_source_id: process.env.DS_ARTICLE!,
+      filter: {
+        and: [
+          {
+            property: "category",
+            select: {
+              equals: "Blog",
             },
-            isProd
-              ? {
+          },
+          isProd
+            ? {
+              property: "status",
+              select: {
+                equals: "Published",
+              },
+            }
+            : {
+              or: [
+                {
                   property: "status",
                   select: {
                     equals: "Published",
                   },
-                }
-              : {
-                  or: [
-                    {
-                      property: "status",
-                      select: {
-                        equals: "Published",
-                      },
-                    },
-                    {
-                      property: "status",
-                      select: {
-                        equals: "Draft",
-                      },
-                    },
-                  ],
                 },
-          ],
-        },
-        sorts: [{ property: "created_on", direction: "descending" }],
-      });
+                {
+                  property: "status",
+                  select: {
+                    equals: "Draft",
+                  },
+                },
+              ],
+            },
+        ],
+      },
+      sorts: [{ property: "created_on", direction: "descending" }],
+      page_size: limit,
+    });
 
-      return (response.results as PageObjectResponse[]).map((result) => ({
-        slug:
-          result.properties.slug?.type === "title"
-            ? result.properties.slug.title[0]?.plain_text
-            : "",
-        title:
-          result.properties.name?.type === "rich_text"
-            ? result.properties.name.rich_text.map((p) => p.plain_text).join("")
-            : "",
-        rawTitle:
-          result.properties.name?.type === "rich_text"
-            ? result.properties.name.rich_text
-            : null,
-        desc:
-          result.properties.description?.type === "rich_text"
-            ? result.properties.description.rich_text
-                .map((p) => p.plain_text)
-                .join("")
-            : "",
-        rawDesc:
-          result.properties.description?.type === "rich_text"
-            ? result.properties.description.rich_text
-            : null,
-        cover:
-          result.properties.cover?.type === "rich_text"
-            ? result.properties.cover.rich_text[0]?.plain_text
-            : "",
-      }));
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
+    return (response.results as PageObjectResponse[]).map((result) => ({
+      slug:
+        result.properties.slug?.type === "title"
+          ? result.properties.slug.title[0]?.plain_text
+          : "",
+      title:
+        result.properties.name?.type === "rich_text"
+          ? result.properties.name.rich_text.map((p) => p.plain_text).join("")
+          : "",
+      rawTitle:
+        result.properties.name?.type === "rich_text"
+          ? result.properties.name.rich_text
+          : null,
+      desc:
+        result.properties.description?.type === "rich_text"
+          ? result.properties.description.rich_text
+            .map((p) => p.plain_text)
+            .join("")
+          : "",
+      rawDesc:
+        result.properties.description?.type === "rich_text"
+          ? result.properties.description.rich_text
+          : null,
+      cover:
+        result.properties.cover?.type === "rich_text"
+          ? result.properties.cover.rich_text[0]?.plain_text
+          : "",
+      category:
+        result.properties.category?.type === "select"
+          ? result.properties.category.select?.name
+          : "",
+    }));
+  } catch (error) {
+    console.error(error);
+    return null;
   }
-);
+});
 
 export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
   async () => {
@@ -162,27 +174,27 @@ export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
           and: [
             isProd
               ? {
-                  property: "status",
-                  select: {
-                    equals: "Published",
-                  },
-                }
-              : {
-                  or: [
-                    {
-                      property: "status",
-                      select: {
-                        equals: "Published",
-                      },
-                    },
-                    {
-                      property: "status",
-                      select: {
-                        equals: "Draft",
-                      },
-                    },
-                  ],
+                property: "status",
+                select: {
+                  equals: "Published",
                 },
+              }
+              : {
+                or: [
+                  {
+                    property: "status",
+                    select: {
+                      equals: "Published",
+                    },
+                  },
+                  {
+                    property: "status",
+                    select: {
+                      equals: "Draft",
+                    },
+                  },
+                ],
+              },
             {
               or: [
                 {
@@ -216,12 +228,16 @@ export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
         desc:
           result.properties.description?.type === "rich_text"
             ? result.properties.description.rich_text
-                .map((p) => p.plain_text)
-                .join("")
+              .map((p) => p.plain_text)
+              .join("")
             : "",
         cover:
           result.properties.cover?.type === "rich_text"
             ? result.properties.cover.rich_text[0]?.plain_text
+            : "",
+        category:
+          result.properties.category?.type === "select"
+            ? result.properties.category.select?.name
             : "",
       }));
     } catch (error) {
@@ -254,27 +270,27 @@ export const fetchArticleMetadataBySlug = cache(
           and: [
             isProd
               ? {
-                  property: "status",
-                  select: {
-                    equals: "Published",
-                  },
-                }
-              : {
-                  or: [
-                    {
-                      property: "status",
-                      select: {
-                        equals: "Published",
-                      },
-                    },
-                    {
-                      property: "status",
-                      select: {
-                        equals: "Draft",
-                      },
-                    },
-                  ],
+                property: "status",
+                select: {
+                  equals: "Published",
                 },
+              }
+              : {
+                or: [
+                  {
+                    property: "status",
+                    select: {
+                      equals: "Published",
+                    },
+                  },
+                  {
+                    property: "status",
+                    select: {
+                      equals: "Draft",
+                    },
+                  },
+                ],
+              },
             {
               property: "slug",
               title: {
@@ -302,8 +318,8 @@ export const fetchArticleMetadataBySlug = cache(
         desc:
           result.properties.description?.type === "rich_text"
             ? result.properties.description.rich_text
-                .map((p) => p.plain_text)
-                .join("")
+              .map((p) => p.plain_text)
+              .join("")
             : "",
         rawDesc:
           result.properties.description?.type === "rich_text"

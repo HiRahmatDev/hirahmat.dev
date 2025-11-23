@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import gsap from "gsap";
@@ -10,10 +11,12 @@ import { SelectedProject } from "@/app/services/notion";
 
 type SelectedProjectCardsProps = {
   selectedProjects: SelectedProject[];
+  hasMore: boolean;
 };
 
 export function SelectedProjectCards({
   selectedProjects,
+  hasMore,
 }: SelectedProjectCardsProps) {
   return (
     <div className="flex gap-5 [&>div]:shrink-0">
@@ -24,6 +27,21 @@ export function SelectedProjectCards({
           index={index}
         />
       ))}
+      {hasMore && (
+        <div className="h-full flex items-center">
+          <Link
+            href="/articles?category=Jurnal Proyek"
+            className="group flex flex-col items-center justify-center gap-4 w-[200px] h-[217px] rounded-3xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
+          >
+            <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
+              <ArrowRight className="w-6 h-6" />
+            </div>
+            <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
+              Lihat Lainnya
+            </span>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
