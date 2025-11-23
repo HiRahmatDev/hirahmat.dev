@@ -78,10 +78,8 @@ export default async function ArticleDetailPage({
                   </p>
                 </div>
                 <p className="text-sm/[24px] tracking-[-0.15px]">
-                  <span className="px-2 border border-zinc-400 leading-[20px] rounded-[12px] inline-block">
-                    <strong className="font-medium">
-                      {blockMetadata.category || "-"}
-                    </strong>
+                  <span className="text-sm font-medium px-2 py-1 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
+                    {blockMetadata.category || "-"}
                   </span>
                   <span className="text-zinc-500">&ensp;•&ensp;</span>
                   <strong className="font-medium">
