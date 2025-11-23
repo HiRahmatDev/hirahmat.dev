@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Limit selected projects/blogs to 3 and add 'See more' links
 - Update category badge's style
+- Update code's style
 
 ## [v0.12.1] - 2025-11-22
 
