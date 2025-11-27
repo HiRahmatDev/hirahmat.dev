@@ -30,8 +30,8 @@ export function useOnboardingAnimation({
         });
       } else if (step === 2) {
         gsap.to(".screen-1", {
-          xPercent: -30,
-          scale: 0.8,
+          xPercent: -50,
+          scale: 0.9,
           duration,
           ease,
         });
@@ -47,8 +47,8 @@ export function useOnboardingAnimation({
         });
       } else if (step === 3) {
         gsap.to(".screen-2", {
-          xPercent: -130,
-          scale: 0.8,
+          xPercent: -150,
+          scale: 0.9,
           duration,
           ease,
         });
@@ -64,8 +64,8 @@ export function useOnboardingAnimation({
         });
       } else if (step === 4) {
         gsap.to(".screen-3", {
-          xPercent: -130,
-          scale: 0.8,
+          xPercent: -150,
+          scale: 0.9,
           duration,
           ease,
         });
@@ -81,8 +81,8 @@ export function useOnboardingAnimation({
         });
       } else if (step === 5) {
         gsap.to(".screen-4", {
-          xPercent: -130,
-          scale: 0.8,
+          xPercent: -150,
+          scale: 0.9,
           duration,
           ease,
         });
@@ -98,8 +98,8 @@ export function useOnboardingAnimation({
         });
       } else if (step === 6) {
         gsap.to(".screen-5", {
-          xPercent: -130,
-          scale: 0.8,
+          xPercent: -150,
+          scale: 0.9,
           duration,
           ease,
         });
