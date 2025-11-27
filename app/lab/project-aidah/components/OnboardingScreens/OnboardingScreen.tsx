@@ -38,8 +38,13 @@ export function OnboardingScreen() {
     <div className="h-[inherit] flex flex-col justify-between items-center pt-20 pb-10">
       <div className="size-full overflow-hidden relative" ref={containerRef}>
         {ONBOARDING_SCREENS.map(({ id, Component }) => {
-          const shouldRender = step === id || (step === id + 1 && id < 6);
+          const beforeStep = step - 1 === id;
+          const currentStep = step === id;
+          const nextStep = step + 1 === id;
+
+          const shouldRender = beforeStep || currentStep || nextStep;
           if (!shouldRender) return null;
+
           return (
             <div
               key={`screen-${id}`}
