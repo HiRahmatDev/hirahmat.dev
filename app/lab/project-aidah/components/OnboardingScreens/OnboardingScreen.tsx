@@ -4,6 +4,7 @@ import { useRef } from "react";
 
 import { NextButton } from "./NextButton";
 import { OnboardingGoalScreen } from "./OnboardingGoalScreen";
+import { OnboardingMethodIntroScreen } from "./OnboardingMethodIntroScreen";
 import { OnboardingProgressLevelScreen } from "./OnboardingProgressLevelScreen";
 import { OnboardingWelcomeScreen } from "./OnboardingWelcomeScreen";
 import { StepDots } from "./StepDots";
@@ -14,7 +15,7 @@ const SCREENS = [
   { id: 1, Component: OnboardingWelcomeScreen },
   { id: 2, Component: OnboardingGoalScreen },
   { id: 3, Component: OnboardingProgressLevelScreen },
-  { id: 4, Component: OnboardingWelcomeScreen },
+  { id: 4, Component: OnboardingMethodIntroScreen },
   { id: 5, Component: OnboardingGoalScreen },
   { id: 6, Component: OnboardingWelcomeScreen },
 ];
