@@ -11,10 +11,10 @@ import { OnboardingMoodScreen } from "./OnboardingMoodScreen";
 import { OnboardingNameScreen } from "./OnboardingNameScreen";
 import { OnboardingProgressLevelScreen } from "./OnboardingProgressLevelScreen";
 import { OnboardingWelcomeScreen } from "./OnboardingWelcomeScreen";
+import { SkipButton } from "./SkipButton";
 import { StepDots } from "./StepDots";
 import { useOnboardingAnimation } from "./hooks/useOnboardingAnimation";
 import { useOnboardingContext } from "./OnboardingContext";
-import { SkipButton } from "./SkipButton";
 
 const ONBOARDING_SCREENS = [
   { id: 1, Component: OnboardingWelcomeScreen },
