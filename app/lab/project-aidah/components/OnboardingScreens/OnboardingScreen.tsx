@@ -15,7 +15,7 @@ import { useOnboardingAnimation } from "./hooks/useOnboardingAnimation";
 import { useOnboardingContext } from "./OnboardingContext";
 import { SkipButton } from "./SkipButton";
 
-const SCREENS = [
+const ONBOARDING_SCREENS = [
   { id: 1, Component: OnboardingWelcomeScreen },
   { id: 2, Component: OnboardingGoalScreen },
   { id: 3, Component: OnboardingProgressLevelScreen },
@@ -37,7 +37,7 @@ export function OnboardingScreen() {
   return (
     <div className="h-[inherit] flex flex-col justify-between items-center pt-20 pb-10">
       <div className="size-full overflow-hidden relative" ref={containerRef}>
-        {SCREENS.map(({ id, Component }) => {
+        {ONBOARDING_SCREENS.map(({ id, Component }) => {
           const shouldRender = step === id || (step === id + 1 && id < 6);
           if (!shouldRender) return null;
           return (
