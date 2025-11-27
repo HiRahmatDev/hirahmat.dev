@@ -25,14 +25,13 @@ export function useOnboardingAnimation({
         });
         gsap.to(".screen-2", {
           xPercent: 0,
-          scale: 0.95,
           duration,
           ease,
         });
       } else if (step === 2) {
         gsap.to(".screen-1", {
           xPercent: -30,
-          scale: 0.95,
+          scale: 0.8,
           duration,
           ease,
         });
@@ -43,14 +42,13 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-3", {
-          scale: 0.95,
           duration,
           ease,
         });
       } else if (step === 3) {
         gsap.to(".screen-2", {
           xPercent: -130,
-          scale: 0.95,
+          scale: 0.8,
           duration,
           ease,
         });
@@ -61,14 +59,13 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-4", {
-          scale: 0.95,
           duration,
           ease,
         });
       } else if (step === 4) {
         gsap.to(".screen-3", {
           xPercent: -130,
-          scale: 0.95,
+          scale: 0.8,
           duration,
           ease,
         });
@@ -79,14 +76,13 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-5", {
-          scale: 0.95,
           duration,
           ease,
         });
       } else if (step === 5) {
         gsap.to(".screen-4", {
           xPercent: -130,
-          scale: 0.95,
+          scale: 0.8,
           duration,
           ease,
         });
@@ -97,14 +93,13 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-6", {
-          scale: 0.95,
           duration,
           ease,
         });
       } else if (step === 6) {
         gsap.to(".screen-5", {
           xPercent: -130,
-          scale: 0.95,
+          scale: 0.8,
           duration,
           ease,
         });

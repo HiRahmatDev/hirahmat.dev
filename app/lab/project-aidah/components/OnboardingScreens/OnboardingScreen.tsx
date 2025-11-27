@@ -5,18 +5,20 @@ import { useRef } from "react";
 import { NextButton } from "./NextButton";
 import { OnboardingGoalScreen } from "./OnboardingGoalScreen";
 import { OnboardingMethodIntroScreen } from "./OnboardingMethodIntroScreen";
+import { OnboardingNameScreen } from "./OnboardingNameScreen";
 import { OnboardingProgressLevelScreen } from "./OnboardingProgressLevelScreen";
 import { OnboardingWelcomeScreen } from "./OnboardingWelcomeScreen";
 import { StepDots } from "./StepDots";
 import { useOnboardingAnimation } from "./hooks/useOnboardingAnimation";
 import { useOnboardingContext } from "./OnboardingContext";
+import { SkipButton } from "./SkipButton";
 
 const SCREENS = [
   { id: 1, Component: OnboardingWelcomeScreen },
   { id: 2, Component: OnboardingGoalScreen },
   { id: 3, Component: OnboardingProgressLevelScreen },
   { id: 4, Component: OnboardingMethodIntroScreen },
-  { id: 5, Component: OnboardingGoalScreen },
+  { id: 5, Component: OnboardingNameScreen },
   { id: 6, Component: OnboardingWelcomeScreen },
 ];
 
@@ -46,7 +48,10 @@ export function OnboardingScreen() {
       </div>
       <div className="px-4 gap-8 w-full space-y-8">
         <StepDots />
-        <NextButton className="w-full" />
+        <div className="flex items-center justify-between w-full gap-3">
+          <SkipButton className="shrink-0" />
+          <NextButton className="grow" />
+        </div>
       </div>
     </div>
   );

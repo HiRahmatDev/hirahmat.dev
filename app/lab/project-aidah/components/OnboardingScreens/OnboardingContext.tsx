@@ -5,17 +5,20 @@ import { createContext, ReactNode, useContext, useState } from "react";
 type OnboardingContextType = {
   step: number;
   nextStep: () => void;
+  isNextDisabled: boolean;
 };
 
 const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
   step: 1,
   nextStep: () => {},
+  isNextDisabled: false,
 };
 
 const OnboardingContext = createContext(INITIAL_ONBOARDING_STATE);
 
 export function OnboardingProvider({ children }: { children?: ReactNode }) {
   const [step, setStep] = useState<number>(INITIAL_ONBOARDING_STATE.step);
+  const isNextDisabled = false;
 
   const nextStep = () => {
     if (step === 6) return;
@@ -23,7 +26,9 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
   };
 
   return (
-    <OnboardingContext value={{ step, nextStep }}>{children}</OnboardingContext>
+    <OnboardingContext value={{ step, nextStep, isNextDisabled }}>
+      {children}
+    </OnboardingContext>
   );
 }
 

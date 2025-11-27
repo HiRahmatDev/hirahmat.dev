@@ -3,13 +3,15 @@
 import { twMerge } from "tailwind-merge";
 import { useOnboardingContext } from "./OnboardingContext";
 
-export function NextButton({ className }: { className?: string }) {
-  const { nextStep, isNextDisabled } = useOnboardingContext();
+export function SkipButton({ className }: { className?: string }) {
+  const { step, nextStep, isNextDisabled } = useOnboardingContext();
+
+  if (step !== 5) return null;
 
   return (
     <button
       className={twMerge(
-        "h-[56px] rounded-[calc(56px/2)] flex items-center justify-center bg-accent text-white px-6",
+        "h-[56px] rounded-[calc(56px/2)] tracking-[-0.3px] flex items-center justify-center text-text-accent px-2",
         "text-base font-semibold",
         "cursor-pointer",
         className
@@ -17,7 +19,7 @@ export function NextButton({ className }: { className?: string }) {
       onClick={nextStep}
       disabled={isNextDisabled}
     >
-      Lanjut
+      Lewati saja
     </button>
   );
 }

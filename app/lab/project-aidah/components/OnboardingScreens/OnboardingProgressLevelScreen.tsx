@@ -2,7 +2,7 @@ import { RadioButton } from "./RadioButton";
 
 export function OnboardingProgressLevelScreen() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between gap-8 pb-8 px-4">
+    <div className="w-full h-full flex flex-col items-center justify-between gap-8 pb-12 px-4">
       <div />
       <div className="w-full flex flex-col items-start justify-center gap-8">
         <div className="space-y-3">
