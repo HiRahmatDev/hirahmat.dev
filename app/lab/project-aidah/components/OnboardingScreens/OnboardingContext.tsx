@@ -8,6 +8,7 @@ type OnboardingContextType = {
   isNextDisabled: boolean;
   finishOnboarding: () => void;
   isFinishOnboarding: boolean;
+  onGoalChange: (goal: string) => void;
 };
 
 const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
@@ -16,18 +17,28 @@ const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
   isNextDisabled: false,
   finishOnboarding() {},
   isFinishOnboarding: false,
+  onGoalChange() {},
 };
 
 const OnboardingContext = createContext(INITIAL_ONBOARDING_STATE);
 
 export function OnboardingProvider({ children }: { children?: ReactNode }) {
   const [step, setStep] = useState<number>(INITIAL_ONBOARDING_STATE.step);
-  const isNextDisabled = false;
+  const [goal, setGoal] = useState<string>("");
+
   const isFinishOnboarding = step === 0;
+  const isNextDisabled = (() => {
+    if (step === 2) return goal === "";
+    return false;
+  })();
 
   const nextStep = () => {
     if (step === 6) return;
     setStep((prev) => prev + 1);
+  };
+
+  const onGoalChange = (goal: string) => {
+    setGoal(goal);
   };
 
   const finishOnboarding = () => {
@@ -42,6 +53,7 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
         isNextDisabled,
         finishOnboarding,
         isFinishOnboarding,
+        onGoalChange,
       }}
     >
       {children}

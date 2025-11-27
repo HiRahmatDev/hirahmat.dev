@@ -1,6 +1,11 @@
+"use client";
+
+import { useOnboardingContext } from "./OnboardingContext";
 import { RadioButton } from "./RadioButton";
 
 export function OnboardingGoalScreen() {
+  const { onGoalChange } = useOnboardingContext();
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-between gap-8 pb-12 px-4">
       <div />
@@ -14,9 +19,19 @@ export function OnboardingGoalScreen() {
           </p>
         </div>
         <div className="space-y-3 w-full">
-          <RadioButton name="goal">Hafalan Baru</RadioButton>
-          <RadioButton name="goal">Perkuat Hafalan</RadioButton>
-          <RadioButton name="goal">Fokus Muraja{"'"}ah</RadioButton>
+          <RadioButton name="goal" value="new" onValueChange={onGoalChange}>
+            Hafalan Baru
+          </RadioButton>
+          <RadioButton
+            name="goal"
+            value="strongen"
+            onValueChange={onGoalChange}
+          >
+            Perkuat Hafalan
+          </RadioButton>
+          <RadioButton name="goal" value="focus" onValueChange={onGoalChange}>
+            Fokus Muraja{"'"}ah
+          </RadioButton>
         </div>
       </div>
     </div>

@@ -13,8 +13,9 @@ export function NextButton({ className }: { className?: string }) {
   return (
     <button
       className={twMerge(
-        "h-[56px] rounded-[calc(56px/2)] flex items-center justify-center bg-accent text-white px-6",
-        "text-base font-semibold",
+        "h-[56px] rounded-[calc(56px/2)] flex items-center justify-center px-6",
+        "text-base font-semibold text-white bg-accent",
+        "disabled:bg-gray-200",
         "cursor-pointer",
         className
       )}
