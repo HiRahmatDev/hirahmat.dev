@@ -25,10 +25,14 @@ const SCREENS = [
 ];
 
 export function OnboardingScreen() {
-  const { step } = useOnboardingContext();
+  const { step, isFinishOnboarding } = useOnboardingContext();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useOnboardingAnimation({ step, containerRef });
+
+  if (isFinishOnboarding) {
+    return null;
+  }
 
   return (
     <div className="h-[inherit] flex flex-col justify-between items-center pt-20 pb-10">

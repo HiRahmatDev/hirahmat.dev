@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { useOnboardingContext } from "./OnboardingContext";
 
 export function FinishButton({ className }: { className?: string }) {
-  const { step, nextStep, isNextDisabled } = useOnboardingContext();
+  const { step, finishOnboarding, isNextDisabled } = useOnboardingContext();
 
   if (step !== 6) {
     return null;
@@ -18,7 +18,7 @@ export function FinishButton({ className }: { className?: string }) {
         "cursor-pointer",
         className
       )}
-      onClick={nextStep}
+      onClick={finishOnboarding}
       disabled={isNextDisabled}
     >
       Selesai
