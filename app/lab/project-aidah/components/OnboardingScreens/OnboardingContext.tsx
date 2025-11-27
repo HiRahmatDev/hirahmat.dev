@@ -15,7 +15,7 @@ const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
 const OnboardingContext = createContext(INITIAL_ONBOARDING_STATE);
 
 export function OnboardingProvider({ children }: { children?: ReactNode }) {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(INITIAL_ONBOARDING_STATE.step);
 
   const nextStep = () => {
     if (step === 6) return;
