@@ -6,10 +6,10 @@ export function OnboardingGoalScreen() {
       <div />
       <div className="w-full flex flex-col items-start justify-center gap-8">
         <div className="space-y-3">
-          <h1 className="text-2xl/[34px] font-bold tracking-[-0.6px] max-w-[320px] mx-auto">
+          <h1 className="text-2xl/[34px] font-bold tracking-[-0.6px] max-w-[320px]">
             Apa tujuanmu sekarang?
           </h1>
-          <p className="text-sm/5 tracking-[-0.4px] max-w-[320px] mx-auto text-zinc-500">
+          <p className="text-sm/5 tracking-[-0.4px] max-w-[320px] text-zinc-500">
             Kami akan menyesuaikan pengalaman sesuai perjalanan hafalanmu.
           </p>
         </div>

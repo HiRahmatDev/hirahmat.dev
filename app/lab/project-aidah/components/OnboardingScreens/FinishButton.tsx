@@ -3,10 +3,10 @@
 import { twMerge } from "tailwind-merge";
 import { useOnboardingContext } from "./OnboardingContext";
 
-export function NextButton({ className }: { className?: string }) {
+export function FinishButton({ className }: { className?: string }) {
   const { step, nextStep, isNextDisabled } = useOnboardingContext();
 
-  if (step === 6) {
+  if (step !== 6) {
     return null;
   }
 
@@ -21,7 +21,7 @@ export function NextButton({ className }: { className?: string }) {
       onClick={nextStep}
       disabled={isNextDisabled}
     >
-      Lanjut
+      Selesai
     </button>
   );
 }
