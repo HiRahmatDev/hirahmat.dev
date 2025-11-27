@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import clsx from "clsx";
 
 import { FinishButton } from "./FinishButton";
 import { NextButton } from "./NextButton";
@@ -48,9 +49,11 @@ export function OnboardingScreen() {
           return (
             <div
               key={`screen-${id}`}
-              className={`screen-${id} bg-white absolute top-0 left-0 w-full h-full ${
-                id > 1 ? "translate-x-full" : ""
-              }`}
+              className={clsx(
+                `screen-${id}`,
+                "bg-white absolute top-0 left-0 w-full h-full",
+                id > 1 && "translate-x-full"
+              )}
             >
               <Component />
             </div>
