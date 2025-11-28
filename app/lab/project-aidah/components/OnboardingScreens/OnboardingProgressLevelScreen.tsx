@@ -4,7 +4,7 @@ import { RadioButton } from "./RadioButton";
 import { useOnboardingContext } from "./OnboardingContext";
 
 export function OnboardingProgressLevelScreen() {
-  const { step } = useOnboardingContext();
+  const { step, onProgressLevelChange } = useOnboardingContext();
   const tabIndex = step === 3 ? 0 : -1;
 
   return (
@@ -20,16 +20,36 @@ export function OnboardingProgressLevelScreen() {
           </p>
         </div>
         <div className="space-y-3 w-full">
-          <RadioButton name="progressLevel" tabIndex={tabIndex}>
+          <RadioButton
+            tabIndex={tabIndex}
+            name="progressLevel"
+            value="not-start"
+            onValueChange={onProgressLevelChange}
+          >
             Belum mulai menghafal
           </RadioButton>
-          <RadioButton name="progressLevel" tabIndex={tabIndex}>
+          <RadioButton
+            tabIndex={tabIndex}
+            name="progressLevel"
+            value="beginner"
+            onValueChange={onProgressLevelChange}
+          >
             Baru mulai beberapa ayat / surat pendek
           </RadioButton>
-          <RadioButton name="progressLevel" tabIndex={tabIndex}>
+          <RadioButton
+            tabIndex={tabIndex}
+            name="progressLevel"
+            value="intermediate"
+            onValueChange={onProgressLevelChange}
+          >
             Sudah hafal beberapa juz
           </RadioButton>
-          <RadioButton name="progressLevel" tabIndex={tabIndex}>
+          <RadioButton
+            tabIndex={tabIndex}
+            name="progressLevel"
+            value="advanced"
+            onValueChange={onProgressLevelChange}
+          >
             Hampir atau sudah 30 juz
           </RadioButton>
         </div>
