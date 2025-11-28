@@ -42,6 +42,7 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-3", {
+          xPercent: 0,
           duration,
           ease,
         });
@@ -59,6 +60,7 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-4", {
+          xPercent: 0,
           duration,
           ease,
         });
@@ -76,6 +78,7 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-5", {
+          xPercent: 0,
           duration,
           ease,
         });
@@ -93,6 +96,7 @@ export function useOnboardingAnimation({
           ease,
         });
         gsap.to(".screen-6", {
+          xPercent: 0,
           duration,
           ease,
         });

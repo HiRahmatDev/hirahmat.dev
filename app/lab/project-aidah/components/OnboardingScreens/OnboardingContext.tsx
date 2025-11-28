@@ -4,19 +4,21 @@ import { createContext, ReactNode, useContext, useState } from "react";
 
 type OnboardingContextType = {
   step: number;
-  nextStep: () => void;
   isNextDisabled: boolean;
-  finishOnboarding: () => void;
   isFinishOnboarding: boolean;
+  nextStep: () => void;
+  backStep: () => void;
+  finishOnboarding: () => void;
   onGoalChange: (goal: string) => void;
 };
 
 const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
   step: 1,
-  nextStep() {},
   isNextDisabled: false,
-  finishOnboarding() {},
   isFinishOnboarding: false,
+  nextStep() {},
+  backStep() {},
+  finishOnboarding() {},
   onGoalChange() {},
 };
 
@@ -37,6 +39,11 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
     setStep((prev) => prev + 1);
   };
 
+  const backStep = () => {
+    if (step === 1) return;
+    setStep((prev) => prev - 1);
+  };
+
   const onGoalChange = (goal: string) => {
     setGoal(goal);
   };
@@ -49,10 +56,11 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
     <OnboardingContext
       value={{
         step,
-        nextStep,
         isNextDisabled,
-        finishOnboarding,
         isFinishOnboarding,
+        nextStep,
+        backStep,
+        finishOnboarding,
         onGoalChange,
       }}
     >

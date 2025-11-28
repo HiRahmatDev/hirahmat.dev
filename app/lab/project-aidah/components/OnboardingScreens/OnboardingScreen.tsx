@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import clsx from "clsx";
 
+import { BackButton } from "./BackButton";
 import { FinishButton } from "./FinishButton";
 import { NextButton } from "./NextButton";
 import { OnboardingGoalScreen } from "./OnboardingGoalScreen";
@@ -36,7 +37,8 @@ export function OnboardingScreen() {
   }
 
   return (
-    <div className="h-[inherit] flex flex-col justify-between items-center pt-20 pb-10">
+    <div className="h-[inherit] flex flex-col justify-between items-center pt-20 pb-10 relative">
+      <BackButton />
       <div className="size-full overflow-hidden relative" ref={containerRef}>
         {ONBOARDING_SCREENS.map(({ id, Component }) => {
           const beforeStep = step - 1 === id;
