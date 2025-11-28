@@ -1,6 +1,12 @@
+"use client";
+
 import { RadioButton } from "./RadioButton";
+import { useOnboardingContext } from "./OnboardingContext";
 
 export function OnboardingMoodScreen() {
+  const { step } = useOnboardingContext();
+  const tabIndex = step === 6 ? 0 : -1;
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-between gap-8 pb-12 px-4">
       <div />
@@ -14,9 +20,15 @@ export function OnboardingMoodScreen() {
           </p>
         </div>
         <div className="space-y-3 w-full">
-          <RadioButton name="mood">😌 Tenang</RadioButton>
-          <RadioButton name="mood">🙂 Oke</RadioButton>
-          <RadioButton name="mood">😫 Lelah</RadioButton>
+          <RadioButton tabIndex={tabIndex} name="mood">
+            😌 Tenang
+          </RadioButton>
+          <RadioButton tabIndex={tabIndex} name="mood">
+            🙂 Oke
+          </RadioButton>
+          <RadioButton tabIndex={tabIndex} name="mood">
+            😫 Lelah
+          </RadioButton>
         </div>
       </div>
     </div>

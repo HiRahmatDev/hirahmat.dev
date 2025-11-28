@@ -8,6 +8,7 @@ type RadioButtonProps = {
   // input props
   name?: string;
   value?: string;
+  tabIndex?: number;
 };
 
 export function RadioButton({
@@ -25,9 +26,9 @@ export function RadioButton({
     >
       <input
         type="radio"
-        {...inputProps}
         className="size-5"
         onChange={(e) => onValueChange?.(e.target.value)}
+        {...inputProps}
       />
       {children}
     </label>

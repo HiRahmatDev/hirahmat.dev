@@ -4,7 +4,8 @@ import { useOnboardingContext } from "./OnboardingContext";
 import { RadioButton } from "./RadioButton";
 
 export function OnboardingGoalScreen() {
-  const { onGoalChange } = useOnboardingContext();
+  const { step, onGoalChange } = useOnboardingContext();
+  const tabIndex = step === 2 ? 0 : -1;
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-between gap-8 pb-12 px-4">
@@ -19,17 +20,28 @@ export function OnboardingGoalScreen() {
           </p>
         </div>
         <div className="space-y-3 w-full">
-          <RadioButton name="goal" value="new" onValueChange={onGoalChange}>
+          <RadioButton
+            name="goal"
+            value="new"
+            onValueChange={onGoalChange}
+            tabIndex={tabIndex}
+          >
             Hafalan Baru
           </RadioButton>
           <RadioButton
             name="goal"
             value="strongen"
             onValueChange={onGoalChange}
+            tabIndex={tabIndex}
           >
             Perkuat Hafalan
           </RadioButton>
-          <RadioButton name="goal" value="focus" onValueChange={onGoalChange}>
+          <RadioButton
+            name="goal"
+            value="focus"
+            onValueChange={onGoalChange}
+            tabIndex={tabIndex}
+          >
             Fokus Muraja{"'"}ah
           </RadioButton>
         </div>

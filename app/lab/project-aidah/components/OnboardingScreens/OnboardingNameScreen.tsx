@@ -1,7 +1,14 @@
+"use client";
+
 import clsx from "clsx";
+
+import { useOnboardingContext } from "./OnboardingContext";
 import { UserRoundPen } from "lucide-react";
 
 export function OnboardingNameScreen() {
+  const { step } = useOnboardingContext();
+  const tabIndex = step === 5 ? 0 : -1;
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-between gap-8 pb-12 px-4">
       <div />
@@ -18,6 +25,7 @@ export function OnboardingNameScreen() {
           <div className="relative">
             <UserRoundPen className="size-5 absolute top-1/2 left-4 -translate-y-1/2 text-zinc-500" />
             <input
+              tabIndex={tabIndex}
               placeholder="Hamba Allah"
               className={clsx(
                 "block w-full text-left text-[16px]/5 tracking-[-0.3px] pl-11 pr-4 py-[13px]",
