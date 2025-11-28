@@ -6,7 +6,7 @@ import { useOnboardingContext } from "./OnboardingContext";
 import { UserRoundPen } from "lucide-react";
 
 export function OnboardingNameScreen() {
-  const { step } = useOnboardingContext();
+  const { step, onNameChange } = useOnboardingContext();
   const tabIndex = step === 5 ? 0 : -1;
 
   return (
@@ -31,6 +31,7 @@ export function OnboardingNameScreen() {
                 "block w-full text-left text-[16px]/5 tracking-[-0.3px] pl-11 pr-4 py-[13px]",
                 "border border-zinc-200 rounded-[24px]"
               )}
+              onChange={(e) => onNameChange(e.target.value)}
             />
           </div>
         </div>

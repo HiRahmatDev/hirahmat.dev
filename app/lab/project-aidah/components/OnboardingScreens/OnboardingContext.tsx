@@ -11,6 +11,7 @@ type OnboardingContextType = {
   finishOnboarding: () => void;
   onGoalChange: (goal: string) => void;
   onProgressLevelChange: (progressLevel: string) => void;
+  onNameChange: (name: string) => void;
 };
 
 const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
@@ -22,6 +23,7 @@ const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
   finishOnboarding() {},
   onGoalChange() {},
   onProgressLevelChange() {},
+  onNameChange() {},
 };
 
 const OnboardingContext = createContext(INITIAL_ONBOARDING_STATE);
@@ -30,11 +32,13 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
   const [step, setStep] = useState<number>(INITIAL_ONBOARDING_STATE.step);
   const [goal, setGoal] = useState<string>("");
   const [progressLevel, setProgressLevel] = useState<string>("");
+  const [name, setName] = useState<string>("");
 
   const isFinishOnboarding = step === 0;
   const isNextDisabled = (() => {
     if (step === 2) return goal === "";
     if (step === 3) return progressLevel === "";
+    if (step === 5) return name === "";
     return false;
   })();
 
@@ -56,6 +60,10 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
     setProgressLevel(progressLevel);
   };
 
+  const onNameChange = (name: string) => {
+    setName(name);
+  };
+
   const finishOnboarding = () => {
     setStep(0);
   };
@@ -71,6 +79,7 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
         finishOnboarding,
         onGoalChange,
         onProgressLevelChange,
+        onNameChange,
       }}
     >
       {children}

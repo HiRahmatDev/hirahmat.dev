@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { useOnboardingContext } from "./OnboardingContext";
 
 export function SkipButton({ className }: { className?: string }) {
-  const { step, nextStep, isNextDisabled } = useOnboardingContext();
+  const { step, nextStep } = useOnboardingContext();
 
   if (step !== 5) return null;
 
@@ -17,7 +17,6 @@ export function SkipButton({ className }: { className?: string }) {
         className
       )}
       onClick={nextStep}
-      disabled={isNextDisabled}
     >
       Lewati saja
     </button>
