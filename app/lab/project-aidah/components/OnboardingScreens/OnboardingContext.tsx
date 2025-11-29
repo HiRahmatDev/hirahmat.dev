@@ -6,6 +6,7 @@ type OnboardingContextType = {
   step: number;
   isNextDisabled: boolean;
   isFinishOnboarding: boolean;
+  name: string;
   nextStep: () => void;
   backStep: () => void;
   finishOnboarding: () => void;
@@ -18,6 +19,7 @@ const INITIAL_ONBOARDING_STATE: OnboardingContextType = {
   step: 1,
   isNextDisabled: false,
   isFinishOnboarding: false,
+  name: "",
   nextStep() {},
   backStep() {},
   finishOnboarding() {},
@@ -76,6 +78,7 @@ export function OnboardingProvider({ children }: { children?: ReactNode }) {
         isFinishOnboarding,
         nextStep,
         backStep,
+        name,
         finishOnboarding,
         onGoalChange,
         onProgressLevelChange,

@@ -4,7 +4,7 @@ import { RadioButton } from "./RadioButton";
 import { useOnboardingContext } from "./OnboardingContext";
 
 export function OnboardingMoodScreen() {
-  const { step } = useOnboardingContext();
+  const { step, name } = useOnboardingContext();
   const tabIndex = step === 6 ? 0 : -1;
 
   return (
@@ -13,7 +13,7 @@ export function OnboardingMoodScreen() {
       <div className="w-full flex flex-col items-start justify-center gap-8">
         <div className="space-y-3">
           <h1 className="text-2xl/[34px] font-bold tracking-[-0.6px] max-w-[310px]">
-            Bagaimana perasaanmu hari ini?
+            Bagaimana perasaanmu hari ini{name ? `, ${name}` : ""}?
           </h1>
           <p className="text-sm/5 tracking-[-0.4px] max-w-[310px] text-zinc-500">
             Kami akan menyesuaikan ritme hafalan berdasarkan kondisimu.
