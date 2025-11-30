@@ -1,3 +1,3 @@
 export const FLAGS = {
-  PROJECT_AIDAH: true,
+  PROJECT_AIDAH: false,
 } as const;
