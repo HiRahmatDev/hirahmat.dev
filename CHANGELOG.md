@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## [v0.13.2] - 2026-01-09
+
+### Fixed
+
+- CVE-2025-66478 (critical): Remote code execution via crafted RSC payload
+- CVE-2025-55184 (high): DoS via malicious HTTP request causing server to hang and consume CPU
+- CVE-2025-55183 (medium): Compiled Server Action source code can be exposed via malicious request
+- CVE-2025-67779 (high): Incomplete fix for CVE-2025-55184 DoS via malicious RSC payload causing infinite loop
+
 ## [v0.13.1] - 2025-11-23
 
 ### Changed
