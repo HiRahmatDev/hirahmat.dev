@@ -40,7 +40,7 @@ export function SelectedBlogsHeader() {
 
   return (
     <div ref={container} className="space-y-1 md:space-y-2">
-      <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold blog-header">
+      <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold blog-header">
         Blog
       </h2>
       <p className="text-base/[24px] tracking-[-0.4px] max-w-prose font-medium blog-desc">
