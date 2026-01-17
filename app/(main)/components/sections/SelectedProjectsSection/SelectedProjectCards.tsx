@@ -86,9 +86,9 @@ function SelectedProjectCard({ project, index }: SelectedProjectCardProps) {
           </div>
           <Link
             href={`/articles/${project.slug}`}
-            className="white-solid-button animate-hover"
+            className="white-outline-button animate-hover"
           >
-            Lihat Jurnal
+            Detail Proyek
           </Link>
         </div>
         {project.cover && (

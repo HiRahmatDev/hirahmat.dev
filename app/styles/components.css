@@ -8,7 +8,7 @@
 
   .cta-button {
     @apply min-h-[44px] px-4 rounded-[22px];
-    @apply font-semibold text-sm/[40px] tracking-[-0.25px] text-nowrap;
+    @apply font-medium text-sm/[40px] text-nowrap;
     @apply flex gap-2 items-center;
     @apply [&>svg]:size-5;
     @apply cursor-pointer;
@@ -22,15 +22,14 @@
     transition: top 300ms;
     transition-timing-function: var(--transition-navbar);
   }
-  .white-solid-button {
-    @apply min-h-[36px] px-4 rounded-[20px];
-    @apply font-semibold text-sm/[36px] tracking-[-0.4px] text-nowrap;
+
+  .white-outline-button {
+    @apply min-h-[34px] px-4 rounded-[20px];
+    @apply font-medium text-sm/[34px] text-nowrap;
     @apply flex gap-2 items-center;
     @apply [&>svg]:size-5;
     @apply cursor-pointer;
-    @apply bg-white text-text-accent;
-    @apply shadow-lg hover:shadow-xl transition-shadow active:shadow-md;
-    @apply transition;
+    @apply bg-transparent text-white border border-white;
   }
 
   .navbar-fixed-active,
