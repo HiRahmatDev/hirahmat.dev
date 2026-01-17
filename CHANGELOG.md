@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## [v0.14.1] - 2026-01-17
+
+### Changed
+
+- Update header font sizes and tracking for `AboutMeSection`, `SelectedBlogsHeader`, and `SectionHeader` components
+- Adjust spacing and typography for various components in `NotionRenderer`
+
+### Removed
+
+- Remove `OrbBackground` component
+
 ## [v0.14.0] - 2026-01-17
 
 ### Changed
