@@ -76,11 +76,11 @@ export function SelectedBlogsList({
                 />
               )}
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               <h3 className="font-bold text-xl/[26px] tracking-[-0.4px] line-clamp-2">
                 <RichText items={blog.rawTitle} />
               </h3>
-              <p className="text-sm/[20px] text-zinc-600 line-clamp-3">
+              <p className="text-sm/[20px] text-text-gray line-clamp-3">
                 <RichText items={blog.rawDesc} />
               </p>
             </div>

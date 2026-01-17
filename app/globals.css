@@ -8,6 +8,7 @@
   --accent-hover: #0ca15c;
   --accent-active: #0ca15c;
   --text-accent: #006938;
+  --text-gray: #434343;
   --calm: #0e4da0;
   --calm-hover: #1156af;
   --calm-active: #1156af;
@@ -39,6 +40,7 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-active: var(--accent-active);
   --color-text-accent: var(--text-accent);
+  --color-text-gray: var(--text-gray);
   --color-calm: var(--calm);
   --color-calm-hover: var(--calm-hover);
   --color-calm-active: var(--calm-active);
