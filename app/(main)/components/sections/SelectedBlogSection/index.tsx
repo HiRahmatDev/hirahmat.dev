@@ -8,7 +8,7 @@ export async function SelectedBlogsSection() {
   const displayBlogs = selectedBlogs?.slice(0, 3) || [];
 
   return (
-    <section className="container py-8">
+    <section className="container py-6 sm:py-8">
       <div className="space-y-8">
         <SelectedBlogsHeader />
         <SelectedBlogsList selectedBlogs={displayBlogs} hasMore={hasMore} />
