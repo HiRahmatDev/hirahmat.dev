@@ -61,31 +61,31 @@ export default async function ArticleDetailPage({
     <>
       <div className="flex container px-0">
         <article className="space-y-8 flex-1">
-          <section className="pt-6 space-y-6">
+          <section className="pt-4 space-y-6">
             <div
               className={
                 "container-for-reading space-y-6" +
                 (isTocEmpty ? "" : " mx-[unset]")
               }
             >
-              <header className="space-y-6">
+              <header className="space-y-4">
                 <div className="space-y-2">
-                  <h1 className="text-4xl/[44px] tracking-[-1px] font-bold">
+                  <h1 className="text-3xl/[36px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
                     <RichText items={blockMetadata.rawTitle} />
                   </h1>
-                  <p className="text-lg/[28px] tracking-[-0.35px] text-zinc-500">
+                  <p className="text-base/[26px] sm:text-lg/[30px] tracking-[-0.35px] text-text-gray">
                     <RichText items={blockMetadata.rawDesc} />
                   </p>
                 </div>
-                <p className="text-sm/[24px] tracking-[-0.15px]">
-                  <span className="text-sm font-medium px-2 py-1 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
+                <p className="text-xs/[20px] sm:text-sm/[24px] tracking-[-0.15px]">
+                  <span className="font-medium px-2 py-1 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
                     {blockMetadata.category || "-"}
                   </span>
                   <span className="text-zinc-500">&ensp;•&ensp;</span>
                   <strong className="font-medium">
                     {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
-                  <span className="text-zinc-500">&ensp;•&ensp;Diperbarui</span>{" "}
+                  <span className="text-text-gray">&ensp;•&ensp;Diperbarui</span>{" "}
                   <strong className="font-medium">
                     {formatDate(blockMetadata.updatedOn) || "-"}
                   </strong>
@@ -106,7 +106,7 @@ export default async function ArticleDetailPage({
               ) : null}
             </div>
           </section>
-          <section className="pb-12">
+          <section className="pb-8 sm:pb-12">
             <div
               className={
                 "container-for-reading" + (isTocEmpty ? "" : " mx-[unset]")
@@ -121,7 +121,7 @@ export default async function ArticleDetailPage({
             <h2 className="text-base font-semibold tracking-[-0.35px]">
               Telusuri Isi:
             </h2>
-            <nav className="[&_a]:text-sm/[18px] [&_a]:text-gray-600 [&_a]:hover:text-accent [&_a]:animate-hover [&_ul,&_ul_li]:space-y-2.5 [&_a]:inline-block">
+            <nav className="[&_a]:text-sm/[18px] [&_a]:text-text-gray [&_a]:hover:text-accent [&_a]:animate-hover [&_ul,&_ul_li]:space-y-2.5 [&_a]:inline-block">
               <ul className="[&_ul]:pl-4">
                 {toc.map(({ title, children }, index) => (
                   <li key={index}>
