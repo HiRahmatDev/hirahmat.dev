@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## [v0.14.2] - 2026-01-17
+
+### Changed
+
+- Adjust padding and gap in `AboutMeSection`, `SelectedBlogsList`, and `SelectedProjectsSection` for improved layout
+- Adjust padding in `BottomActionBar`, `MenuButton`, and `QuranPageRenderer` components for improved layout
+- Adjust padding and gap in `Callout` component for improved layout
+- Update category background color in `ArticlesList` and adjust main container padding in `ArticlesPage`
+- Adjust heading and paragraph styles for `Articles` and `ArticleDetail` pages
+- Update font weight for `BulletedListItem` component
+- Update `Navbar` component layout and adjust button font weight
+- Update padding for container utility in `utilities.css`
+
 ## [v0.14.1] - 2026-01-17
 
 ### Changed
