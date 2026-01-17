@@ -85,12 +85,12 @@ export function Navbar() {
     if (navState === "navbar-fixed-active") {
       timeoutRef.current = window.setTimeout(
         () => setNavState("navbar-fixed"),
-        ANIMATION_MS
+        ANIMATION_MS,
       );
     } else if (navState === "navbar-static-active") {
       timeoutRef.current = window.setTimeout(
         () => setNavState("navbar-static"),
-        ANIMATION_MS
+        ANIMATION_MS,
       );
     }
 

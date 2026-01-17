@@ -7,10 +7,10 @@
   }
 
   .cta-button {
-    @apply min-h-[44px] px-4 rounded-[22px];
-    @apply font-medium text-sm/[40px] text-nowrap;
+    @apply h-[40px] sm:h-[44px] px-4 rounded-[22px];
+    @apply sm:font-medium text-sm/[40px] sm:text-sm/[44px] text-nowrap;
     @apply flex gap-2 items-center;
-    @apply [&>svg]:size-5;
+    @apply [&>svg]:size-4.5 sm:[&>svg]:size-5;
     @apply cursor-pointer;
     @apply bg-accent hover:bg-accent-hover active:bg-accent-active text-white;
     @apply shadow-md hover:shadow-lg transition-shadow active:shadow-md;
