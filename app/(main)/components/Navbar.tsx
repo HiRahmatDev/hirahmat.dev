@@ -105,13 +105,13 @@ export function Navbar() {
   return (
     <>
       <nav className="relative" tabIndex={-1}>
-        <div className="container py-3 flex gap-3 justify-between align-center">
+        <div className="container py-2 md:py-3 flex gap-3 justify-between align-center">
           <Logo />
         </div>
       </nav>
       {navState !== "navbar-static" && (
         <div className={navState + " z-20"}>
-          <div className="container py-3 flex gap-3 justify-between align-center">
+          <div className="container py-2 md:py-3 flex gap-3 justify-between align-center">
             <Logo />
             <CTAButton />
           </div>

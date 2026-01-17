@@ -7,7 +7,7 @@ export function Logo() {
     <Link
       className={twJoin(
         "font-mono font-bold animate-hover -rotate-1",
-        "text-lg/[44px] md:text-xl/[44px] tracking-[-1.5px]",
+        "text-lg/[40px] md:text-xl/[44px] tracking-[-1.5px]",
       )}
       href="/"
     >
