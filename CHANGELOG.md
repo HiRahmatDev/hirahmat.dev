@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## [v0.14.0] - 2026-01-17
+
+### Changed
+
+- Update copywriting in landing page
+- Update typography's font weight in landing page
+- Update spacing between contents in landing page
+- Update theme accent color
+- Update backdrop blur effect in navbar
+
 ## [v0.13.2] - 2026-01-09
 
 ### Fixed
