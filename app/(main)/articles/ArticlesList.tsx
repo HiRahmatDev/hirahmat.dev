@@ -45,8 +45,8 @@ export function ArticlesList({ articles }: ArticlesListProps) {
           <button
             key={type}
             onClick={() => handleFilterChange(type)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filter === type
-              ? "bg-zinc-800 text-white"
+            className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition-colors ${filter === type
+              ? "bg-accent text-white"
               : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
               }`}
           >
