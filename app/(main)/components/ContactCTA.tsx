@@ -56,7 +56,7 @@ export function ContactCTA() {
             Saya siap berkolaborasi — kirim email ke{" "}
             <a
               href={EMAIL_HREF}
-              className="inline-block animate-hover font-mono font-semibold tracking-[-1px] underline"
+              className="inline-block animate-hover font-mono font-medium tracking-[-1px] underline"
             >
               hirahmat.dev@gmail.com
             </a>
