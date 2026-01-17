@@ -7,7 +7,6 @@ import Image from "next/image";
 
 import { CTAButton } from "../CTAButton";
 import { GreenText } from "../GreenText";
-import { OrbBackground } from "../OrbBackground";
 import backAccent from "@/public/images/back-accent.png";
 import frontAccent from "@/public/images/front-accent.png";
 import middleAccent from "@/public/images/middle-accent.png";
@@ -160,7 +159,6 @@ export function HeroSection() {
       ref={container}
       className="container flex flex-row gap-4 h-[400px] md:h-[633px] -mt-10 [&_h1,&_p,&_a,&_.hero-image]:opacity-0"
     >
-      <OrbBackground />
       <div className="md:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
         <div className="space-y-2 md:space-y-3">
           <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-1.5px] md:tracking-[-2px]">
