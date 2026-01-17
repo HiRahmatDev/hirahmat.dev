@@ -19,14 +19,14 @@ export function QuranPageRenderer({
   isRightPage,
 }: QuranPageRendererProps) {
   return (
-    <div className="flex justify-center -mx-5 sm:mx-0">
+    <div className="flex justify-center -mx-3 sm:mx-0">
       <article
         lang="ar"
         dir="rtl"
         className={clsx(
           "md:scale-100",
           "min-h-[80vh] sm:min-h-[900px] sm:w-[600px] sm:max-w-[600px] sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
-          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-5 pb-[calc(48px+96px)] max-w-[420px] w-full"
+          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-3 pb-[calc(48px+96px)] max-w-[420px] w-full"
         )}
       >
         <div

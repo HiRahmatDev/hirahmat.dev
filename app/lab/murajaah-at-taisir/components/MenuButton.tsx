@@ -55,9 +55,9 @@ export function MenuButton({ className }: { className?: string }) {
         <Modal>
           <Dialog
             ref={bottomSheetRef}
-            className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 slide-up-active"
+            className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-5 slide-up-active"
           >
-            <div className="mx-auto max-w-[420px] px-5">
+            <div className="mx-auto max-w-[420px] px-3 sm:px-5">
               <h2 className="text-lg tracking-tight font-bold mb-3">
                 Pengaturan
               </h2>
