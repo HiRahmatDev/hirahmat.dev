@@ -1,8 +1,9 @@
 @utility container {
   margin-inline: auto;
-  padding-inline: 20px;
+  @apply px-3 sm:px-5;
   @apply md:max-w-[960px];
 }
+
 @utility container-for-reading {
   @apply container;
   @apply md:max-w-[720px];
