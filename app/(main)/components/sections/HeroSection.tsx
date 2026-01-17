@@ -163,7 +163,7 @@ export function HeroSection() {
       <OrbBackground />
       <div className="md:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
         <div className="space-y-2 md:space-y-3">
-          <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-2.5px]">
+          <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-1.5px] md:tracking-[-2px]">
             <span className="text-2xl tracking-[-1px]">
               <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
             </span>
