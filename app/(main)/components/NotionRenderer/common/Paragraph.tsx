@@ -43,7 +43,7 @@ export function Paragraph({ block }: { block: ParagraphBlockObjectResponse }) {
   }
 
   return (
-    <p className="font-medium text-base/[24px] sm:text-lg/[28px] tracking-[-0.35px] mb-4 sm:mb-5 [&:has(+img),&:has(+ul),&:has(+pre)]:mb-3">
+    <p className="font-medium text-base/[26px] sm:text-lg/[30px] tracking-[-0.35px] mb-4 sm:mb-5 [&:has(+img),&:has(+ul),&:has(+pre)]:mb-3">
       <RichText items={block.paragraph.rich_text} />
     </p>
   );

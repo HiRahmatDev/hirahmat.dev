@@ -49,7 +49,7 @@ export function ContactCTA() {
       >
         <Mail className="shrink-0" />
         <div className="space-y-1">
-          <h2 className="text-xl/[24px] font-semibold tracking-[-0.35px]">
+          <h2 className="text-lg/[24px] font-semibold">
             Punya ide atau proyek menarik?
           </h2>
           <p className="text-base/[24px] tracking-[-0.35px]">

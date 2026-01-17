@@ -77,7 +77,7 @@ export function AboutMeSection() {
         </a>
       </div>
       <div className="w-full">
-        <div className="space-y-4 text-base/[24px] tracking-[-0.35px] font-medium about-content">
+        <div className="space-y-4 text-base/[26px] tracking-[-0.35px] font-medium about-content">
           <p>
             Saya tidak datang dari dunia teknologi, tapi rasa penasaran saya
             sudah tumbuh sejak lama. Waktu SMA, saya senang{" "}
