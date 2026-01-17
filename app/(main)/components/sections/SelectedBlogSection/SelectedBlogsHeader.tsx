@@ -39,11 +39,11 @@ export function SelectedBlogsHeader() {
   );
 
   return (
-    <div ref={container} className="space-y-1">
+    <div ref={container} className="space-y-1 md:space-y-2">
       <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold blog-header">
         Blog
       </h2>
-      <p className="text-base/[24px] tracking-[-0.4px] max-w-prose blog-desc">
+      <p className="text-base/[24px] tracking-[-0.4px] max-w-prose font-medium blog-desc">
         Catatan reflektif dan hal-hal yang saya pelajari di luar proyek — mulai
         dari desain, pengembangan, sampai cara berpikir di balik keduanya.
       </p>

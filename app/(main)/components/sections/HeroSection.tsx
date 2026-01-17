@@ -54,10 +54,10 @@ export function HeroSection() {
           onComplete: () => {
             gsap.set("a", { clearProps: "y" });
           },
-        }
+        },
       );
     },
-    { scope: container }
+    { scope: container },
   );
 
   useGSAP(
@@ -74,10 +74,10 @@ export function HeroSection() {
           opacity: 1,
           y: 0,
           duration: 0.3,
-        }
+        },
       );
     },
-    { scope: container, dependencies: [isHeroImageLoaded] }
+    { scope: container, dependencies: [isHeroImageLoaded] },
   );
 
   useGSAP(() => {
@@ -109,7 +109,7 @@ export function HeroSection() {
             ? Number(ref.current.dataset.parallaxY)
             : 0;
           parallaxSetters.current[key]?.(
-            parallaxY + floatingOffsets.current[key]
+            parallaxY + floatingOffsets.current[key],
           );
         },
       });
@@ -136,7 +136,7 @@ export function HeroSection() {
           ref.current.dataset.parallaxY = String(parallaxY);
           // Merge floating and parallax
           parallaxSetters.current[key]?.(
-            parallaxY + floatingOffsets.current[key]
+            parallaxY + floatingOffsets.current[key],
           );
           gsap.to(ref.current, {
             x: x * factor,
@@ -162,17 +162,18 @@ export function HeroSection() {
     >
       <OrbBackground />
       <div className="md:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
-        <div className="space-y-2">
-          <h1 className="font-bold text-4xl/[46px] md:text-5xl/[58px] tracking-[-2.5px]">
+        <div className="space-y-2 md:space-y-3">
+          <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-2.5px]">
             <span className="text-2xl tracking-[-1px]">
               <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
             </span>
             <br />
             Frontend <GreenText>Dev</GreenText>eloper
           </h1>
-          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch]">
-            Saya merancang dan mengembangkan aplikasi web yang fungsional,
-            responsif, dan enak dipakai.
+          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch] font-medium">
+            Saya membangun aplikasi web yang terasa seperti aplikasi native,
+            dengan alur navigasi yang mulus dan animasi yang mendukung
+            pengalaman pengguna.
           </p>
         </div>
         <CTAButton />

@@ -23,20 +23,21 @@ export function SectionHeader() {
           duration: 0.3,
           delay: 0.3,
           stagger: 0.1,
-        }
+        },
       );
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
-    <div ref={container} className="space-y-1 [&>h2,&>p]:opacity-0">
+    <div ref={container} className="space-y-1 md:space-y-2 [&>h2,&>p]:opacity-0">
       <h2 className="text-3xl/[40px] sm:text-4xl/[44px] tracking-[-1px] font-bold">
         Proyek <GreenText>Pilihan</GreenText>
       </h2>
-      <p className="text-base/[24px] tracking-[-0.4px] max-w-prose">
-        Beberapa proyek yang saya garap dengan rasa penasaran tinggi dan
-        perhatian ke hal-hal kecil yang bikin hasilnya terasa beda.
+      <p className="text-base/[24px] tracking-[-0.4px] max-w-prose font-medium">
+        Beberapa proyek yang saya pilih karena prosesnya menuntut ketelitian
+        visual, alur interaksi yang rapi, dan keputusan desain yang berdampak
+        langsung pada pengalaman pengguna.
       </p>
     </div>
   );
