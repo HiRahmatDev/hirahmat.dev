@@ -56,7 +56,7 @@ export function SelectedBlogsList({
   );
 
   return (
-    <div ref={container} className="pb-2 pt-2 -mt-2 overflow-x-auto">
+    <div ref={container} className="pb-6 pt-2 -mt-2 overflow-x-auto overflow-y-hidden">
       <div className="flex gap-4 [&>a]:shrink-0">
         {(selectedBlogs || []).map((blog) => (
           <Link
