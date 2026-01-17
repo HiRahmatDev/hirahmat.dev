@@ -1,11 +1,11 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail } from "lucide-react";
-import Image from "next/image";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import gsap from "gsap";
+import Image from "next/image";
 
 import { EMAIL_HREF } from "./constants";
 import backgroundFooterContactCtaPng from "@/public/images/background-footer-contact-cta.png";
