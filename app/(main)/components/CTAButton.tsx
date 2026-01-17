@@ -8,7 +8,7 @@ export function CTAButton({ className }: { className?: string }) {
   return (
     <a href={EMAIL_HREF} className={twMerge("cta-button animate-hover", className)}>
       <Mail />
-      Hubungi Saya
+      Diskusikan Proyek
     </a>
   );
 }
