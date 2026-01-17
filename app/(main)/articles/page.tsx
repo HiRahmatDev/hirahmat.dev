@@ -18,11 +18,11 @@ export default async function ArticlesPage() {
     <>
       <main className="container mx-auto px-4 pt-8 sm:pt-20 pb-20 min-h-screen">
         <div className="max-w-5xl mx-auto space-y-10">
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <div className="space-y-2">
+            <h1 className="text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
               Artikel
             </h1>
-            <p className="text-lg text-zinc-600 max-w-2xl">
+            <p className="text-base/[26px] sm:text-lg/[30px] tracking-[-0.35px] text-text-gray">
               Tulisan mengenai pemikiran, pengalaman, dan catatan perjalanan dalam
               membangun proyek-proyek digital.
             </p>
