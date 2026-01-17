@@ -13,7 +13,7 @@ export function Callout({ block }: { block: CalloutBlockObjectResponse }) {
 
   return (
     <div
-      className={clsx("flex gap-2 pt-5 pb-6 px-4 rounded-2xl mb-7", colorClass)}
+      className={clsx("flex gap-1 sm:gap-2 pt-4 sm:pt-5 pb-5 sm:pb-6 pl-2 sm:pl-3 pr-3 sm:pr-5 rounded-2xl mb-7", colorClass)}
     >
       {block.callout.icon && block.callout.icon.type === "emoji" && (
         <span className="text-xl sm:text-2xl -mt-0.5 sm:-mt-1">{block.callout.icon.emoji}</span>
