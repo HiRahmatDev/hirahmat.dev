@@ -65,7 +65,7 @@ export default function MurajaahAtTaisirLayout({
       }}
     >
       <div className="min-h-[calc(100vh-96px)]">
-        <div className="container pt-4">
+        <div className="container pt-4 pb-6">
           <div className="mb-8">
             <h1 className="text-2xl tracking-[-0.5px] font-bold sm:text-4xl sm:tracking-[-1px] sm:font-semibold mb-1">
               Muraja{"'"}ah at-Taisir

@@ -157,9 +157,9 @@ export function HeroSection() {
   return (
     <section
       ref={container}
-      className="container flex flex-row gap-4 h-[400px] md:h-[633px] -mt-10 [&_h1,&_p,&_a,&_.hero-image]:opacity-0"
+      className="container flex flex-row gap-4 h-[400px] md:h-[600px] -mt-10 [&_h1,&_p,&_a,&_.hero-image]:opacity-0"
     >
-      <div className="md:pb-24 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
+      <div className="md:pb-14 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
         <div className="space-y-2 md:space-y-3">
           <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-1.5px] md:tracking-[-2px]">
             <span className="text-2xl tracking-[-1px]">
@@ -168,7 +168,7 @@ export function HeroSection() {
             <br />
             Frontend <GreenText>Dev</GreenText>eloper
           </h1>
-          <p className="text-base/[24px] tracking-[-0.4px] max-w-[40ch] font-medium">
+          <p className="text-base/[24px] tracking-[-0.4px] max-w-[60ch] font-medium">
             Saya membangun aplikasi web yang terasa seperti aplikasi native,
             dengan alur navigasi yang mulus dan animasi yang mendukung
             pengalaman pengguna.
@@ -176,9 +176,9 @@ export function HeroSection() {
         </div>
         <CTAButton />
       </div>
-      <div className="shrink-0 min-w-[395px] pb-24 hidden md:block">
+      <div className="shrink-0 min-w-[440px] pb-14 hidden md:block">
         <div className="h-full">
-          <div className="relative h-full hero-image">
+          <div className="relative h-full hero-image mr-6">
             <Image
               src={vectorBackgroundHero}
               alt=""

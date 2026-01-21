@@ -1,12 +1,12 @@
 @utility container {
   margin-inline: auto;
   @apply px-3 sm:px-5;
-  @apply md:max-w-[960px];
+  @apply md:max-w-[1200px];
 }
 
 @utility container-for-reading {
   @apply container;
-  @apply md:max-w-[720px];
+  @apply md:max-w-[800px];
 }
 
 @utility animate-hover {

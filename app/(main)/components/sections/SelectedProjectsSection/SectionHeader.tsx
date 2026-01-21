@@ -34,7 +34,7 @@ export function SectionHeader() {
       <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
         Proyek <GreenText>Pilihan</GreenText>
       </h2>
-      <p className="text-base/[24px] tracking-[-0.4px] max-w-prose font-medium">
+      <p className="text-base/[24px] tracking-[-0.4px] max-w-[80ch] font-medium">
         Beberapa proyek yang saya pilih karena prosesnya menuntut ketelitian
         visual, alur interaksi yang rapi, dan keputusan desain yang berdampak
         langsung pada pengalaman pengguna.

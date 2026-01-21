@@ -58,7 +58,7 @@ export function AboutMeSection() {
       ref={container}
       className="container flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-14 py-6 sm:py-8"
     >
-      <div className="shrink-0 max-w-[400px] md:max-w-[351px] space-y-4 md:space-y-8">
+      <div className="shrink-0 md:max-w-[420px] space-y-4 md:space-y-8">
         <div className="space-y-1 md:space-y-2">
           <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold about-header">
             Siapa <GreenText>Saya</GreenText>?

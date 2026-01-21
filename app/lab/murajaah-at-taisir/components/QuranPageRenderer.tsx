@@ -25,8 +25,8 @@ export function QuranPageRenderer({
         dir="rtl"
         className={clsx(
           "md:scale-100",
-          "min-h-[80vh] sm:min-h-[900px] sm:w-[600px] sm:max-w-[600px] sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
-          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-3 pb-[calc(48px+96px)] max-w-[420px] w-full"
+          "min-h-[80vh] sm:min-h-[900px] sm:w-[720px] sm:max-w-[720px] sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
+          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-3 pb-[calc(48px+96px)] max-w-[500px] w-full"
         )}
       >
         <div

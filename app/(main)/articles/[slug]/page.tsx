@@ -64,7 +64,7 @@ export default async function ArticleDetailPage({
           <section className="pt-4 space-y-6">
             <div
               className={
-                "container-for-reading space-y-6" +
+                "container space-y-6" +
                 (isTocEmpty ? "" : " mx-[unset]")
               }
             >
@@ -109,7 +109,7 @@ export default async function ArticleDetailPage({
           <section className="pb-8 sm:pb-12">
             <div
               className={
-                "container-for-reading" + (isTocEmpty ? "" : " mx-[unset]")
+                "container-for-reading" + (isTocEmpty ? "" : "")
               }
             >
               <NotionRenderer listBlockChildren={article} />
