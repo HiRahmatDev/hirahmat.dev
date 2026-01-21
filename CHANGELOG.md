@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## [v0.14.5] - 2026-01-21
+
+### Changed
+
+- Update container max-widths and spacing for improved layout consistency
+
 ## [v0.14.4] - 2026-01-17
 
 ### Changed
