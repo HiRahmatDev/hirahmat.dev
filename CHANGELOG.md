@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [v0.14.6] - 2026-01-25
 
+### Changed
+
+- Update actions/checkout to v6 and pnpm/action-setup to v4 in github workflow file
+
 ## [v0.14.5] - 2026-01-21
 
 ### Changed
