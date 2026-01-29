@@ -1,0 +1,13 @@
+{
+  "plugins": {
+    "release-it-pnpm": {},
+    "@release-it/keep-a-changelog": {
+      "filename": "CHANGELOG.md",
+      "keepUnreleased": true
+    }
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}"
+  }
+}
