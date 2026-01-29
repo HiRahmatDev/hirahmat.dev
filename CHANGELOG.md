@@ -11,25 +11,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
-## [v0.14.6] - 2026-01-25
+## [0.14.6] - 2026-01-25
 
 ### Changed
 
 - Update actions/checkout to v6 and pnpm/action-setup to v4 in github workflow file
 
-## [v0.14.5] - 2026-01-21
+## [0.14.5] - 2026-01-21
 
 ### Changed
 
 - Update container max-widths and spacing for improved layout consistency
 
-## [v0.14.4] - 2026-01-17
+## [0.14.4] - 2026-01-17
 
 ### Changed
 
 - Update line height for improved readability
 
-## [v0.14.3] - 2026-01-17
+## [0.14.3] - 2026-01-17
 
 ### Changed
 
@@ -39,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove vertical scroll in selected blogs section
 
-## [v0.14.2] - 2026-01-17
+## [0.14.2] - 2026-01-17
 
 ### Changed
 
@@ -52,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update `Navbar` component layout and adjust button font weight
 - Update padding for container utility in `utilities.css`
 
-## [v0.14.1] - 2026-01-17
+## [0.14.1] - 2026-01-17
 
 ### Changed
 
@@ -63,7 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove `OrbBackground` component
 
-## [v0.14.0] - 2026-01-17
+## [0.14.0] - 2026-01-17
 
 ### Changed
 
@@ -73,7 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update theme accent color
 - Update backdrop blur effect in navbar
 
-## [v0.13.2] - 2026-01-09
+## [0.13.2] - 2026-01-09
 
 ### Fixed
 
@@ -82,13 +82,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CVE-2025-55183 (medium): Compiled Server Action source code can be exposed via malicious request
 - CVE-2025-67779 (high): Incomplete fix for CVE-2025-55184 DoS via malicious RSC payload causing infinite loop
 
-## [v0.13.1] - 2025-11-23
+## [0.13.1] - 2025-11-23
 
 ### Changed
 
 - Update `jsonLd` object in `app/(main)/page.tsx`
 
-## [v0.13.0] - 2025-11-23
+## [0.13.0] - 2025-11-23
 
 ### Added
 
@@ -100,26 +100,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update category badge's style
 - Update code's style
 
-## [v0.12.1] - 2025-11-22
+## [0.12.1] - 2025-11-22
 
 ### Added
 
 - Images for new blog post
 
-## [v0.12.0] - 2025-11-22
+## [0.12.0] - 2025-11-22
 
 ### Added
 
 - Animated gradient orb background effect to hero section
 - Scroll animations to `AboutMeSection`, `SelectedBlogSection`, and `ContactCTA`
 
-## [v0.11.1] - 2025-11-22
+## [0.11.1] - 2025-11-22
 
 ### Added
 
 - GitHub Actions workflow for automated Vercel deployment on tags.
 
-## [v0.11.0] - 2025-11-16
+## [0.11.0] - 2025-11-16
 
 ### Added
 
@@ -131,55 +131,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Murajaah At-Taisir Mobile UI Optimization [#7](https://github.com/HiRahmatDev/hirahmat.dev/pull/7)
 - Release Murajaah At-Taisir app v0.4.0, see details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
 
-## [v0.10.8] - 2025-11-14
+## [0.10.8] - 2025-11-14
 
 ### Fixed
 
 - Duplicate ayah detection
 
-## [v0.10.7] - 2025-11-12
+## [0.10.7] - 2025-11-12
 
 ### Changed
 
 - Release hotfix Murajaah At-Taisir app v0.3.2, see details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
 
-## [v0.10.6] - 2025-11-11
+## [0.10.6] - 2025-11-11
 
 ### Changed
 
 - Release Murajaah At-Taisir app v0.3.1, see details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
 
-## [v0.10.5] - 2025-11-9
+## [0.10.5] - 2025-11-9
 
 ### Changed
 
 - Release Murajaah At-Taisir app v0.3.0, see details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
 
-## [v0.10.4] - 2025-11-8
+## [0.10.4] - 2025-11-8
 
 ### Fixed
 
 - Improved ayah display logic and layout shifting in murajaah-at-taisir, with refactored code for better readability. See details in [app/lab/murajaah-at-taisir/CHANGELOG.md](app/lab/murajaah-at-taisir/CHANGELOG.md).
 
-## [v0.10.3] - 2025-11-5
+## [0.10.3] - 2025-11-5
 
 ### Added
 
 - Add promotional images for murajaah-at-taisir blog and app in `public/images` to support marketing content.
 
-## [v0.10.2] - 2025-11-5
+## [0.10.2] - 2025-11-5
 
 ### Fixed
 
 - Prevent unwanted scroll when navigating to ayah page in `lab/murajaah-at-taisir/layout.tsx` by passing `{ scroll: false }` to `router.replace`.
 
-## [v0.10.1] - 2025-11-4
+## [0.10.1] - 2025-11-4
 
 ### Fixed
 
 - Fix ayah highlighting and ornament opacity in QuranPageRenderer for murajaah-at-taisir (see details in app/lab/murajaah-at-taisir/components/QuranPageRenderer.tsx).
 
-## [v0.10.0] - 2025-11-4
+## [0.10.0] - 2025-11-4
 
 ### Added
 
@@ -192,14 +192,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Layout: import and apply Amiri Quran font for RTL in `layout.tsx`.
 - Clean up `next.config.ts` by removing unused image remotePatterns.
 
-## [v0.9.1] - 2025-11-2
+## [0.9.1] - 2025-11-2
 
 ### Changed
 
 - Update date format in `formatDate` (in `app/lib/dayjs.tsx`) to use "DD MMM YYYY" for consistency.
 - Refine article detail page date display (in `app/articles/[slug]/page.tsx`): improved wording and formatting for published/updated dates.
 
-## [v0.9.0] - 2025-11-1
+## [0.9.0] - 2025-11-1
 
 ### Added
 
@@ -214,13 +214,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updat cta-button default shadow style in `globals.css` to use `shadow-md` for consistency with hover/active states.
 - Adjust heading font sizes in Notion renderer components (`Heading1`, `Heading2`, `Heading3`) for improved visual hierarchy and consistency
 
-## [v0.8.2] - 2025-10-31
+## [0.8.2] - 2025-10-31
 
 ### Changed
 
 - Improve layout, typography, and styles for article, hero section, and notion renderer components
 
-## [v0.8.1] - 2025-10-31
+## [0.8.1] - 2025-10-31
 
 ### Added
 
@@ -230,7 +230,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Better spacing in TOC and `BulletedListItem.tsx`
 
-## [v0.8.0] - 2025-10-31
+## [0.8.0] - 2025-10-31
 
 ### Added
 
@@ -241,7 +241,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add hover and animation styles in TOC links
 - Fix layout shrink issue in selected blog cards
 
-## [v0.7.0] - 2025-10-30
+## [0.7.0] - 2025-10-30
 
 ### Added
 
@@ -252,13 +252,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Better style of `Callout.tsx` and `RichText.tsx` component
 
-## [v0.6.1] - 2025-10-29
+## [0.6.1] - 2025-10-29
 
 ### Fixed
 
 - Remove unwanted horizontal overflow on the article detail page
 
-## [v0.6.0] - 2025-10-29
+## [0.6.0] - 2025-10-29
 
 ### Added
 
@@ -277,32 +277,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Render titles and descriptions correctly in `SelectedBlogSection.tsx` and on the article detail page.
 
-## [v0.5.2] - 2025-10-25
+## [0.5.2] - 2025-10-25
 
 ### Fixed
 
 - Correct the Notion API filter logic in `app/services/notion.ts` to properly filter by `status: "Published"` AND (`category: "Jurnal Proyek"` OR `category: "Blog"`), ensuring accurate post retrieval.
 
-## [v0.5.1] - 2025-10-25
+## [0.5.1] - 2025-10-25
 
 ### Fixed
 
 - An issue where the sitemap included only selected projects. The sitemap now correctly lists all articles by using `fetchAllArticles` instead of `fetchSelectedProjects` in `app/sitemap.ts`.
 
-## [v0.5.0] - 2025-10-25
+## [0.5.0] - 2025-10-25
 
 ### Added
 
 - Vercel Analytics and Speed Insights
 
-## [v0.4.1] - 2025-10-24
+## [0.4.1] - 2025-10-24
 
 ### Fixed
 
 - Hero image too large
 - Smooth scroll always trigger between page
 
-## [v0.4.0] - 2025-10-24
+## [0.4.0] - 2025-10-24
 
 ### Changed
 
@@ -318,7 +318,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Simplify date/time formatting utilities
 
-## [v0.3.0] - 2025-10-24
+## [0.3.0] - 2025-10-24
 
 ### Added
 
@@ -331,14 +331,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update color palette and visual elements
 - Enhance article and project metadata handling
 
-## [v0.2.0] - 2025-10-22
+## [0.2.0] - 2025-10-22
 
 ### Added
 
 - Table of Contents in article detail page
 - `Heading3` component for notion renderer
 
-## [v0.1.5] - 2025-10-21
+## [0.1.5] - 2025-10-21
 
 ### Added
 
@@ -348,7 +348,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - OG Image for better SEO
 
-## [v0.1.4] - 2025-10-21
+## [0.1.4] - 2025-10-21
 
 ### Added
 
@@ -358,13 +358,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Dark mode
 
-## [v0.1.3] - 2025-10-19
+## [0.1.3] - 2025-10-19
 
 ### Changed
 
 - Add `common/Blockquote.tsx` for notion renderer
 
-## [v0.1.2] - 2025-10-19
+## [0.1.2] - 2025-10-19
 
 ### Changed
 
@@ -374,14 +374,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CTA in contact cta near footer can't be clicked in mobile display
 
-## [v0.1.1] - 2025-10-19
+## [0.1.1] - 2025-10-19
 
 ### Changed
 
 - Update page layout and visual styles for better consistency.
 - Refactore components and cleaned up code structure.
 
-## [v0.1.0] - 2025-10-17
+## [0.1.0] - 2025-10-17
 
 **Initial release**
 
