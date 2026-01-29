@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+### Changed
+
+- Upgrade Next.js to v16.1.6 with running command `pnpx @next/codemod upgrade latest`
+
 ## [0.14.6] - 2026-01-25
 
 ### Changed
