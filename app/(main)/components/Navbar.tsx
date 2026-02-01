@@ -13,7 +13,7 @@ type NavState =
   | "navbar-fixed-active";
 
 const NAVBAR_SCROLL_THRESHOLD = 400;
-const ANIMATION_MS = 300;
+const ANIMATION_DURATION_MS = 200;
 
 export function Navbar() {
   const [navState, setNavState] = useState<NavState>("navbar-static");
@@ -85,12 +85,12 @@ export function Navbar() {
     if (navState === "navbar-fixed-active") {
       timeoutRef.current = window.setTimeout(
         () => setNavState("navbar-fixed"),
-        ANIMATION_MS,
+        ANIMATION_DURATION_MS,
       );
     } else if (navState === "navbar-static-active") {
       timeoutRef.current = window.setTimeout(
         () => setNavState("navbar-static"),
-        ANIMATION_MS,
+        ANIMATION_DURATION_MS,
       );
     }
 

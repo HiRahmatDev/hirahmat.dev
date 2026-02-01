@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+const ANIMATION_DURATION_MS = 400;
+
 export function useBottomSheet() {
   const modalOverlayRef = useRef<HTMLDivElement | null>(null);
   const bottomSheetRef = useRef<HTMLDivElement | null>(null);
@@ -14,7 +16,7 @@ export function useBottomSheet() {
     if (isOpen) {
       timeoutId = setTimeout(() => {
         modalOverlay.classList.replace("overlay-enter-active", "overlay-enter");
-      }, 300);
+      }, ANIMATION_DURATION_MS);
     } else {
       modalOverlay.classList.replace("overlay-enter", "overlay-leave-active");
     }
@@ -28,7 +30,7 @@ export function useBottomSheet() {
     if (isOpen) {
       timeoutId = setTimeout(() => {
         bottomSheet.classList.replace("slide-up-active", "slide-up");
-      }, 300);
+      }, ANIMATION_DURATION_MS);
     } else {
       bottomSheet.classList.replace("slide-up", "slide-down-active");
     }
@@ -43,7 +45,7 @@ export function useBottomSheet() {
       setOpen(false);
       setTimeout(() => {
         setIsVisible(false);
-      }, 300);
+      }, ANIMATION_DURATION_MS);
     }
   };
 

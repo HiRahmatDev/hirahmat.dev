@@ -20,7 +20,7 @@
   #murajaah-sidebar {
     @apply top-4;
     transition: top 300ms;
-    transition-timing-function: var(--transition-navbar);
+    transition-timing-function: var(--ease-silky);
   }
 
   .white-outline-button {
@@ -47,11 +47,11 @@
   }
 
   .navbar-fixed-active {
-    animation: navbarSlideDown 300ms var(--transition-navbar) forwards;
+    animation: navbarSlideDown 200ms var(--ease-silky) forwards;
   }
 
   .navbar-static-active {
-    animation: navbarSlideUp 300ms var(--transition-navbar) forwards;
+    animation: navbarSlideUp 200ms var(--ease-silky) forwards;
   }
 
   .overlay-enter {
@@ -59,11 +59,11 @@
   }
 
   .overlay-enter-active {
-    animation: overlayFadeIn 300ms ease forwards;
+    animation: overlayFadeIn 400ms var(--ease-silky) forwards;
   }
 
   .overlay-leave-active {
-    animation: overlayFadeOut 300ms ease forwards;
+    animation: overlayFadeOut 400ms var(--ease-silky) forwards;
   }
 
   .slide-up {
@@ -71,10 +71,10 @@
   }
 
   .slide-up-active {
-    animation: slideUp 300ms ease forwards;
+    animation: slideUp 400ms var(--ease-silky) forwards;
   }
 
   .slide-down-active {
-    animation: slideDown 300ms ease forwards;
+    animation: slideDown 400ms var(--ease-silky) forwards;
   }
 }
