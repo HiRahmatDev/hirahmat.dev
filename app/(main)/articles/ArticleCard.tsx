@@ -20,7 +20,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             alt={`Cover for ${article.title}`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-200 group-hover:scale-102 ease-(--ease-silky)"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">

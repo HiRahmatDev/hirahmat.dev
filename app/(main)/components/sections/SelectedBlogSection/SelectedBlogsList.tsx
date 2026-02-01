@@ -24,7 +24,7 @@ export function SelectedBlogsList({
             key={blog.slug}
             href={`/articles/${blog.slug}`}
             aria-label={`Buka artikel: Mengenai ${blog.title}`}
-            className="w-[340px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-lg active:[&>.image-wrapper]:shadow-sm blog-card"
+            className="w-85 space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-lg active:[&>.image-wrapper]:shadow-sm blog-card"
           >
             <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden shadow-md transition-shadow image-wrapper">
               {blog.cover && (
@@ -48,17 +48,19 @@ export function SelectedBlogsList({
           </Link>
         ))}
         {hasMore && (
-          <Link
-            href="/articles?category=Blog"
-            className="group flex flex-col items-center justify-center gap-4 w-[200px] shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
-          >
-            <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
-              <ArrowRight className="w-6 h-6" />
-            </div>
-            <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
-              Lihat Lainnya
-            </span>
-          </Link>
+          <div className="group">
+            <Link
+              href="/articles?category=Blog"
+              className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 h-full group-active:scale-97 transition-transform duration-150 ease-(--ease-silky)"
+            >
+              <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center">
+                <ArrowRight className="w-6 h-6" />
+              </div>
+              <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
+                Lihat Lainnya
+              </span>
+            </Link>
+          </div>
         )}
       </div>
     </div>
