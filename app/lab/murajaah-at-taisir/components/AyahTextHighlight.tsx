@@ -1,7 +1,5 @@
 "use client";
 
-import clsx from "clsx";
-
 import { useMurajaahContext } from "../context/MurajaahContext";
 
 type AyahTextHighlightProps = {
@@ -42,13 +40,17 @@ export function AyahTextHighlight({
   }
 
   return (
-    <span className="bg-[#ebe8d4] [&>span]:transition-opacity">
+    <span className="bg-[#ebe8d4] [&>span]:transition-opacity [&>span]:duration-150 [&>span]:ease-(--ease-silky)">
       <span
-        className={mode === "TADZKIRAH" || mode === "TADRIB" ? "opacity-100" : "opacity-[0.025]"}
+        className={
+          mode === "TADZKIRAH" || mode === "TADRIB"
+            ? "opacity-100"
+            : "opacity-[0.025]"
+        }
       >
         {getFirstArabicWord(displayText).trim()}
       </span>{" "}
-      <span className={clsx(mode === "TADRIB" ? "opacity-100" : "opacity-[0.025]")}>
+      <span className={mode === "TADRIB" ? "opacity-100" : "opacity-[0.025]"}>
         {removeFirstArabicWord(displayText).trim()}
       </span>
     </span>

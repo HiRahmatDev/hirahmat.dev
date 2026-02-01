@@ -99,7 +99,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             >
               {({ close }) => (
                 <>
-                  <div className="mx-auto max-w-[420px] pb-2 px-5">
+                  <div className="mx-auto max-w-[420px] pb-2 px-3">
                     <div className="space-y-2">
                       <h2 className="text-lg tracking-tight font-bold">
                         Pilih Surat Al-Qur{"'"}an
@@ -122,7 +122,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                       aria-label="Surah List"
                       items={filteredOptions}
                       renderEmptyState={() => (
-                        <div className="py-2.5 px-5 italic text-zinc-400">
+                        <div className="py-2.5 px-3 italic text-zinc-400">
                           Tidak ada surah dengan nama tersebut.
                         </div>
                       )}

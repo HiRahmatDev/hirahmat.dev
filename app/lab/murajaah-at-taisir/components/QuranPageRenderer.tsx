@@ -19,7 +19,7 @@ export function QuranPageRenderer({
   isRightPage,
 }: QuranPageRendererProps) {
   return (
-    <div className="flex justify-center -mx-3 sm:mx-0">
+    <div className="flex justify-center -mx-6 sm:mx-0">
       <article
         lang="ar"
         dir="rtl"
