@@ -15,9 +15,6 @@ import threeLines from "@/public/svgs/three-lines.svg";
 import vectorBackgroundHero from "@/public/svgs/vector-background-hero.svg";
 
 export function HeroSection() {
-  const [isHeroImageLoaded, setIsHeroImageLoaded] = useState(false);
-
-  const container = useRef<HTMLElement | null>(null);
   const backAccentRef = useRef<HTMLImageElement>(null);
   const middleAccentRef = useRef<HTMLImageElement>(null);
   const frontAccentRef = useRef<HTMLImageElement>(null);
@@ -36,48 +33,6 @@ export function HeroSection() {
     front?: (x: number, y?: number) => void;
     lines?: (x: number, y?: number) => void;
   }>({});
-
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        ["h1", "p", "a"],
-        {
-          opacity: 0,
-          y: 4,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          stagger: 0.1,
-          onComplete: () => {
-            gsap.set("a", { clearProps: "y" });
-          },
-        },
-      );
-    },
-    { scope: container },
-  );
-
-  useGSAP(
-    () => {
-      if (!isHeroImageLoaded) return;
-
-      gsap.fromTo(
-        ".hero-image",
-        {
-          opacity: 0,
-          y: 4,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-        },
-      );
-    },
-    { scope: container, dependencies: [isHeroImageLoaded] },
-  );
 
   useGSAP(() => {
     // Floating animation
@@ -155,10 +110,7 @@ export function HeroSection() {
   });
 
   return (
-    <section
-      ref={container}
-      className="container flex flex-row gap-4 h-[400px] md:h-[600px] -mt-10 [&_h1,&_p,&_a,&_.hero-image]:opacity-0"
-    >
+    <section className="container flex flex-row gap-4 h-[400px] md:h-[600px] -mt-10">
       <div className="md:pb-14 flex flex-col justify-center gap-8 w-full [&>*]:max-w-fit">
         <div className="space-y-2 md:space-y-3">
           <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-1.5px] md:tracking-[-2px]">
@@ -168,9 +120,10 @@ export function HeroSection() {
             <br />
             Frontend <GreenText>Dev</GreenText>eloper
           </h1>
-            <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[40ch] text-gray-700">
-            Saya membangun aplikasi web dengan navigasi mulus dan animasi interaktif.
-            </p>
+          <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[40ch] text-gray-700">
+            Saya membangun aplikasi web dengan navigasi mulus dan animasi
+            interaktif.
+          </p>
         </div>
         <CTAButton />
       </div>
@@ -200,8 +153,6 @@ export function HeroSection() {
                 maskImage: "url('/svgs/mask-image-hero.svg')",
                 maskPosition: "-32px 50%",
               }}
-              loading="eager"
-              onLoad={() => setIsHeroImageLoaded(true)}
             />
             <Image
               ref={middleAccentRef}

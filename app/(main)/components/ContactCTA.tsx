@@ -1,52 +1,15 @@
 "use client";
 
 import { Mail } from "lucide-react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-import gsap from "gsap";
 import Image from "next/image";
 
 import { EMAIL_HREF } from "./constants";
 import backgroundFooterContactCtaPng from "@/public/images/background-footer-contact-cta.png";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export function ContactCTA() {
-  const container = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        container.current,
-        {
-          opacity: 0,
-          scale: 0.95,
-          y: 20,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: container.current,
-            start: "top 85%",
-          },
-        }
-      );
-    },
-    { scope: container }
-  );
-
   return (
     <div className="container py-6">
-      <div
-        ref={container}
-        className="p-5 bg-accent text-white rounded-[20px] flex gap-3 relative overflow-hidden opacity-0"
-      >
+      <div className="p-5 bg-accent text-white rounded-[20px] flex gap-3 relative overflow-hidden">
         <Mail className="shrink-0" />
         <div className="space-y-1">
           <h2 className="text-lg/[24px] font-semibold">

@@ -1,9 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import { useRef, useState } from "react";
-import gsap from "gsap";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -52,30 +50,8 @@ type SelectedProjectCardProps = {
 };
 
 function SelectedProjectCard({ project, index }: SelectedProjectCardProps) {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  const projectCardRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    if (!isImageLoaded) return;
-
-    gsap.fromTo(
-      projectCardRef.current,
-      {
-        opacity: 0,
-        y: 4,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.3 + index * 0.1,
-      }
-    );
-  }, [isImageLoaded]);
-
   return (
-    <div ref={projectCardRef} className="h-full opacity-0">
+    <div className="h-full">
       <div className="rounded-3xl bg-accent w-[439px] h-[217px] shadow-xl flex gap-3 text-white overflow-hidden">
         <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 [&>*]:max-w-fit">
           <div className="space-y-3">
@@ -113,7 +89,6 @@ function SelectedProjectCard({ project, index }: SelectedProjectCardProps) {
                   fill
                   sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
                   className="object-cover right-0 project-image"
-                  onLoad={() => setIsImageLoaded(true)}
                 />
               </div>
             </div>

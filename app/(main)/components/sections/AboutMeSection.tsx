@@ -1,63 +1,10 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
-
 import { GreenText } from "../GreenText";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export function AboutMeSection() {
-  const container = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 80%",
-        },
-      });
-
-      tl.fromTo(
-        [".about-header", ".about-desc", ".about-cv"],
-        {
-          opacity: 0,
-          y: 20,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-        },
-      ).fromTo(
-        ".about-content > p",
-        {
-          opacity: 0,
-          y: 20,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-        },
-        "-=0.3",
-      );
-    },
-    { scope: container },
-  );
-
   return (
-    <section
-      ref={container}
-      className="container flex flex-col md:flex-row gap-10 sm:gap-12 md:gap-14 py-10"
-    >
+    <section className="container flex flex-col md:flex-row gap-10 sm:gap-12 md:gap-14 py-10">
       <div className="shrink-0 md:max-w-[420px] space-y-4 md:space-y-8">
         <div className="space-y-1 md:space-y-2">
           <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold about-header">

@@ -1,19 +1,11 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 
 import { RichText } from "../../NotionRenderer/common/RichText";
 import { SelectedBlog } from "@/app/services/notion";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 type SelectedBlogsListProps = {
   selectedBlogs: SelectedBlog[];
@@ -24,46 +16,15 @@ export function SelectedBlogsList({
   selectedBlogs,
   hasMore,
 }: SelectedBlogsListProps) {
-  const container = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 80%",
-        },
-      });
-
-      tl.fromTo(
-        ".blog-card",
-        {
-          opacity: 0,
-          y: 20,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          onComplete: () => {
-            gsap.set(".blog-card", { clearProps: "y" });
-          },
-        }
-      );
-    },
-    { scope: container }
-  );
-
   return (
-    <div ref={container} className="pb-6 pt-2 -mt-2 overflow-x-auto overflow-y-hidden">
+    <div className="pb-6 pt-2 -mt-2 overflow-x-auto overflow-y-hidden">
       <div className="flex gap-4 [&>a]:shrink-0">
         {(selectedBlogs || []).map((blog) => (
           <Link
             key={blog.slug}
             href={`/articles/${blog.slug}`}
             aria-label={`Buka artikel: Mengenai ${blog.title}`}
-            className="w-[340px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-lg active:[&>.image-wrapper]:shadow-sm blog-card opacity-0"
+            className="w-[340px] space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-lg active:[&>.image-wrapper]:shadow-sm blog-card"
           >
             <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden shadow-md transition-shadow image-wrapper">
               {blog.cover && (

@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" data-scroll-behavior="smooth">
+    <html lang="id">
       <body
         className={`${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`}
       >
