@@ -39,24 +39,12 @@
     "@types/react-dom": "19.2.3",
     "@types/serialize-javascript": "^5.0.4",
     "@typescript-eslint/parser": "^8.46.1",
-    "eslint": "^9.38.0",
-    "eslint-config-next": "16.1.6",
-    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.4",
+    "eslint-config-prettier": "^10.1.8",
     "release-it": "^19.2.4",
     "release-it-pnpm": "^4.6.6",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.10",
-      "@types/react-dom": "19.2.3"
-    },
-    "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "@vercel/speed-insights",
-      "sharp",
-      "unrs-resolver"
-    ]
   }
 }
