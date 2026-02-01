@@ -1,6 +1,6 @@
 @utility container {
   margin-inline: auto;
-  @apply px-3 sm:px-5;
+  @apply px-6 sm:px-10;
   @apply md:max-w-[1200px];
 }
 

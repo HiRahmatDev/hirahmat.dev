@@ -8,7 +8,7 @@ export async function SelectedProjectsSection() {
   const displayProjects = selectedProjects?.slice(0, 3) || [];
 
   return (
-    <section className="container sm:pt-6 pb-6">
+    <section className="container sm:pt-6 pb-8">
       <div className="space-y-8">
         <SectionHeader />
         <div className="pb-10 overflow-x-auto">

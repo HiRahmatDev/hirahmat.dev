@@ -10,6 +10,8 @@ import "./globals.css";
 const interSans = Inter({
   variable: "--font-inter-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 const overpassMono = Overpass_Mono({

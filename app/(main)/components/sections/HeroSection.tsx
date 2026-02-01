@@ -168,11 +168,9 @@ export function HeroSection() {
             <br />
             Frontend <GreenText>Dev</GreenText>eloper
           </h1>
-          <p className="text-base/[24px] tracking-[-0.4px] max-w-[60ch] font-medium">
-            Saya membangun aplikasi web yang terasa seperti aplikasi native,
-            dengan alur navigasi yang mulus dan animasi yang mendukung
-            pengalaman pengguna.
-          </p>
+            <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[40ch] text-gray-700">
+            Saya membangun aplikasi web dengan navigasi mulus dan animasi interaktif.
+            </p>
         </div>
         <CTAButton />
       </div>

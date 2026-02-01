@@ -13,7 +13,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
       aria-label={`Buka artikel: ${article.title}`}
       className="group w-full space-y-4 block"
     >
-      <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-md transition-shadow group-hover:shadow-lg group-active:shadow-sm bg-gray-100">
+      <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xs transition-shadow group-hover:shadow-lg bg-gray-100">
         {article.cover ? (
           <Image
             src={article.cover}

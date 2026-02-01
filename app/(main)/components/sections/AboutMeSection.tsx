@@ -56,14 +56,14 @@ export function AboutMeSection() {
   return (
     <section
       ref={container}
-      className="container flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-14 py-6 sm:py-8"
+      className="container flex flex-col md:flex-row gap-10 sm:gap-12 md:gap-14 py-10"
     >
       <div className="shrink-0 md:max-w-[420px] space-y-4 md:space-y-8">
         <div className="space-y-1 md:space-y-2">
           <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold about-header">
             Siapa <GreenText>Saya</GreenText>?
           </h2>
-          <p className="text-base/[24px] tracking-[-0.4px] font-medium about-desc">
+          <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[60ch] text-gray-600 about-desc">
             Sedikit tentang saya di dunia web dan hal-hal yang bikin saya betah
             ngulik.
           </p>
@@ -77,7 +77,7 @@ export function AboutMeSection() {
         </a>
       </div>
       <div className="w-full">
-        <div className="space-y-4 text-base/[26px] tracking-[-0.35px] font-medium about-content">
+        <div className="space-y-7 text-base/relaxed sm:text-lg/relaxed -tracking-[.2px] max-w-[60ch] about-content">
           <p>
             Saya tidak datang dari dunia teknologi, tapi rasa penasaran saya
             sudah tumbuh sejak lama. Waktu SMA, saya senang{" "}

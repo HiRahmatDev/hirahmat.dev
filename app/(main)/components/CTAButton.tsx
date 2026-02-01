@@ -6,9 +6,13 @@ import { twMerge } from "tailwind-merge";
 
 export function CTAButton({ className }: { className?: string }) {
   return (
-    <a href={EMAIL_HREF} className={twMerge("cta-button animate-hover", className)}>
+    <a
+      href={EMAIL_HREF}
+      className={twMerge("cta-button animate-hover", className)}
+    >
       <Mail />
-      Diskusikan Proyek
+      <span className="hidden sm:inline">Diskusikan Proyek</span>
+      <span className="inline sm:hidden">Email Saya</span>
     </a>
   );
 }

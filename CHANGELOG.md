@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+### Changed
+
+- Update typography and spacing
+
 ## [0.14.7] - 2026-01-29
 
 ### Changed

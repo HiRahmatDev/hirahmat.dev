@@ -22,7 +22,7 @@ export default async function ArticlesPage() {
             <h1 className="text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
               Artikel
             </h1>
-            <p className="text-base/[26px] sm:text-lg/[30px] tracking-[-0.35px] text-text-gray">
+            <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] text-gray-600">
               Tulisan mengenai pemikiran, pengalaman, dan catatan perjalanan dalam
               membangun proyek-proyek digital.
             </p>

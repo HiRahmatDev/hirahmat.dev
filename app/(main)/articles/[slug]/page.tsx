@@ -73,7 +73,7 @@ export default async function ArticleDetailPage({
                   <h1 className="text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
                     <RichText items={blockMetadata.rawTitle} />
                   </h1>
-                  <p className="text-base/[26px] sm:text-lg/[30px] tracking-[-0.35px] text-text-gray">
+                  <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] text-gray-500">
                     <RichText items={blockMetadata.rawDesc} />
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export default async function ArticleDetailPage({
                   height={720}
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
-                  className="object-cover top-0 right-0 left-0 rounded-3xl overflow-hidden"
+                  className="object-cover top-0 right-0 left-0 rounded-2xl"
                 />
               ) : null}
             </div>

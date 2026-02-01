@@ -32,20 +32,19 @@ export function SelectedBlogsHeader() {
           y: 0,
           duration: 0.5,
           stagger: 0.1,
-        }
+        },
       );
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
     <div ref={container} className="space-y-1 md:space-y-2">
-      <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold blog-header">
+      <h2 className="text-2xl/[36px] sm:text-4xl/[44px] -tracking-[.2px] font-bold blog-header">
         Blog
       </h2>
-      <p className="text-base/[24px] tracking-[-0.4px] max-w-[80ch] font-medium blog-desc">
-        Catatan reflektif dan hal-hal yang saya pelajari di luar proyek — mulai
-        dari desain, pengembangan, sampai cara berpikir di balik keduanya.
+      <p className="text-base sm:text-lg max-w-[60ch] text-gray-600 blog-desc">
+        Catatan reflektif dan hal-hal yang saya pelajari di luar proyek.
       </p>
     </div>
   );
