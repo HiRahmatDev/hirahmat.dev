@@ -25,16 +25,16 @@ export function QuranPageRenderer({
         dir="rtl"
         className={clsx(
           "md:scale-100",
-          "min-h-[80vh] sm:min-h-[900px] sm:w-[720px] sm:max-w-[720px] sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
-          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-3 pb-[calc(48px+96px)] max-w-[500px] w-full"
+          "min-h-[80vh] sm:min-h-225 sm:w-180 sm:max-w-180 sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
+          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-3 pb-36 max-w-125 w-full",
         )}
       >
         <div
           className={clsx(
             "pointer-events-none absolute top-0 bottom-0 w-32",
             isRightPage
-              ? "left-0 bg-gradient-to-r from-[#7a7761]/40 to-transparent"
-              : "right-0 bg-gradient-to-l from-[#7a7761]/40 to-transparent"
+              ? "left-0 bg-linear-to-r from-[#7a7761]/40 to-transparent"
+              : "right-0 bg-linear-to-l from-[#7a7761]/40 to-transparent",
           )}
           aria-hidden="true"
         />

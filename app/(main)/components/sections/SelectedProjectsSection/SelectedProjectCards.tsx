@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,7 +28,7 @@ export function SelectedProjectCards({
         <div className="h-full flex items-center">
           <Link
             href="/articles?category=Jurnal Proyek"
-            className="group flex flex-col items-center justify-center gap-4 w-[200px] h-[217px] rounded-3xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
+            className="group flex flex-col items-center justify-center gap-4 w-50 h-54.25 rounded-3xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
           >
             <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
               <ArrowRight className="w-6 h-6" />
@@ -49,16 +48,16 @@ type SelectedProjectCardProps = {
   index: number;
 };
 
-function SelectedProjectCard({ project, index }: SelectedProjectCardProps) {
+function SelectedProjectCard({ project }: SelectedProjectCardProps) {
   return (
     <div className="h-full">
-      <div className="rounded-3xl bg-accent w-[439px] h-[217px] shadow-xl flex gap-3 text-white overflow-hidden">
-        <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 [&>*]:max-w-fit">
+      <div className="rounded-3xl bg-accent w-109.75 h-54.25 shadow-xl flex gap-3 text-white overflow-hidden">
+        <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 *:max-w-fit">
           <div className="space-y-3">
             <h3 className="font-semibold text-xl/[24px] tracking-[-0.35px]">
               {project.title}
             </h3>
-            <p className="text-sm/[20px] max-w-[156px]">{project.desc}</p>
+            <p className="text-sm/[20px] max-w-39">{project.desc}</p>
           </div>
           <Link
             href={`/articles/${project.slug}`}
@@ -68,9 +67,9 @@ function SelectedProjectCard({ project, index }: SelectedProjectCardProps) {
           </Link>
         </div>
         {project.cover && (
-          <div className="shrink-0 min-w-[104px] py-5 pr-5 relative">
-            <div className="absolute left-[-130px] bottom-[-48px] blur-[1px] opacity-60">
-              <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md -rotate-2 overflow-hidden">
+          <div className="shrink-0 min-w-26 py-5 pr-5 relative">
+            <div className="absolute -left-32.5 -bottom-12 blur-[1px] opacity-60">
+              <div className="relative w-94.5 h-46.75 shadow-2xl rounded-md -rotate-2 overflow-hidden">
                 <Image
                   src={project.cover}
                   alt=""
@@ -81,8 +80,8 @@ function SelectedProjectCard({ project, index }: SelectedProjectCardProps) {
                 />
               </div>
             </div>
-            <div className="absolute left-[-120px] bottom-[-42px]">
-              <div className="relative w-[378px] h-[187px] shadow-2xl rounded-md rotate-2 overflow-hidden">
+            <div className="absolute -left-30 -bottom-10.5">
+              <div className="relative w-94.5 h-46.75 shadow-2xl rounded-md rotate-2 overflow-hidden">
                 <Image
                   src={project.cover}
                   alt=""

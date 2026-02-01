@@ -64,7 +64,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
 
     const renderLabel = (surahNumber: number) => {
       const surah = allSurah?.data.find(
-        (surah) => surah.number === surahNumber
+        (surah) => surah.number === surahNumber,
       );
       if (!surah) {
         return <span className="text-zinc-400">Pilih Surah</span>;
@@ -78,7 +78,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
         <Pressable>
           <button
             className={clsx(
-              "relative rounded-lg text-left cursor-pointer py-2 pl-3 pr-8 border border-gray-300 "
+              "relative rounded-lg text-left cursor-pointer py-2 pl-3 pr-8 border border-gray-300 ",
             )}
           >
             {renderLabel(value ?? -1)}
@@ -99,7 +99,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             >
               {({ close }) => (
                 <>
-                  <div className="mx-auto max-w-[420px] pb-2 px-3">
+                  <div className="mx-auto max-w-105 pb-2 px-3">
                     <div className="space-y-2">
                       <h2 className="text-lg tracking-tight font-bold">
                         Pilih Surat Al-Qur{"'"}an
@@ -130,7 +130,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                         onChange?.(Number(key));
                         close();
                       }}
-                      className="mx-auto max-w-[420px] overflow-auto h-[60vh] -mb-7 pb-7"
+                      className="mx-auto max-w-105 overflow-auto h-[60vh] -mb-7 pb-7"
                     >
                       {({ label }: Option) => (
                         <ListBoxItem
@@ -138,7 +138,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                           className={({ isFocused }) =>
                             clsx(
                               "py-2.5 px-6 select-none cursor-pointer transition-colors duration-150",
-                              isFocused && "bg-zinc-200"
+                              isFocused && "bg-zinc-200",
                             )
                           }
                         >
@@ -191,9 +191,9 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
           </div>
           <Popover
             className={clsx(
-              "bg-white rounded-lg p-1 border border-gray-300 overflow-y-auto w-[var(--trigger-width)] origin-top",
-              "data-[placement=bottom]:data-[entering]:animate-slide-down-fade-in data-[placement=bottom]:data-[exiting]:animate-slide-up-fade-out",
-              "data-[placement=top]:data-[entering]:animate-slide-up-fade-in data-[placement=top]:data-[exiting]:animate-slide-down-fade-out"
+              "bg-white rounded-lg p-1 border border-gray-300 overflow-y-auto w-(--trigger-width) origin-top",
+              "data-[placement=bottom]:data-entering:animate-slide-down-fade-in data-[placement=bottom]:data-exiting:animate-slide-up-fade-out",
+              "data-[placement=top]:data-entering:animate-slide-up-fade-in data-[placement=top]:data-exiting:animate-slide-down-fade-out",
             )}
           >
             <ListBox
@@ -209,7 +209,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                   className={({ isFocused }) =>
                     clsx(
                       "py-1.5 px-2 rounded-md cursor-pointer transition-colors duration-150",
-                      isFocused && "bg-zinc-200"
+                      isFocused && "bg-zinc-200",
                     )
                   }
                 >

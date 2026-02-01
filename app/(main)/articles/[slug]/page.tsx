@@ -117,7 +117,7 @@ export default async function ArticleDetailPage({
           </section>
         </article>
         {!isTocEmpty ? (
-          <aside className="hidden md:block w-[240px] sticky top-24 max-h-[80vh] overflow-auto px-5 pb-12 space-y-3">
+          <aside className="hidden md:block w-60 sticky top-24 max-h-[80vh] overflow-auto px-5 pb-12 space-y-3">
             <h2 className="text-base font-semibold tracking-[-0.35px]">
               Telusuri Isi:
             </h2>
