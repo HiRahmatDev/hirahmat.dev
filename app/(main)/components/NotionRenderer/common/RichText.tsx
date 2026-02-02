@@ -22,7 +22,7 @@ export function RichText({ items }: { items?: RichTextItemResponse[] | null }) {
 
         const colorClass =
           annotations.color !== "default" &&
-            COLOR_MAP[annotations.color as keyof typeof COLOR_MAP]
+          COLOR_MAP[annotations.color as keyof typeof COLOR_MAP]
             ? COLOR_MAP[annotations.color as keyof typeof COLOR_MAP]
             : undefined;
 
@@ -31,7 +31,7 @@ export function RichText({ items }: { items?: RichTextItemResponse[] | null }) {
         // Code first (always inner-most)
         if (annotations.code) {
           element = (
-            <code className="tracking-[-1px] font-semibold leading-[1] inline-block bg-gray-200 text-amber-600 rounded-[4px] px-1 pt-1">
+            <code className="tracking-[-1px] font-semibold leading-none inline-block text-sm sm:text-base bg-gray-200 text-amber-600 rounded-sm px-1 pt-1 pb-0.5">
               {element}
             </code>
           );

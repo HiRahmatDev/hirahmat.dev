@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   },
 };
 
+const bodyClassName = `${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,9 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body
-        className={`${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`}
-      >
+      <body className={bodyClassName}>
         {children}
         <Analytics debug={false} />
         <SpeedInsights debug={false} />
