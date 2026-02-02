@@ -26,7 +26,7 @@ export type SelectedProject = CommonArticle;
 const isProd = process.env.NEXT_PUBLIC_APP_ENV === "production";
 
 export const fetchSelectedProjects: (
-  limit?: number
+  limit?: number,
 ) => Promise<SelectedProject[] | null> = cache(async (limit) => {
   try {
     const response = await notion.dataSources.query({
@@ -85,7 +85,7 @@ export type SelectedBlog = CommonArticle & {
 };
 
 export const fetchSelectedBlogs: (
-  limit?: number
+  limit?: number,
 ) => Promise<SelectedBlog[] | null> = cache(async (limit) => {
   try {
     const response = await notion.dataSources.query({
@@ -100,27 +100,27 @@ export const fetchSelectedBlogs: (
           },
           isProd
             ? {
-              property: "status",
-              select: {
-                equals: "Published",
-              },
-            }
+                property: "status",
+                select: {
+                  equals: "Published",
+                },
+              }
             : {
-              or: [
-                {
-                  property: "status",
-                  select: {
-                    equals: "Published",
+                or: [
+                  {
+                    property: "status",
+                    select: {
+                      equals: "Published",
+                    },
                   },
-                },
-                {
-                  property: "status",
-                  select: {
-                    equals: "Draft",
+                  {
+                    property: "status",
+                    select: {
+                      equals: "Draft",
+                    },
                   },
-                },
-              ],
-            },
+                ],
+              },
         ],
       },
       sorts: [{ property: "created_on", direction: "descending" }],
@@ -143,8 +143,8 @@ export const fetchSelectedBlogs: (
       desc:
         result.properties.description?.type === "rich_text"
           ? result.properties.description.rich_text
-            .map((p) => p.plain_text)
-            .join("")
+              .map((p) => p.plain_text)
+              .join("")
           : "",
       rawDesc:
         result.properties.description?.type === "rich_text"
@@ -165,21 +165,26 @@ export const fetchSelectedBlogs: (
   }
 });
 
-export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
-  async () => {
-    try {
-      const response = await notion.dataSources.query({
-        data_source_id: process.env.DS_ARTICLE!,
-        filter: {
-          and: [
-            isProd
-              ? {
+export type ArticleCategory = "All" | "Blog" | "Jurnal Proyek";
+
+export const fetchAllArticles: (params?: {
+  category?: ArticleCategory;
+}) => Promise<CommonArticle[] | null> = cache(async (params) => {
+  try {
+    const isAll = params?.category === "All" || !params?.category;
+    const isJurnalProyek = params?.category === "Jurnal Proyek";
+    const response = await notion.dataSources.query({
+      data_source_id: process.env.DS_ARTICLE!,
+      filter: {
+        and: [
+          isProd
+            ? {
                 property: "status",
                 select: {
                   equals: "Published",
                 },
               }
-              : {
+            : {
                 or: [
                   {
                     property: "status",
@@ -195,57 +200,70 @@ export const fetchAllArticles: () => Promise<CommonArticle[] | null> = cache(
                   },
                 ],
               },
-            {
-              or: [
-                {
+          isAll
+            ? {
+                or: [
+                  {
+                    property: "category",
+                    select: {
+                      equals: "Jurnal Proyek",
+                    },
+                  },
+                  {
+                    property: "category",
+                    select: {
+                      equals: "Blog",
+                    },
+                  },
+                ],
+              }
+            : isJurnalProyek
+              ? {
                   property: "category",
                   select: {
                     equals: "Jurnal Proyek",
                   },
-                },
-                {
+                }
+              : {
                   property: "category",
                   select: {
                     equals: "Blog",
                   },
                 },
-              ],
-            },
-          ],
-        },
-        sorts: [{ property: "created_on", direction: "descending" }],
-      });
+        ],
+      },
+      sorts: [{ property: "created_on", direction: "descending" }],
+    });
 
-      return (response.results as PageObjectResponse[]).map((result) => ({
-        slug:
-          result.properties.slug?.type === "title"
-            ? result.properties.slug.title[0]?.plain_text
-            : "",
-        title:
-          result.properties.name?.type === "rich_text"
-            ? result.properties.name.rich_text.map((p) => p.plain_text).join("")
-            : "",
-        desc:
-          result.properties.description?.type === "rich_text"
-            ? result.properties.description.rich_text
+    return (response.results as PageObjectResponse[]).map((result) => ({
+      slug:
+        result.properties.slug?.type === "title"
+          ? result.properties.slug.title[0]?.plain_text
+          : "",
+      title:
+        result.properties.name?.type === "rich_text"
+          ? result.properties.name.rich_text.map((p) => p.plain_text).join("")
+          : "",
+      desc:
+        result.properties.description?.type === "rich_text"
+          ? result.properties.description.rich_text
               .map((p) => p.plain_text)
               .join("")
-            : "",
-        cover:
-          result.properties.cover?.type === "rich_text"
-            ? result.properties.cover.rich_text[0]?.plain_text
-            : "",
-        category:
-          result.properties.category?.type === "select"
-            ? result.properties.category.select?.name
-            : "",
-      }));
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
+          : "",
+      cover:
+        result.properties.cover?.type === "rich_text"
+          ? result.properties.cover.rich_text[0]?.plain_text
+          : "",
+      category:
+        result.properties.category?.type === "select"
+          ? result.properties.category.select?.name
+          : "",
+    }));
+  } catch (error) {
+    console.error(error);
+    return null;
   }
-);
+});
 
 type MetadataArticle = {
   blockId: string;
@@ -270,27 +288,27 @@ export const fetchArticleMetadataBySlug = cache(
           and: [
             isProd
               ? {
-                property: "status",
-                select: {
-                  equals: "Published",
-                },
-              }
+                  property: "status",
+                  select: {
+                    equals: "Published",
+                  },
+                }
               : {
-                or: [
-                  {
-                    property: "status",
-                    select: {
-                      equals: "Published",
+                  or: [
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Published",
+                      },
                     },
-                  },
-                  {
-                    property: "status",
-                    select: {
-                      equals: "Draft",
+                    {
+                      property: "status",
+                      select: {
+                        equals: "Draft",
+                      },
                     },
-                  },
-                ],
-              },
+                  ],
+                },
             {
               property: "slug",
               title: {
@@ -318,8 +336,8 @@ export const fetchArticleMetadataBySlug = cache(
         desc:
           result.properties.description?.type === "rich_text"
             ? result.properties.description.rich_text
-              .map((p) => p.plain_text)
-              .join("")
+                .map((p) => p.plain_text)
+                .join("")
             : "",
         rawDesc:
           result.properties.description?.type === "rich_text"
@@ -350,7 +368,7 @@ export const fetchArticleMetadataBySlug = cache(
       console.error(error);
       return null;
     }
-  }
+  },
 );
 
 export const fetchArticleByBlockId = cache(async (blockId: string) => {
@@ -434,5 +452,5 @@ export const fetchArticleTOCByBlockId = cache(
       console.error(error);
       return null;
     }
-  }
+  },
 );

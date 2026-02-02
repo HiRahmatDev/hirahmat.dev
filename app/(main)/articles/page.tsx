@@ -1,39 +1,50 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
+import React from "react";
 
+import { ArticleFilter } from "./ArticleFilter";
 import { ArticlesList } from "./ArticlesList";
-import { ArticlesSkeleton } from "./ArticlesSkeleton";
-import { ContactCTASection } from "../components/sections/ContactCTASection";
-import { fetchAllArticles } from "@/app/services/notion";
+import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
+import { isCategoryValid } from "./lib/utils";
 
 export const metadata: Metadata = {
   title: "Artikel | HiRahmat",
   description: "Kumpulan tulisan, blog, dan jurnal proyek.",
 };
 
-export default async function ArticlesPage() {
-  const articles = await fetchAllArticles();
+export const revalidate = 3600;
+
+export default async function ArticlesPage({
+  searchParams,
+}: PageProps<"/articles">) {
+  let { category } = await searchParams;
+
+  if (!isCategoryValid(category)) {
+    category = undefined;
+  }
 
   return (
-    <>
-      <main className="container pt-4 sm:pt-12 pb-20 min-h-screen">
-        <div className="max-w-5xl mx-auto space-y-10">
+    <main>
+      <section className="container pt-4 sm:pt-12 pb-20 min-h-screen">
+        <div className="space-y-10">
           <div className="space-y-2">
             <h1 className="text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
               Artikel
             </h1>
-            <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] text-gray-600">
-              Tulisan mengenai pemikiran, pengalaman, dan catatan perjalanan
-              dalam membangun proyek-proyek digital.
+            <p className="text-base sm:text-lg text-gray-600 max-w-[60ch]">
+              Berbagai tulisan tentang pengembangan web, teknologi, dan
+              pembelajaran.
             </p>
           </div>
 
-          <Suspense fallback={<ArticlesSkeleton />}>
-            <ArticlesList articles={articles || []} />
-          </Suspense>
+          <div className="space-y-8">
+            <ArticleFilter />
+            <React.Suspense fallback={<ArticlesList.Skeleton />} key={category}>
+              <ArticlesList category={category} key={category} />
+            </React.Suspense>
+          </div>
         </div>
-      </main>
+      </section>
       <ContactCTASection />
-    </>
+    </main>
   );
 }
