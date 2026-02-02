@@ -53,8 +53,8 @@ export default function RootLayout({
         className={`${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`}
       >
         {children}
-        <Analytics />
-        <SpeedInsights />
+        <Analytics debug={false} />
+        <SpeedInsights debug={false} />
       </body>
     </html>
   );
