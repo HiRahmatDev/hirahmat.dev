@@ -3,12 +3,12 @@
 import { Mail } from "lucide-react";
 import Image from "next/image";
 
-import { EMAIL_HREF } from "./constants";
+import { EMAIL_HREF } from "../constants";
 import backgroundFooterContactCtaPng from "@/public/images/background-footer-contact-cta.png";
 
-export function ContactCTA() {
+export function ContactCTASection() {
   return (
-    <div className="container py-6">
+    <section className="container py-6">
       <div className="p-5 bg-accent text-white rounded-[20px] flex gap-3 relative overflow-hidden">
         <Mail className="shrink-0" />
         <div className="space-y-1">
@@ -33,6 +33,6 @@ export function ContactCTA() {
           className="w-auto h-auto absolute top-[50%] right-0 translate-y-[-50%] pointer-events-none"
         />
       </div>
-    </div>
+    </section>
   );
 }

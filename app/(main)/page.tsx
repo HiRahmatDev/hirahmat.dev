@@ -1,7 +1,7 @@
 import serializeJavascript from "serialize-javascript";
 
 import { AboutMeSection } from "@/app/(main)/components/sections/AboutMeSection";
-import { ContactCTA } from "@/app/(main)/components/ContactCTA";
+import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
 import { HeroSection } from "@/app/(main)/components/sections/HeroSection";
 import { SelectedBlogsSection } from "@/app/(main)/components/sections/SelectedBlogSection";
 import { SelectedProjectsSection } from "@/app/(main)/components/sections/SelectedProjectsSection";
@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <main>
       <section>
         <script
           type="application/ld+json"
@@ -43,7 +43,7 @@ export default function Home() {
       <SelectedProjectsSection />
       <AboutMeSection />
       <SelectedBlogsSection />
-      <ContactCTA />
-    </>
+      <ContactCTASection />
+    </main>
   );
 }

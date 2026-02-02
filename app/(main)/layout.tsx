@@ -9,8 +9,8 @@ export default function MainLayout({
   return (
     <>
       <Navbar />
-      <main tabIndex={-1}>{children}</main>
-      <footer tabIndex={-1}>
+      {children}
+      <footer>
         <FooterCopyrights />
       </footer>
     </>

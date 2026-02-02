@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 import { ArticlesList } from "./ArticlesList";
 import { ArticlesSkeleton } from "./ArticlesSkeleton";
-import { ContactCTA } from "../components/ContactCTA";
+import { ContactCTASection } from "../components/sections/ContactCTASection";
 import { fetchAllArticles } from "@/app/services/notion";
 
 export const metadata: Metadata = {
@@ -23,8 +23,8 @@ export default async function ArticlesPage() {
               Artikel
             </h1>
             <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] text-gray-600">
-              Tulisan mengenai pemikiran, pengalaman, dan catatan perjalanan dalam
-              membangun proyek-proyek digital.
+              Tulisan mengenai pemikiran, pengalaman, dan catatan perjalanan
+              dalam membangun proyek-proyek digital.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ export default async function ArticlesPage() {
           </Suspense>
         </div>
       </main>
-      <ContactCTA />
+      <ContactCTASection />
     </>
   );
 }

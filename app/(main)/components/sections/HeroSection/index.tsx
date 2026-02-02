@@ -12,8 +12,8 @@ export function HeroSection() {
           <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-1.5px] md:tracking-[-2px]">
             <span className="text-2xl tracking-[-1px]">
               <GreenText>Hi</GreenText>, saya <GreenText>Rahmat</GreenText>
+              <br />
             </span>
-            <br />
             Frontend <GreenText>Dev</GreenText>eloper
           </h1>
           <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[40ch] text-gray-700">

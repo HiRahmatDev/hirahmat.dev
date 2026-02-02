@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-import { ContactCTA } from "@/app/(main)/components/ContactCTA";
+import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
 import {
   fetchAllArticles,
   fetchArticleByBlockId,
@@ -64,8 +64,7 @@ export default async function ArticleDetailPage({
           <section className="pt-4 space-y-6">
             <div
               className={
-                "container space-y-6" +
-                (isTocEmpty ? "" : " mx-[unset]")
+                "container space-y-6" + (isTocEmpty ? "" : " mx-[unset]")
               }
             >
               <header className="space-y-4">
@@ -85,7 +84,9 @@ export default async function ArticleDetailPage({
                   <strong className="font-medium">
                     {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
-                  <span className="text-text-gray">&ensp;•&ensp;Diperbarui</span>{" "}
+                  <span className="text-text-gray">
+                    &ensp;•&ensp;Diperbarui
+                  </span>{" "}
                   <strong className="font-medium">
                     {formatDate(blockMetadata.updatedOn) || "-"}
                   </strong>
@@ -107,11 +108,7 @@ export default async function ArticleDetailPage({
             </div>
           </section>
           <section className="pb-8 sm:pb-12">
-            <div
-              className={
-                "container-for-reading" + (isTocEmpty ? "" : "")
-              }
-            >
+            <div className={"container-for-reading" + (isTocEmpty ? "" : "")}>
               <NotionRenderer listBlockChildren={article} />
             </div>
           </section>
@@ -151,7 +148,7 @@ export default async function ArticleDetailPage({
           </aside>
         ) : null}
       </div>
-      <ContactCTA />
+      <ContactCTASection />
     </>
   );
 }
