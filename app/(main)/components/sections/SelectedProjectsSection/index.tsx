@@ -18,7 +18,7 @@ export async function SelectedProjectsSection() {
             Proyek pilihan dengan detail, interaksi, dan desain menarik.
           </p>
         </div>
-        <div className="pb-10 overflow-x-auto">
+        <div className="pb-10 [&::-webkit-scrollbar]:hidden overflow-x-auto -mx-6 sm:-mx-10">
           <SelectedProjectCards
             selectedProjects={displayProjects}
             hasMore={hasMore}

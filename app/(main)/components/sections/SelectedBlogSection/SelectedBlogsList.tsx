@@ -17,8 +17,9 @@ export function SelectedBlogsList({
   hasMore,
 }: SelectedBlogsListProps) {
   return (
-    <div className="pb-6 pt-2 -mt-2 overflow-x-auto overflow-y-hidden">
-      <div className="flex gap-4 [&>a]:shrink-0">
+    <div className="pb-6 pt-2 -mt-2 overflow-x-auto overflow-y-hidden -mx-6 sm:-mx-10 [&::-webkit-scrollbar]:hidden">
+      <div className="flex gap-4 *:shrink-0">
+        <div className="w-1 sm:w-6" />
         {(selectedBlogs || []).map((blog) => (
           <Link
             key={blog.slug}
@@ -51,7 +52,7 @@ export function SelectedBlogsList({
           <div className="group">
             <Link
               href="/articles?category=Blog"
-              className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 h-full group-active:scale-97 transition-transform duration-150 ease-(--ease-silky)"
+              className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 h-full group-active:scale-98 transition-transform duration-150 ease-(--ease-silky)"
             >
               <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center">
                 <ArrowRight className="w-6 h-6" />
@@ -62,6 +63,7 @@ export function SelectedBlogsList({
             </Link>
           </div>
         )}
+        <div className="w-1 sm:w-6" />
       </div>
     </div>
   );

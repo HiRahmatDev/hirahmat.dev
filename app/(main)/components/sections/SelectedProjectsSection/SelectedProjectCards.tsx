@@ -16,7 +16,8 @@ export function SelectedProjectCards({
   hasMore,
 }: SelectedProjectCardsProps) {
   return (
-    <div className="flex gap-5 [&>div]:shrink-0">
+    <div className="flex gap-4 [&>div]:shrink-0">
+      <div className="w-1 sm:w-6" />
       {(selectedProjects || []).map((project, index) => (
         <SelectedProjectCard
           key={project.slug}
@@ -39,6 +40,7 @@ export function SelectedProjectCards({
           </Link>
         </div>
       )}
+      <div className="w-1 sm:w-6" />
     </div>
   );
 }

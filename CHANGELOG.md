@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Refactor articles page structure to using streaming fetch
 - Update revalidate time home, articles, and article detail pages to 1 minute
+- Hide scrollbar and enhance horizontal spacing of overflow in homepage
 
 ### Fixed
 

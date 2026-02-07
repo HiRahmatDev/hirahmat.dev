@@ -2,9 +2,9 @@ import { fetchSelectedBlogs } from "@/app/services/notion";
 import { SelectedBlogsList } from "./SelectedBlogsList";
 
 export async function SelectedBlogsSection() {
-  const selectedBlogs = await fetchSelectedBlogs(4);
-  const hasMore = (selectedBlogs?.length || 0) > 3;
-  const displayBlogs = selectedBlogs?.slice(0, 3) || [];
+  const selectedBlogs = await fetchSelectedBlogs(5);
+  const hasMore = (selectedBlogs?.length || 0) > 4;
+  const displayBlogs = selectedBlogs?.slice(0, 4) || [];
 
   return (
     <section className="container py-6 sm:py-8">
