@@ -8,7 +8,7 @@ export async function SelectedProjectsSection() {
   const displayProjects = selectedProjects?.slice(0, 3) || [];
 
   return (
-    <section className="container sm:pt-6 pb-8">
+    <section className="container py-8 sm:pt-6">
       <div className="space-y-8">
         <div className="space-y-1 md:space-y-2">
           <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">

@@ -7,8 +7,8 @@ import { StaticHeroImage } from "./StaticHeroImage";
 
 export function HeroSection() {
   return (
-    <section className="container flex flex-col justify-center md:justify-start md:flex-row gap-12 md:gap-4 min-h-max md:h-150 -mt-10 py-20 md:py-0">
-      <div className="md:pb-14 flex flex-col items-center sm:items-start justify-center gap-8 w-full *:max-w-fit text-center sm:text-left">
+    <section className="container flex flex-col justify-center md:justify-start md:flex-row gap-12 md:gap-8 min-h-max md:h-150 -mt-10 py-20 md:py-0">
+      <div className="md:pb-14 flex flex-col items-center md:items-start justify-center gap-8 w-full *:max-w-fit text-center md:text-left">
         <div className="space-y-2 md:space-y-3">
           <h1 className="font-bold text-4xl/[40px] md:text-5xl/[50px] tracking-[-1.5px] md:tracking-[-2px]">
             <span className="text-2xl tracking-[-1px]">
