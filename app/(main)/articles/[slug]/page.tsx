@@ -59,13 +59,11 @@ export default async function ArticleDetailPage({
 
   return (
     <>
-      <div className="flex container px-0">
-        <article className="space-y-8 flex-1">
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] container px-0">
+        <article className="space-y-8">
           <section className="pt-4 space-y-6">
             <div
-              className={
-                "container space-y-6" + (isTocEmpty ? "" : " mx-[unset]")
-              }
+              className={"container space-y-6" + (isTocEmpty ? "" : " mx-0")}
             >
               <header className="space-y-4">
                 <div className="space-y-2">
@@ -114,7 +112,7 @@ export default async function ArticleDetailPage({
           </section>
         </article>
         {!isTocEmpty ? (
-          <aside className="hidden md:block w-60 sticky top-24 max-h-[80vh] overflow-auto px-5 pb-12 space-y-3">
+          <aside className="hidden md:block sticky top-24 max-h-[80vh] overflow-auto px-5 pb-12 space-y-3">
             <h2 className="text-base font-semibold tracking-[-0.35px]">
               Telusuri Isi:
             </h2>

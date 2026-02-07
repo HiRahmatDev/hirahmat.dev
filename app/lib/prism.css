@@ -6,7 +6,6 @@ pre[class*="language-"] {
   letter-spacing: -0.5px;
   font-size: 14px;
   background: #222222;
-  position: relative;
 
   div.code-block__header {
     position: absolute;
@@ -32,7 +31,6 @@ pre[class*="language-"] {
       }
 
       &:hover {
-        transition: background-color 0.3s ease;
         background: #2d2d2d;
       }
     }
@@ -40,7 +38,12 @@ pre[class*="language-"] {
 }
 
 pre[class*="language-"] {
-  margin: 0 0 2em;
-  border-radius: 1em;
-  padding: 2.5em 1.5em 2em;
+  margin: 0 4px 2px;
+  padding: 48px 14px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #444 #2a2a2a;
+
+  @media (min-width: theme("screens.sm")) {
+    padding: 56px 20px 20px;
+  }
 }

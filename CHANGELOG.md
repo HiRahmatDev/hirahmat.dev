@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Refactor articles page structure to using streaming fetch
 
+### Fixed
+
+- Overlapping in article detail page
+
 ## [0.14.9] - 2026-02-01
 
 ### Removed
