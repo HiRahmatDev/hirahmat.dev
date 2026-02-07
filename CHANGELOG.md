@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor articles page structure to using streaming fetch
+- Update revalidate time home, articles, and article detail pages to 1 minute
 
 ### Fixed
 

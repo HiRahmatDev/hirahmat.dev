@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "Kumpulan tulisan, blog, dan jurnal proyek.",
 };
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export default async function ArticlesPage({
   searchParams,

@@ -14,6 +14,8 @@ import { NotionRenderer } from "@/app/(main)/components/NotionRenderer";
 import { SITE_NAME } from "@/app/config/constants";
 import { RichText } from "@/app/(main)/components/NotionRenderer/common/RichText";
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const allArticles = await fetchAllArticles();
   return (allArticles || []).map(({ slug }) => ({ slug: slug || "" }));

@@ -6,6 +6,8 @@ import { HeroSection } from "@/app/(main)/components/sections/HeroSection";
 import { SelectedBlogsSection } from "@/app/(main)/components/sections/SelectedBlogSection";
 import { SelectedProjectsSection } from "@/app/(main)/components/sections/SelectedProjectsSection";
 
+export const revalidate = 60;
+
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org/",
