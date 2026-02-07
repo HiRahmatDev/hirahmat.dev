@@ -19,7 +19,7 @@ export function SelectedBlogsList({
   return (
     <div className="pb-6 pt-2 -mt-2 overflow-x-auto overflow-y-hidden -mx-6 sm:-mx-10 [&::-webkit-scrollbar]:hidden">
       <div className="flex gap-4 *:shrink-0">
-        <div className="w-1 sm:w-6" />
+        <div className="w-2 sm:w-6" />
         {(selectedBlogs || []).map((blog) => (
           <Link
             key={blog.slug}
@@ -63,7 +63,7 @@ export function SelectedBlogsList({
             </Link>
           </div>
         )}
-        <div className="w-1 sm:w-6" />
+        <div className="w-2 sm:w-6" />
       </div>
     </div>
   );
