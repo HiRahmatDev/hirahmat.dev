@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New `/lab/project-aidah` page
+
+## [0.15.0] - 2026-02-07
+
+### Added
+
 - New hero image in homepage for mobile display
 
 ### Changed
