@@ -19,6 +19,8 @@ export type CommonArticle = {
   desc?: string;
   cover?: string;
   category?: string;
+  publishedOn?: string;
+  updatedOn?: string;
 };
 
 export type SelectedProject = CommonArticle;
@@ -71,6 +73,14 @@ export const fetchSelectedProjects: (
       category:
         result.properties.category?.type === "select"
           ? result.properties.category.select?.name
+          : "",
+      publishedOn:
+        result.properties.published_on?.type === "date"
+          ? result.properties.published_on.date?.start
+          : "",
+      updatedOn:
+        result.properties.updated_on?.type === "last_edited_time"
+          ? result.properties.updated_on.last_edited_time
           : "",
     }));
   } catch (error) {
@@ -157,6 +167,14 @@ export const fetchSelectedBlogs: (
       category:
         result.properties.category?.type === "select"
           ? result.properties.category.select?.name
+          : "",
+      publishedOn:
+        result.properties.published_on?.type === "date"
+          ? result.properties.published_on.date?.start
+          : "",
+      updatedOn:
+        result.properties.updated_on?.type === "last_edited_time"
+          ? result.properties.updated_on.last_edited_time
           : "",
     }));
   } catch (error) {
@@ -257,6 +275,14 @@ export const fetchAllArticles: (params?: {
       category:
         result.properties.category?.type === "select"
           ? result.properties.category.select?.name
+          : "",
+      publishedOn:
+        result.properties.published_on?.type === "date"
+          ? result.properties.published_on.date?.start
+          : "",
+      updatedOn:
+        result.properties.updated_on?.type === "last_edited_time"
+          ? result.properties.updated_on.last_edited_time
           : "",
     }));
   } catch (error) {

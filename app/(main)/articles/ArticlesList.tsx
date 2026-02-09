@@ -10,7 +10,7 @@ export async function ArticlesList({
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10">
         {articles?.map((article) => (
           <ArticleCard key={article.slug} article={article} />
         ))}
@@ -28,8 +28,8 @@ export async function ArticlesList({
 function Skeleton() {
   return (
     <div className="animate-pulse">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10">
+        {Array.from({ length: 4 }).map((_, i) => (
           <div key={i} className="w-full space-y-4">
             <div className="relative w-full aspect-video rounded-2xl bg-zinc-200" />
             <div className="space-y-2">

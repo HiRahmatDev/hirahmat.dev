@@ -77,17 +77,17 @@ export default async function ArticleDetailPage({
                   </p>
                 </div>
                 <p className="text-xs/[20px] sm:text-sm/[24px] tracking-[-0.15px]">
-                  <span className="font-medium px-2 py-1 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
+                  <span className="text-xs font-medium px-2 py-1 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
                     {blockMetadata.category || "-"}
                   </span>
                   <span className="text-zinc-500">&ensp;•&ensp;</span>
-                  <strong className="font-medium">
+                  <strong className="font-medium text-zinc-600">
                     {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
-                  <span className="text-text-gray">
+                  <span className="text-zinc-500">
                     &ensp;•&ensp;Diperbarui
                   </span>{" "}
-                  <strong className="font-medium">
+                  <strong className="font-medium text-zinc-600">
                     {formatDate(blockMetadata.updatedOn) || "-"}
                   </strong>
                 </p>

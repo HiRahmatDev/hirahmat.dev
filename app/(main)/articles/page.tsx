@@ -24,7 +24,7 @@ export default async function ArticlesPage({
 
   return (
     <main>
-      <section className="container pt-4 sm:pt-12 pb-20 min-h-screen">
+      <section className="container pt-4 sm:pt-12 pb-20">
         <div className="space-y-10">
           <div className="space-y-2">
             <h1 className="text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
