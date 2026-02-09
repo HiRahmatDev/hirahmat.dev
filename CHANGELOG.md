@@ -13,7 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Enhance layout of Murajaah at-Taisir page with logo and author attribution (Ust. Adi Hidayat)
+- Enhance navigation in navbar and enhance hero image
+- Enhance articles page with date formatting and improved layout
+- Enhance Murajaah at-Taisir page with logo and author attribution (Ust. Adi Hidayat)
+
+### Fixed
+
+- Fix font light not works
 
 ## [0.15.0] - 2026-02-07
 
