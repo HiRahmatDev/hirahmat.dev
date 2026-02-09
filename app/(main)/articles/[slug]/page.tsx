@@ -61,7 +61,7 @@ export default async function ArticleDetailPage({
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] container px-0">
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] container-wider px-0">
         <article className="space-y-8">
           <section className="pt-4 space-y-6">
             <div

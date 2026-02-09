@@ -5,14 +5,13 @@ import { GreenText } from "../GreenText";
 export function AboutMeSection() {
   return (
     <section className="container flex flex-col md:flex-row gap-10 sm:gap-12 md:gap-14 py-10">
-      <div className="shrink-0 md:max-w-105 space-y-4 md:space-y-8">
+      <div className="shrink-0 md:max-w-73.75 space-y-4 md:space-y-8">
         <div className="space-y-1 md:space-y-2">
           <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold about-header">
             Siapa <GreenText>Saya</GreenText>?
           </h2>
           <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[60ch] text-gray-600 about-desc">
-            Sedikit tentang saya di dunia web dan hal-hal yang bikin saya betah
-            ngulik.
+            Sekilas tentang saya di dunia web.
           </p>
         </div>
         <a

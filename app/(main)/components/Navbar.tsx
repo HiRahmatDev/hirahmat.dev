@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 type NavState =
   | "navbar-static"
@@ -104,19 +105,49 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="relative" tabIndex={-1}>
-        <div className="container py-2 flex gap-3 justify-between align-center">
+      <nav className="relative z-10">
+        <div className="container-wider py-2 flex gap-3 justify-between items-center align-center">
           <Logo />
+          <div className="flex gap-8 items-center h-fit">
+            <Links />
+            <CTAButton>Kontak</CTAButton>
+          </div>
         </div>
       </nav>
       {navState !== "navbar-static" && (
         <div className={navState + " z-20"}>
-          <div className="container py-2 flex gap-3 justify-between align-center">
+          <div className="container-wider py-2 flex gap-3 justify-between items-center">
             <Logo />
-            <CTAButton />
+            <div className="flex gap-8 items-center h-fit">
+              <Links />
+              <CTAButton />
+            </div>
           </div>
         </div>
       )}
+    </>
+  );
+}
+
+function Links() {
+  return (
+    <>
+      <Link
+        href="/articles?category=Jurnal+Proyek"
+        className="font-semibold px-2 text-base/[32px] inline-block group hover:text-text-accent"
+      >
+        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-(--ease-silky)">
+          Jurnal Proyek
+        </span>
+      </Link>
+      <Link
+        href="/articles?category=Blog"
+        className="font-semibold px-2 text-base/[32px] inline-block group hover:text-text-accent"
+      >
+        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-(--ease-silky)">
+          Blog
+        </span>
+      </Link>
     </>
   );
 }

@@ -1,12 +1,17 @@
 @utility container {
   margin-inline: auto;
   @apply px-6 sm:px-10;
-  @apply md:max-w-300;
+  @apply md:max-w-240;
+}
+
+@utility container-wider {
+  @apply container;
+  @apply md:max-w-280;
 }
 
 @utility container-for-reading {
   @apply container;
-  @apply md:max-w-200;
+  @apply md:max-w-180;
 }
 
 @utility animate-hover {

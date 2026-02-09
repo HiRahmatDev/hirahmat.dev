@@ -42,7 +42,7 @@
   .navbar-fixed-active,
   .navbar-static-active {
     @apply fixed top-0 left-0 right-0 z-10;
-    @apply bg-background/60 backdrop-blur-xs translate-0;
+    @apply bg-background/70 backdrop-blur-xs translate-0;
     @apply shadow-xs;
   }
 
