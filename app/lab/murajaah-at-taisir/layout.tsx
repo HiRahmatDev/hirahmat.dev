@@ -12,6 +12,7 @@ import { MurajaahProvider } from "./context/MurajaahContext";
 import { SurahSelect } from "./components/SurahSelect";
 import { useMurajaah } from "./hooks/useMurajaah";
 import { BottomActionBar } from "./components/BottomActionBar";
+import { Logo } from "@/app/(main)/components/Logo";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -67,15 +68,23 @@ export default function MurajaahAtTaisirLayout({
       <div className="min-h-[calc(100vh-96px)]">
         <div className="container-wider pt-4 pb-6">
           <div className="mb-8">
-            <h1 className="text-2xl tracking-[-0.5px] font-bold sm:text-4xl sm:tracking-[-1px] sm:font-semibold mb-1">
-              Muraja{"'"}ah at-Taisir
-            </h1>
+            <div className="flex flex-col sm:flex-row gap-x-6 gap-y-1 justify-between mb-1">
+              <h1 className="text-2xl tracking-[-0.5px] font-bold sm:text-4xl sm:tracking-[-1px] sm:font-semibold">
+                Muraja{"'"}ah at-Taisir
+              </h1>
+              <div className="flex items-center h-fit pl-2 mt-1">
+                <p className="italic text-xs font-medium text-zinc-400 -mr-5 -mt-9 -rotate-4">
+                  by
+                </p>
+                <Logo />
+              </div>
+            </div>
             <p className="text-zinc-500 italic text-sm max-w-prose">
               Terinspirasi dari buku{" "}
               <b className="font-medium text-foreground">
                 Muraja{"'"}ah at-Taisir (30 Hari Hafal Al-Qur{"'"}an)
               </b>{" "}
-              - Adi Hidayat
+              - Ust. Adi Hidayat
             </p>
           </div>
           <div className="flex flex-col sm:flex-row justify-between gap-10">

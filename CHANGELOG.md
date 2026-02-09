@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+### Changed
+
+- Enhance layout of Murajaah at-Taisir page with logo and author attribution (Ust. Adi Hidayat)
+
 ## [0.15.0] - 2026-02-07
 
 ### Added
@@ -36,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Adjust consistent padding in murajaah-at-taisir page 
+- Adjust consistent padding in murajaah-at-taisir page
 
 ## [0.14.8] - 2026-02-01
 
