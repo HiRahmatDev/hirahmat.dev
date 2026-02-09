@@ -108,7 +108,7 @@ export function Navbar() {
       <nav className="relative z-10">
         <div className="container-wider py-2 flex gap-3 justify-between items-center align-center">
           <Logo />
-          <div className="flex gap-8 items-center h-fit">
+          <div className="hidden md:flex gap-8 items-center h-fit">
             <Links />
             <CTAButton>Kontak</CTAButton>
           </div>
@@ -118,8 +118,11 @@ export function Navbar() {
         <div className={navState + " z-20"}>
           <div className="container-wider py-2 flex gap-3 justify-between items-center">
             <Logo />
-            <div className="flex gap-8 items-center h-fit">
+            <div className="hidden md:flex gap-8 items-center h-fit">
               <Links />
+              <CTAButton />
+            </div>
+            <div className="block md:hidden">
               <CTAButton />
             </div>
           </div>
