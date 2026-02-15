@@ -43,7 +43,7 @@ export default function MurajaahAtTaisirLayout({
         scroll: false,
       });
     }
-  }, [ayahData]);
+  }, [ayahData, router]);
 
   return (
     <MurajaahProvider

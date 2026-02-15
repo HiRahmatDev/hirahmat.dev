@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEventHandler, FocusEventHandler, useEffect } from "react";
+import { ChangeEventHandler, FocusEventHandler } from "react";
 
 type AyahInputNumberProps = {
   placeholder: string;

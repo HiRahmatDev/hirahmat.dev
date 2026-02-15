@@ -25,7 +25,7 @@ export function useMurajaah() {
     localStorage.setItem("murajaah-selected-surah", surahNumber.toString());
     localStorage.setItem(
       "previous-murajaah-selected-surah",
-      (selectedSurah || surahNumber).toString()
+      (selectedSurah || surahNumber).toString(),
     );
   };
 
@@ -61,12 +61,12 @@ export function useMurajaah() {
     selectedSurah && randomAyah
       ? `ayah-by-surah-${selectedSurah}-n-ayah-${randomAyah}`
       : null,
-    () => fetchAyahBySurahNAyah({ surah: selectedSurah!, ayah: randomAyah! })
+    () => fetchAyahBySurahNAyah({ surah: selectedSurah!, ayah: randomAyah! }),
   );
 
   const { data: selectedSurahData } = useSWR(
     selectedSurah ? `surah-by-number-${selectedSurah}` : null,
-    () => fetchSurahByNumber(selectedSurah!)
+    () => fetchSurahByNumber(selectedSurah!),
   );
 
   const minAyah = DEFAULT_MIN_AYAH;
@@ -99,16 +99,16 @@ export function useMurajaah() {
       const storedEndAyah = localStorage.getItem("murajaah-end-ayah");
       const storedSurah = localStorage.getItem("murajaah-selected-surah");
       const storedPrevSurah = localStorage.getItem(
-        "previous-murajaah-selected-surah"
+        "previous-murajaah-selected-surah",
       );
       const isNewSurah = storedSurah !== storedPrevSurah;
 
       // eslint-disable-next-line react-hooks/set-state-in-effect
       changeStartAyah(
-        storedStartAyah && !isNewSurah ? Number(storedStartAyah) : minAyah
+        storedStartAyah && !isNewSurah ? Number(storedStartAyah) : minAyah,
       );
       changeEndAyah(
-        storedEndAyah && !isNewSurah ? Number(storedEndAyah) : maxAyah
+        storedEndAyah && !isNewSurah ? Number(storedEndAyah) : maxAyah,
       );
     }
   }, [selectedSurahData]);
