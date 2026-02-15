@@ -1,11 +1,14 @@
 "use client";
 
+import { CustomEase } from "gsap/CustomEase";
 import { useEffect, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import { usePathname } from "next/navigation";
+import gsap from "gsap";
+import Link from "next/link";
 
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 type NavState =
   | "navbar-static"
@@ -103,9 +106,26 @@ export function Navbar() {
     };
   }, [navState]);
 
+  useGSAP(() => {
+    gsap.fromTo(
+      "[data-animation='navbar']",
+      { y: -60, autoAlpha: 1 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 1.2,
+        delay: 0.4,
+        ease: CustomEase.create(
+          "custom",
+          "M0,0 C0.083,0.294 0.035,0.717 0.337,0.911 0.456,0.987 0.752,1 1,1 ",
+        ),
+      },
+    );
+  });
+
   return (
     <>
-      <nav className="relative z-10">
+      <nav data-animation="navbar" className="invisible relative z-10">
         <div className="container-wider py-2 flex gap-3 justify-between items-center align-center">
           <Logo />
           <div className="hidden md:flex gap-8 items-center h-fit">
