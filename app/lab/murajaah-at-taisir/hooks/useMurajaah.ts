@@ -49,12 +49,12 @@ export function useMurajaah() {
     const storedMode =
       localStorage.getItem("murajaah-selected-mode") || DEFAULT_MODE;
     if (storedSurah) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       changeSurah(Number(storedSurah));
     }
     if (storedMode) {
       changeMode(storedMode as MurajaahMode);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { data: ayahData } = useSWR(
@@ -103,7 +103,6 @@ export function useMurajaah() {
       );
       const isNewSurah = storedSurah !== storedPrevSurah;
 
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       changeStartAyah(
         storedStartAyah && !isNewSurah ? Number(storedStartAyah) : minAyah,
       );
@@ -111,6 +110,7 @@ export function useMurajaah() {
         storedEndAyah && !isNewSurah ? Number(storedEndAyah) : maxAyah,
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSurahData]);
 
   return {
