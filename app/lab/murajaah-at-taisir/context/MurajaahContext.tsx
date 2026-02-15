@@ -1,14 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
-
 import { AyahData } from "../lib/fetchAyahBySurahNAyah";
-import { type SurahNumber } from "../lib/fetchAllSurah";
 
 type MurajaahContextState = {
   ayahData: AyahData | null | undefined;
-  selectedSurah: SurahNumber | null;
-  changeSurah: (surahNumber: SurahNumber) => void;
+  selectedSurah: number | null;
+  changeSurah: (surahNumber: number) => void;
   mode: MurajaahMode;
   changeMode: (mode: MurajaahMode) => void;
   startAyah: number | null;
@@ -53,7 +51,7 @@ export function useMurajaahContext() {
 
   if (!context) {
     throw new Error(
-      "`useMurajaahContext` must be used within a `<MurajaahProvider>`",
+      "`useMurajaahContext` must be used within a `<MurajaahProvider>`"
     );
   }
 

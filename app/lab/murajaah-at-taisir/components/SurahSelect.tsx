@@ -20,20 +20,20 @@ import { useState } from "react";
 import clsx from "clsx";
 import useSWR from "swr";
 
-import { fetchAllSurah, type SurahNumber } from "../lib/fetchAllSurah";
+import { fetchAllSurah } from "../lib/fetchAllSurah";
 import { SURAH_MAP } from "../lib/constants";
-import { useBottomSheet } from "../hooks/useBottomSheet";
 import { useIsMobile } from "../hooks/useIsMobile";
+import { useBottomSheet } from "../hooks/useBottomSheet";
 
 type SurahSelectProps = Readonly<{
-  value?: SurahNumber;
-  onChange?: (surahNumber: SurahNumber) => void;
+  value?: number;
+  onChange?: (surahNumber: number) => void;
 }>;
 
 type Option = {
   key: string;
   label: string;
-  id: SurahNumber;
+  id: number;
 };
 
 export function SurahSelect({ value, onChange }: SurahSelectProps) {
@@ -46,7 +46,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
   const [search, setSearch] = useState("");
 
   const options: Option[] = (allSurah?.data || []).map((item) => {
-    const surahNameId = SURAH_MAP[item.number as keyof typeof SURAH_MAP];
+    const surahNameId = SURAH_MAP[item.number];
 
     return {
       key: String(item.number),
@@ -62,14 +62,14 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
       return normalize(option.label).includes(normalize(search.trim()));
     });
 
-    const renderLabel = (surahNumber: SurahNumber | -1) => {
+    const renderLabel = (surahNumber: number) => {
       const surah = allSurah?.data.find(
         (surah) => surah.number === surahNumber,
       );
       if (!surah) {
         return <span className="text-zinc-400">Pilih Surah</span>;
       }
-      const surahNameId = SURAH_MAP[surah.number as keyof typeof SURAH_MAP];
+      const surahNameId = SURAH_MAP[surah.number];
       return `${surah.number}. ${surahNameId}`;
     };
 
@@ -127,7 +127,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                         </div>
                       )}
                       onAction={(key) => {
-                        onChange?.(Number(key) as SurahNumber);
+                        onChange?.(Number(key));
                         close();
                       }}
                       className="mx-auto max-w-105 overflow-auto h-[60vh] -mb-7 pb-7"
@@ -168,7 +168,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
       defaultItems={options}
       selectedKey={value ? String(value) : undefined}
       onSelectionChange={(value) => {
-        onChange?.(Number(value) as SurahNumber);
+        onChange?.(Number(value));
       }}
     >
       {({ isOpen }) => (
