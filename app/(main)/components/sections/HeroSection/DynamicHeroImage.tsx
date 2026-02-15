@@ -108,7 +108,7 @@ export function DynamicHeroImage() {
   });
 
   return (
-    <div className="shrink-0 min-w-98.75 pb-20 hidden md:block">
+    <div className="min-w-98.75 pb-20 hidden md:block h-full">
       <div className="h-full">
         <div className="relative h-full hero-image mr-6">
           <Image
