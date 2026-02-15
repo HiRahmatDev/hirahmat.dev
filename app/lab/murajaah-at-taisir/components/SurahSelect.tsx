@@ -197,8 +197,9 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             )}
           >
             <ListBox
+              className="max-h-100"
               renderEmptyState={() => (
-                <div className="py-1.5 px-2 italic text-zinc-400">
+                <div className="text-sm text-center py-1.5 px-2 italic text-zinc-400">
                   Tidak ada surah dengan nama tersebut.
                 </div>
               )}
@@ -208,8 +209,8 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                   textValue={label}
                   className={({ isFocused }) =>
                     clsx(
-                      "py-1.5 px-2 rounded-md cursor-pointer transition-colors duration-150",
-                      isFocused && "bg-zinc-200",
+                      "py-1.5 px-2 rounded-md cursor-pointer",
+                      isFocused && "bg-zinc-100",
                     )
                   }
                 >
