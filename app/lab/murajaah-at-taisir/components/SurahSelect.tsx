@@ -107,7 +107,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                       <div>
                         <input
                           placeholder="Cari"
-                          className="grow-1 py-2 px-3 rounded-lg pr-8 border border-gray-300 w-full"
+                          className="grow py-2 px-3 rounded-lg pr-8 border border-gray-300 w-full"
                           value={search}
                           onChange={(e) => setSearch(e.target.value)}
                         />
@@ -177,7 +177,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             <Button className="flex border border-gray-300 rounded-lg relative cursor-pointer w-full">
               <Input
                 placeholder="Masukkan surah Alquran"
-                className="grow-1 py-2 px-3 rounded-lg pr-8 cursor-pointer sm:cursor-text"
+                className="grow py-2 px-3 rounded-lg pr-8 cursor-pointer sm:cursor-text"
               />
               <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
                 <ChevronDown

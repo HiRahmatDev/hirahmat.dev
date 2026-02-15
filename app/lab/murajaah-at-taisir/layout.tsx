@@ -90,7 +90,7 @@ export default function MurajaahAtTaisirLayout({
           <div className="flex flex-col sm:flex-row justify-between gap-10">
             <div
               id="murajaah-sidebar"
-              className="hidden sm:flex flex-col gap-8 grow-1 sm:sticky z-10 bg-white h-fit"
+              className="hidden sm:flex flex-col gap-8 grow sm:sticky z-10 bg-white h-fit"
             >
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
