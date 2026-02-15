@@ -45,7 +45,7 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="container flex flex-col justify-center md:justify-start md:flex-row gap-12 md:gap-8 min-h-max md:h-150 -mt-5 py-20 md:py-0"
+      className="container flex flex-col justify-center md:justify-start md:flex-row gap-12 md:gap-8 min-h-max md:h-150 -mt-5 pt-12 pb-20 md:py-0"
     >
       <div className="md:pb-14 flex flex-col items-center md:items-start justify-center gap-8 w-full *:max-w-fit text-center md:text-left">
         <div className="space-y-2 md:space-y-3">
