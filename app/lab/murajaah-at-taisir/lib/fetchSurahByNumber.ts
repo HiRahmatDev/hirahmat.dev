@@ -1,3 +1,5 @@
+import { type SurahNumber } from "./fetchAllSurah";
+
 type SurahByNumberResponse = {
   code: number;
   status: string;
@@ -5,7 +7,7 @@ type SurahByNumberResponse = {
 };
 
 type Surah = {
-  number: number;
+  number: SurahNumber;
   name: string;
   englishName: string;
   englishNameTranslation: string;
@@ -27,7 +29,7 @@ type Ayah = {
 };
 
 export async function fetchSurahByNumber(
-  number: number
+  number: SurahNumber
 ): Promise<SurahByNumberResponse> {
   return fetch(`https://api.alquran.cloud/v1/surah/${number}`).then((res) =>
     res.json()

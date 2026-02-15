@@ -1,4 +1,4 @@
-export const SURAH_MAP: Record<number, string> = {
+export const SURAH_MAP = {
   1: "Al-Fatihah",
   2: "Al-Baqarah",
   3: "Ali 'Imran",
@@ -113,4 +113,12 @@ export const SURAH_MAP: Record<number, string> = {
   112: "Al-Ikhlas",
   113: "Al-Falaq",
   114: "An-Nas",
-};
+} as const;
+
+export const STORAGE_KEYS = {
+  SELECTED_SURAH: "murajaah-selected-surah",
+  PREVIOUS_SELECTED_SURAH: "previous-murajaah-selected-surah",
+  SELECTED_MODE: "murajaah-selected-mode",
+  START_AYAH: "murajaah-start-ayah",
+  END_AYAH: "murajaah-end-ayah",
+} as const;

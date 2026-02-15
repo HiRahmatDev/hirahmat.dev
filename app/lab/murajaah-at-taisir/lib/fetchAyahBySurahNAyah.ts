@@ -1,3 +1,5 @@
+import { type SurahNumber } from "./fetchAllSurah";
+
 export type AyahData = {
   text: string;
   page: number;
@@ -8,7 +10,7 @@ export async function fetchAyahBySurahNAyah({
   surah,
   ayah,
 }: {
-  surah: number;
+  surah: SurahNumber;
   ayah: number;
 }): Promise<AyahData> {
   const res = await fetch(

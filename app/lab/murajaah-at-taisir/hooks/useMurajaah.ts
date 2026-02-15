@@ -8,10 +8,15 @@ import {
   type MurajaahMode,
 } from "../context/MurajaahContext";
 import { fetchAyahBySurahNAyah } from "../lib/fetchAyahBySurahNAyah";
+import {
+  isSurahNumber,
+  type SurahNumber,
+} from "../lib/fetchAllSurah";
 import { fetchSurahByNumber } from "../lib/fetchSurahByNumber";
+import { STORAGE_KEYS } from "../lib/constants";
 
 export function useMurajaah() {
-  const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
+  const [selectedSurah, setSelectedSurah] = useState<SurahNumber | null>(null);
   const [startAyah, setStartAyah] = useState<number | null>(null);
   const [endAyah, setEndAyah] = useState<number | null>(null);
   const [randoming, setRandoming] = useState(false);
@@ -19,42 +24,40 @@ export function useMurajaah() {
   const [mode, setMode] = useState(DEFAULT_MODE);
 
   const changeSurah = (surahNumber: number) => {
-    if (!surahNumber || surahNumber < 1 || surahNumber > 114) return;
+    if (!isSurahNumber(surahNumber)) return;
     setSelectedSurah(surahNumber);
     setRandomAyah(null);
-    localStorage.setItem("murajaah-selected-surah", surahNumber.toString());
+    localStorage.setItem(STORAGE_KEYS.SELECTED_SURAH, surahNumber.toString());
     localStorage.setItem(
-      "previous-murajaah-selected-surah",
+      STORAGE_KEYS.PREVIOUS_SELECTED_SURAH,
       (selectedSurah || surahNumber).toString(),
     );
   };
 
   const changeMode = (newMode: MurajaahMode) => {
     setMode(newMode);
-    localStorage.setItem("murajaah-selected-mode", newMode);
+    localStorage.setItem(STORAGE_KEYS.SELECTED_MODE, newMode);
   };
 
   const changeStartAyah = (ayahNumber: number) => {
     setStartAyah(ayahNumber);
-    localStorage.setItem("murajaah-start-ayah", ayahNumber.toString());
+    localStorage.setItem(STORAGE_KEYS.START_AYAH, ayahNumber.toString());
   };
 
   const changeEndAyah = (ayahNumber: number) => {
     setEndAyah(ayahNumber);
-    localStorage.setItem("murajaah-end-ayah", ayahNumber.toString());
+    localStorage.setItem(STORAGE_KEYS.END_AYAH, ayahNumber.toString());
   };
 
   useEffect(() => {
-    const storedSurah = localStorage.getItem("murajaah-selected-surah");
+    const storedSurah = localStorage.getItem(STORAGE_KEYS.SELECTED_SURAH);
     const storedMode =
-      localStorage.getItem("murajaah-selected-mode") || DEFAULT_MODE;
-    if (storedSurah) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      changeSurah(Number(storedSurah));
-    }
-    if (storedMode) {
-      changeMode(storedMode as MurajaahMode);
-    }
+      localStorage.getItem(STORAGE_KEYS.SELECTED_MODE) || DEFAULT_MODE;
+
+    if (storedSurah) changeSurah(Number(storedSurah));
+    if (storedMode) changeMode(storedMode as MurajaahMode);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { data: ayahData } = useSWR(
@@ -95,23 +98,34 @@ export function useMurajaah() {
 
   useEffect(() => {
     if (selectedSurahData) {
-      const storedStartAyah = localStorage.getItem("murajaah-start-ayah");
-      const storedEndAyah = localStorage.getItem("murajaah-end-ayah");
-      const storedSurah = localStorage.getItem("murajaah-selected-surah");
+      const storedSurah = localStorage.getItem(STORAGE_KEYS.SELECTED_SURAH);
       const storedPrevSurah = localStorage.getItem(
-        "previous-murajaah-selected-surah",
+        STORAGE_KEYS.PREVIOUS_SELECTED_SURAH,
       );
       const isNewSurah = storedSurah !== storedPrevSurah;
 
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      changeStartAyah(
-        storedStartAyah && !isNewSurah ? Number(storedStartAyah) : minAyah,
-      );
-      changeEndAyah(
-        storedEndAyah && !isNewSurah ? Number(storedEndAyah) : maxAyah,
-      );
+      // Only update ayah range when switching to a new surah
+      if (isNewSurah) {
+        changeStartAyah(minAyah);
+        changeEndAyah(maxAyah);
+      } else {
+        // Validate and clamp existing values to the valid range
+        if (startAyah !== null && startAyah < minAyah) {
+          changeStartAyah(minAyah);
+        }
+        if (endAyah !== null && endAyah > maxAyah) {
+          changeEndAyah(maxAyah);
+        }
+        // Initialize with defaults if not set
+        if (startAyah === null) {
+          changeStartAyah(minAyah);
+        }
+        if (endAyah === null) {
+          changeEndAyah(maxAyah);
+        }
+      }
     }
-  }, [selectedSurahData]);
+  }, [selectedSurahData, startAyah, endAyah, minAyah, maxAyah]);
 
   return {
     selectedSurah,
