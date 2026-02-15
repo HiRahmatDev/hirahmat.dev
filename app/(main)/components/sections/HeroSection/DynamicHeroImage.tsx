@@ -1,10 +1,9 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import gsap from "gsap";
 import Image from "next/image";
 
+import { gsap, useGSAP } from "@/app/lib/gsap";
 import backAccent from "@/public/images/back-accent.png";
 import frontAccent from "@/public/images/front-accent.png";
 import middleAccent from "@/public/images/middle-accent.png";
@@ -103,7 +102,6 @@ export function DynamicHeroImage() {
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
-      // GSAP will auto-cleanup animations
     };
   });
 
@@ -128,6 +126,7 @@ export function DynamicHeroImage() {
             src={rahmatHero}
             alt="Foto Rahmat Hidayatullah dengan background transparan | hirahmat.dev"
             className="absolute mask-no-repeat mask-cover"
+            loading="eager"
             style={{
               left: 0,
               bottom: 0,

@@ -1,14 +1,12 @@
 "use client";
 
-import { CustomEase } from "gsap/CustomEase";
 import { useEffect, useRef, useState } from "react";
-import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
-import gsap from "gsap";
 import Link from "next/link";
 
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
+import { CustomEase, gsap, useGSAP } from "@/app/lib/gsap";
 
 type NavState =
   | "navbar-static"
@@ -22,6 +20,8 @@ const ANIMATION_DURATION_MS = 200;
 export function Navbar() {
   const [navState, setNavState] = useState<NavState>("navbar-static");
   const pathname = usePathname();
+
+  const navbarRef = useRef<HTMLElement>(null);
 
   // refs to manage RAF (Request Animation Frame) and timeout so we can cancel on cleanup
   const rafRef = useRef<number | null>(null);
@@ -108,7 +108,7 @@ export function Navbar() {
 
   useGSAP(() => {
     gsap.fromTo(
-      "[data-animation='navbar']",
+      navbarRef.current,
       { y: -60, autoAlpha: 1 },
       {
         y: 0,
@@ -125,7 +125,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav data-animation="navbar" className="invisible relative z-10">
+      <nav ref={navbarRef} className="invisible relative z-10">
         <div className="container-wider py-2 flex gap-3 justify-between items-center align-center">
           <Logo />
           <div className="hidden md:flex gap-8 items-center h-fit">

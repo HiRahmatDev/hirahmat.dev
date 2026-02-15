@@ -1,12 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 import { CTAButton } from "../../CTAButton";
-import { GreenText } from "../../GreenText";
 import { DynamicHeroImage } from "./DynamicHeroImage";
+import { GreenText } from "../../GreenText";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 import { StaticHeroImage } from "./StaticHeroImage";
 
 export function HeroSection() {

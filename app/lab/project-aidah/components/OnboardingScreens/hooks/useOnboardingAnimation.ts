@@ -1,6 +1,5 @@
 import { RefObject } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 
 type UseOnboardingAnimationProps = {
   step: number;
@@ -115,6 +114,6 @@ export function useOnboardingAnimation({
         });
       }
     },
-    { dependencies: [step], scope: containerRef }
+    { dependencies: [step], scope: containerRef },
   );
 }
