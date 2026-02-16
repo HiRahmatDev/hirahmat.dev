@@ -8,7 +8,7 @@ export const COLOR_MAP = {
   purple: "text-purple-600",
   pink: "text-pink-500",
   red: "text-red-600",
-  gray_background: "bg-gray-100",
+  gray_background: "bg-gray-200",
   brown_background: "bg-amber-100",
   orange_background: "bg-orange-100",
   yellow_background: "bg-yellow-100",

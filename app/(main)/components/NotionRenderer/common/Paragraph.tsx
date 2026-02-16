@@ -22,7 +22,7 @@ export function Paragraph({ block }: { block: ParagraphBlockObjectResponse }) {
           src={src}
           alt={alt}
           loading="lazy"
-          className="mb-7 rounded-xl overflow-hidden w-full"
+          className="mb-7 rounded-xl overflow-hidden w-full border border-gray-200"
           style={{ maxWidth }}
         />
       );
@@ -36,7 +36,7 @@ export function Paragraph({ block }: { block: ParagraphBlockObjectResponse }) {
         priority={false}
         loading="lazy"
         quality={90}
-        className="mb-7 rounded-xl overflow-hidden mx-auto w-full"
+        className="mb-7 rounded-xl overflow-hidden mx-auto w-full border border-gray-200"
         style={{ maxWidth }}
       />
     );

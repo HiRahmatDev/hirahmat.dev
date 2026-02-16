@@ -25,10 +25,10 @@ export function SelectedBlogsList({
             key={blog.slug}
             href={`/articles/${blog.slug}`}
             aria-label={`Buka artikel: Mengenai ${blog.title}`}
-            className="w-85 space-y-4 animate-hover hover:[&>.image-wrapper]:shadow-lg active:[&>.image-wrapper]:shadow-sm blog-card"
+            className="group w-85 space-y-4 animate-hover"
           >
-            <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden shadow-md transition-shadow image-wrapper">
-              {blog.cover && (
+            <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden transition-shadow image-wrapper bg-gray-100 border border-gray-200">
+              {blog.cover ? (
                 <Image
                   src={blog.cover}
                   alt=""
@@ -36,10 +36,14 @@ export function SelectedBlogsList({
                   sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
                   className="object-cover right-0"
                 />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  No Cover
+                </div>
               )}
             </div>
             <div className="space-y-1">
-              <h3 className="font-bold text-lg/normal tracking-[-0.4px] line-clamp-2">
+              <h3 className="group-hover:text-accent font-bold text-lg/normal tracking-[-0.4px] line-clamp-2">
                 <RichText items={blog.rawTitle} />
               </h3>
               <p className="text-sm/normal text-gray-500 line-clamp-2">
@@ -52,12 +56,12 @@ export function SelectedBlogsList({
           <div className="group">
             <Link
               href="/articles?category=Blog"
-              className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 h-full group-active:scale-98 transition-transform duration-150 ease-(--ease-silky)"
+              className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 group-hover:border-accent group-hover:bg-accent/2 h-full group-active:scale-98 transition-transform duration-150 ease-(--ease-silky)"
             >
               <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center">
                 <ArrowRight className="w-6 h-6" />
               </div>
-              <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
+              <span className="font-medium text-zinc-600 group-hover:text-accent">
                 Lihat Lainnya
               </span>
             </Link>
