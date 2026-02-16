@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add entrance animation to hero section
 - Add entrance animation to navbar
 
+### Fixed
+
+- Fix flickering issue of surah selection in "/lab/murajaah-at-taisir" page
+
 ## [0.15.1] - 2026-02-09
 
 ### Changed
