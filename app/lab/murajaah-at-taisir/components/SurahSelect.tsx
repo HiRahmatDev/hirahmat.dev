@@ -5,6 +5,7 @@ import {
   ComboBox,
   Dialog,
   DialogTrigger,
+  Group,
   Input,
   ListBox,
   ListBoxItem,
@@ -122,7 +123,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                       aria-label="Surah List"
                       items={filteredOptions}
                       renderEmptyState={() => (
-                        <div className="py-2.5 px-3 italic text-zinc-400">
+                        <div className="text-sm text-center py-4 px-3 italic text-zinc-400">
                           Tidak ada surah dengan nama tersebut.
                         </div>
                       )}
@@ -135,10 +136,10 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                       {({ label }: Option) => (
                         <ListBoxItem
                           textValue={label}
-                          className={({ isFocused }) =>
+                          className={({ isFocused, isPressed }) =>
                             clsx(
-                              "py-2.5 px-6 select-none cursor-pointer transition-colors duration-150",
-                              isFocused && "bg-zinc-200",
+                              "h-full flex items-center min-h-0 px-4 select-none cursor-pointer",
+                              (isPressed || isFocused) && "bg-zinc-200",
                             )
                           }
                         >
@@ -157,6 +158,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
   }
 
   return (
+    // ? Ada bug aneh. Terjadi flickering ketika dropdown dibuka kalau mode build (`next build`).
     <ComboBox
       aria-label="Surah Select"
       allowsEmptyCollection
@@ -166,14 +168,14 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
         return normalize(textValue).includes(normalize(inputValue.trim()));
       }}
       defaultItems={options}
-      selectedKey={value ? String(value) : undefined}
+      selectedKey={value ? String(value) : null}
       onSelectionChange={(value) => {
         onChange?.(Number(value));
       }}
     >
       {({ isOpen }) => (
         <>
-          <div>
+          <Group>
             <Button className="flex border border-gray-300 rounded-lg relative cursor-pointer w-full">
               <Input
                 placeholder="Masukkan surah Alquran"
@@ -188,7 +190,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                 />
               </div>
             </Button>
-          </div>
+          </Group>
           <Popover
             className={clsx(
               "bg-white rounded-lg p-1 border border-gray-300 overflow-y-auto w-(--trigger-width) origin-top",
@@ -199,7 +201,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             <ListBox
               className="max-h-100"
               renderEmptyState={() => (
-                <div className="text-sm text-center py-1.5 px-2 italic text-zinc-400">
+                <div className="text-sm text-center p-2 italic text-zinc-400">
                   Tidak ada surah dengan nama tersebut.
                 </div>
               )}
@@ -209,7 +211,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                   textValue={label}
                   className={({ isFocused }) =>
                     clsx(
-                      "py-1.5 px-2 rounded-md cursor-pointer",
+                      "flex items-center h-9 min-h-0 px-2 rounded-md cursor-pointer",
                       isFocused && "bg-zinc-100",
                     )
                   }
