@@ -158,48 +158,46 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
   }
 
   return (
-    // ? Ada bug aneh. Terjadi flickering ketika dropdown dibuka kalau mode build (`next build`).
     <ComboBox
       aria-label="Surah Select"
       allowsEmptyCollection
+      defaultItems={options}
+      selectedKey={value ? String(value) : null}
+      menuTrigger="focus"
       defaultFilter={(textValue, inputValue) => {
         const normalize = (str: string) =>
           str.toLowerCase().replace(/[^a-z0-9]/g, "");
         return normalize(textValue).includes(normalize(inputValue.trim()));
       }}
-      defaultItems={options}
-      selectedKey={value ? String(value) : null}
       onSelectionChange={(value) => {
         onChange?.(Number(value));
       }}
     >
       {({ isOpen }) => (
         <>
-          <Group>
-            <Button className="flex border border-gray-300 rounded-lg relative cursor-pointer w-full">
-              <Input
-                placeholder="Masukkan surah Alquran"
-                className="grow py-2 px-3 rounded-lg pr-8 cursor-pointer sm:cursor-text"
+          <Group className="relative">
+            <Input
+              placeholder="Masukkan surah Alquran"
+              className="border border-gray-300 py-2 px-3 rounded-lg w-full outline-none pr-8"
+            />
+            <Button className="absolute right-2 top-1/2 -translate-y-1/2 size-6 flex items-center justify-center hover:bg-gray-50 rounded-md">
+              <ChevronDown
+                size={16}
+                className={
+                  "transition-transform" + (isOpen ? " rotate-180" : "")
+                }
               />
-              <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
-                <ChevronDown
-                  size={16}
-                  className={
-                    "transition-transform" + (isOpen ? " rotate-180" : "")
-                  }
-                />
-              </div>
             </Button>
           </Group>
           <Popover
             className={clsx(
-              "bg-white rounded-lg p-1 border border-gray-300 overflow-y-auto w-(--trigger-width) origin-top",
+              "w-(--trigger-width)",
               "data-[placement=bottom]:data-entering:animate-slide-down-fade-in data-[placement=bottom]:data-exiting:animate-slide-up-fade-out",
               "data-[placement=top]:data-entering:animate-slide-up-fade-in data-[placement=top]:data-exiting:animate-slide-down-fade-out",
             )}
           >
             <ListBox
-              className="max-h-100"
+              className="max-h-100 overflow-y-auto bg-white rounded-lg p-1 border border-gray-300"
               renderEmptyState={() => (
                 <div className="text-sm text-center p-2 italic text-zinc-400">
                   Tidak ada surah dengan nama tersebut.
