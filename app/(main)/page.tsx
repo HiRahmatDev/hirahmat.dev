@@ -32,25 +32,27 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <section>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJavascript(jsonLd),
-          }}
-        />
-      </section>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <section>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: serializeJavascript(jsonLd),
+            }}
+          />
+        </section>
 
-      <HeroSection />
-      <React.Suspense fallback={<SelectedProjectsSection.Skeletons />}>
-        <SelectedProjectsSection />
-      </React.Suspense>
-      <AboutMeSection />
-      <React.Suspense fallback={<SelectedBlogsSection.Skeletons />}>
-        <SelectedBlogsSection />
-      </React.Suspense>
-      <ContactCTASection />
-    </main>
+        <HeroSection />
+        <React.Suspense fallback={<SelectedProjectsSection.Skeletons />}>
+          <SelectedProjectsSection />
+        </React.Suspense>
+        <AboutMeSection />
+        <React.Suspense fallback={<SelectedBlogsSection.Skeletons />}>
+          <SelectedBlogsSection />
+        </React.Suspense>
+        <ContactCTASection />
+      </div>
+    </div>
   );
 }

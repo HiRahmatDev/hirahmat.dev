@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { CTAButton } from "../../CTAButton";
 import { DynamicHeroImage } from "./DynamicHeroImage";
 import { GreenText } from "../../GreenText";
-import { gsap, useGSAP } from "@/app/lib/gsap";
+import { CustomEase, gsap, useGSAP } from "@/app/lib/gsap";
 import { StaticHeroImage } from "./StaticHeroImage";
 
 export function HeroSection() {
@@ -33,10 +33,14 @@ export function HeroSection() {
         .from(
           ".hero-image",
           {
-            [matchMedia("(min-width: 768px)").matches ? "x" : "y"]: 15,
-            duration: 0.8,
+            [matchMedia("(min-width: 768px)").matches ? "x" : "y"]: 20,
+            duration: 1.4,
+            ease: CustomEase.create(
+              "custom",
+              "M0,0 C0.083,0.294 0.035,0.717 0.337,0.911 0.456,0.987 0.752,1 1,1 ",
+            ),
           },
-          "-=0.7",
+          "-=0.6",
         );
     },
     { scope: containerRef },

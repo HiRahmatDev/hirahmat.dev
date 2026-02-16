@@ -1,36 +1,68 @@
 "use client";
 
+import React from "react";
+
 import { GreenText } from "../GreenText";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 
 export function AboutMeSection() {
+  const containerRef = React.useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 70%",
+        },
+      });
+      tl.from(".about-text-element", {
+        y: 20,
+        stagger: 0.15,
+      }).from(
+        ".about-paragraf",
+        {
+          x: 20,
+          stagger: 0.2,
+        },
+        "-=0.4",
+      );
+    },
+    { scope: containerRef },
+  );
+
   return (
-    <section className="container flex flex-col md:flex-row gap-10 sm:gap-12 md:gap-14 py-10">
+    <section
+      ref={containerRef}
+      className="container flex flex-col md:flex-row gap-10 sm:gap-12 md:gap-14 py-10"
+    >
       <div className="shrink-0 md:max-w-73.75 space-y-4 md:space-y-8">
         <div className="space-y-1 md:space-y-2">
-          <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold about-header">
+          <h2 className="about-text-element invisible text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold about-header">
             Siapa <GreenText>Saya</GreenText>?
           </h2>
-          <p className="text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[60ch] text-gray-600 about-desc">
+          <p className="about-text-element invisible text-base/normal sm:text-lg/normal -tracking-[.2px] max-w-[60ch] text-gray-600 about-desc">
             Sekilas tentang saya di dunia web.
           </p>
         </div>
         <a
           href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
           rel="noopener noreferrer"
-          className="text-lg/[24px] tracking-[-0.7px] font-mono font-bold text-text-accent hover:text-accent animate-hover inline-block about-cv"
+          className="about-text-element invisible text-lg/[24px] tracking-[-0.7px] font-mono font-bold text-text-accent hover:text-accent animate-hover inline-block about-cv"
         >
           <u>Unduh CV</u> ↗
         </a>
       </div>
       <div className="w-full">
         <div className="space-y-7 text-base/relaxed sm:text-lg/relaxed -tracking-[.2px] max-w-[60ch] about-content">
-          <p>
+          <p className="about-paragraf invisible">
             Saya tidak datang dari dunia teknologi, tapi rasa penasaran saya
             sudah tumbuh sejak lama. Waktu SMA, saya senang{" "}
             <strong>install ulang Windows</strong> dan ngoprek komputer teman —
             sekadar penasaran bagaimana semuanya bisa bekerja.
           </p>
-          <p>
+          <p className="about-paragraf invisible">
             Langkah saya kemudian berbelok ke jalur yang tidak biasa: kuliah di{" "}
             <strong>Pendidikan Bahasa Arab (PBA)</strong>. Di sana, saya justru
             menyadari bahwa struktur bahasa punya logika yang mirip dengan
@@ -47,7 +79,7 @@ export function AboutMeSection() {
             </a>
             .
           </p>
-          <p>
+          <p className="about-paragraf invisible">
             Dari situ, rasa ingin tahu saya berubah arah: bagaimana kalau visual
             dan logika digabung? Pertanyaan itu membawa saya ke bootcamp
             Fullstack Web Arkademy (sekarang menjadi <strong>Pijar Camp</strong>{" "}
@@ -57,7 +89,9 @@ export function AboutMeSection() {
             bereksperimen dengan desain, animasi, dan hal-hal visual di waktu
             luang.
           </p>
-          <p>Bagi saya, web adalah tempat terbaik untuk terus bertumbuh.</p>
+          <p className="about-paragraf invisible">
+            Bagi saya, web adalah tempat terbaik untuk terus bertumbuh.
+          </p>
         </div>
       </div>
     </section>

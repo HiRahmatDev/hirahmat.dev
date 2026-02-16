@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function StaticHeroImage() {
   return (
-    <div className="shrink-0 md:hidden block -mx-4">
+    <div className="shrink-0 md:hidden block -mx-2">
       <div className="h-full flex justify-center md:justify-start">
         <Image
           src={rahmatHero}

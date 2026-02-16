@@ -16,31 +16,33 @@ export function SelectedProjectCards({
   hasMore,
 }: SelectedProjectCardsProps) {
   return (
-    <div className="flex gap-4 [&>div]:shrink-0">
-      <div className="w-2 sm:w-6" />
-      {(selectedProjects || []).map((project, index) => (
-        <SelectedProjectCard
-          key={project.slug}
-          project={project}
-          index={index}
-        />
-      ))}
-      {hasMore && (
-        <div className="h-full flex items-center">
-          <Link
-            href="/articles?category=Jurnal Proyek"
-            className="group flex flex-col items-center justify-center gap-4 w-50 h-54.25 rounded-3xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
-          >
-            <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
-              <ArrowRight className="w-6 h-6" />
-            </div>
-            <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
-              Lihat Lainnya
-            </span>
-          </Link>
-        </div>
-      )}
-      <div className="w-2 sm:w-6" />
+    <div className="pb-10 [&::-webkit-scrollbar]:hidden overflow-x-auto -mx-6 sm:-mx-10">
+      <div className="flex gap-4 [&>div]:shrink-0">
+        <div className="w-2 sm:w-6" />
+        {(selectedProjects || []).map((project, index) => (
+          <SelectedProjectCard
+            key={project.slug}
+            project={project}
+            index={index}
+          />
+        ))}
+        {hasMore && (
+          <div className="h-full flex items-center">
+            <Link
+              href="/articles?category=Jurnal Proyek"
+              className="group flex flex-col items-center justify-center gap-4 w-50 h-54.25 rounded-3xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
+            >
+              <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
+                <ArrowRight className="w-6 h-6" />
+              </div>
+              <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
+                Lihat Lainnya
+              </span>
+            </Link>
+          </div>
+        )}
+        <div className="w-2 sm:w-6" />
+      </div>
     </div>
   );
 }
@@ -52,7 +54,7 @@ type SelectedProjectCardProps = {
 
 function SelectedProjectCard({ project }: SelectedProjectCardProps) {
   return (
-    <div className="h-full">
+    <div className="selected-project-card invisible h-full">
       <div className="rounded-3xl bg-accent w-109.75 h-54.25 shadow-xl flex gap-3 text-white overflow-hidden">
         <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 *:max-w-fit">
           <div className="space-y-3">

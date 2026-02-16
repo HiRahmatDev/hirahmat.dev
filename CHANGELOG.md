@@ -10,9 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New `/lab/project-aidah` page
-- Add entrance animation to hero section
-- Add entrance animation to navbar
-- Add loading skeleton in homepage for better load time
+- Add entrance animation and loading skeleton in homepage
 
 ### Fixed
 
