@@ -1,3 +1,4 @@
+import React from "react";
 import serializeJavascript from "serialize-javascript";
 
 import { AboutMeSection } from "@/app/(main)/components/sections/AboutMeSection";
@@ -42,9 +43,13 @@ export default function Home() {
       </section>
 
       <HeroSection />
-      <SelectedProjectsSection />
+      <React.Suspense fallback={<SelectedProjectsSection.Skeletons />}>
+        <SelectedProjectsSection />
+      </React.Suspense>
       <AboutMeSection />
-      <SelectedBlogsSection />
+      <React.Suspense fallback={<SelectedBlogsSection.Skeletons />}>
+        <SelectedBlogsSection />
+      </React.Suspense>
       <ContactCTASection />
     </main>
   );

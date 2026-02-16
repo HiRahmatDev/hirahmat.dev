@@ -10,14 +10,7 @@ export async function SelectedProjectsSection() {
   return (
     <section className="container py-8 sm:pt-6">
       <div className="space-y-8">
-        <div className="space-y-1 md:space-y-2">
-          <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
-            Proyek <GreenText>Pilihan</GreenText>
-          </h2>
-          <p className="text-base sm:text-lg max-w-[60ch] -tracking-[.2px] text-gray-600">
-            Proyek pilihan dengan detail, interaksi, dan desain menarik.
-          </p>
-        </div>
+        <Header />
         <div className="pb-10 [&::-webkit-scrollbar]:hidden overflow-x-auto -mx-6 sm:-mx-10">
           <SelectedProjectCards
             selectedProjects={displayProjects}
@@ -28,3 +21,35 @@ export async function SelectedProjectsSection() {
     </section>
   );
 }
+
+function Header() {
+  return (
+    <div className="space-y-1 md:space-y-2">
+      <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
+        Proyek <GreenText>Pilihan</GreenText>
+      </h2>
+      <p className="text-base sm:text-lg max-w-[60ch] -tracking-[.2px] text-gray-600">
+        Proyek pilihan dengan detail, interaksi, dan desain menarik.
+      </p>
+    </div>
+  );
+}
+
+function Skeletons() {
+  return (
+    <section className="container py-8 sm:pt-6">
+      <div className="space-y-8">
+        <Header />
+        <div className="pb-10 [&::-webkit-scrollbar]:hidden overflow-x-auto -mx-6 sm:-mx-10">
+          <div className="flex gap-4 [&>div]:shrink-0">
+            <div className="w-2 sm:w-6" />
+            <div className="w-109.75 h-54.25 rounded-3xl bg-gray-100 animate-pulse" />
+            <div className="w-109.75 h-54.25 rounded-3xl bg-gray-100 animate-pulse" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+SelectedProjectsSection.Skeletons = Skeletons;
