@@ -17,14 +17,14 @@ import {
   Virtualizer,
 } from "react-aria-components";
 import { ChevronDown } from "lucide-react";
+import { twJoin } from "tailwind-merge";
 import { useState } from "react";
-import clsx from "clsx";
 import useSWR from "swr";
 
 import { fetchAllSurah } from "../lib/fetchAllSurah";
 import { SURAH_MAP } from "../lib/constants";
-import { useIsMobile } from "../hooks/useIsMobile";
 import { useBottomSheet } from "../hooks/useBottomSheet";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 type SurahSelectProps = Readonly<{
   value?: number;
@@ -77,11 +77,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
     return (
       <DialogTrigger isOpen={isVisible} onOpenChange={onVisibleChange}>
         <Pressable>
-          <button
-            className={clsx(
-              "relative rounded-lg text-left cursor-pointer py-2 pl-3 pr-8 border border-gray-300 ",
-            )}
-          >
+          <button className="relative rounded-lg text-left cursor-pointer py-2 pl-3 pr-8 border border-gray-300 ">
             {renderLabel(value ?? -1)}
             <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
               <ChevronDown size={16} />
@@ -122,6 +118,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                     <ListBox
                       aria-label="Surah List"
                       items={filteredOptions}
+                      className="mx-auto max-w-105 overflow-auto h-[60vh] -mb-7 pb-7"
                       renderEmptyState={() => (
                         <div className="text-sm text-center py-4 px-3 italic text-zinc-400">
                           Tidak ada surah dengan nama tersebut.
@@ -131,14 +128,13 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                         onChange?.(Number(key));
                         close();
                       }}
-                      className="mx-auto max-w-105 overflow-auto h-[60vh] -mb-7 pb-7"
                     >
                       {({ label }: Option) => (
                         <ListBoxItem
                           textValue={label}
                           className={({ isFocused, isPressed }) =>
-                            clsx(
-                              "h-full flex items-center min-h-0 px-4 select-none cursor-pointer",
+                            twJoin(
+                              "flex items-center h-full px-4 select-none cursor-pointer",
                               (isPressed || isFocused) && "bg-zinc-200",
                             )
                           }
@@ -178,9 +174,9 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
           <Group className="relative">
             <Input
               placeholder="Masukkan surah Alquran"
-              className="border border-gray-300 py-2 px-3 rounded-lg w-full outline-none pr-8"
+              className="border border-gray-300 py-2 px-3 rounded-lg w-full pr-8"
             />
-            <Button className="absolute right-2 top-1/2 -translate-y-1/2 size-6 flex items-center justify-center hover:bg-gray-50 rounded-md">
+            <Button className="absolute right-2 top-1/2 -translate-y-1/2 size-6 flex items-center justify-center hover:bg-gray-50 rounded-md cursor-pointer">
               <ChevronDown
                 size={16}
                 className={
@@ -190,14 +186,14 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
             </Button>
           </Group>
           <Popover
-            className={clsx(
+            className={twJoin(
               "w-(--trigger-width)",
               "data-[placement=bottom]:data-entering:animate-slide-down-fade-in data-[placement=bottom]:data-exiting:animate-slide-up-fade-out",
               "data-[placement=top]:data-entering:animate-slide-up-fade-in data-[placement=top]:data-exiting:animate-slide-down-fade-out",
             )}
           >
             <ListBox
-              className="max-h-100 overflow-y-auto bg-white rounded-lg p-1 border border-gray-300"
+              className="max-h-100 overflow-y-auto bg-white rounded-lg p-1 outline outline-gray-300"
               renderEmptyState={() => (
                 <div className="text-sm text-center p-2 italic text-zinc-400">
                   Tidak ada surah dengan nama tersebut.
@@ -208,7 +204,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                 <ListBoxItem
                   textValue={label}
                   className={({ isFocused }) =>
-                    clsx(
+                    twJoin(
                       "flex items-center h-9 min-h-0 px-2 rounded-md cursor-pointer",
                       isFocused && "bg-zinc-100",
                     )
