@@ -19,17 +19,17 @@
 }
 
 @utility animate-slide-down-fade-in {
-  animation: slideDownFadeIn 0.2s ease;
+  animation: slideDownFadeIn 0.2s var(--ease-silky);
 }
 
 @utility animate-slide-down-fade-out {
-  animation: slideDownFadeOut 0.2s ease;
+  animation: slideDownFadeOut 0.2s var(--ease-silky);
 }
 
 @utility animate-slide-up-fade-out {
-  animation: slideUpFadeOut 0.2s ease;
+  animation: slideUpFadeOut 0.2s var(--ease-silky);
 }
 
 @utility animate-slide-up-fade-in {
-  animation: slideUpFadeIn 0.2s ease;
+  animation: slideUpFadeIn 0.2s var(--ease-silky);
 }
