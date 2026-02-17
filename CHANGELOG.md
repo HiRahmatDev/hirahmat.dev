@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New `/lab/project-aidah` page
+
+## [0.16.0] - 2026-02-17
+
+### Added
+
 - Add entrance animation and loading skeleton in homepage
 - Add entrance animation in article list page
 - Add entrance animation in article detail page
