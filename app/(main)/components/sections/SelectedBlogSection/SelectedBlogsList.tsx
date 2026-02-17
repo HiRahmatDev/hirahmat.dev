@@ -58,7 +58,7 @@ export function SelectedBlogsList({
           <div className="group">
             <Link
               href="/articles?category=Blog"
-              className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 group-hover:border-accent group-hover:bg-accent/2 h-full group-active:scale-98 transition-transform duration-150 ease-(--ease-silky)"
+              className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 group-hover:border-accent group-hover:bg-accent/2 h-full group-active:scale-98 transition-transform duration-150 ease-silky"
             >
               <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center">
                 <ArrowRight className="w-6 h-6" />

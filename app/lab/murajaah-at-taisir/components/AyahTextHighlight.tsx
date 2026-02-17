@@ -40,7 +40,7 @@ export function AyahTextHighlight({
   }
 
   return (
-    <span className="bg-[#ebe8d4] [&>span]:transition-opacity [&>span]:duration-150 [&>span]:ease-(--ease-silky)">
+    <span className="bg-[#ebe8d4] [&>span]:transition-opacity [&>span]:duration-150 [&>span]:ease-silky">
       <span
         className={
           mode === "TADZKIRAH" || mode === "TADRIB"

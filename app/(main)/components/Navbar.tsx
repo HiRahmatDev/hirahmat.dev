@@ -159,7 +159,7 @@ function Links() {
         href="/articles?category=Jurnal+Proyek"
         className="font-semibold px-2 text-base/[32px] inline-block group hover:text-text-accent"
       >
-        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-(--ease-silky)">
+        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-silky">
           Jurnal Proyek
         </span>
       </Link>
@@ -167,7 +167,7 @@ function Links() {
         href="/articles?category=Blog"
         className="font-semibold px-2 text-base/[32px] inline-block group hover:text-text-accent"
       >
-        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-(--ease-silky)">
+        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-silky">
           Blog
         </span>
       </Link>
