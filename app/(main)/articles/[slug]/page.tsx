@@ -116,7 +116,7 @@ export default async function ArticleDetailPage({
             <h2 className="text-base font-semibold tracking-[-0.35px]">
               Telusuri Isi:
             </h2>
-            <nav className="[&_a]:text-sm/[18px] [&_a]:text-text-gray [&_a]:hover:text-accent [&_a]:animate-hover [&_ul,&_ul_li]:space-y-2.5 [&_a]:inline-block">
+            <nav className="[&_a]:text-sm/[18px] [&_a]:text-text-gray [&_a]:hover:text-text-accent [&_a]:animate-hover [&_ul,&_ul_li]:space-y-2.5 [&_a]:inline-block">
               <ul className="[&_ul]:pl-4">
                 {toc.map(({ title, children }, index) => (
                   <li key={index}>

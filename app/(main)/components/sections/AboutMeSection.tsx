@@ -50,7 +50,7 @@ export function AboutMeSection() {
           <a
             href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
             rel="noopener noreferrer"
-            className="text-lg/[24px] tracking-[-0.7px] font-mono font-bold text-text-accent hover:text-accent animate-hover inline-block about-cv"
+            className="text-lg/[24px] tracking-[-0.7px] font-mono font-bold text-text-accent hover:text-accent-hover animate-hover inline-block about-cv"
           >
             <u>Unduh CV</u> ↗
           </a>
@@ -75,7 +75,7 @@ export function AboutMeSection() {
               href="https://youtu.be/LhPnxK-lPE8?si=2w-MaGbgcO6sfg7L"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-text-accent hover:text-accent animate-hover inline-block"
+              className="font-bold text-text-accent hover:text-accent-hover animate-hover inline-block"
             >
               lomba iklan video
             </a>

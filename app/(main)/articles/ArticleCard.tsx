@@ -25,7 +25,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">
-            No Cover
+            Tidak ada gambar
           </div>
         )}
       </div>
@@ -41,7 +41,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             </strong>
           </p>
         </div>
-        <h3 className="font-bold text-xl/[26px] tracking-[-0.4px] line-clamp-2 group-hover:text-accent mb-1">
+        <h3 className="font-bold text-xl/[26px] tracking-[-0.4px] line-clamp-2 group-hover:text-text-accent mb-1">
           {article.title}
         </h3>
         <p className="text-sm/[20px] text-zinc-600 line-clamp-2">

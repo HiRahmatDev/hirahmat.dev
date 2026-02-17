@@ -35,7 +35,7 @@ export function SelectedProjectCards({
               <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
                 <ArrowRight className="w-6 h-6" />
               </div>
-              <span className="font-medium text-zinc-600 group-hover:text-accent transition-colors">
+              <span className="font-medium text-zinc-600 group-hover:text-text-accent transition-colors">
                 Lihat Lainnya
               </span>
             </Link>

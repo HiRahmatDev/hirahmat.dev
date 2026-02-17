@@ -39,12 +39,12 @@ export function SelectedBlogsList({
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    No Cover
+                    Tidak ada gambar
                   </div>
                 )}
               </div>
               <div className="space-y-1">
-                <h3 className="group-hover:text-accent font-bold text-lg/normal tracking-[-0.4px] line-clamp-2">
+                <h3 className="group-hover:text-text-accent font-bold text-lg/normal tracking-[-0.4px] line-clamp-2">
                   <RichText items={blog.rawTitle} />
                 </h3>
                 <p className="text-sm/normal text-gray-500 line-clamp-2">
@@ -60,10 +60,10 @@ export function SelectedBlogsList({
               href="/articles?category=Blog"
               className="flex flex-col items-center justify-center gap-4 w-50 shrink-0 rounded-2xl border-2 border-dashed border-zinc-200 group-hover:border-accent group-hover:bg-accent/2 h-full group-active:scale-98 transition-transform duration-150 ease-silky"
             >
-              <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent-hover group-hover:text-white flex items-center justify-center">
                 <ArrowRight className="w-6 h-6" />
               </div>
-              <span className="font-medium text-zinc-600 group-hover:text-accent">
+              <span className="font-medium text-zinc-600 group-hover:text-text-accent">
                 Lihat Lainnya
               </span>
             </Link>

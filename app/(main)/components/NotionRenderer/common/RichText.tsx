@@ -31,7 +31,7 @@ export function RichText({ items }: { items?: RichTextItemResponse[] | null }) {
         // Code first (always inner-most)
         if (annotations.code) {
           element = (
-            <code className="tracking-[-1px] font-semibold leading-none inline-block text-sm sm:text-base bg-gray-200 text-amber-600 rounded-sm px-1 pt-1 pb-0.5">
+            <code className="tracking-[-0.7px] font-semibold leading-none inline text-sm sm:text-base bg-gray-100 border border-gray-200 text-amber-600 rounded-md px-1 pt-0.5 pb-[0.2px] wrap-break-word">
               {element}
             </code>
           );
@@ -70,7 +70,7 @@ export function RichText({ items }: { items?: RichTextItemResponse[] | null }) {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-accent hover:text-accent underline transition animate-hover inline-block"
+              className="text-text-accent hover:text-accent-hover underline transition animate-hover inline"
             >
               {element}
             </a>
