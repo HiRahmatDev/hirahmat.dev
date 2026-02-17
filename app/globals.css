@@ -33,6 +33,20 @@
   --font-sans: var(--font-inter-sans);
   --font-mono: var(--font-overpass-mono);
   --font-amiri-quran: var(--font-amiri-quran);
+
+  --ease-silky: var(--ease-silky);
+
+  --animate-pulse: pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 30%;
+    }
+    50% {
+      opacity: 100%;
+    }
+  }
 }
 
 @import "./styles/utilities.css";
