@@ -84,9 +84,7 @@ export default async function ArticleDetailPage({
                   <strong className="font-medium text-zinc-600">
                     {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
-                  <span className="text-zinc-500">
-                    &ensp;•&ensp;Diperbarui
-                  </span>{" "}
+                  <span className="text-zinc-500">&ensp;•&ensp;Diperbarui</span>{" "}
                   <strong className="font-medium text-zinc-600">
                     {formatDate(blockMetadata.updatedOn) || "-"}
                   </strong>
@@ -102,7 +100,7 @@ export default async function ArticleDetailPage({
                   height={720}
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
-                  className="object-cover top-0 right-0 left-0 rounded-2xl"
+                  className="object-cover top-0 right-0 left-0 rounded-2xl border border-gray-200"
                 />
               ) : null}
             </div>
