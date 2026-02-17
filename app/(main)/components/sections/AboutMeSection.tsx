@@ -46,13 +46,15 @@ export function AboutMeSection() {
             Sekilas tentang saya di dunia web.
           </p>
         </div>
-        <a
-          href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
-          rel="noopener noreferrer"
-          className="about-text-element invisible text-lg/[24px] tracking-[-0.7px] font-mono font-bold text-text-accent hover:text-accent animate-hover inline-block about-cv"
-        >
-          <u>Unduh CV</u> ↗
-        </a>
+        <div className="about-text-element invisible">
+          <a
+            href="https://drive.usercontent.google.com/u/0/uc?id=1MvSPb6mB1oKSev2R-l9FDJ4F61M3Ijw0&export=download"
+            rel="noopener noreferrer"
+            className="text-lg/[24px] tracking-[-0.7px] font-mono font-bold text-text-accent hover:text-accent animate-hover inline-block about-cv"
+          >
+            <u>Unduh CV</u> ↗
+          </a>
+        </div>
       </div>
       <div className="w-full">
         <div className="space-y-7 text-base/relaxed sm:text-lg/relaxed -tracking-[.2px] max-w-[60ch] about-content">

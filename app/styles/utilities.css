@@ -18,6 +18,10 @@
   @apply translate-y-0 hover:-translate-y-0.5 active:translate-y-px transition-transform ease-(--ease-silky);
 }
 
+@utility group-animate-hover {
+  @apply translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-(--ease-silky);
+}
+
 @utility animate-slide-down-fade-in {
   animation: slideDownFadeIn 0.2s var(--ease-silky);
 }

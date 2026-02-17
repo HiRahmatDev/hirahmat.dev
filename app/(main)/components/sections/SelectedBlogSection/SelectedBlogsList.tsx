@@ -25,30 +25,32 @@ export function SelectedBlogsList({
             key={blog.slug}
             href={`/articles/${blog.slug}`}
             aria-label={`Buka artikel: Mengenai ${blog.title}`}
-            className="selected-blog-card invisible group w-85 space-y-4 animate-hover"
+            className="selected-blog-card invisible group w-85"
           >
-            <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden transition-shadow image-wrapper bg-gray-100 border border-gray-200">
-              {blog.cover ? (
-                <Image
-                  src={blog.cover}
-                  alt=""
-                  fill
-                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
-                  className="object-cover right-0"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  No Cover
-                </div>
-              )}
-            </div>
-            <div className="space-y-1">
-              <h3 className="group-hover:text-accent font-bold text-lg/normal tracking-[-0.4px] line-clamp-2">
-                <RichText items={blog.rawTitle} />
-              </h3>
-              <p className="text-sm/normal text-gray-500 line-clamp-2">
-                <RichText items={blog.rawDesc} />
-              </p>
+            <div className="space-y-4 group-animate-hover h-full">
+              <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden transition-shadow image-wrapper bg-gray-100 border border-gray-200">
+                {blog.cover ? (
+                  <Image
+                    src={blog.cover}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
+                    className="object-cover right-0"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-400">
+                    No Cover
+                  </div>
+                )}
+              </div>
+              <div className="space-y-1">
+                <h3 className="group-hover:text-accent font-bold text-lg/normal tracking-[-0.4px] line-clamp-2">
+                  <RichText items={blog.rawTitle} />
+                </h3>
+                <p className="text-sm/normal text-gray-500 line-clamp-2">
+                  <RichText items={blog.rawDesc} />
+                </p>
+              </div>
             </div>
           </Link>
         ))}
