@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 - Add entrance animation and loading skeleton in homepage
-- Add entrance animation in "/articles" page
+- Add entrance animation in article list page
+- Add entrance animation in article detail page
 
 ### Fixed
 
