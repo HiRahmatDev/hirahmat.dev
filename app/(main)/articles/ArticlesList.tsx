@@ -1,5 +1,6 @@
 import { ArticleCard } from "./ArticleCard";
 import { ArticleCategory, fetchAllArticles } from "@/app/services/notion";
+import { AnimatedGridWrapper } from "./components/AnimatedGridWrapper";
 
 export async function ArticlesList({
   category,
@@ -10,11 +11,11 @@ export async function ArticlesList({
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10">
+      <AnimatedGridWrapper>
         {articles?.map((article) => (
           <ArticleCard key={article.slug} article={article} />
         ))}
-      </div>
+      </AnimatedGridWrapper>
 
       {articles?.length === 0 && (
         <div className="text-center py-20 text-zinc-500">
@@ -28,7 +29,7 @@ export async function ArticlesList({
 function Skeleton() {
   return (
     <div className="animate-pulse">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
         {Array.from({ length: 4 }).map((_, i) => (
           <div key={i} className="w-full space-y-4">
             <div className="relative w-full aspect-video rounded-2xl bg-zinc-200" />

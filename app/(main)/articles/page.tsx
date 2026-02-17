@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import React from "react";
 
+import { AnimatedWrapper } from "./components/AnimatedWrapper";
 import { ArticleFilter } from "./ArticleFilter";
 import { ArticlesList } from "./ArticlesList";
 import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
@@ -24,13 +25,13 @@ export default async function ArticlesPage({
 
   return (
     <main>
-      <section className="container pt-4 sm:pt-12 pb-20">
+      <AnimatedWrapper>
         <div className="space-y-10">
           <div className="space-y-2">
-            <h1 className="text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
+            <h1 className="animated-element invisible text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
               Artikel
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 max-w-[60ch]">
+            <p className="animated-element invisible text-base sm:text-lg text-gray-600 max-w-[60ch]">
               Berbagai tulisan tentang pengembangan web, teknologi, dan
               pembelajaran.
             </p>
@@ -43,7 +44,7 @@ export default async function ArticlesPage({
             </React.Suspense>
           </div>
         </div>
-      </section>
+      </AnimatedWrapper>
       <ContactCTASection />
     </main>
   );
