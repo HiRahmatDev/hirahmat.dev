@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -14,8 +14,9 @@ type NavState =
   | "navbar-fixed"
   | "navbar-fixed-active";
 
-const NAVBAR_SCROLL_THRESHOLD = 400;
-const ANIMATION_DURATION_MS = 200;
+const NAVBAR_SCROLL_THRESHOLD = 420;
+const ENTER_DURATION_MS = 600;
+const EXIT_DURATION_MS = 200;
 
 export function Navbar() {
   const [navState, setNavState] = useState<NavState>("navbar-static");
@@ -26,6 +27,17 @@ export function Navbar() {
   // refs to manage RAF (Request Animation Frame) and timeout so we can cancel on cleanup
   const rafRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
+
+  useLayoutEffect(() => {
+    document.body.style.setProperty(
+      "--navbar-enter-duration-ms",
+      `${ENTER_DURATION_MS}ms`,
+    );
+    document.body.style.setProperty(
+      "--navbar-exit-duration-ms",
+      `${EXIT_DURATION_MS}ms`,
+    );
+  }, []);
 
   useEffect(() => {
     if (pathname === "/lab/murajaah-at-taisir") return;
@@ -89,12 +101,12 @@ export function Navbar() {
     if (navState === "navbar-fixed-active") {
       timeoutRef.current = window.setTimeout(
         () => setNavState("navbar-fixed"),
-        ANIMATION_DURATION_MS,
+        ENTER_DURATION_MS,
       );
     } else if (navState === "navbar-static-active") {
       timeoutRef.current = window.setTimeout(
         () => setNavState("navbar-static"),
-        ANIMATION_DURATION_MS,
+        EXIT_DURATION_MS,
       );
     }
 

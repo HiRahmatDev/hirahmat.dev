@@ -47,11 +47,11 @@
   }
 
   .navbar-fixed-active {
-    animation: navbarSlideDown 200ms var(--ease-silky) forwards;
+    animation: navbarSlideDown var(--navbar-enter-duration-ms) var(--ease-glide);
   }
 
   .navbar-static-active {
-    animation: navbarSlideUp 200ms var(--ease-silky) forwards;
+    animation: navbarSlideUp var(--navbar-exit-duration-ms) var(--ease-silky);
   }
 
   .overlay-enter {
