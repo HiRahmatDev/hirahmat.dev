@@ -23,7 +23,7 @@ export function ContactCTASection() {
 
     tl.from(ctaRef.current, {
       y: 20,
-      duration: 0.6,
+      duration: 0.5,
       scale: 0.9,
       autoAlpha: 0,
       ease: CustomEase.create(
