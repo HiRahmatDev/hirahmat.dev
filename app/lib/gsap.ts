@@ -6,4 +6,4 @@ import gsap from "gsap";
 
 gsap.registerPlugin(useGSAP, CustomEase, ScrollTrigger, ScrollSmoother);
 
-export { gsap, useGSAP, CustomEase };
+export { gsap, useGSAP, CustomEase, ScrollTrigger };

@@ -4,7 +4,7 @@ import { Mail } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-import { CustomEase, gsap, useGSAP } from "@/app/lib/gsap";
+import { CustomEase, gsap, useGSAP, ScrollTrigger } from "@/app/lib/gsap";
 import { EMAIL_HREF } from "../constants";
 import backgroundFooterContactCtaPng from "@/public/images/background-footer-contact-cta.png";
 
@@ -32,6 +32,29 @@ export function ContactCTASection() {
       ),
     });
   });
+
+  React.useLayoutEffect(() => {
+    let resizeObserver: ResizeObserver | null = null;
+
+    const refreshScrollTrigger = () => {
+      ScrollTrigger.refresh();
+    };
+
+    // Watch for DOM changes (like when ArticlesList loads)
+    resizeObserver = new ResizeObserver(refreshScrollTrigger);
+    resizeObserver.observe(document.body);
+
+    // Initial refresh after page load
+    if (document.readyState === "complete") {
+      ScrollTrigger.refresh();
+    } else {
+      window.addEventListener("load", () => ScrollTrigger.refresh());
+    }
+
+    return () => {
+      resizeObserver?.disconnect();
+    };
+  }, []);
 
   return (
     <section className="container py-6">
