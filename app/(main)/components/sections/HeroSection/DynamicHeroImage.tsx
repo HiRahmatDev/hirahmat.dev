@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 
-import { gsap, useGSAP } from "@/app/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/app/lib/gsap";
 import backAccent from "@/public/images/back-accent.png";
 import frontAccent from "@/public/images/front-accent.png";
 import middleAccent from "@/public/images/middle-accent.png";
@@ -16,6 +16,7 @@ export function DynamicHeroImage() {
   const middleAccentRef = useRef<HTMLImageElement>(null);
   const frontAccentRef = useRef<HTMLImageElement>(null);
   const threeLinesRef = useRef<HTMLImageElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const floatingOffsets = useRef({
     back: 0,
@@ -42,7 +43,7 @@ export function DynamicHeroImage() {
 
     floatConfigs.forEach(({ ref, key, floatY, duration }) => {
       if (!ref.current) return;
-      // Setup quick setter fo-r parallax
+      // Setup quick setter for parallax
       parallaxSetters.current[key] = gsap.quickTo(ref.current, "y", {
         duration: 0.3,
       });
@@ -63,11 +64,20 @@ export function DynamicHeroImage() {
             parallaxY + floatingOffsets.current[key],
           );
         },
+        scrollTrigger: {
+          trigger: containerRef.current,
+          toggleActions: "play pause play pause",
+        },
       });
     });
 
     // Mousemove handler
     const handleMouseMove = (e: MouseEvent) => {
+      const containerEl = containerRef.current as HTMLDivElement;
+      if (!containerEl) return;
+      const isInView = ScrollTrigger.isInViewport(containerEl);
+
+      if (!isInView) return;
       const w = window.innerWidth;
       const h = window.innerHeight;
       const x = (e.clientX - w / 2) / w;
@@ -106,7 +116,10 @@ export function DynamicHeroImage() {
   });
 
   return (
-    <div className="min-w-98.75 pb-20 hidden md:block h-full">
+    <div
+      ref={containerRef}
+      className="min-w-98.75 pb-20 hidden md:block h-full"
+    >
       <div className="h-full">
         <div className="relative h-full hero-image mr-6">
           <Image
