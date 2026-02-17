@@ -12,6 +12,7 @@ Every detail — from motion timing to layout rhythm — is crafted to reflect m
 
 - ⚡ Next.js
 - 🎨 Tailwind CSS
+- 💫 GSAP (GreenSock Animation Platform)
 - 🔧 TypeScript
 - 🚀 Deployed via Vercel
 
