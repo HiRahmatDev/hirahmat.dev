@@ -8,6 +8,8 @@ export function StaticHeroImage() {
         <Image
           src={rahmatHero}
           alt="Foto Rahmat Hidayatullah dengan background semi transparan | hirahmat.dev"
+          loading="eager"
+          fetchPriority="high"
         />
       </div>
     </div>

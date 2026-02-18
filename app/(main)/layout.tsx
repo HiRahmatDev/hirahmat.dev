@@ -9,8 +9,8 @@ export default function MainLayout({
   return (
     <>
       <Navbar />
-      {children}
-      <footer>
+      <main role="main">{children}</main>
+      <footer role="contentinfo">
         <FooterCopyrights />
       </footer>
     </>

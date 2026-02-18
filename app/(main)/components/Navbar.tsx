@@ -137,7 +137,11 @@ export function Navbar() {
 
   return (
     <>
-      <nav ref={navbarRef} className="invisible relative z-10">
+      <nav
+        role="navigation"
+        ref={navbarRef}
+        className="invisible relative z-10"
+      >
         <div className="container-wider py-2 flex gap-3 justify-between items-center align-center">
           <Logo />
           <div className="hidden md:flex gap-8 items-center h-fit">

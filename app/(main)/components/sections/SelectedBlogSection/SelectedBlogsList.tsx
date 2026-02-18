@@ -34,7 +34,8 @@ export function SelectedBlogsList({
                     src={blog.cover}
                     alt=""
                     fill
-                    sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
+                    quality={10}
+                    sizes="(max-width: 768px) 40vw, 20vw"
                     className="object-cover right-0"
                   />
                 ) : (

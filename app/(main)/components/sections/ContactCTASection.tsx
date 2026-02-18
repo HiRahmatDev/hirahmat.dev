@@ -82,6 +82,7 @@ export function ContactCTASection() {
           alt="background footer contact cta accent"
           placeholder="blur"
           height={128}
+          quality={10}
           className="w-auto h-auto absolute top-[50%] right-0 translate-y-[-50%] pointer-events-none"
         />
       </div>

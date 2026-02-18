@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { BASE_URL, SITE_NAME } from "@/app/config/constants";
 
 import "./globals.css";
+import { Activity } from "react";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -53,8 +54,10 @@ export default function RootLayout({
     <html lang="id">
       <body className={bodyClassName}>
         {children}
-        <Analytics debug={false} />
-        <SpeedInsights debug={false} />
+        <Activity>
+          <Analytics debug={false} />
+          <SpeedInsights debug={false} />
+        </Activity>
       </body>
     </html>
   );

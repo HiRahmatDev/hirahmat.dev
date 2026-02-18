@@ -79,7 +79,7 @@ function SelectedProjectCard({ project }: SelectedProjectCardProps) {
                   alt=""
                   fill
                   quality={0}
-                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
+                  sizes="10vw"
                   className="object-cover right-0"
                 />
               </div>
@@ -90,7 +90,8 @@ function SelectedProjectCard({ project }: SelectedProjectCardProps) {
                   src={project.cover}
                   alt=""
                   fill
-                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
+                  quality={25}
+                  sizes="(max-width: 768px) 50vw, 30vw"
                   className="object-cover right-0 project-image"
                 />
               </div>
