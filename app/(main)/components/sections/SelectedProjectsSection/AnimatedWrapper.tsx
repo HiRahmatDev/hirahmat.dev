@@ -14,20 +14,19 @@ export function AnimatedWrapper({ children }: AnimatedWrapperProps) {
     () => {
       const tl = gsap.timeline({
         defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
-        scrollTrigger: { trigger: containerRef.current, start: "top 90%" },
       });
 
       tl.from(".selected-projects-text-element", {
-        y: 20,
-        delay: 0.4,
-        stagger: 0.15,
+        x: 20,
+        delay: 2.5,
+        stagger: 0.07,
       }).from(
         ".selected-project-card",
         {
           x: 20,
-          stagger: 0.15,
+          stagger: 0.1,
         },
-        "-=0.4",
+        "-=0.6",
       );
     },
     { scope: containerRef },

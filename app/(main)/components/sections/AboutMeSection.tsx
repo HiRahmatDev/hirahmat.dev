@@ -12,21 +12,13 @@ export function AboutMeSection() {
     () => {
       const tl = gsap.timeline({
         defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        },
+        scrollTrigger: { trigger: containerRef.current, start: "top 70%" },
       });
-      tl.from(".about-text-element", {
-        y: 20,
-        stagger: 0.15,
-      }).from(
+
+      tl.from(".about-text-element", { x: 20, stagger: 0.07 }).from(
         ".about-paragraf",
-        {
-          x: 20,
-          stagger: 0.2,
-        },
-        "-=0.4",
+        { x: 20, stagger: 0.07 },
+        "-=0.6",
       );
     },
     { scope: containerRef },

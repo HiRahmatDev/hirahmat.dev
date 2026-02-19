@@ -126,7 +126,7 @@ export function Navbar() {
         y: 0,
         autoAlpha: 1,
         duration: 1.8,
-        delay: 0.8,
+        delay: 2.7,
         ease: CustomEase.create(
           "custom",
           "M0,0 C0.083,0.294 0.035,0.717 0.337,0.911 0.456,0.987 0.752,1 1,1 ",

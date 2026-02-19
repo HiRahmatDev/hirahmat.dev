@@ -18,15 +18,15 @@ export function AnimatedWrapper({ children }: AnimatedWrapperProps) {
       });
 
       tl.from(".selected-blogs-text-element", {
-        y: 20,
-        stagger: 0.15,
+        x: 20,
+        stagger: 0.07,
       }).from(
         ".selected-blog-card",
         {
           x: 20,
-          stagger: 0.15,
+          stagger: 0.1,
         },
-        "-=0.4",
+        "-=0.6",
       );
     },
     { scope: containerRef },

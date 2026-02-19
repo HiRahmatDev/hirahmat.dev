@@ -20,10 +20,14 @@ export function AnimatedArticleWrapper({
 
       tl.from(".animated-header-element", {
         x: 20,
-        stagger: 0.08,
-      }).from(".animated-content-element", {
-        x: 20,
-      }, "-=0.4");
+        stagger: 0.07,
+      }).from(
+        ".animated-content-element",
+        {
+          x: 20,
+        },
+        "-=0.6",
+      );
     },
     { scope: containerRef },
   );

@@ -15,9 +15,9 @@ export function AnimatedTOCWrapper({ children }: AnimatedTOCWrapperProps) {
       gsap.from(".animated-toc-element", {
         x: 20,
         autoAlpha: 0,
-        stagger: 0.1,
+        stagger: 0.07,
         duration: 0.6,
-        delay: 1,
+        delay: 0.6,
         ease: "power3.out",
       });
     },

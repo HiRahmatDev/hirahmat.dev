@@ -19,7 +19,7 @@ export function AnimatedWrapper({ children }: AnimatedWrapperProps) {
 
       tl.from(".animated-element", {
         x: 20,
-        stagger: 0.10,
+        stagger: 0.07,
       });
     },
     { scope: containerRef },
