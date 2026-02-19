@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## [0.16.2] - 2026-02-19
+
+### Changed
+
+- Enhance more fancy animation in hero landing page and more responsive for the rest
+
 ## [0.16.1] - 2026-02-18
 
 ### Changed
