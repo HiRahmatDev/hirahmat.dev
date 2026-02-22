@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { AnimatedArticleWrapper } from "./components/AnimatedArticleWrapper";
+import { AnimatedTOCWrapper } from "./components/AnimatedTOCWrapper";
 import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
 import {
   fetchAllArticles,
@@ -16,7 +17,6 @@ import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/(main)/components/NotionRenderer";
 import { RichText } from "@/app/(main)/components/NotionRenderer/common/RichText";
 import { SITE_NAME } from "@/app/config/constants";
-import { AnimatedTOCWrapper } from "./components/AnimatedTOCWrapper";
 
 export const revalidate = 60;
 
@@ -76,9 +76,9 @@ export default async function ArticleDetailPage({
                   href="/articles"
                   className="group animated-header-element invisible inline-block px-1 -mx-1"
                 >
-                  <div className="flex gap-1.5 items-center text-text-accent font-semibold group-animate-hover">
-                    <ArrowLeft size={20} />
-                    <span>Artikel</span>
+                  <div className="flex gap-1 sm:gap-1.5 items-center text-text-accent font-semibold group-animate-hover">
+                    <ArrowLeft className="size-4 sm:size-5 stroke-[2.25]" />
+                    <span className="text-sm sm:text-base">Artikel</span>
                   </div>
                 </Link>
                 <div className="space-y-2">
