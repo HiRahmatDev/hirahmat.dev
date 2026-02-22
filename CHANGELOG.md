@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New `/lab/project-aidah` page
+
+## [0.17.0] - 2026-02-23
+
 - Add back to "/articles" page in article detail
 
 ## Changed
