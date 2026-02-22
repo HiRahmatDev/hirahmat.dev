@@ -1,6 +1,8 @@
+import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 import { AnimatedArticleWrapper } from "./components/AnimatedArticleWrapper";
 import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
@@ -70,6 +72,15 @@ export default async function ArticleDetailPage({
               className={"container space-y-6" + (isTocEmpty ? "" : " mx-0")}
             >
               <div className="space-y-4">
+                <Link
+                  href="/articles"
+                  className="group animated-header-element invisible inline-block px-1 -mx-1"
+                >
+                  <div className="flex gap-1.5 items-center text-text-accent font-semibold group-animate-hover">
+                    <ArrowLeft size={20} />
+                    <span>Artikel</span>
+                  </div>
+                </Link>
                 <div className="space-y-2">
                   <h1 className="animated-header-element invisible text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
                     <RichText items={blockMetadata.rawTitle} />
