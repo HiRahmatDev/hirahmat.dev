@@ -13,9 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.17.0] - 2026-02-23
 
+### Added
+
 - Add back to "/articles" page in article detail
 
-## Changed
+### Changed
 
 - Enhance hover animation of filter button in "/articles" page
 
