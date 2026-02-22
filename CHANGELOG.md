@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## Changed
+
+- Enhance hover animation of filter button in "/articles" page
+
 ## [0.16.2] - 2026-02-19
 
 ### Changed
