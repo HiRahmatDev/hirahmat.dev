@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New `/lab/project-aidah` page
 - Button "Terapkan" on bottom sheet in "/lab/murajaah-at-taisir" page for better UX
 
+### Changed
+
+- Better spacing on bottom sheet in "/lab/murajaah-at-taisir" page
+
 ## [0.17.0] - 2026-02-23
 
 ### Added

@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     if (!file) {
       return NextResponse.json(
         { error: "No audio file provided", status: 400 },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     if (!transcription.text || transcription.text.trim() === "null") {
       return NextResponse.json(
         { error: "No speech detected or audio is unclear.", status: 400 },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     console.error("Error transcribing audio:", error);
     return NextResponse.json(
       { error: "Failed to transcribe audio", status: 500 },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

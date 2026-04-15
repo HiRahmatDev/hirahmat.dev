@@ -97,7 +97,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
               {({ close }) => (
                 <>
                   <div className="mx-auto max-w-105 pb-2 px-3">
-                    <div className="space-y-2">
+                    <div className="space-y-4">
                       <h2 className="text-lg tracking-tight font-bold">
                         Pilih Surat Al-Qur{"'"}an
                       </h2>
