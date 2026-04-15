@@ -20,7 +20,7 @@ export function MurajaahButton({
     <button
       disabled={disabled}
       className={twMerge(
-        "text-white px-4 py-3 font-medium rounded-lg w-full",
+        "text-white px-4 py-3 font-medium rounded-lg w-full ease-silky duration-150 active:scale-98 sm:active:scale-100",
         mode === "TADRIB"
           ? "bg-calm hover:bg-calm-hover"
           : "bg-accent hover:bg-accent-hover",

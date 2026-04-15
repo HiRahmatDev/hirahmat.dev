@@ -40,8 +40,8 @@ export function MenuButton({ className }: { className?: string }) {
         <button
           className={twMerge(
             "size-12 rounded-lg cursor-pointer shrink-0 flex justify-center items-center bg-zinc-100",
-            "active:scale-80 transition-transform",
-            className
+            "active:scale-90 transition-transform",
+            className,
           )}
         >
           <Settings className="text-zinc-700" />
@@ -92,6 +92,12 @@ export function MenuButton({ className }: { className?: string }) {
                   </div>
                 </div>
                 <ModeRadio value={mode} onChange={changeMode} />
+                <button
+                  className="bg-accent text-white py-3 rounded-lg font-semibold duration-150 ease-silky active:scale-98 cursor-pointer"
+                  onClick={() => onVisibleChange(false)}
+                >
+                  Terapkan
+                </button>
               </div>
             </div>
           </Dialog>
