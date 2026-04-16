@@ -5,14 +5,14 @@ import { useRouter } from "next/navigation";
 
 import { AnimatedNumber } from "./components/AnimatedNumber";
 import { AyahInputNumber } from "./components/AyahInputNumber";
+import { BottomActionBar } from "./components/BottomActionBar";
 import { Label } from "./components/Label";
+import { Logo } from "@/app/(main)/components/Logo";
 import { ModeRadio } from "./components/ModeRadio";
 import { MurajaahButton } from "./components/MurajaahButton";
 import { MurajaahProvider } from "./context/MurajaahContext";
 import { SurahSelect } from "./components/SurahSelect";
 import { useMurajaah } from "./hooks/useMurajaah";
-import { BottomActionBar } from "./components/BottomActionBar";
-import { Logo } from "@/app/(main)/components/Logo";
 
 export default function MurajaahAtTaisirLayout({
   children,
@@ -66,8 +66,8 @@ export default function MurajaahAtTaisirLayout({
       }}
     >
       <div className="min-h-[calc(100vh-96px)]">
-        <div className="container-wider pt-4 pb-6">
-          <div className="mb-8">
+        <div className="container-wider sm:pt-4 sm:pb-6">
+          <div className="mb-8 hidden sm:block">
             <div className="flex flex-col sm:flex-row gap-x-6 gap-y-1 justify-between mb-1">
               <h1 className="text-2xl tracking-[-0.5px] font-bold sm:text-4xl sm:tracking-[-1px] sm:font-semibold">
                 Muraja{"'"}ah at-Taisir

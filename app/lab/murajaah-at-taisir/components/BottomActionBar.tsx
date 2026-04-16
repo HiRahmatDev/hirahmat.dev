@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedNumber } from "./AnimatedNumber";
+import { InfoButton } from "./InfoButton";
 import { MenuButton } from "./MenuButton";
 import { MurajaahButton } from "./MurajaahButton";
 import { useMurajaahContext } from "../context/MurajaahContext";
@@ -21,6 +22,7 @@ export function BottomActionBar() {
   return (
     <div className="-translate-x-1/2 sm:hidden z-20 fixed bottom-0 left-1/2 w-full rounded-t-2xl bg-white overflow-hidden shadow-2xl">
       <div className="flex gap-3 max-w-105 w-full px-3 sm:px-5 pt-4 pb-8 mx-auto">
+        <InfoButton />
         <div className="relative min-w-20 border border-zinc-200 rounded-lg flex justify-center items-center">
           <div className="absolute -top-2 left-1 text-xs italic text-zinc-400 px-1 bg-white tracking-[-0.5px]">
             ayat ke-
