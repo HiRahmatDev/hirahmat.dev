@@ -33,7 +33,7 @@ export function AnimatedArticleWrapper({
   );
 
   return (
-    <article ref={containerRef} className="space-y-8">
+    <article ref={containerRef}>
       {children}
     </article>
   );

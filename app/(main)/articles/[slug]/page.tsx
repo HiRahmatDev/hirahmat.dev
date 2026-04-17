@@ -67,20 +67,20 @@ export default async function ArticleDetailPage({
     <>
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] container-wider px-0">
         <AnimatedArticleWrapper>
-          <header className="pt-4 space-y-6">
+          <header className="pt-2 space-y-6 mb-8 md:mb-10">
             <div
-              className={"container space-y-6" + (isTocEmpty ? "" : " mx-0")}
+              className={"container" + (isTocEmpty ? "" : " mx-0")}
             >
+              <Link
+                href="/articles"
+                className="group animated-header-element invisible inline-block px-1 -mx-1 mb-8 md:mb-10"
+              >
+                <div className="flex gap-1 sm:gap-1.5 items-center text-text-accent font-semibold group-animate-hover">
+                  <ArrowLeft className="size-4 sm:size-5 stroke-[2.25]" />
+                  <span className="text-sm sm:text-base">Artikel</span>
+                </div>
+              </Link>
               <div className="space-y-4">
-                <Link
-                  href="/articles"
-                  className="group animated-header-element invisible inline-block px-1 -mx-1"
-                >
-                  <div className="flex gap-1 sm:gap-1.5 items-center text-text-accent font-semibold group-animate-hover">
-                    <ArrowLeft className="size-4 sm:size-5 stroke-[2.25]" />
-                    <span className="text-sm sm:text-base">Artikel</span>
-                  </div>
-                </Link>
                 <div className="space-y-2">
                   <h1 className="animated-header-element invisible text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
                     <RichText items={blockMetadata.rawTitle} />
@@ -111,13 +111,13 @@ export default async function ArticleDetailPage({
                 </p>
               </div>
             </div>
-            <div
-              className={
-                "container animated-header-element invisible" +
-                (isTocEmpty ? "" : " mx-[unset]")
-              }
-            >
-              {blockMetadata.cover ? (
+            {blockMetadata.cover ? (
+              <div
+                className={
+                  "container animated-header-element invisible" +
+                  (isTocEmpty ? "" : " mx-[unset]")
+                }
+              >
                 <Image
                   src={blockMetadata.cover}
                   alt={blockMetadata.cover_alt}
@@ -127,8 +127,8 @@ export default async function ArticleDetailPage({
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
                   className="object-cover top-0 right-0 left-0 rounded-2xl border border-gray-200"
                 />
-              ) : null}
-            </div>
+              </div>
+            ) : null}
           </header>
           <section className="animated-content-element invisible pb-8 sm:pb-12">
             <div className={"container-for-reading" + (isTocEmpty ? "" : "")}>
