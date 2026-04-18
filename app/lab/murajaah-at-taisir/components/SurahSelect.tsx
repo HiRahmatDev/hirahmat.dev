@@ -21,8 +21,8 @@ import { twJoin } from "tailwind-merge";
 import { useState } from "react";
 import useSWR from "swr";
 
-import { fetchAllSurah } from "../lib/fetchAllSurah";
 import { SURAH_MAP } from "../lib/constants";
+import { fetchAllSurah } from "../lib/fetchAllSurah";
 import { useBottomSheet } from "../hooks/useBottomSheet";
 import { useIsMobile } from "../hooks/useIsMobile";
 
@@ -78,7 +78,7 @@ export function SurahSelect({ value, onChange, noOverlay }: SurahSelectProps) {
     return (
       <DialogTrigger isOpen={isVisible} onOpenChange={onVisibleChange}>
         <Pressable>
-          <button className="relative rounded-lg text-left cursor-pointer py-2 pl-3 pr-8 border border-gray-300 ">
+          <button className="relative rounded-lg text-left cursor-pointer py-2 pl-3 pr-8 border border-gray-300">
             {renderLabel(value ?? -1)}
             <div className="flex items-center px-2 absolute right-0 top-0 bottom-0">
               <ChevronDown size={16} />
@@ -95,58 +95,56 @@ export function SurahSelect({ value, onChange, noOverlay }: SurahSelectProps) {
           <Modal>
             <Dialog
               ref={bottomSheetRef}
-              className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-6 slide-up-active"
+              className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pt-6 slide-up-active"
             >
               {({ close }) => (
                 <>
                   <div className="mx-auto max-w-105 pb-2 px-3">
-                    <div className="space-y-4">
-                      <h2 className="text-lg tracking-tight font-bold">
+                    <div className="pb-2">
+                      <h2 className="text-lg tracking-tight font-bold mb-4">
                         Pilih Surat Al-Qur{"'"}an
                       </h2>
-                      <div>
-                        <input
-                          placeholder="Cari"
-                          className="grow py-2 px-3 rounded-lg pr-8 border border-gray-300 w-full"
-                          value={search}
-                          onChange={(e) => setSearch(e.target.value)}
-                        />
-                      </div>
+                      <input
+                        placeholder="Cari"
+                        className="grow py-2 px-3 rounded-lg pr-8 border border-gray-300 w-full"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                      />
                     </div>
-                  </div>
-                  <Virtualizer
-                    layout={ListLayout}
-                    layoutOptions={{ rowHeight: 44 }}
-                  >
-                    <ListBox
-                      aria-label="Surah List"
-                      items={filteredOptions}
-                      className="mx-auto max-w-105 overflow-auto h-[60vh] -mb-7 pb-7"
-                      renderEmptyState={() => (
-                        <div className="text-sm text-center py-4 px-3 italic text-zinc-400">
-                          Tidak ada surah dengan nama tersebut.
-                        </div>
-                      )}
-                      onAction={(key) => {
-                        onChange?.(Number(key));
-                        close();
-                      }}
+                    <Virtualizer
+                      layout={ListLayout}
+                      layoutOptions={{ rowHeight: 44 }}
                     >
-                      {({ label }: Option) => (
-                        <ListBoxItem
-                          textValue={label}
-                          className={({ isFocused, isPressed }) =>
-                            twJoin(
-                              "flex items-center h-full px-4 select-none cursor-pointer",
-                              (isPressed || isFocused) && "bg-zinc-200",
-                            )
-                          }
-                        >
-                          {label}
-                        </ListBoxItem>
-                      )}
-                    </ListBox>
-                  </Virtualizer>
+                      <ListBox
+                        aria-label="Surah List"
+                        items={filteredOptions}
+                        className="overflow-auto h-105 -mx-3"
+                        renderEmptyState={() => (
+                          <div className="text-sm text-center py-4 px-3 italic text-zinc-400">
+                            Tidak ada surah dengan nama tersebut.
+                          </div>
+                        )}
+                        onAction={(key) => {
+                          onChange?.(Number(key));
+                          close();
+                        }}
+                      >
+                        {({ label }: Option) => (
+                          <ListBoxItem
+                            textValue={label}
+                            className={({ isFocused, isPressed }) =>
+                              twJoin(
+                                "flex items-center h-full px-4 select-none cursor-pointer",
+                                (isPressed || isFocused) && "bg-zinc-200",
+                              )
+                            }
+                          >
+                            {label}
+                          </ListBoxItem>
+                        )}
+                      </ListBox>
+                    </Virtualizer>
+                  </div>
                 </>
               )}
             </Dialog>

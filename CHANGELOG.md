@@ -14,9 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Better spacing in article list and article detail page
-- Add padding y in dropdown of surah select for desktop display
-- No overlay in bottom sheet of surah select for mobile display
-- Set default to true (first mobile) in useIsMobile hooks
+- Better layout and style of bottom sheet in "/lab/murajaah-at-taisir" page
+- Set default to true (first mobile) in `useIsMobile` hooks
 
 ## [0.18.0] - 2026-04-16
 

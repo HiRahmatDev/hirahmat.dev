@@ -55,45 +55,52 @@ export function MenuButton({ className }: { className?: string }) {
         <Modal>
           <Dialog
             ref={bottomSheetRef}
-            className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-8 pt-5 slide-up-active"
+            className="bg-white fixed bottom-0 left-0 right-0 rounded-t-xl pb-6 pt-5 slide-up-active"
           >
-            <div className="mx-auto max-w-105 px-3 sm:px-5">
-              <h2 className="text-lg tracking-tight font-bold mb-4">
-                Pengaturan
-              </h2>
-              <div className="flex flex-col gap-5 max-h-[60vh] overflow-auto -mr-5 pr-5">
-                <div className="flex flex-col gap-1">
-                  <Label>Surat dan Ayat (Al-Qur{"'"}an)</Label>
-                  <div className="flex flex-col gap-2">
-                    <SurahSelect
-                      value={selectedSurah ?? undefined}
-                      onChange={(surahNumber) => {
-                        changeSurah(surahNumber);
-                      }}
-                    />
-                    <div className="flex gap-2">
-                      <AyahInputNumber
-                        placeholder="Dari ayat ke-"
-                        min={minAyah}
-                        max={maxAyah}
-                        value={startAyah}
-                        disabled={!selectedSurah}
-                        onChange={(ayah) => changeStartAyah(ayah)}
+            <div className="flex flex-col mx-auto max-w-105 px-3 sm:px-5 h-full">
+              <div className="pb-2">
+                <h2 className="text-lg tracking-tight font-bold">Pengaturan</h2>
+              </div>
+              <div className="flex-1 overflow-auto">
+                <div className="h-2" />
+                <div className="flex flex-col gap-5">
+                  <div className="flex flex-col gap-1">
+                    <Label>Surat dan Ayat (Al-Qur{"'"}an)</Label>
+                    <div className="flex flex-col gap-2">
+                      <SurahSelect
+                        noOverlay
+                        value={selectedSurah ?? undefined}
+                        onChange={(surahNumber) => {
+                          changeSurah(surahNumber);
+                        }}
                       />
-                      <AyahInputNumber
-                        placeholder="Sampai ayat ke-"
-                        min={startAyah || minAyah}
-                        max={maxAyah}
-                        value={endAyah}
-                        disabled={!selectedSurah}
-                        onChange={(ayah) => changeEndAyah(ayah)}
-                      />
+                      <div className="flex gap-2">
+                        <AyahInputNumber
+                          placeholder="Dari ayat ke-"
+                          min={minAyah}
+                          max={maxAyah}
+                          value={startAyah}
+                          disabled={!selectedSurah}
+                          onChange={(ayah) => changeStartAyah(ayah)}
+                        />
+                        <AyahInputNumber
+                          placeholder="Sampai ayat ke-"
+                          min={startAyah || minAyah}
+                          max={maxAyah}
+                          value={endAyah}
+                          disabled={!selectedSurah}
+                          onChange={(ayah) => changeEndAyah(ayah)}
+                        />
+                      </div>
                     </div>
                   </div>
+                  <ModeRadio value={mode} onChange={changeMode} />
                 </div>
-                <ModeRadio value={mode} onChange={changeMode} />
+                <div className="h-4" />
+              </div>
+              <div className="pt-3">
                 <button
-                  className="bg-accent text-white py-3 rounded-lg font-semibold duration-150 ease-silky active:scale-98 cursor-pointer"
+                  className="bg-accent text-white py-3 rounded-lg font-semibold duration-150 ease-silky active:scale-98 cursor-pointer w-full"
                   onClick={() => onVisibleChange(false)}
                 >
                   Terapkan
