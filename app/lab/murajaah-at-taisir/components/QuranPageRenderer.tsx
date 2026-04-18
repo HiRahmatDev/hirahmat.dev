@@ -24,9 +24,9 @@ export function QuranPageRenderer({
         lang="ar"
         dir="rtl"
         className={clsx(
-          "md:scale-100",
-          "min-h-[80vh] sm:min-h-225 sm:w-180 sm:max-w-180 sm:scale-[0.8] sm:origin-top-left sm:px-12.5",
-          "scale-100 relative shrink-0 bg-[#f6f5ee] pt-7.5 px-3 pb-36 max-w-125 w-full",
+          "relative shrink-0 bg-[#f6f5ee] pt-7.5 px-3 pb-36 max-w-125 w-full min-h-screen sm:min-h-auto",
+          "sm:max-w-160 sm:px-6",
+          "lg:px-12.5",
         )}
       >
         <div
@@ -41,7 +41,7 @@ export function QuranPageRenderer({
         <div className="flex flex-col gap-8">
           <div
             className={
-              "min-h-6 text-zinc-400 tracking-[0.35px] font-semibold font-sans text-[10px] sm:text-sm" +
+              "min-h-6 text-zinc-400 tracking-[0.35px] font-semibold font-sans text-[10px] md:text-sm" +
               (isRightPage ? " text-right" : " text-left")
             }
           >
@@ -84,7 +84,7 @@ export function QuranPageRenderer({
                 )}
                 <div
                   className={
-                    "text-justify text-lg/[46px] sm:text-2xl/[64px] select-none" +
+                    "text-justify [text-align-last:center] text-xl/[51px] md:text-2xl/[64px] select-none" +
                     (isNarrowerContainer ? " px-5 sm:px-24" : "")
                   }
                 >

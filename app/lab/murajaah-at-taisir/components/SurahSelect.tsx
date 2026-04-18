@@ -29,6 +29,7 @@ import { useIsMobile } from "../hooks/useIsMobile";
 type SurahSelectProps = Readonly<{
   value?: number;
   onChange?: (surahNumber: number) => void;
+  noOverlay?: boolean;
 }>;
 
 type Option = {
@@ -37,7 +38,7 @@ type Option = {
   id: number;
 };
 
-export function SurahSelect({ value, onChange }: SurahSelectProps) {
+export function SurahSelect({ value, onChange, noOverlay }: SurahSelectProps) {
   const isMobile = useIsMobile();
   const { data: allSurah } = useSWR("all-surah", fetchAllSurah);
 
@@ -87,7 +88,9 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
         <ModalOverlay
           ref={modalOverlayRef}
           isDismissable
-          className="fixed inset-0 z-20 overlay-enter-active"
+          className={
+            "fixed inset-0 z-20" + (noOverlay ? "" : " overlay-enter-active")
+          }
         >
           <Modal>
             <Dialog
@@ -205,7 +208,7 @@ export function SurahSelect({ value, onChange }: SurahSelectProps) {
                   textValue={label}
                   className={({ isFocused }) =>
                     twJoin(
-                      "flex items-center h-9 min-h-0 px-2 rounded-md cursor-pointer",
+                      "flex items-center py-1.5 px-2 rounded-md cursor-pointer",
                       isFocused && "bg-zinc-100",
                     )
                   }

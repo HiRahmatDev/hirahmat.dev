@@ -13,11 +13,13 @@ import { MurajaahButton } from "./components/MurajaahButton";
 import { MurajaahProvider } from "./context/MurajaahContext";
 import { SurahSelect } from "./components/SurahSelect";
 import { useMurajaah } from "./hooks/useMurajaah";
+import { useIsMobile } from "./hooks/useIsMobile";
 
 export default function MurajaahAtTaisirLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   const router = useRouter();
+  const isMobile = useIsMobile();
 
   const {
     selectedSurah,
@@ -88,57 +90,60 @@ export default function MurajaahAtTaisirLayout({
             </p>
           </div>
           <div className="flex flex-col sm:flex-row justify-between gap-10">
-            <div
-              id="murajaah-sidebar"
-              className="hidden sm:flex flex-col gap-8 grow sm:sticky z-10 bg-white h-fit"
-            >
-              <div className="flex flex-col gap-5">
-                <div className="flex flex-col gap-1">
-                  <Label>Surah dan Ayat</Label>
-                  <div className="flex flex-col gap-2">
-                    <SurahSelect
-                      value={selectedSurah ?? undefined}
-                      onChange={(surahNumber) => {
-                        changeSurah(surahNumber);
-                      }}
-                    />
-                    <div className="flex gap-2">
-                      <AyahInputNumber
-                        placeholder="Dari ayat ke-"
-                        min={minAyah}
-                        max={maxAyah}
-                        value={startAyah}
-                        disabled={!selectedSurah}
-                        onChange={(ayah) => changeStartAyah(ayah)}
+            {!isMobile ? (
+              <div
+                id="murajaah-sidebar"
+                className="hidden sm:flex flex-col gap-8 grow sm:sticky z-10 bg-white h-fit"
+              >
+                <div className="flex flex-col gap-5">
+                  <div className="flex flex-col gap-1">
+                    <Label>Surah dan Ayat</Label>
+                    <div className="flex flex-col gap-2">
+                      <SurahSelect
+                        value={selectedSurah ?? undefined}
+                        onChange={(surahNumber) => {
+                          changeSurah(surahNumber);
+                        }}
                       />
-                      <AyahInputNumber
-                        placeholder="Sampai ayat ke-"
-                        min={startAyah || minAyah}
-                        max={maxAyah}
-                        value={endAyah}
-                        disabled={!selectedSurah}
-                        onChange={(ayah) => changeEndAyah(ayah)}
-                      />
+                      <div className="flex gap-2">
+                        <AyahInputNumber
+                          placeholder="Dari ayat ke-"
+                          min={minAyah}
+                          max={maxAyah}
+                          value={startAyah}
+                          disabled={!selectedSurah}
+                          onChange={(ayah) => changeStartAyah(ayah)}
+                        />
+                        <AyahInputNumber
+                          placeholder="Sampai ayat ke-"
+                          min={startAyah || minAyah}
+                          max={maxAyah}
+                          value={endAyah}
+                          disabled={!selectedSurah}
+                          onChange={(ayah) => changeEndAyah(ayah)}
+                        />
+                      </div>
                     </div>
                   </div>
+                  <ModeRadio value={mode} onChange={changeMode} />
                 </div>
-                <ModeRadio value={mode} onChange={changeMode} />
+                <div>
+                  <MurajaahButton
+                    mode={mode}
+                    disabled={isMurajaahButtonDisabled}
+                    onClick={generateRandomAyah}
+                  />
+                  <AnimatedNumber
+                    min={startAyah || minAyah}
+                    max={endAyah || maxAyah}
+                    animating={randoming}
+                    number={randomAyah}
+                  />
+                </div>
               </div>
-              <div>
-                <MurajaahButton
-                  mode={mode}
-                  disabled={isMurajaahButtonDisabled}
-                  onClick={generateRandomAyah}
-                />
-                <AnimatedNumber
-                  min={startAyah || minAyah}
-                  max={endAyah || maxAyah}
-                  animating={randoming}
-                  number={randomAyah}
-                />
-              </div>
-            </div>
-            <BottomActionBar />
+            ) : (
+              <BottomActionBar />
+            )}
             <div>{children}</div>
           </div>
         </div>
