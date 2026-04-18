@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+## [0.18.1] - 2026-04-18
+
 ### Changed
 
 - Better spacing in article list and article detail page
