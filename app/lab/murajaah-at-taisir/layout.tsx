@@ -12,14 +12,17 @@ import { ModeRadio } from "./components/ModeRadio";
 import { MurajaahButton } from "./components/MurajaahButton";
 import { MurajaahProvider } from "./context/MurajaahContext";
 import { SurahSelect } from "./components/SurahSelect";
-import { useMurajaah } from "./hooks/useMurajaah";
 import { useIsMobile } from "./hooks/useIsMobile";
+import { useMurajaah } from "./hooks/useMurajaah";
+import { useServiceWorker } from "./hooks/useServiceWorker";
 
 export default function MurajaahAtTaisirLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   const router = useRouter();
   const isMobile = useIsMobile();
+
+  useServiceWorker();
 
   const {
     selectedSurah,
