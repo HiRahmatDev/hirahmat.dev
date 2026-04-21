@@ -22,6 +22,7 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
     return (
       <>
         <p
+          data-selected={isSelectedAyah}
           className={
             ayah.numberInSurah === 1
               ? " block text-center"
@@ -49,7 +50,7 @@ export function AyahRenderer({ ayah, isSurahAlfatiha }: AyahRendererProps) {
       {ayah.numberInSurah === 1 && (
         <p className="text-center">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ</p>
       )}
-      <p className="inline not-last:ml-3">
+      <p data-selected={isSelectedAyah} className="inline not-last:ml-3">
         <span>
           <AyahTextHighlight ayahText={ayah.text} isSelected={isSelectedAyah} />
         </span>

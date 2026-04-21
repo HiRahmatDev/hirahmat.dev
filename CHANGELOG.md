@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New `/lab/project-aidah` page
 
+### Fixed
+
+- Selected ayah do not autofocus after button "Mulai Murajaah" or "Mulai Latihan" is clicked
+
 ## [0.18.1] - 2026-04-18
 
 ### Changed

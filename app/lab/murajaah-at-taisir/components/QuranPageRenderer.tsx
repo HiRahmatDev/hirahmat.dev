@@ -1,11 +1,13 @@
 "use client";
 
-import clsx from "clsx";
 import Image from "next/image";
+import clsx from "clsx";
+import { useRef } from "react";
 
-import { AyahRenderer } from "./AyahRenderer";
-import { Ayah, Surahs } from "../lib/fetchQuranPage";
 import surahTitleLight from "../assets/surah-title-light.svg";
+import { Ayah, Surahs } from "../lib/fetchQuranPage";
+import { AyahRenderer } from "./AyahRenderer";
+import { useAutoScroll } from "../hooks/useAutoScroll";
 
 type QuranPageRendererProps = {
   surahs: Surahs;
@@ -18,9 +20,13 @@ export function QuranPageRenderer({
   ayahs,
   isRightPage,
 }: QuranPageRendererProps) {
+  const quranRef = useRef<HTMLElement | null>(null);
+  useAutoScroll(quranRef);
+  
   return (
     <div className="flex justify-center -mx-6 sm:mx-0">
       <article
+        ref={quranRef}
         lang="ar"
         dir="rtl"
         className={clsx(
