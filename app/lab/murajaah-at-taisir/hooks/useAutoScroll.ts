@@ -5,7 +5,7 @@ export function useAutoScroll(quranRef: RefObject<HTMLElement | null>) {
     const quranEl = quranRef.current;
     if (!quranEl) return;
 
-    const observer = new MutationObserver((mutations) => {
+    const observer = new MutationObserver(() => {
       const targetEl = quranEl.querySelector('[data-selected="true"]');
       if (!targetEl) return;
       
@@ -23,5 +23,5 @@ export function useAutoScroll(quranRef: RefObject<HTMLElement | null>) {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [quranRef]);
 }
