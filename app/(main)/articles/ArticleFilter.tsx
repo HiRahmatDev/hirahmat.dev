@@ -27,7 +27,14 @@ export function ArticleFilter() {
     <div className="flex flex-wrap gap-2">
       {(["All", "Jurnal Proyek", "Blog"] as ArticleCategory[]).map((type) => (
         <div key={type} className="animated-element invisible">
-          <button onClick={() => handleFilterChange(type)} className="group rounded-full">
+          <button
+            className="group rounded-full"
+            onPointerDown={() => handleFilterChange(type)}
+            onKeyDown={(e) => {
+              if (!["Enter", "Space"].includes(e.code)) return;
+              handleFilterChange(type);
+            }}
+          >
             <div
               className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer group-animate-hover ${
                 filter === type

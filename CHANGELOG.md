@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Scroll controls in blog section
 
+### Changed
+
+- More responsive when filtering articles in "/articles" page
+
 ## [0.18.2] - 2026-04-21
 
 ### Fixed
