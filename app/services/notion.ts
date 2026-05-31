@@ -84,7 +84,7 @@ export const fetchSelectedProjects: (
           : "",
     }));
   } catch (error) {
-    console.error(error);
+    console.error("ERROR in `fetchSelectedProjects`:", error);
     return null;
   }
 });
@@ -178,7 +178,7 @@ export const fetchSelectedBlogs: (
           : "",
     }));
   } catch (error) {
-    console.error(error);
+    console.error("ERROR in `fetchSelectedBlogs`:", error);
     return null;
   }
 });
@@ -286,7 +286,7 @@ export const fetchAllArticles: (params?: {
           : "",
     }));
   } catch (error) {
-    console.error(error);
+    console.error("ERROR in `fetchAllArticles`:", error);
     return null;
   }
 });
@@ -391,7 +391,7 @@ export const fetchArticleMetadataBySlug = cache(
             : "",
       }))[0];
     } catch (error) {
-      console.error(error);
+      console.error("ERROR in `fetchArticleMetadataBySlug`:", error);
       return null;
     }
   },
@@ -405,7 +405,7 @@ export const fetchArticleByBlockId = cache(async (blockId: string) => {
 
     return response;
   } catch (error) {
-    console.error(error);
+    console.error("ERROR in `fetchArticleByBlockId`:", error);
     return null;
   }
 });
@@ -475,7 +475,7 @@ export const fetchArticleTOCByBlockId = cache(
 
       return toc;
     } catch (error) {
-      console.error(error);
+      console.error("ERROR in `fetchArticleTOCByBlockId`:", error);
       return null;
     }
   },
