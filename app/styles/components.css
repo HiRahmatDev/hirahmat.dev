@@ -14,7 +14,6 @@
     @apply cursor-pointer;
     @apply bg-accent hover:bg-accent-hover active:bg-accent-active text-white;
     @apply shadow-md;
-    @apply transition;
   }
 
   #murajaah-sidebar {
