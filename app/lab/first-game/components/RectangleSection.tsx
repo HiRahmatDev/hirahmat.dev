@@ -42,8 +42,8 @@ ctx.closePath();`;
     <div>
       <h2 className="font-medium text-xl mb-1.5">Rectangle:</h2>
       <canvas ref={canvasRef} className="bg-gray-100" />
-      <div className="relative overflow-hidden rounded-xl bg-[#222] my-4 max-w-fit">
-        <pre className={`language-${language}`}>
+      <div className="my-3">
+        <pre className={`relative language-${language}`} tabIndex={0}>
           <div className="code-block__header">
             <span className="lang">{language}</span>
             <CopyButton text={codeBlock} className="code-block__button-copy" />

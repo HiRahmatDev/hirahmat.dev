@@ -38,7 +38,7 @@ pre[class*="language-"] {
 }
 
 pre[class*="language-"] {
-  margin: 0 4px 2px;
+  margin: 0;
   padding: 48px 14px 12px;
   scrollbar-width: thin;
   scrollbar-color: #444 #2a2a2a;
