@@ -4,13 +4,14 @@ import { CopyButton } from "@/app/(main)/components/CopyButton";
 import { highlightCode } from "@/app/lib/prism";
 import { useEffect, useRef, useState } from "react";
 
-export function RectangleSection() {
+export function ArcSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [rect, setRect] = useState({
-    x: 20,
-    y: 40,
-    width: 50,
-    height: 50,
+  const [arc, setArc] = useState({
+    x: 100,
+    y: 100,
+    radius: 50,
+    startAngle: 0.0,
+    endAngle: Number((Math.PI * 2).toFixed(4)),
   });
 
   useEffect(() => {
@@ -21,27 +22,32 @@ export function RectangleSection() {
     ctx.reset();
 
     ctx.beginPath();
-    ctx.rect(rect.x, rect.y, rect.width, rect.height);
-    ctx.fillStyle = "red";
-    ctx.fill();
+    ctx.arc(arc.x, arc.y, arc.radius, arc.startAngle, arc.endAngle);
+    ctx.strokeStyle = "green";
+    ctx.stroke();
     ctx.closePath();
-  }, [rect]);
+  }, [arc]);
 
   const language = "javascript";
 
   const codeBlock = `const ctx = canvas.getContext("2d");
 
 ctx.beginPath();
-ctx.rect(${rect.x}, ${rect.y}, ${rect.width}, ${rect.height});
-ctx.fillStyle = "red";
-ctx.fill();
+ctx.arc(${arc.x}, ${arc.y}, ${arc.radius}, ${arc.startAngle}, ${arc.endAngle});
+ctx.strokeStyle = "green";
+ctx.stroke();
 ctx.closePath();`;
 
   const highlighted = highlightCode(codeBlock, "tsx");
   return (
     <div>
-      <h2 className="font-medium text-xl mb-1.5">Rectangle:</h2>
-      <canvas ref={canvasRef} className="bg-gray-100" width="480" height="320" />
+      <h2 className="font-medium text-xl mb-1.5">Arc:</h2>
+      <canvas
+        ref={canvasRef}
+        className="bg-gray-100"
+        width="480"
+        height="320"
+      />
       <div className="my-3">
         <pre className={`relative language-${language}`} tabIndex={0}>
           <div className="code-block__header">
@@ -57,13 +63,13 @@ ctx.closePath();`;
       <div className="grid grid-cols-2 gap-[0_12px]">
         <div className="flex flex-col">
           <label>
-            <code>x({rect.x}):</code>
+            <code>x({arc.x}):</code>
           </label>
           <input
             type="range"
-            value={rect.x.toString()}
+            value={arc.x.toString()}
             onChange={(e) =>
-              setRect((current) => ({
+              setArc((current) => ({
                 ...current,
                 x: parseInt(e.target.value),
               }))
@@ -72,45 +78,66 @@ ctx.closePath();`;
         </div>
         <div className="flex flex-col">
           <label>
-            <code>y({rect.y}):</code>
+            <code>y({arc.y}):</code>
           </label>
           <input
             type="range"
-            value={rect.y.toString()}
+            value={arc.y.toString()}
             onChange={(e) =>
-              setRect((current) => ({
+              setArc((current) => ({
                 ...current,
                 y: parseInt(e.target.value),
               }))
             }
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col col-span-2">
           <label>
-            <code>width({rect.width}px):</code>
+            <code>radius({arc.radius}px):</code>
           </label>
           <input
             type="range"
-            value={rect.width.toString()}
+            value={arc.radius.toString()}
             onChange={(e) =>
-              setRect((current) => ({
+              setArc((current) => ({
                 ...current,
-                width: parseInt(e.target.value),
+                radius: parseInt(e.target.value),
               }))
             }
           />
         </div>
         <div className="flex flex-col">
           <label>
-            <code>height({rect.height}px):</code>
+            <code>startAngle({arc.startAngle}rad):</code>
           </label>
           <input
             type="range"
-            value={rect.height.toString()}
+            value={arc.startAngle}
+            min={0}
+            max={(Math.PI * 2).toFixed(4)}
+            step="any"
             onChange={(e) =>
-              setRect((current) => ({
+              setArc((current) => ({
                 ...current,
-                height: parseInt(e.target.value),
+                startAngle: Number(parseFloat(e.target.value).toFixed(4)),
+              }))
+            }
+          />
+        </div>
+        <div className="flex flex-col">
+          <label>
+            <code>endAngle({arc.endAngle}rad):</code>
+          </label>
+          <input
+            type="range"
+            value={arc.endAngle}
+            min={0}
+            max={Number((Math.PI * 2).toFixed(4))}
+            step="any"
+            onChange={(e) =>
+              setArc((current) => ({
+                ...current,
+                endAngle: Number(parseFloat(e.target.value).toFixed(4)),
               }))
             }
           />
