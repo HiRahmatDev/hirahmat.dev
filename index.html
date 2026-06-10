@@ -3,8 +3,43 @@
   <head>
     <meta charset="utf-8" />
     <title>Halo!</title>
+    <style>
+      :root {
+        --color-modern-paper: #fff8e7;
+        --color-base-black: #292929;
+
+        font-size: 16px; /* 16px -> 1rem */
+      }
+
+      body {
+        font-family: Georgia;
+        background-color: var(--color-modern-paper);
+        color: var(--color-base-black);
+      }
+
+      main {
+        font-size: 18px; /* Dipakai untuk em pada children main, 18px -> 1em */
+        line-height: 1.5;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+    </style>
   </head>
   <body>
-    <h1>Halo!</h1>
+    <main>
+      <h1>Halo!</h1>
+      <p>
+        Paragraf. Ini adalah contoh paragraf. Untuk mengecek style bawaan html.
+      </p>
+      <p>
+        Ternyata, style bawaan html sudah rapi dan siap untuk basic menulis.
+        Tidak disangka! Sebelumnya, saya jarang sekali memakainya. Karena
+        pertama kali belajar, langsung dapat tutorial yang selalu reset style di
+        awal dan juga terbiasa pakai
+        <a target="_blank" href="https://tailwindcss.com/">TailwindCSS↗</a>.
+      </p>
+    </main>
   </body>
 </html>
