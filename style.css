@@ -17,20 +17,20 @@
       from var(--color-parchment) calc(l - 0.6) c h
     );
     --color-link-parchment: var(--color-link);
-    --color-background: oklch(from var(--color-parchment) calc(l - 0.05) c h);
+    --color-background: oklch(from var(--color-parchment) calc(l - 0.08) c h);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-parchment: #1c150c;
+    --color-parchment: #12110c;
     --color-text-parchment: oklch(
-      from var(--color-parchment) calc(l + 0.5) c h
+      from var(--color-parchment) calc(l + 0.4) c h
     );
     --color-link-parchment: oklch(
       from var(--color-link) calc(l + 0.3) calc(c - 0.1) calc(h - 10)
     );
-    --color-background: oklch(from var(--color-parchment) calc(l + 0.05) c h);
+    --color-background: oklch(from var(--color-parchment) calc(l + 0.025) c h);
   }
 }
 
@@ -38,16 +38,16 @@
   --color-parchment: #f1e9d2;
   --color-text-parchment: oklch(from var(--color-parchment) calc(l - 0.6) c h);
   --color-link-parchment: var(--color-link);
-  --color-background: oklch(from var(--color-parchment) calc(l - 0.05) c h);
+  --color-background: oklch(from var(--color-parchment) calc(l - 0.08) c h);
 }
 
 :root.dark {
-  --color-parchment: #1c150c;
-  --color-text-parchment: oklch(from var(--color-parchment) calc(l + 0.5) c h);
+  --color-parchment: #12110c;
+  --color-text-parchment: oklch(from var(--color-parchment) calc(l + 0.4) c h);
   --color-link-parchment: oklch(
     from var(--color-link) calc(l + 0.3) calc(c - 0.1) calc(h - 10)
   );
-  --color-background: oklch(from var(--color-parchment) calc(l + 0.05) c h);
+  --color-background: oklch(from var(--color-parchment) calc(l + 0.025) c h);
 }
 
 body {
