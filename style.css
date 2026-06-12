@@ -1,5 +1,5 @@
 :root {
-  --color-link: #26339f;
+  --color-link: #9d5c63;
   --color-link-active-parchment: oklch(
     from var(--color-link-parchment) l c calc(h + 90)
   );
@@ -23,13 +23,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-parchment: #12110c;
+    --color-parchment: #2a2622;
     --color-text-parchment: oklch(
-      from var(--color-parchment) calc(l + 0.4) c h
+      from var(--color-parchment) calc(l + 0.4) calc(c + 0.03) h
     );
-    --color-link-parchment: oklch(
-      from var(--color-link) calc(l + 0.3) calc(c - 0.1) calc(h - 10)
-    );
+    --color-link-parchment: oklch(from var(--color-link) l c calc(h - 10));
     --color-background: oklch(from var(--color-parchment) calc(l + 0.025) c h);
   }
 }
@@ -42,11 +40,11 @@
 }
 
 :root.dark {
-  --color-parchment: #12110c;
-  --color-text-parchment: oklch(from var(--color-parchment) calc(l + 0.4) c h);
-  --color-link-parchment: oklch(
-    from var(--color-link) calc(l + 0.3) calc(c - 0.1) calc(h - 10)
+  --color-parchment: #2a2622;
+  --color-text-parchment: oklch(
+    from var(--color-parchment) calc(l + 0.4) calc(c + 0.03) h
   );
+  --color-link-parchment: oklch(from var(--color-link) l c calc(h - 10));
   --color-background: oklch(from var(--color-parchment) calc(l + 0.025) c h);
 }
 
