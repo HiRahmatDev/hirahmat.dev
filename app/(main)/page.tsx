@@ -1,5 +1,6 @@
 import React from "react";
 import serializeJavascript from "serialize-javascript";
+import { cacheLife } from "next/cache";
 
 import { AboutMeSection } from "@/app/(main)/components/sections/AboutMeSection";
 import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
@@ -7,9 +8,10 @@ import { HeroSection } from "@/app/(main)/components/sections/HeroSection";
 import { SelectedBlogsSection } from "@/app/(main)/components/sections/SelectedBlogSection";
 import { SelectedProjectsSection } from "@/app/(main)/components/sections/SelectedProjectsSection";
 
-export const revalidate = 60;
+export default async function Home() {
+  "use cache";
+  cacheLife("hours");
 
-export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "Person",

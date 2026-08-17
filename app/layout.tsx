@@ -1,3 +1,4 @@
+import { Activity, Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { Amiri_Quran, Inter, Overpass_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -6,7 +7,6 @@ import type { Metadata } from "next";
 import { BASE_URL, SITE_NAME } from "@/app/config/constants";
 
 import "./globals.css";
-import { Activity } from "react";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -53,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={bodyClassName}>
-        {children}
+        <Suspense fallback={<p>loading...</p>}>{children}</Suspense>
         <Activity>
           <Analytics debug={false} />
           <SpeedInsights debug={false} />

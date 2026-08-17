@@ -1,3 +1,5 @@
+import { cacheLife } from "next/cache";
+
 import { ArticleCard } from "./ArticleCard";
 import { ArticleCategory, fetchAllArticles } from "@/app/services/notion";
 import { AnimatedGridWrapper } from "./components/AnimatedGridWrapper";
@@ -7,6 +9,9 @@ export async function ArticlesList({
 }: {
   category?: ArticleCategory;
 }) {
+  "use cache";
+  cacheLife("hours");
+
   const articles = await fetchAllArticles({ category });
 
   return (

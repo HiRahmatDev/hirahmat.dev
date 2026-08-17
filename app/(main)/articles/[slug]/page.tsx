@@ -1,8 +1,9 @@
-import { ArrowLeft } from "lucide-react";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
+import { cacheLife } from "next/cache";
+import { notFound } from "next/navigation";
 
 import { AnimatedArticleWrapper } from "./components/AnimatedArticleWrapper";
 import { AnimatedTOCWrapper } from "./components/AnimatedTOCWrapper";
@@ -17,8 +18,6 @@ import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/(main)/components/NotionRenderer";
 import { RichText } from "@/app/(main)/components/NotionRenderer/common/RichText";
 import { SITE_NAME } from "@/app/config/constants";
-
-export const revalidate = 60;
 
 export async function generateStaticParams() {
   const allArticles = await fetchAllArticles();
@@ -52,6 +51,9 @@ export default async function ArticleDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  "use cache";
+  cacheLife("hours");
+
   const { slug } = await params;
   const blockMetadata = await fetchArticleMetadataBySlug(slug);
 
@@ -68,9 +70,7 @@ export default async function ArticleDetailPage({
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] container-wider px-0">
         <AnimatedArticleWrapper>
           <header className="pt-2 space-y-6 mb-8 md:mb-10">
-            <div
-              className={"container" + (isTocEmpty ? "" : " mx-0")}
-            >
+            <div className={"container" + (isTocEmpty ? "" : " mx-0")}>
               <Link
                 href="/articles"
                 className="group animated-header-element invisible inline-block px-1 -mx-1 mb-8 md:mb-10"

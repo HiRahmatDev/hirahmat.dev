@@ -18,12 +18,12 @@
     "dayjs": "^1.11.18",
     "gsap": "^3.13.0",
     "lucide-react": "^0.545.0",
-    "next": "16.2.6",
+    "next": "16.3.1",
     "openai": "^6.9.0",
     "prismjs": "^1.30.0",
-    "react": "19.2.6",
+    "react": "19.2.8",
     "react-aria-components": "^1.13.0",
-    "react-dom": "19.2.6",
+    "react-dom": "19.2.8",
     "serialize-javascript": "^7.0.0",
     "swr": "^2.3.6",
     "tailwind-merge": "^3.3.1"
@@ -33,16 +33,16 @@
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/prismjs": "^1.26.5",
-    "@types/react": "19.2.15",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "@types/serialize-javascript": "^5.0.4",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.6",
+    "eslint": "10.8.1",
+    "eslint-config-next": "16.3.1",
     "eslint-config-prettier": "^10.1.8",
     "release-it": "^19.2.4",
     "release-it-pnpm": "^4.6.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@11.5.1+sha512.93f7b57422ea7068257235b4c16eb60762eb68e1dc23723199cc739043ea9be2c4143274a399d8c6defa2b1176226d9ca1c4b63482d6200c1a8fbaa78c1d1485"
+  "packageManager": "pnpm@11.22.0+sha512.1ff870c4c6133dfd88fb2afc46dd13d47f09c9794b438c6fdb47ca98caf3bc16381ee0be93a091b8e3824cf01f889f46d7d9e20910fb0be1ab0fb5baa80dd621"
 }

@@ -1,5 +1,5 @@
-import { Metadata } from "next";
 import React from "react";
+import { Metadata } from "next";
 
 import { AnimatedWrapper } from "./components/AnimatedWrapper";
 import { ArticleFilter } from "./ArticleFilter";
@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   title: "Artikel | HiRahmat",
   description: "Kumpulan tulisan, blog, dan jurnal proyek.",
 };
-
-export const revalidate = 60;
 
 export default async function ArticlesPage({
   searchParams,
