@@ -75,8 +75,8 @@ export default async function ArticleDetailPage({
                 href="/articles"
                 className="group animated-header-element invisible inline-block px-1 -mx-1 mb-8 md:mb-10"
               >
-                <div className="flex gap-1 sm:gap-1.5 items-center text-text-accent font-semibold group-animate-hover">
-                  <ArrowLeft className="size-4 sm:size-5 stroke-[2.25]" />
+                <div className="flex gap-1 sm:gap-1.5 items-center text-text-accent font-semibold group-back-hover">
+                  <ArrowLeft className="size-3.5 sm:size-4 stroke-[2.75]" />
                   <span className="text-sm sm:text-base">Artikel</span>
                 </div>
               </Link>

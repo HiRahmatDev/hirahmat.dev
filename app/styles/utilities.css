@@ -22,6 +22,12 @@
   @apply translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-0 transition-transform ease-silky;
 }
 
+@utility group-back-hover {
+  @apply *:transition-transform *:duration-250 *:ease-silky;
+  @apply group-hover:[&>svg]:-translate-x-px group-hover:[&>span]:translate-x-px;
+  @apply group-active:[&>svg]:-translate-x-0.75 group-active:[&>span]:translate-x-0.5;
+}
+
 @utility animate-slide-down-fade-in {
   animation: slideDownFadeIn 0.2s var(--ease-silky);
 }
