@@ -19,7 +19,7 @@
 }
 
 @utility group-animate-hover {
-  @apply translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-silky;
+  @apply translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-0 transition-transform ease-silky;
 }
 
 @utility animate-slide-down-fade-in {

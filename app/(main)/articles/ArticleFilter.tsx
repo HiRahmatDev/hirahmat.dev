@@ -26,7 +26,7 @@ export function ArticleFilter() {
   return (
     <div className="flex flex-wrap gap-2">
       {(["All", "Jurnal Proyek", "Blog"] as ArticleCategory[]).map((type) => (
-        <div key={type} className="animated-element invisible">
+        <div key={type}>
           <button
             className="group rounded-full"
             onPointerDown={() => handleFilterChange(type)}

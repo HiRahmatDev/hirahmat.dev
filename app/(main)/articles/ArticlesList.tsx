@@ -1,26 +1,31 @@
 import { cacheLife } from "next/cache";
 
 import { ArticleCard } from "./ArticleCard";
-import { ArticleCategory, fetchAllArticles } from "@/app/services/notion";
-import { AnimatedGridWrapper } from "./components/AnimatedGridWrapper";
+import { fetchAllArticles } from "@/app/services/notion";
+import { isCategoryValid } from "./lib/utils";
 
 export async function ArticlesList({
-  category,
+  searchParams,
 }: {
-  category?: ArticleCategory;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   "use cache";
   cacheLife("hours");
+
+  let { category } = await searchParams;
+  if (!isCategoryValid(category)) {
+    category = undefined;
+  }
 
   const articles = await fetchAllArticles({ category });
 
   return (
     <>
-      <AnimatedGridWrapper>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 min-h-110">
         {articles?.map((article) => (
           <ArticleCard key={article.slug} article={article} />
         ))}
-      </AnimatedGridWrapper>
+      </div>
 
       {articles?.length === 0 && (
         <div className="text-center py-20 text-zinc-500">

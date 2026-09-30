@@ -9,7 +9,7 @@ type ArticleCardProps = {
 
 export function ArticleCard({ article }: ArticleCardProps) {
   return (
-    <div className="animated-card-element invisible group cursor-pointer">
+    <div className="group cursor-pointer">
       <Link
         href={`/articles/${article.slug}`}
         aria-label={`Buka artikel: ${article.title}`}
