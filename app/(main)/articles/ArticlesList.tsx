@@ -1,21 +1,15 @@
 import { cacheLife } from "next/cache";
 
 import { ArticleCard } from "./ArticleCard";
-import { fetchAllArticles } from "@/app/services/notion";
-import { isCategoryValid } from "./lib/utils";
+import { ArticleCategory, fetchAllArticles } from "@/app/services/notion";
 
 export async function ArticlesList({
-  searchParams,
+  category,
 }: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  category?: ArticleCategory;
 }) {
   "use cache";
   cacheLife("hours");
-
-  let { category } = await searchParams;
-  if (!isCategoryValid(category)) {
-    category = undefined;
-  }
 
   const articles = await fetchAllArticles({ category });
 

@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import { ArticleFilter } from "./ArticleFilter";
 import { ArticlesList } from "./ArticlesList";
+import { ArticlesListBoundary } from "./ArticleListBoundary";
 import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
 
 export const metadata: Metadata = {
@@ -10,9 +11,7 @@ export const metadata: Metadata = {
   description: "Kumpulan tulisan, blog, dan jurnal proyek.",
 };
 
-export default async function ArticlesPage({
-  searchParams,
-}: PageProps<"/articles">) {
+export default function ArticlesPage({ searchParams }: PageProps<"/articles">) {
   return (
     <main>
       <section className="container pt-4 sm:pt-12 pb-20">
@@ -30,7 +29,7 @@ export default async function ArticlesPage({
           <div className="space-y-8">
             <ArticleFilter />
             <React.Suspense fallback={<ArticlesList.Skeleton />}>
-              <ArticlesList searchParams={searchParams} />
+              <ArticlesListBoundary searchParams={searchParams} />
             </React.Suspense>
           </div>
         </div>
