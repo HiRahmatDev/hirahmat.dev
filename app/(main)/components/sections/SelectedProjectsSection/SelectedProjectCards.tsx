@@ -54,7 +54,7 @@ type SelectedProjectCardProps = {
 
 function SelectedProjectCard({ project }: SelectedProjectCardProps) {
   return (
-    <div className="selected-project-card invisible h-full">
+    <div className="h-full">
       <div className="rounded-3xl bg-accent w-109.75 h-54.25 shadow-xl flex gap-3 text-white overflow-hidden">
         <div className="w-full py-5 pl-5 flex flex-col justify-between gap-3 *:max-w-fit">
           <div className="space-y-3">

@@ -6,7 +6,6 @@ import Link from "next/link";
 
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
-import { CustomEase, gsap, useGSAP } from "@/app/lib/gsap";
 
 type NavState =
   | "navbar-static"
@@ -118,30 +117,9 @@ export function Navbar() {
     };
   }, [navState]);
 
-  useGSAP(() => {
-    gsap.fromTo(
-      navbarRef.current,
-      { y: -60, autoAlpha: 1 },
-      {
-        y: 0,
-        autoAlpha: 1,
-        duration: 1.8,
-        delay: 2.7,
-        ease: CustomEase.create(
-          "custom",
-          "M0,0 C0.083,0.294 0.035,0.717 0.337,0.911 0.456,0.987 0.752,1 1,1 ",
-        ),
-      },
-    );
-  });
-
   return (
     <>
-      <nav
-        role="navigation"
-        ref={navbarRef}
-        className="invisible relative z-10"
-      >
+      <nav role="navigation" ref={navbarRef} className="relative z-10">
         <div className="container-wider py-2 flex gap-3 justify-between items-center align-center">
           <Logo />
           <div className="hidden md:flex gap-8 items-center h-fit">

@@ -1,4 +1,3 @@
-import { AnimatedWrapper } from "./AnimatedWrapper";
 import { fetchSelectedProjects } from "@/app/services/notion";
 import { SelectedProjectCards } from "./SelectedProjectCards";
 import { GreenText } from "../../GreenText";
@@ -9,13 +8,13 @@ export async function SelectedProjectsSection() {
   const displayProjects = selectedProjects?.slice(0, 3) || [];
 
   return (
-    <AnimatedWrapper>
+    <section className="container py-8 sm:pt-6">
       <div className="space-y-8">
         <div className="space-y-1 md:space-y-2">
-          <h2 className="selected-projects-text-element invisible text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
+          <h2 className="text-2xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
             Proyek <GreenText>Pilihan</GreenText>
           </h2>
-          <p className="selected-projects-text-element invisible text-base sm:text-lg max-w-[60ch] -tracking-[.2px] text-gray-600">
+          <p className="text-base sm:text-lg max-w-[60ch] -tracking-[.2px] text-gray-600">
             Proyek pilihan dengan detail, interaksi, dan desain menarik.
           </p>
         </div>
@@ -24,7 +23,7 @@ export async function SelectedProjectsSection() {
           hasMore={hasMore}
         />
       </div>
-    </AnimatedWrapper>
+    </section>
   );
 }
 
