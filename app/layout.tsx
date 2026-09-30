@@ -8,8 +8,6 @@ import { BASE_URL, SITE_NAME } from "@/app/config/constants";
 
 import "./globals.css";
 
-export const instant = false;
-
 const interSans = Inter({
   variable: "--font-inter-sans",
   subsets: ["latin"],

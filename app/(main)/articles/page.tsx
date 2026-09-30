@@ -27,7 +27,9 @@ export default function ArticlesPage({ searchParams }: PageProps<"/articles">) {
           </div>
 
           <div className="space-y-8">
-            <ArticleFilter />
+            <React.Suspense>
+              <ArticleFilter />
+            </React.Suspense>
             <React.Suspense fallback={<ArticlesList.Skeleton />}>
               <ArticlesListBoundary searchParams={searchParams} />
             </React.Suspense>
