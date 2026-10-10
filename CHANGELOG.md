@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [0.20.0] - 2026-10-10
+
+### Added
+
+- Labs page ("/labs")
+
 ## [0.19.0] - 2026-05-30
 
 ### Added
