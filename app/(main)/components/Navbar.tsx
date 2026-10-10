@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import { FlaskConical, LucideIcon } from "lucide-react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 import { CTAButton } from "./CTAButton";
 import { Logo } from "./Logo";
@@ -146,25 +147,52 @@ export function Navbar() {
   );
 }
 
+type Link = {
+  key: string;
+  href: string;
+  icon: LucideIcon | null;
+  label: string;
+};
+
 function Links() {
-  return (
-    <>
+  const links: Link[] = [
+    {
+      key: "jurnal-proyek",
+      href: "/articles?category=Jurnal+Proyek",
+      icon: null,
+      label: "Jurnal Proyek",
+    },
+    {
+      key: "blog",
+      href: "/articles?category=Blog",
+      icon: null,
+      label: "Blog",
+    },
+    {
+      key: "labs",
+      href: "/labs",
+      icon: FlaskConical,
+      label: "Labs",
+    },
+  ];
+
+  return links.map(({ key, href, icon: Icon, label }) => {
+    return (
       <Link
-        href="/articles?category=Jurnal+Proyek"
-        className="font-semibold px-2 text-base/[32px] inline-block group hover:text-text-accent"
+        key={key}
+        href={href}
+        className="font-semibold px-2 group hover:text-text-accent"
       >
-        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-silky">
-          Jurnal Proyek
+        <span
+          className={
+            "inline-flex items-center text-base/[32px] translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-0 transition-transform ease-silky" +
+            (Icon ? " gap-1.5" : "")
+          }
+        >
+          {Icon && <Icon className="size-5" />}
+          {label}
         </span>
       </Link>
-      <Link
-        href="/articles?category=Blog"
-        className="font-semibold px-2 text-base/[32px] inline-block group hover:text-text-accent"
-      >
-        <span className="inline-block translate-y-0 group-hover:-translate-y-0.5 group-active:translate-y-px transition-transform ease-silky">
-          Blog
-        </span>
-      </Link>
-    </>
-  );
+    );
+  });
 }
