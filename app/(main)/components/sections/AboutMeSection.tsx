@@ -10,16 +10,24 @@ export function AboutMeSection() {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
-        scrollTrigger: { trigger: containerRef.current, start: "top 70%" },
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set([".about-text-element", ".about-paragraf"], { autoAlpha: 1 });
       });
 
-      tl.from(".about-text-element", { x: 20, stagger: 0.07 }).from(
-        ".about-paragraf",
-        { x: 20, stagger: 0.07 },
-        "-=0.6",
-      );
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({
+          defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
+          scrollTrigger: { trigger: containerRef.current, start: "top 70%" },
+        });
+
+        tl.from(".about-text-element", { x: 20, stagger: 0.07 }).from(
+          ".about-paragraf",
+          { x: 20, stagger: 0.07 },
+          "-=0.6",
+        );
+      });
     },
     { scope: containerRef },
   );

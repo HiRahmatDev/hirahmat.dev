@@ -3,6 +3,7 @@ import "server-only";
 import {
   BlockObjectResponse,
   Client,
+  ListBlockChildrenResponse,
   PageObjectResponse,
   RichTextItemResponse,
 } from "@notionhq/client";
@@ -419,9 +420,65 @@ export const fetchArticleByBlockId = async (blockId: string) => {
   }
 };
 
-type TOC = {
+export type TOC = {
   title: string;
   children: TOC[];
+};
+
+export const extractArticleTOC = (
+  response: ListBlockChildrenResponse | null,
+): TOC[] | null => {
+  if (!response) return null;
+
+  const toc: TOC[] = [];
+  let currentH1: TOC | null = null;
+  let currentH2: TOC | null = null;
+
+  const results = (
+    (response.results as BlockObjectResponse[] | null) || []
+  ).filter((result) => result?.type?.startsWith("heading_"));
+
+  results.forEach((result) => {
+    if (result?.type === "heading_1") {
+      const level1: TOC = {
+        title:
+          result.heading_1?.rich_text?.map((p) => p.plain_text).join("") || "",
+        children: [],
+      };
+
+      currentH1 = level1;
+      toc.push(level1);
+    } else if (result?.type === "heading_2") {
+      const level2: TOC = {
+        title:
+          result.heading_2?.rich_text?.map((p) => p.plain_text).join("") || "",
+        children: [],
+      };
+
+      currentH2 = level2;
+      if (currentH1) {
+        currentH1.children = currentH1.children || [];
+        currentH1.children.push(level2);
+      } else {
+        toc.push(level2);
+      }
+    } else if (result?.type === "heading_3") {
+      const level3: TOC = {
+        title:
+          result.heading_3?.rich_text?.map((p) => p.plain_text).join("") || "",
+        children: [],
+      };
+
+      if (currentH2) {
+        currentH2.children = currentH2.children || [];
+        currentH2.children.push(level3);
+      } else {
+        toc.push(level3);
+      }
+    }
+  });
+
+  return toc;
 };
 
 export const fetchArticleTOCByBlockId = async (
@@ -430,62 +487,8 @@ export const fetchArticleTOCByBlockId = async (
   "use cache";
 
   try {
-    const response = await notion.blocks.children.list({
-      block_id: blockId,
-    });
-
-    const toc: TOC[] = [];
-    let currentH1: TOC | null = null;
-    let currentH2: TOC | null = null;
-
-    const results = (
-      (response.results as BlockObjectResponse[] | null) || []
-    ).filter((result) => result?.type.startsWith("heading_"));
-
-    results.forEach((result) => {
-      if (result?.type === "heading_1") {
-        const level1: TOC = {
-          title:
-            result.heading_1?.rich_text?.map((p) => p.plain_text).join("") ||
-            "",
-          children: [],
-        };
-
-        currentH1 = level1;
-        toc.push(level1);
-      } else if (result?.type === "heading_2") {
-        const level2: TOC = {
-          title:
-            result.heading_2?.rich_text?.map((p) => p.plain_text).join("") ||
-            "",
-          children: [],
-        };
-
-        currentH2 = level2;
-        if (currentH1) {
-          currentH1.children = currentH1.children || [];
-          currentH1.children.push(level2);
-        } else {
-          toc.push(level2);
-        }
-      } else if (result?.type === "heading_3") {
-        const level3: TOC = {
-          title:
-            result.heading_3?.rich_text?.map((p) => p.plain_text).join("") ||
-            "",
-          children: [],
-        };
-
-        if (currentH2) {
-          currentH2.children = currentH2.children || [];
-          currentH2.children.push(level3);
-        } else {
-          toc.push(level3);
-        }
-      }
-    });
-
-    return toc;
+    const response = await fetchArticleByBlockId(blockId);
+    return extractArticleTOC(response);
   } catch (error) {
     console.error("ERROR in `fetchArticleTOCByBlockId`:", error);
     return null;

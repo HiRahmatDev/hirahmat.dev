@@ -18,19 +18,19 @@
 
 @keyframes overlayFadeIn {
   from {
-    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
   }
   to {
-    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
   }
 }
 
 @keyframes overlayFadeOut {
   from {
-    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
   }
   to {
-    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
   }
 }
 

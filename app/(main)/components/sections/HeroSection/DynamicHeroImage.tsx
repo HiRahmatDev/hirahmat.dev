@@ -11,6 +11,11 @@ import rahmatHero from "@/public/images/rahmat-hidayatullah-hero.png";
 import threeLines from "@/public/svgs/three-lines.svg";
 import vectorBackgroundHero from "@/public/svgs/vector-background-hero.svg";
 
+type ParallaxSetterPair = {
+  x: gsap.QuickToFunc;
+  y: gsap.QuickToFunc;
+};
+
 export function DynamicHeroImage() {
   const backAccentRef = useRef<HTMLImageElement>(null);
   const middleAccentRef = useRef<HTMLImageElement>(null);
@@ -26,97 +31,97 @@ export function DynamicHeroImage() {
   });
 
   const parallaxSetters = useRef<{
-    back?: (x: number, y?: number) => void;
-    middle?: (x: number, y?: number) => void;
-    front?: (x: number, y?: number) => void;
-    lines?: (x: number, y?: number) => void;
+    back?: ParallaxSetterPair;
+    middle?: ParallaxSetterPair;
+    front?: ParallaxSetterPair;
+    lines?: ParallaxSetterPair;
   }>({});
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
-    mm.add("(min-width: 767px)", () => {
-      // Floating animation
-      const floatConfigs = [
-        { ref: backAccentRef, key: "back", floatY: 5, duration: 2 },
-        { ref: middleAccentRef, key: "middle", floatY: 10, duration: 2.5 },
-        { ref: threeLinesRef, key: "lines", floatY: 10, duration: 2.5 },
-        { ref: frontAccentRef, key: "front", floatY: 20, duration: 2.8 },
-      ] as const;
-
-      floatConfigs.forEach(({ ref, key, floatY, duration }) => {
-        if (!ref.current) return;
-        // Setup quick setter for parallax
-        parallaxSetters.current[key] = gsap.quickTo(ref.current, "y", {
-          duration: 0.3,
-        });
-
+    mm.add(
+      "(min-width: 767px) and (prefers-reduced-motion: no-preference)",
+      () => {
         // Floating animation
-        gsap.to(floatingOffsets.current, {
-          [key]: floatY,
-          duration,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-          onUpdate: () => {
-            // On each floating update, merge with parallax
-            const parallaxY = ref.current?.dataset.parallaxY
-              ? Number(ref.current.dataset.parallaxY)
-              : 0;
-            parallaxSetters.current[key]?.(
-              parallaxY + floatingOffsets.current[key],
-            );
-          },
-          scrollTrigger: {
-            trigger: containerRef.current,
-            toggleActions: "play pause play pause",
-          },
-        });
-      });
-
-      // Mousemove handler
-      const handleMouseMove = (e: MouseEvent) => {
-        const containerEl = containerRef.current as HTMLDivElement;
-        if (!containerEl) return;
-        const isInView = ScrollTrigger.isInViewport(containerEl);
-
-        if (!isInView) return;
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        const x = (e.clientX - w / 2) / w;
-        const y = (e.clientY - h / 2) / h;
-
-        // Parallax factors
-        const parallaxConfigs = [
-          { ref: backAccentRef, key: "back", factor: -10 },
-          { ref: middleAccentRef, key: "middle", factor: 5 },
-          { ref: threeLinesRef, key: "lines", factor: 5 },
-          { ref: frontAccentRef, key: "front", factor: 20 },
+        const floatConfigs = [
+          { ref: backAccentRef, key: "back", floatY: 5, duration: 2 },
+          { ref: middleAccentRef, key: "middle", floatY: 10, duration: 2.5 },
+          { ref: threeLinesRef, key: "lines", floatY: 10, duration: 2.5 },
+          { ref: frontAccentRef, key: "front", floatY: 20, duration: 2.8 },
         ] as const;
 
-        parallaxConfigs.forEach(({ ref, key, factor }) => {
-          if (ref.current) {
-            const parallaxY = y * factor;
-            ref.current.dataset.parallaxY = String(parallaxY);
-            // Merge floating and parallax
-            parallaxSetters.current[key]?.(
-              parallaxY + floatingOffsets.current[key],
-            );
-            gsap.to(ref.current, {
-              x: x * factor,
-              duration: 0.3,
-              overwrite: "auto",
-            });
-          }
+        floatConfigs.forEach(({ ref, key, floatY, duration }) => {
+          if (!ref.current) return;
+          // Setup quick setters for parallax (both X and Y)
+          parallaxSetters.current[key] = {
+            x: gsap.quickTo(ref.current, "x", { duration: 0.3 }),
+            y: gsap.quickTo(ref.current, "y", { duration: 0.3 }),
+          };
+
+          // Floating animation
+          gsap.to(floatingOffsets.current, {
+            [key]: floatY,
+            duration,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+            onUpdate: () => {
+              // On each floating update, merge with parallax
+              const parallaxY = ref.current?.dataset.parallaxY
+                ? Number(ref.current.dataset.parallaxY)
+                : 0;
+              parallaxSetters.current[key]?.y(
+                parallaxY + floatingOffsets.current[key],
+              );
+            },
+            scrollTrigger: {
+              trigger: containerRef.current,
+              toggleActions: "play pause play pause",
+            },
+          });
         });
-      };
 
-      document.addEventListener("mousemove", handleMouseMove);
+        // Mousemove handler
+        const handleMouseMove = (e: MouseEvent) => {
+          const containerEl = containerRef.current as HTMLDivElement;
+          if (!containerEl) return;
+          const isInView = ScrollTrigger.isInViewport(containerEl);
 
-      return () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-      };
-    });
+          if (!isInView) return;
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          const x = (e.clientX - w / 2) / w;
+          const y = (e.clientY - h / 2) / h;
+
+          // Parallax factors
+          const parallaxConfigs = [
+            { ref: backAccentRef, key: "back", factor: -10 },
+            { ref: middleAccentRef, key: "middle", factor: 5 },
+            { ref: threeLinesRef, key: "lines", factor: 5 },
+            { ref: frontAccentRef, key: "front", factor: 20 },
+          ] as const;
+
+          parallaxConfigs.forEach(({ ref, key, factor }) => {
+            if (ref.current) {
+              const parallaxY = y * factor;
+              ref.current.dataset.parallaxY = String(parallaxY);
+              // Merge floating and parallax using quickTo setters
+              parallaxSetters.current[key]?.y(
+                parallaxY + floatingOffsets.current[key],
+              );
+              parallaxSetters.current[key]?.x(x * factor);
+            }
+          });
+        };
+
+        document.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+          document.removeEventListener("mousemove", handleMouseMove);
+        };
+      },
+    );
   });
 
   return (
@@ -145,6 +150,7 @@ export function DynamicHeroImage() {
             className="absolute mask-no-repeat mask-cover"
             loading="eager"
             fetchPriority="high"
+            sizes="(min-width: 768px) 395px, 100vw"
             style={{
               left: 0,
               bottom: 0,

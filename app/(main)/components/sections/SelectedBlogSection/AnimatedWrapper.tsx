@@ -12,22 +12,32 @@ export function AnimatedWrapper({ children }: AnimatedWrapperProps) {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
-        scrollTrigger: { trigger: containerRef.current, start: "top 70%" },
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set([".selected-blogs-text-element", ".selected-blog-card"], {
+          autoAlpha: 1,
+        });
       });
 
-      tl.from(".selected-blogs-text-element", {
-        x: 20,
-        stagger: 0.07,
-      }).from(
-        ".selected-blog-card",
-        {
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({
+          defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
+          scrollTrigger: { trigger: containerRef.current, start: "top 70%" },
+        });
+
+        tl.from(".selected-blogs-text-element", {
           x: 20,
-          stagger: 0.1,
-        },
-        "-=0.6",
-      );
+          stagger: 0.07,
+        }).from(
+          ".selected-blog-card",
+          {
+            x: 20,
+            stagger: 0.1,
+          },
+          "-=0.6",
+        );
+      });
     },
     { scope: containerRef },
   );

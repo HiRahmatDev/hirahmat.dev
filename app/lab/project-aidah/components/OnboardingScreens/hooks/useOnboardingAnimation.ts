@@ -12,8 +12,11 @@ export function useOnboardingAnimation({
 }: UseOnboardingAnimationProps) {
   useGSAP(
     () => {
+      const prefersReducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const ease = "power2.inOut";
-      const duration = 0.5;
+      const duration = prefersReducedMotion ? 0 : 0.5;
 
       if (step === 1) {
         gsap.to(".screen-1", {

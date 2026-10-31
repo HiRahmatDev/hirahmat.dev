@@ -10,6 +10,7 @@ export function StaticHeroImage() {
           alt="Foto Rahmat Hidayatullah dengan background semi transparan | hirahmat.dev"
           loading="eager"
           fetchPriority="high"
+          sizes="(max-width: 767px) 100vw, 395px"
         />
       </div>
     </div>

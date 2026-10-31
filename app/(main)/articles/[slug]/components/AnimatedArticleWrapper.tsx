@@ -14,20 +14,30 @@ export function AnimatedArticleWrapper({
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set([".animated-header-element", ".animated-content-element"], {
+          autoAlpha: 1,
+        });
       });
 
-      tl.from(".animated-header-element", {
-        x: 20,
-        stagger: 0.07,
-      }).from(
-        ".animated-content-element",
-        {
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({
+          defaults: { autoAlpha: 0, duration: 0.6, ease: "power3.out" },
+        });
+
+        tl.from(".animated-header-element", {
           x: 20,
-        },
-        "-=0.6",
-      );
+          stagger: 0.07,
+        }).from(
+          ".animated-content-element",
+          {
+            x: 20,
+          },
+          "-=0.6",
+        );
+      });
     },
     { scope: containerRef },
   );

@@ -9,10 +9,10 @@ import { AnimatedArticleWrapper } from "./components/AnimatedArticleWrapper";
 import { AnimatedTOCWrapper } from "./components/AnimatedTOCWrapper";
 import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
 import {
+  extractArticleTOC,
   fetchAllArticles,
   fetchArticleByBlockId,
   fetchArticleMetadataBySlug,
-  fetchArticleTOCByBlockId,
 } from "@/app/services/notion";
 import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/(main)/components/NotionRenderer";
@@ -62,7 +62,7 @@ export default async function ArticleDetailPage({
   }
 
   const article = await fetchArticleByBlockId(blockMetadata.blockId);
-  const toc = await fetchArticleTOCByBlockId(blockMetadata.blockId);
+  const toc = extractArticleTOC(article);
   const isTocEmpty = !toc || !toc?.length;
 
   return (
@@ -124,7 +124,7 @@ export default async function ArticleDetailPage({
                   width={1280}
                   height={720}
                   loading="eager"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 80vw"
                   className="object-cover top-0 right-0 left-0 rounded-2xl border border-gray-200"
                 />
               </div>

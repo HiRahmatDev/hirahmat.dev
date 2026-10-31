@@ -30,7 +30,7 @@ export function SelectedProjectCards({
           <div className="h-full flex items-center">
             <Link
               href="/articles?category=Jurnal Proyek"
-              className="group flex flex-col items-center justify-center gap-4 w-50 h-54.25 rounded-3xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-all"
+              className="group flex flex-col items-center justify-center gap-4 w-50 h-54.25 rounded-3xl border-2 border-dashed border-zinc-200 hover:border-accent hover:bg-accent/5 transition-colors"
             >
               <div className="w-12 h-12 rounded-full bg-zinc-100 group-hover:bg-accent group-hover:text-white flex items-center justify-center transition-colors">
                 <ArrowRight className="w-6 h-6" />

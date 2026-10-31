@@ -18,9 +18,7 @@
   }
 
   #murajaah-sidebar {
-    @apply top-4;
-    transition: top 300ms;
-    transition-timing-function: var(--ease-silky);
+    @apply top-4 translate-y-0 transition-transform duration-300 ease-silky;
   }
 
   .white-outline-button {
@@ -35,7 +33,7 @@
   .navbar-fixed-active,
   .navbar-fixed {
     + main #murajaah-sidebar {
-      @apply top-20;
+      @apply translate-y-16;
     }
   }
   .navbar-fixed,
@@ -54,15 +52,22 @@
     animation: navbarSlideUp var(--navbar-exit-duration-ms) var(--ease-silky);
   }
 
-  .overlay-enter {
-    @apply bg-black/60;
+  .overlay-enter::before,
+  .overlay-enter-active::before,
+  .overlay-leave-active::before {
+    content: "";
+    @apply fixed inset-0 bg-black/60 pointer-events-none -z-10;
   }
 
-  .overlay-enter-active {
+  .overlay-enter::before {
+    @apply opacity-100;
+  }
+
+  .overlay-enter-active::before {
     animation: overlayFadeIn 400ms var(--ease-silky) forwards;
   }
 
-  .overlay-leave-active {
+  .overlay-leave-active::before {
     animation: overlayFadeOut 400ms var(--ease-silky) forwards;
   }
 

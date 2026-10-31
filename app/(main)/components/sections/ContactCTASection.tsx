@@ -12,24 +12,32 @@ export function ContactCTASection() {
   const ctaRef = React.useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ctaRef.current,
-        start: "top bottom-=120px",
-        end: "top bottom-=120px",
-        toggleActions: "play none reverse none",
-      },
+    const mm = gsap.matchMedia();
+
+    mm.add("(prefers-reduced-motion: reduce)", () => {
+      gsap.set(ctaRef.current, { autoAlpha: 1 });
     });
 
-    tl.from(ctaRef.current, {
-      y: 20,
-      duration: 0.5,
-      scale: 0.9,
-      autoAlpha: 0,
-      ease: CustomEase.create(
-        "custom",
-        "M0,0 C0.018,0.132 0.026,0.291 0.083,0.513 0.139,0.733 0.187,0.875 0.231,0.942 0.295,1.039 0.37,1.111 0.534,1.037 0.61,1.002 0.71,1 0.8,1 0.837,1 0.95,1 1,1 ",
-      ),
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: "top bottom-=120px",
+          end: "top bottom-=120px",
+          toggleActions: "play none reverse none",
+        },
+      });
+
+      tl.from(ctaRef.current, {
+        y: 20,
+        duration: 0.5,
+        scale: 0.9,
+        autoAlpha: 0,
+        ease: CustomEase.create(
+          "custom",
+          "M0,0 C0.018,0.132 0.026,0.291 0.083,0.513 0.139,0.733 0.187,0.875 0.231,0.942 0.295,1.039 0.37,1.111 0.534,1.037 0.61,1.002 0.71,1 0.8,1 0.837,1 0.95,1 1,1 ",
+        ),
+      });
     });
   });
 

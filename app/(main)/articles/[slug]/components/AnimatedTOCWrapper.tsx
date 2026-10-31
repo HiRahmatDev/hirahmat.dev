@@ -12,13 +12,21 @@ export function AnimatedTOCWrapper({ children }: AnimatedTOCWrapperProps) {
 
   useGSAP(
     () => {
-      gsap.from(".animated-toc-element", {
-        x: 20,
-        autoAlpha: 0,
-        stagger: 0.07,
-        duration: 0.6,
-        delay: 0.6,
-        ease: "power3.out",
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(".animated-toc-element", { autoAlpha: 1 });
+      });
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from(".animated-toc-element", {
+          x: 20,
+          autoAlpha: 0,
+          stagger: 0.07,
+          duration: 0.6,
+          delay: 0.6,
+          ease: "power3.out",
+        });
       });
     },
     { scope: containerRef },
