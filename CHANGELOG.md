@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
--
+### Changed
+
+- Smoother UI animations that respect reduced-motion settings
+- Article content shows up right on page load instead of waiting for scripts
+- Faster table of contents loading on article pages
 
 ## [0.20.0] - 2026-10-10
 
