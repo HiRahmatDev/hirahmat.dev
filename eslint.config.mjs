@@ -8,6 +8,12 @@ const eslintConfig = defineConfig([
   ...nextTs,
   prettier,
   {
+    // eslint-plugin-react auto-detects the React version via
+    // context.getFilename(), which ESLint 10 removed. Pinning the version
+    // skips that lookup.
+    settings: {
+      react: { version: "19.2" },
+    },
     rules: {
       "@typescript-eslint/no-unused-vars": [
         "error",
