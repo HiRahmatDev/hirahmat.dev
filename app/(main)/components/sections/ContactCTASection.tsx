@@ -6,12 +6,16 @@ import React from "react";
 
 import { CustomEase, gsap, useGSAP, ScrollTrigger } from "@/app/lib/gsap";
 import { EMAIL_HREF } from "../constants";
+import { takeOverReveal } from "@/app/lib/reveal";
 import backgroundFooterContactCtaPng from "@/public/images/background-footer-contact-cta.png";
 
 export function ContactCTASection() {
   const ctaRef = React.useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    if (!ctaRef.current) return;
+    if (!takeOverReveal(ctaRef.current)) return;
+
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: reduce)", () => {
@@ -68,7 +72,7 @@ export function ContactCTASection() {
     <section className="container py-6">
       <div
         ref={ctaRef}
-        className="invisible p-5 bg-accent text-white rounded-[20px] flex gap-3 relative overflow-hidden"
+        className="reveal-on-scroll p-5 bg-accent text-white rounded-[20px] flex gap-3 relative overflow-hidden"
       >
         <Mail className="shrink-0" />
         <div className="space-y-1">

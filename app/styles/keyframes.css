@@ -95,3 +95,18 @@
     transform: translateY(12px);
   }
 }
+
+/* Page-load reveal: starts on first paint, no JS needed. */
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* Failsafe for GSAP scroll reveals: shows content if the script never takes over. */
+@keyframes revealFailsafe {
+  to {
+    visibility: visible;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { gsap, useGSAP } from "@/app/lib/gsap";
+import { takeOverReveal } from "@/app/lib/reveal";
 import React from "react";
 
 interface AnimatedWrapperProps {
@@ -12,6 +13,9 @@ export function AnimatedWrapper({ children }: AnimatedWrapperProps) {
 
   useGSAP(
     () => {
+      if (!containerRef.current) return;
+      if (!takeOverReveal(containerRef.current)) return;
+
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: reduce)", () => {

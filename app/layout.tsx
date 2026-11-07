@@ -43,7 +43,12 @@ export const metadata: Metadata = {
   },
 };
 
-const bodyClassName = `${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`;
+// Without JS, GSAP never takes over: show scroll-reveal content right away
+// instead of waiting for the CSS failsafe.
+const NOSCRIPT_REVEAL_STYLE =
+  "<style>.reveal-on-scroll{visibility:visible!important;animation:none!important}</style>";
+
+const bodyClassName =`${interSans.variable} ${overpassMono.variable} ${amiriQuran.variable} antialiased`;
 
 export default function RootLayout({
   children,
@@ -53,6 +58,9 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={bodyClassName}>
+        <noscript
+          dangerouslySetInnerHTML={{ __html: NOSCRIPT_REVEAL_STYLE }}
+        />
         {children}
         <Activity>
           <Analytics debug={false} />

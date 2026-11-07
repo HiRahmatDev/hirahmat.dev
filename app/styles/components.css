@@ -71,6 +71,33 @@
     animation: overlayFadeOut 400ms var(--ease-silky) forwards;
   }
 
+  /* Page-load reveal. Order via --reveal-order (70ms stagger), extra wait via --reveal-offset.
+     Mirrors the previous GSAP timeline: power3.out, 0.6s, x: 20 -> 0. */
+  .reveal-in {
+    animation: revealIn 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) backwards;
+    animation-delay: calc(
+      var(--reveal-order, 0) * 70ms + var(--reveal-offset, 0ms)
+    );
+  }
+
+  /* Scroll reveal driven by GSAP. Hidden until the script takes over
+     (data-reveal="ready"); revealFailsafe shows it after 3s if it never does. */
+  .reveal-on-scroll {
+    visibility: hidden;
+    animation: revealFailsafe 0s linear 3s forwards;
+  }
+
+  .reveal-on-scroll[data-reveal="ready"],
+  [data-reveal="ready"] .reveal-on-scroll {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-in {
+      animation: none;
+    }
+  }
+
   .slide-up {
     @apply translate-y-0;
   }

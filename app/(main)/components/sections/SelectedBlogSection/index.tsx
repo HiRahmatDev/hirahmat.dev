@@ -11,10 +11,10 @@ export async function SelectedBlogsSection() {
     <AnimatedWrapper>
       <div className="space-y-8">
         <div className="space-y-1 md:space-y-2">
-          <h2 className="selected-blogs-text-element invisible text-2xl/[36px] sm:text-4xl/[44px] -tracking-[.2px] font-bold blog-header">
+          <h2 className="selected-blogs-text-element reveal-on-scroll text-2xl/[36px] sm:text-4xl/[44px] -tracking-[.2px] font-bold blog-header">
             Blog
           </h2>
-          <p className="selected-blogs-text-element invisible text-base sm:text-lg max-w-[60ch] text-gray-600 blog-desc">
+          <p className="selected-blogs-text-element reveal-on-scroll text-base sm:text-lg max-w-[60ch] text-gray-600 blog-desc">
             Catatan reflektif dan hal-hal yang saya pelajari di luar proyek.
           </p>
         </div>

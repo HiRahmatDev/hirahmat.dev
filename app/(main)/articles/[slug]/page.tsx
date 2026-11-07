@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
+import { CSSProperties } from "react";
 import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 
-import { AnimatedArticleWrapper } from "./components/AnimatedArticleWrapper";
-import { AnimatedTOCWrapper } from "./components/AnimatedTOCWrapper";
 import { ContactCTASection } from "@/app/(main)/components/sections/ContactCTASection";
 import {
   extractArticleTOC,
@@ -18,6 +17,13 @@ import { formatDate } from "@/app/lib/dayjs";
 import { NotionRenderer } from "@/app/(main)/components/NotionRenderer";
 import { RichText } from "@/app/(main)/components/NotionRenderer/common/RichText";
 import { SITE_NAME } from "@/app/config/constants";
+
+const TOC_STAGGER_CAP = 8;
+
+/** Stagger slot for `.reveal-in` (70ms per slot, see components.css). */
+function revealOrder(order: number): CSSProperties {
+  return { "--reveal-order": order } as CSSProperties;
+}
 
 export async function generateStaticParams() {
   const allArticles = await fetchAllArticles();
@@ -64,16 +70,22 @@ export default async function ArticleDetailPage({
   const article = await fetchArticleByBlockId(blockMetadata.blockId);
   const toc = extractArticleTOC(article);
   const isTocEmpty = !toc || !toc?.length;
+  // Content starts together with the last header element, like the old GSAP "-=0.6".
+  const contentOrder = blockMetadata.cover ? 8 : 7;
+  let tocOrder = 0;
+  const nextTocOrder = () =>
+    revealOrder(Math.min(++tocOrder, TOC_STAGGER_CAP));
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] container-wider px-0">
-        <AnimatedArticleWrapper>
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] container-wider px-0 overflow-x-clip">
+        <article>
           <header className="pt-2 space-y-6 mb-8 md:mb-10">
             <div className={"container" + (isTocEmpty ? "" : " mx-0")}>
               <Link
                 href="/articles"
-                className="group animated-header-element invisible inline-block px-1 -mx-1 mb-8 md:mb-10"
+                style={revealOrder(0)}
+                className="group reveal-in inline-block px-1 -mx-1 mb-8 md:mb-10"
               >
                 <div className="flex gap-1 sm:gap-1.5 items-center text-text-accent font-semibold group-back-hover">
                   <ArrowLeft className="size-3.5 sm:size-4 stroke-[2.75]" />
@@ -82,27 +94,48 @@ export default async function ArticleDetailPage({
               </Link>
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <h1 className="animated-header-element invisible text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold">
+                  <h1
+                    style={revealOrder(1)}
+                    className="reveal-in text-3xl/[36px] sm:text-4xl/[44px] tracking-[-0.5px] sm:tracking-[-1px] font-bold"
+                  >
                     <RichText items={blockMetadata.rawTitle} />
                   </h1>
-                  <p className="animated-header-element invisible text-base/normal sm:text-lg/normal -tracking-[.2px] text-gray-500">
+                  <p
+                    style={revealOrder(2)}
+                    className="reveal-in text-base/normal sm:text-lg/normal -tracking-[.2px] text-gray-500"
+                  >
                     <RichText items={blockMetadata.rawDesc} />
                   </p>
                 </div>
                 <p className="text-xs/[20px] sm:text-sm/[24px] tracking-[-0.15px]">
-                  <span className="animated-header-element invisible inline-block text-xs font-medium px-2 py-1 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200">
+                  <span
+                    style={revealOrder(3)}
+                    className="reveal-in inline-block text-xs font-medium px-2 py-1 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200"
+                  >
                     {blockMetadata.category || "-"}
                   </span>
-                  <span className="animated-header-element invisible inline-block text-zinc-500">
+                  <span
+                    style={revealOrder(4)}
+                    className="reveal-in inline-block text-zinc-500"
+                  >
                     &ensp;•&ensp;
                   </span>
-                  <strong className="animated-header-element invisible inline-block font-medium text-zinc-600">
+                  <strong
+                    style={revealOrder(5)}
+                    className="reveal-in inline-block font-medium text-zinc-600"
+                  >
                     {formatDate(blockMetadata.publishedOn) || "-"}
                   </strong>
-                  <span className="animated-header-element invisible inline-block text-zinc-500">
+                  <span
+                    style={revealOrder(6)}
+                    className="reveal-in inline-block text-zinc-500"
+                  >
                     &ensp;•&ensp;
                   </span>{" "}
-                  <span className="animated-header-element invisible inline-block text-zinc-500">
+                  <span
+                    style={revealOrder(7)}
+                    className="reveal-in inline-block text-zinc-500"
+                  >
                     Diperbarui{" "}
                     <strong className="font-medium text-zinc-600">
                       {formatDate(blockMetadata.updatedOn) || "-"}
@@ -113,9 +146,9 @@ export default async function ArticleDetailPage({
             </div>
             {blockMetadata.cover ? (
               <div
+                style={revealOrder(8)}
                 className={
-                  "container animated-header-element invisible" +
-                  (isTocEmpty ? "" : " mx-[unset]")
+                  "container reveal-in" + (isTocEmpty ? "" : " mx-[unset]")
                 }
               >
                 <Image
@@ -130,28 +163,38 @@ export default async function ArticleDetailPage({
               </div>
             ) : null}
           </header>
-          <section className="animated-content-element invisible pb-8 sm:pb-12">
+          <section
+            style={revealOrder(contentOrder)}
+            className="reveal-in pb-8 sm:pb-12"
+          >
             <div className={"container-for-reading" + (isTocEmpty ? "" : "")}>
               <NotionRenderer listBlockChildren={article} />
             </div>
           </section>
-        </AnimatedArticleWrapper>
+        </article>
         {!isTocEmpty ? (
-          <AnimatedTOCWrapper>
-            <h2 className="animated-toc-element invisible text-base font-semibold tracking-[-0.35px]">
+          <aside
+            style={{ "--reveal-offset": "600ms" } as CSSProperties}
+            className="hidden md:block sticky top-24 max-h-[80vh] overflow-y-auto overflow-x-hidden px-5 pb-12 space-y-3"
+          >
+            <h2
+              style={revealOrder(0)}
+              className="reveal-in text-base font-semibold tracking-[-0.35px]"
+            >
               Telusuri Isi:
             </h2>
             <nav className="[&_a]:text-sm/[18px] [&_a]:text-text-gray [&_a]:hover:text-text-accent [&_a]:animate-hover [&_ul,&_ul_li]:space-y-2.5 [&_a]:inline-block">
               <ul className="[&_ul]:pl-4">
                 {toc.map(({ title, children }, index) => (
-                  <li key={index} className="animated-toc-element invisible">
+                  <li key={index} style={nextTocOrder()} className="reveal-in">
                     <a href={`#${title}`}>{title}</a>
                     {children.length ? (
                       <ul>
                         {children.map(({ title, children }, index) => (
                           <li
                             key={`sub-${index}`}
-                            className="animated-toc-element invisible"
+                            style={nextTocOrder()}
+                            className="reveal-in"
                           >
                             <a href={`#${title}`}>{title}</a>
                             {children.length ? (
@@ -159,7 +202,8 @@ export default async function ArticleDetailPage({
                                 {children.map(({ title }, index) => (
                                   <li
                                     key={`sub-sub-${index}`}
-                                    className="animated-toc-element invisible"
+                                    style={nextTocOrder()}
+                            className="reveal-in"
                                   >
                                     <a href={`#${title}`}>{title}</a>
                                   </li>
@@ -174,7 +218,7 @@ export default async function ArticleDetailPage({
                 ))}
               </ul>
             </nav>
-          </AnimatedTOCWrapper>
+          </aside>
         ) : null}
       </div>
       <ContactCTASection />

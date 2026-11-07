@@ -62,7 +62,7 @@ export function SelectedBlogsList({
               key={blog.slug}
               href={`/articles/${blog.slug}`}
               aria-label={`Buka artikel: Mengenai ${blog.title}`}
-              className="selected-blog-card invisible group w-85"
+              className="selected-blog-card reveal-on-scroll group w-85"
             >
               <div className="space-y-4 group-animate-hover h-full">
                 <div className="shrink-0 relative w-full aspect-video rounded-2xl overflow-hidden transition-shadow image-wrapper bg-gray-100 border border-gray-200">
